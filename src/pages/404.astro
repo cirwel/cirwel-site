@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const buildSha  = (process.env.CF_PAGES_COMMIT_SHA ?? '').slice(0, 8) || 'local';
+const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC';
+---
+<BaseLayout
+  title="Not in this volume — CIRWEL Systems"
+  description="The page you requested is not indexed on cirwelsystems.com. Return to the thesis or read the ecosystem dossier."
+>
+  <!-- Masthead — same register as the rest of the volume -->
+  <div class="max-w-screen-xl mx-auto px-6 lg:px-12 pt-6 flex items-center justify-center gap-4">
+    <hr class="hairline flex-1 max-w-[140px]" />
+    <p class="label text-stone text-[0.62rem] tracking-[0.28em] whitespace-nowrap">
+      Independent Research &middot; Est. 2025
+    </p>
+    <hr class="hairline flex-1 max-w-[140px]" />
+  </div>
+
+  <header class="px-6 lg:px-12 pt-5 pb-4 max-w-screen-xl mx-auto flex items-center justify-between">
+    <a href="/" class="no-underline">
+      <span class="display smcp text-xl font-medium">CIRWEL Systems</span>
+    </a>
+    <nav aria-label="Primary" class="hidden md:flex items-center gap-7 label text-stone">
+      <a href="/#thesis"   class="no-underline hover:text-oxblood transition-colors">Thesis</a>
+      <a href="/ecosystem" class="no-underline hover:text-oxblood transition-colors">Ecosystem</a>
+      <a href="https://github.com/CIRWEL/unitares-paper-v6" class="no-underline hover:text-oxblood transition-colors">Paper</a>
+      <a href="https://github.com/CIRWEL/unitares" class="no-underline hover:text-oxblood transition-colors">Server</a>
+      <a href="https://github.com/CIRWEL/unitares-governance-plugin" class="no-underline hover:text-oxblood transition-colors">Plugin</a>
+      <a href="/#contact"  class="no-underline hover:text-oxblood transition-colors">Contact</a>
+    </nav>
+  </header>
+
+  <main class="px-6 lg:px-12 max-w-screen-xl mx-auto">
+
+    <section class="pt-24 pb-32 lg:pt-40 lg:pb-48 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-9">
+        <p class="label text-oxblood mb-8">— A page that is not in this volume</p>
+        <h1 class="display text-5xl md:text-7xl lg:text-8xl mb-10">
+          404.<br/>
+          <span class="italic">Not</span> indexed.
+        </h1>
+        <p class="text-lg md:text-xl leading-relaxed text-stone max-w-prose mb-10">
+          The address you requested is not a page on this site. The link may
+          be stale, a typo, or pointing at a section that was retired in an
+          earlier edition.
+        </p>
+
+        <hr class="hairline mb-10 max-w-prose"/>
+
+        <ul class="space-y-5 text-lg max-w-prose">
+          <li class="grid grid-cols-12 gap-4 items-baseline">
+            <span class="col-span-12 md:col-span-3 label text-stone">Return</span>
+            <span class="col-span-12 md:col-span-9">
+              to the thesis at <a href="/" class="font-medium">cirwelsystems.com</a>.
+            </span>
+          </li>
+          <li class="grid grid-cols-12 gap-4 items-baseline">
+            <span class="col-span-12 md:col-span-3 label text-stone">Read deeper</span>
+            <span class="col-span-12 md:col-span-9">
+              the <a href="/ecosystem" class="font-medium">ecosystem dossier</a>.
+            </span>
+          </li>
+          <li class="grid grid-cols-12 gap-4 items-baseline">
+            <span class="col-span-12 md:col-span-3 label text-stone">Report</span>
+            <span class="col-span-12 md:col-span-9">
+              the broken link to
+              <a href="mailto:founder@cirwel.org" class="font-mono text-base">founder@cirwel.org</a>.
+            </span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <hr class="hairline"/>
+
+  </main>
+
+  <footer class="px-6 lg:px-12 max-w-screen-xl mx-auto py-12 grid grid-cols-12 gap-6 text-sm text-stone">
+    <div class="col-span-12 md:col-span-4">
+      <p class="display smcp text-base font-medium text-ink mb-2">CIRWEL Systems</p>
+      <p>Independent research operator.</p>
+    </div>
+    <div class="col-span-12 md:col-span-4">
+      <p class="label mb-3 text-ink">Records</p>
+      <p>
+        ORCID <a href="https://orcid.org/0009-0006-7544-2374" class="font-mono">0009-0006-7544-2374</a><br/>
+        DOI <a href="https://doi.org/10.5281/zenodo.19647159" class="font-mono">10.5281/zenodo.19647159</a>
+      </p>
+    </div>
+    <div class="col-span-12 md:col-span-4 md:text-right">
+      <p class="label mb-3 text-ink">© 2026</p>
+      <p>All rights reserved unless noted.<br/>Plugin and paper carry their own licenses.</p>
+    </div>
+
+    <div class="col-span-12 mt-8 pt-6 border-t border-sepia/40 label text-stone text-center leading-loose">
+      Set in <span class="text-ink">Fraunces</span> &amp; <span class="text-ink">JetBrains Mono</span>
+      &middot; cream and oxblood
+      &middot; rendered from <span class="text-ink">{buildSha}</span> at <span class="text-ink">{buildTime}</span>
+      &middot; under <span class="text-ink">UNITARES</span> governance
+      &nbsp;—&nbsp; fin.
+    </div>
+  </footer>
+</BaseLayout>
