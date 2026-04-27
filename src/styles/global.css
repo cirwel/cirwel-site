@@ -54,6 +54,37 @@ body::before {
   font-weight: 500;
 }
 
+/* Editorial drop cap — applied to first paragraph of §01 */
+.dropcap::first-letter {
+  float: left;
+  font-family: '"Fraunces Variable"', 'Fraunces Fallback', 'Fraunces', serif;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+  font-size: 5.4em;
+  line-height: 0.86;
+  font-weight: 600;
+  color: #7A1F1F;
+  margin-right: 0.08em;
+  margin-top: 0.02em;
+  margin-bottom: -0.06em;
+  padding-top: 0.04em;
+}
+
+/* Hero run command — terminal feel without going full code-block */
+.runcmd {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6em;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.95rem;
+  padding: 0.7em 1em;
+  border-left: 2px solid #7A1F1F;
+  background: rgba(122, 31, 31, 0.04);
+  user-select: text;
+}
+.runcmd .prompt { color: #7A1F1F; user-select: none; }
+.runcmd .cmd    { color: #1A1612; }
+.runcmd .note   { color: #5C544A; font-size: 0.78rem; margin-left: auto; }
+
 .hairline {
   height: 1px;
   background: theme('colors.sepia');

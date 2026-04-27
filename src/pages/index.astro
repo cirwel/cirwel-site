@@ -1,5 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Build-time provenance — baked into the page so the colophon shows
+// the exact commit and time that produced it. Hermes-style receipt fetishism,
+// applied to the dogfooding narrative in §03.
+const buildSha  = (process.env.CF_PAGES_COMMIT_SHA ?? '').slice(0, 8) || 'local';
+const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC';
 ---
 <BaseLayout
   title="CIRWEL Systems — Runtime governance for heterogeneous AI-agent fleets"
@@ -36,6 +42,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           self-state telemetry, with signed provenance behind every intervention,
           fills it.
         </p>
+        <div class="runcmd mt-8 max-w-prose reveal reveal-3">
+          <span class="prompt">$</span>
+          <span class="cmd">git clone CIRWEL/unitares &amp;&amp; docker compose up</span>
+          <span class="note">→ http://localhost:8767/mcp/</span>
+        </div>
       </div>
     </section>
 
@@ -105,7 +116,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           Runtime self-state is the missing layer.
         </h2>
         <div class="space-y-6 text-lg leading-relaxed text-ink max-w-prose">
-          <p>
+          <p class="dropcap">
             The discipline of AI safety has built two strong instruments and one large gap.
             <em>Pre-deployment evaluation</em> tells you whether a model behaves on a
             benchmark. <em>Post-incident forensics</em> tells you what went wrong after
@@ -200,6 +211,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             Living under one's own framework is the cheapest credibility a research
             operator can offer. We treat it as the floor, not the ceiling.
           </p>
+          <p class="text-base text-stone">
+            <em>This page is part of the loop.</em> The colophon below shows the exact
+            commit and build time that produced what you are reading.
+          </p>
         </div>
       </div>
     </section>
@@ -267,6 +282,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="col-span-12 md:col-span-4 md:text-right">
       <p class="label mb-3 text-ink">© 2026</p>
       <p>All rights reserved unless noted.<br/>Plugin and paper carry their own licenses.</p>
+    </div>
+
+    <div class="col-span-12 mt-8 pt-6 border-t border-sepia/40 label text-stone text-center leading-loose">
+      ⁂ &nbsp; Set in <span class="text-ink">Fraunces</span> &amp; <span class="text-ink">JetBrains Mono</span>
+      &middot; cream and oxblood
+      &middot; rendered from <span class="text-ink">{buildSha}</span> at <span class="text-ink">{buildTime}</span>
+      &middot; under <span class="text-ink">UNITARES</span> governance
     </div>
   </footer>
 </BaseLayout>
