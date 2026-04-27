@@ -22,13 +22,20 @@ const isEcosystem = currentPath === '/ecosystem';
   <hr class="hairline flex-1 max-w-[140px]" />
 </div>
 
-<header class="px-6 lg:px-12 pt-5 pb-4 max-w-screen-xl mx-auto flex items-center justify-between gap-4">
+<!--
+  Header: row layout at sm+ (wordmark left, nav right).
+  At <sm: column layout — wordmark centered on its own line,
+  full six-link nav wrapping below, also centered. Mobile readers
+  get every nav option, not a reduced subset.
+-->
+<header class="px-6 lg:px-12 pt-5 pb-4 max-w-screen-xl mx-auto flex flex-col items-center gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
   <a href="/" class="no-underline shrink-0">
-    <span class="display smcp text-base sm:text-xl font-medium">CIRWEL Systems</span>
+    <span class="display smcp text-lg sm:text-xl font-medium">CIRWEL Systems</span>
   </a>
-  <nav aria-label="Primary" class="flex items-center gap-4 sm:gap-5 md:gap-7 label text-stone">
+  <nav aria-label="Primary"
+       class="flex flex-wrap items-center justify-center sm:justify-end gap-x-5 gap-y-2 sm:gap-5 md:gap-7 label text-stone">
     <a href={thesisHref}
-       class:list={["no-underline hover:text-oxblood transition-colors hidden sm:inline-block"]}>
+       class="no-underline hover:text-oxblood transition-colors">
       Thesis
     </a>
     <a href="/ecosystem"
@@ -39,15 +46,15 @@ const isEcosystem = currentPath === '/ecosystem';
       Ecosystem
     </a>
     <a href="https://doi.org/10.5281/zenodo.19647159"
-       class="no-underline hover:text-oxblood transition-colors hidden md:inline-block">
+       class="no-underline hover:text-oxblood transition-colors">
       Paper
     </a>
     <a href="https://github.com/CIRWEL/unitares"
-       class="no-underline hover:text-oxblood transition-colors hidden md:inline-block">
+       class="no-underline hover:text-oxblood transition-colors">
       Server
     </a>
     <a href="https://github.com/CIRWEL/unitares-governance-plugin"
-       class="no-underline hover:text-oxblood transition-colors hidden md:inline-block">
+       class="no-underline hover:text-oxblood transition-colors">
       Plugin
     </a>
     <a href={contactHref}
