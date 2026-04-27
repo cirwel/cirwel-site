@@ -54,6 +54,18 @@ body::before {
   font-weight: 500;
 }
 
+/* Small caps for proper-noun lockups (wordmark, byline) — old-book typography */
+.smcp {
+  font-variant-caps: all-small-caps;
+  font-variant-numeric: oldstyle-nums;
+  letter-spacing: 0.06em;
+}
+
+/* Force oldstyle figures inside Fraunces text contexts */
+.fnums {
+  font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
 /* Editorial drop cap — applied to first paragraph of §01 */
 .dropcap::first-letter {
   float: left;

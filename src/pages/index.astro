@@ -11,9 +11,18 @@ const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UT
   title="CIRWEL Systems — Runtime governance for heterogeneous AI-agent fleets"
   description="Continuous self-state telemetry, class-conditional calibration, and signed provenance for AI agents you didn't build yourself. Reference implementation of UNITARES (Wang 2026, DOI 10.5281/zenodo.19647159)."
 >
-  <header class="px-6 lg:px-12 pt-8 pb-4 max-w-screen-xl mx-auto flex items-center justify-between">
+  <!-- Masthead — journal-cover register -->
+  <div class="max-w-screen-xl mx-auto px-6 lg:px-12 pt-6 flex items-center justify-center gap-4">
+    <hr class="hairline flex-1 max-w-[140px]" />
+    <p class="label text-stone text-[0.62rem] tracking-[0.28em] whitespace-nowrap">
+      Independent Research &middot; Est. MMXXV &middot; Vol. I
+    </p>
+    <hr class="hairline flex-1 max-w-[140px]" />
+  </div>
+
+  <header class="px-6 lg:px-12 pt-5 pb-4 max-w-screen-xl mx-auto flex items-center justify-between">
     <a href="/" class="no-underline">
-      <span class="display text-xl font-medium tracking-tight">CIRWEL Systems</span>
+      <span class="display smcp text-xl font-medium">CIRWEL Systems</span>
     </a>
     <nav class="hidden md:flex items-center gap-7 label text-stone">
       <a href="#thesis"  class="no-underline hover:text-oxblood transition-colors">Thesis</a>
@@ -74,7 +83,7 @@ const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UT
 
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Author</dt>
         <dd class="col-span-8 md:col-span-9">
-          Kenny Wang <span class="text-stone">· Independent Researcher · ORCID</span>
+          <span class="smcp">Kenny Wang</span> <span class="text-stone">· Independent Researcher · ORCID</span>
           <a href="https://orcid.org/0009-0006-7544-2374" class="font-mono text-sm">0009-0006-7544-2374</a>
         </dd>
 
@@ -269,7 +278,7 @@ const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UT
 
   <footer class="px-6 lg:px-12 max-w-screen-xl mx-auto py-12 grid grid-cols-12 gap-6 text-sm text-stone">
     <div class="col-span-12 md:col-span-4">
-      <p class="display text-base font-medium text-ink mb-2">CIRWEL Systems</p>
+      <p class="display smcp text-base font-medium text-ink mb-2">CIRWEL Systems</p>
       <p>Independent research operator.</p>
     </div>
     <div class="col-span-12 md:col-span-4">
