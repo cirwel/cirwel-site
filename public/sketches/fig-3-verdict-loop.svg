@@ -145,17 +145,19 @@
     </g>
 
     <!-- Transition labels on the cycle ring — what carries an agent
-         from one verdict region to the next. Italic Fraunces, low contrast. -->
+         from one verdict region to the next. Italic Fraunces, low contrast.
+         Centers placed ~13px outward along each diagonal so labels keep a
+         consistent ≥30px gap from the nearest verdict-hex corner. -->
     <g font-family="'Fraunces Variable', Georgia, serif"
        font-size="9.5" font-style="italic" fill="#7A1F1F" opacity="0.78" text-anchor="middle">
       <!-- NE: PROCEED → GUIDE -->
-      <text x="442" y="142" transform="rotate(45 442 142)">tight margin</text>
+      <text x="455" y="129" transform="rotate(45 455 129)">tight margin</text>
       <!-- SE: GUIDE → PAUSE -->
-      <text x="442" y="266" transform="rotate(-45 442 266)">no convergence</text>
+      <text x="455" y="279" transform="rotate(-45 455 279)">no convergence</text>
       <!-- SW: PAUSE → REJECT -->
-      <text x="278" y="266" transform="rotate(45 278 266)">irreparable</text>
+      <text x="265" y="279" transform="rotate(45 265 279)">irreparable</text>
       <!-- NW: REJECT → PROCEED -->
-      <text x="278" y="142" transform="rotate(-45 278 142)">after dialectic</text>
+      <text x="265" y="129" transform="rotate(-45 265 129)">after dialectic</text>
     </g>
 
     <!-- Tiny radial tick marks on the cycle ring at each verdict crossing,

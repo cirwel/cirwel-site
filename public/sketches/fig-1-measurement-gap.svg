@@ -119,15 +119,10 @@
       <use href="#markDot"  x="180" y="220"/>
     </g>
 
-    <!-- MIDDLE REGION: nearly empty, two faint scattered question marks -->
-    <g>
-      <text x="290" y="155"
-            font-family="'Fraunces Variable', Georgia, serif"
-            font-size="14" font-style="italic" fill="#7A1F1F" opacity="0.45">?</text>
-      <text x="420" y="245"
-            font-family="'Fraunces Variable', Georgia, serif"
-            font-size="14" font-style="italic" fill="#7A1F1F" opacity="0.45">?</text>
-    </g>
+    <!-- MIDDLE REGION: intentionally empty. The dashed trajectory below carries
+         the "we don't know what's happening here" signal; no scattered ?-marks
+         needed (would compete with the centered italic gap text). -->
+
 
     <!-- RIGHT REGION: dense scatter (post-incident forensics) -->
     <g>
@@ -159,26 +154,28 @@
 
     <!-- The agent's actual state trajectory:
          solid in observed regions, dashed in the unobserved middle.
-         The drift is what we can't see directly. -->
+         The dashed-ness is the "drift we cannot directly see" signal;
+         amplitude is kept gentle so it doesn't crash into the gap text. -->
     <!-- Solid trajectory through left region -->
-    <path d="M 90 190 Q 130 180, 165 195 T 230 185"
+    <path d="M 90 230 Q 130 220, 165 235 T 230 225"
           fill="none" stroke="#7A1F1F" stroke-width="1.4"/>
-    <!-- Dashed drift through middle region — rises and falls -->
-    <path d="M 230 185 Q 285 145, 350 175 T 450 215 L 470 195"
+    <!-- Dashed soft-drift through middle region — gentle wave near midline -->
+    <path d="M 230 225 Q 290 232, 350 228 T 470 230"
           fill="none" stroke="#7A1F1F" stroke-width="1.2"
           stroke-dasharray="3 3" opacity="0.7"/>
     <!-- Solid trajectory through right region -->
-    <path d="M 470 195 Q 510 205, 545 192 T 610 188"
+    <path d="M 470 230 Q 510 240, 545 228 T 610 224"
           fill="none" stroke="#7A1F1F" stroke-width="1.4"/>
 
-    <!-- The key gloss, italic Fraunces, set inside the empty middle -->
-    <text x="350" y="200" text-anchor="middle"
+    <!-- The key gloss, italic Fraunces, centered ABOVE the trajectory
+         (the trajectory now runs at y≈225-235; text sits clear at y=170-190) -->
+    <text x="350" y="170" text-anchor="middle"
           font-family="'Fraunces Variable', Georgia, serif"
           font-size="20" font-style="italic" fill="#7A1F1F" font-weight="500"
           font-variation-settings="'opsz' 144, 'WONK' 1">
       the measurement gap
     </text>
-    <text x="350" y="220" text-anchor="middle"
+    <text x="350" y="190" text-anchor="middle"
           font-family="'Fraunces Variable', Georgia, serif"
           font-size="11" font-style="italic" fill="#5C544A">
       where the agent actually runs
@@ -212,17 +209,6 @@
       <text x="540" y="320">n ≈ 24</text>
     </g>
 
-    <!-- A small annotation arrow inside the gap pointing to where drift "begins" -->
-    <g stroke="#7A1F1F" stroke-width="0.7" fill="none" opacity="0.7">
-      <line x1="285" y1="155" x2="278" y2="173"/>
-      <line x1="278" y1="173" x2="282" y2="170"/>
-      <line x1="278" y1="173" x2="276" y2="168"/>
-    </g>
-    <text x="290" y="148"
-          font-family="'Fraunces Variable', Georgia, serif"
-          font-size="9" font-style="italic" fill="#7A1F1F" opacity="0.85">
-      drift begins
-    </text>
   </g>
 
   <!-- Plate-numeral marker, upper right -->
