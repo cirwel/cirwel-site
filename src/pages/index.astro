@@ -83,8 +83,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </dd>
 
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Code</dt>
-        <dd class="col-span-8 md:col-span-9 font-mono text-sm">
+        <dd class="col-span-8 md:col-span-9 font-mono text-sm leading-relaxed">
+          <a href="https://github.com/CIRWEL/unitares">github.com/CIRWEL/unitares</a>
+          <span class="text-stone"> · server</span>
+          <br/>
           <a href="https://github.com/CIRWEL/unitares-governance-plugin">github.com/CIRWEL/unitares-governance-plugin</a>
+          <span class="text-stone"> · Claude Code / Codex client</span>
         </dd>
       </dl>
     </section>
@@ -223,9 +227,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <li class="grid grid-cols-12 gap-4 items-baseline">
             <span class="col-span-12 md:col-span-2 label text-stone">Run</span>
             <span class="col-span-12 md:col-span-10">
-              The open-source plugin:
-              <a href="https://github.com/CIRWEL/unitares-governance-plugin" class="font-mono text-base">CIRWEL/unitares-governance-plugin</a>.
-              Drops into Claude Code or Codex; emits real verdicts against a local server.
+              <span class="font-medium">The server</span> at
+              <a href="https://github.com/CIRWEL/unitares" class="font-mono text-base">CIRWEL/unitares</a>
+              boots locally with one <span class="font-mono text-base">docker compose up</span>.
+              <span class="font-medium">The plugin</span> at
+              <a href="https://github.com/CIRWEL/unitares-governance-plugin" class="font-mono text-base">CIRWEL/unitares-governance-plugin</a>
+              drops into Claude Code or Codex and emits real verdicts against it.
+              Both are MIT.
             </span>
           </li>
           <li class="grid grid-cols-12 gap-4 items-baseline">
