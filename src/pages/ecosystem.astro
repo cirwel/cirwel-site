@@ -21,10 +21,9 @@ import PageFooter from '../components/PageFooter.astro';
           A shared substrate.
         </h1>
         <p class="text-lg md:text-xl leading-relaxed text-stone max-w-prose reveal reveal-3">
-          The home page states the thesis. This page is the deeper view: the layers
-          that compose <span class="smcp">UNITARES</span>, the named processes that
-          live under it, how identity and lineage are kept honest, what happens
-          after a verdict, and the shared knowledge graph all of this writes into.
+          Six processes living under one framework, sharing one substrate,
+          governed by a verdict economy that ties each decision to evidence.
+          The home page states the thesis; this page walks the anatomy.
         </p>
       </div>
     </section>
@@ -105,32 +104,31 @@ import PageFooter from '../components/PageFooter.astro';
             A paper is a claim.<br/>A server is its existence proof.
           </p>
           <p>
-            <span class="label text-stone">Paper.</span>
-            The framework's formal description: a four-dimensional state vector,
-            class-conditional calibration, signed verdict provenance, and the
-            stability proofs that justify the runtime claims. CC-BY 4.0; citable
-            via the concept DOI.
+            The paper makes the formal claim — a four-dimensional state
+            vector, class-conditional calibration, signed verdict provenance,
+            and the stability proofs that justify them. The server takes
+            that claim and renders it as a running <span class="smcp">MCP</span>
+            service: PostgreSQL with the Apache <span class="smcp">AGE</span>
+            graph extension, pgvector for semantic retrieval, Redis for
+            transient state, Prometheus for telemetry. Every governance tool
+            the fleet uses — onboard, check-in, dialectic, knowledge
+            contribution, recovery — runs against this surface and is
+            auditable through it.
           </p>
           <p>
-            <span class="label text-stone">Server.</span>
-            A reference implementation as an MCP service. PostgreSQL with the
-            Apache <span class="smcp">AGE</span> graph extension, pgvector for
-            semantic retrieval, Redis for transient state, Prometheus for
-            telemetry. Tools for onboarding, check-in, dialectic, knowledge
-            contribution, and recovery — every one of them auditable.
+            The plugin closes the loop. It drops into Claude Code or Codex
+            and hooks the agent into the server, so each turn issues a real
+            check-in, receives a real verdict, and writes a real lineage
+            entry. Without the plugin, the framework is observed from outside
+            the agent. With it, the framework is <em>felt</em> from inside
+            the loop.
           </p>
           <p>
-            <span class="label text-stone">Plugin.</span>
-            A drop-in client for Claude Code and Codex. Hooks the agent into the
-            server so each turn issues real check-ins, receives real verdicts,
-            and writes real lineage. The plugin is what makes the framework felt
-            from inside the loop, not just observed from outside it.
-          </p>
-          <p>
-            <span class="label text-stone">Fleet.</span>
-            A small society of named processes — residents, event-driven scribes,
-            an embodied edge service, a Discord bridge — all governed by the
-            server, all reading and writing the same knowledge graph.
+            What runs under that plugin and against that server is the fleet:
+            a small society of named processes — residents, event-driven
+            scribes, an embodied edge service, a Discord bridge — all
+            governed by the same server, all reading and writing the same
+            knowledge graph. §02 names them.
           </p>
         </div>
       </div>
