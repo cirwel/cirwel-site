@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" font-family="Georgia, 'Times New Roman', serif">
+  <!-- Cream paper -->
+  <rect width="1200" height="630" fill="#F5F1E8"/>
+
+  <!-- Subtle paper grain (procedural turbulence) -->
+  <defs>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix values="0 0 0 0 0.10  0 0 0 0 0.08  0 0 0 0 0.04  0 0 0 0.4 0"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="white" filter="url(#grain)" opacity="0.06"/>
+
+  <!-- Top masthead: hairlines flanking a small-caps label -->
+  <line x1="120" y1="100" x2="370" y2="100" stroke="#C9C0AE" stroke-width="1"/>
+  <text x="600" y="105" text-anchor="middle"
+        font-family="'JetBrains Mono', ui-monospace, monospace"
+        font-size="14" letter-spacing="4" fill="#5C544A" font-weight="500">
+    INDEPENDENT  RESEARCH  ·  EST.  2025
+  </text>
+  <line x1="830" y1="100" x2="1080" y2="100" stroke="#C9C0AE" stroke-width="1"/>
+
+  <!-- Wordmark — small-caps, Fraunces-feel via Georgia fallback -->
+  <text x="600" y="240" text-anchor="middle"
+        font-size="92" font-weight="500" letter-spacing="6"
+        fill="#1A1612" font-style="normal"
+        font-variant="small-caps">
+    Cirwel Systems
+  </text>
+
+  <!-- Display tagline: three-line headline matching site hero rhythm -->
+  <text x="600" y="350" text-anchor="middle"
+        font-size="46" font-weight="500" letter-spacing="-1.4"
+        fill="#1A1612">Runtime governance</text>
+  <text x="600" y="402" text-anchor="middle"
+        font-size="46" font-weight="500" letter-spacing="-1.4"
+        fill="#1A1612">for heterogeneous</text>
+  <text x="600" y="454" text-anchor="middle"
+        font-size="46" font-weight="500" letter-spacing="-1.4"
+        fill="#1A1612">AI-agent <tspan font-style="italic" fill="#1A1612">fleets.</tspan></text>
+
+  <!-- Bottom hairline + receipts row -->
+  <line x1="120" y1="520" x2="1080" y2="520" stroke="#C9C0AE" stroke-width="1"/>
+
+  <!-- Receipts: paper · DOI · ORCID -->
+  <text x="120" y="558"
+        font-family="'JetBrains Mono', ui-monospace, monospace"
+        font-size="13" letter-spacing="2.4" fill="#5C544A" font-weight="500">
+    UNITARES (WANG, 2026)
+  </text>
+  <text x="600" y="558" text-anchor="middle"
+        font-family="'JetBrains Mono', ui-monospace, monospace"
+        font-size="13" letter-spacing="1" fill="#5C544A">
+    DOI 10.5281/zenodo.19647159
+  </text>
+  <text x="1080" y="558" text-anchor="end"
+        font-family="'JetBrains Mono', ui-monospace, monospace"
+        font-size="13" letter-spacing="1" fill="#5C544A">
+    cirwelsystems.com
+  </text>
+
+  <!-- "fin." closer, oxblood -->
+  <text x="600" y="595" text-anchor="middle"
+        font-size="18" font-style="italic" fill="#7A1F1F" letter-spacing="1">
+    fin.
+  </text>
+</svg>
