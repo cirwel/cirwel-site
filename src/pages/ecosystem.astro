@@ -49,7 +49,7 @@ const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UT
 
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Paper</dt>
         <dd class="col-span-8 md:col-span-9">
-          <a href="https://github.com/CIRWEL/unitares-paper-v6" class="font-medium">
+          <a href="https://doi.org/10.5281/zenodo.19647159" class="font-medium">
             UNITARES: Information-Theoretic Governance of Heterogeneous Agent Fleets
           </a><span class="text-stone"> · Wang, 2026 · CC-BY 4.0</span>
         </dd>
@@ -75,6 +75,11 @@ const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UT
           Discord bridge
         </dd>
 
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Production</dt>
+        <dd class="col-span-8 md:col-span-9">
+          Continuous since <span class="font-medium">November 2025</span>
+        </dd>
+
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Code</dt>
         <dd class="col-span-8 md:col-span-9 font-mono text-sm leading-relaxed">
           <a href="https://github.com/CIRWEL/unitares">github.com/CIRWEL/unitares</a>
@@ -83,11 +88,6 @@ const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UT
           <span class="text-stone"> · client plugin, Apache 2.0</span><br/>
           <a href="https://huggingface.co/hikewa">huggingface.co/hikewa</a>
           <span class="text-stone"> · datasets &amp; distilled models</span>
-        </dd>
-
-        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Production</dt>
-        <dd class="col-span-8 md:col-span-9">
-          Continuous since <span class="font-medium">November 2025</span>
         </dd>
       </dl>
     </section>
@@ -218,9 +218,9 @@ const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UT
             <dt class="display smcp text-xl mb-2">Lumen</dt>
             <p class="label text-stone mb-2">Embodied · Raspberry Pi</p>
             <dd class="text-stone leading-relaxed">
-              Edge resident with real sensors and persistent identity. Dual-process
-              broker architecture with graceful fallback — the only physically
-              situated process in the fleet.
+              Edge resident with real sensors and persistent identity. The only
+              physically situated process in the fleet — and the reason runtime
+              self-state had to be a first-class artifact, not metadata.
             </dd>
           </div>
 
@@ -375,18 +375,6 @@ const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UT
         </h2>
 
         <div class="space-y-12 max-w-prose">
-
-          <article>
-            <p class="label text-stone mb-3">Embodied edge</p>
-            <h3 class="display smcp text-2xl mb-3 leading-tight">Lumen</h3>
-            <p class="text-stone leading-relaxed">
-              An AI creature on a Raspberry Pi with real sensor fusion, persistent
-              identity across sessions, and a dual-process broker architecture
-              with graceful fallback. Derives a computational proprioception —
-              neural-band analogues — from system metrics. The reason runtime
-              self-state had to be a first-class artifact, not metadata.
-            </p>
-          </article>
 
           <article>
             <p class="label text-stone mb-3">Interpretable ML pipeline</p>
