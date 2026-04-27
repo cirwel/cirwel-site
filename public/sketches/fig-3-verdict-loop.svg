@@ -143,6 +143,33 @@
       <text x="360" y="354">S</text>
       <text x="206" y="204">W</text>
     </g>
+
+    <!-- Transition labels on the cycle ring — what carries an agent
+         from one verdict region to the next. Italic Fraunces, low contrast. -->
+    <g font-family="'Fraunces Variable', Georgia, serif"
+       font-size="9.5" font-style="italic" fill="#7A1F1F" opacity="0.78" text-anchor="middle">
+      <!-- NE: PROCEED → GUIDE -->
+      <text x="442" y="142" transform="rotate(45 442 142)">tight margin</text>
+      <!-- SE: GUIDE → PAUSE -->
+      <text x="442" y="266" transform="rotate(-45 442 266)">no convergence</text>
+      <!-- SW: PAUSE → REJECT -->
+      <text x="278" y="266" transform="rotate(45 278 266)">irreparable</text>
+      <!-- NW: REJECT → PROCEED -->
+      <text x="278" y="142" transform="rotate(-45 278 142)">after dialectic</text>
+    </g>
+
+    <!-- Tiny radial tick marks on the cycle ring at each verdict crossing,
+         the way a compass rose has degree marks -->
+    <g stroke="#7A1F1F" stroke-width="0.5" opacity="0.55">
+      <!-- N tick -->
+      <line x1="360" y1="80" x2="360" y2="86"/>
+      <!-- E tick -->
+      <line x1="478" y1="200" x2="472" y2="200"/>
+      <!-- S tick -->
+      <line x1="360" y1="318" x2="360" y2="324"/>
+      <!-- W tick -->
+      <line x1="242" y1="200" x2="248" y2="200"/>
+    </g>
   </g>
 
   <!-- Plate-numeral marker, upper right -->

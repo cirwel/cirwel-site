@@ -93,18 +93,26 @@ import PageFooter from '../components/PageFooter.astro';
         <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
           Runtime self-state is the missing layer.
         </h2>
-        <div class="space-y-6 text-lg leading-relaxed text-ink max-w-prose">
-          <p class="dropcap">
+        <div class="space-y-6 text-lg leading-relaxed text-ink">
+          <p class="dropcap max-w-prose">
             The discipline of AI safety has built two strong instruments and one large gap.
             <em>Pre-deployment evaluation</em> tells you whether a model behaves on a
             benchmark. <em>Post-incident forensics</em> tells you what went wrong after
             it didn't. In between — across the hours, days, and weeks an agent is
             actually running — we have largely been guessing.
           </p>
-          <p class="text-xl md:text-2xl italic text-ink leading-snug py-2">
+          <p class="text-xl md:text-2xl italic text-ink leading-snug py-2 max-w-prose">
             Logs are what an agent did.<br/>Self-state is what it was while doing it.
           </p>
-          <p>
+
+          <figure class="my-10 max-w-3xl">
+            <img src="/sketches/fig-1-measurement-gap.svg"
+                 alt="FIG. I — The measurement gap. A time-series data plate showing dense measurement marks in pre-deployment and post-incident regions, with an empty middle region traversed by a dashed trajectory line and labeled 'the measurement gap, where the agent actually runs'."
+                 loading="lazy" width="720" height="440"
+                 class="w-full h-auto block" />
+          </figure>
+
+          <p class="max-w-prose">
             CIRWEL Systems builds the runtime layer that closes the gap. Each agent
             carries a continuous, four-dimensional self-state vector. The vector is
             calibrated against a baseline specific to the agent's <em>class</em>,
@@ -117,7 +125,15 @@ import PageFooter from '../components/PageFooter.astro';
             <span class="font-mono text-base">reject</span> — carries a signed lineage
             back to the observation that produced it.
           </p>
-          <p>
+
+          <figure class="my-10 max-w-3xl">
+            <img src="/sketches/fig-3-verdict-loop.svg"
+                 alt="FIG. III — The four verdicts. Proceed, Guide, Pause, and Reject arranged at the compass points of a closed dashed cycle around a central engraved hex device, with transition labels (tight margin, no convergence, irreparable, after dialectic) on the cycle ring."
+                 loading="lazy" width="720" height="440"
+                 class="w-full h-auto block" />
+          </figure>
+
+          <p class="max-w-prose">
             The framework is described in
             <a href="https://doi.org/10.5281/zenodo.19647159">a paper</a>,
             covered by nine provisional patents, and has been governing CIRWEL's own
@@ -134,7 +150,16 @@ import PageFooter from '../components/PageFooter.astro';
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
         <p class="label text-oxblood">§02 — Three pillars</p>
       </div>
-      <div class="col-span-12 lg:col-span-9 grid md:grid-cols-3 gap-10 lg:gap-12">
+      <div class="col-span-12 lg:col-span-9">
+
+        <figure class="mb-12 max-w-3xl">
+          <img src="/sketches/fig-2-named-fleet.svg"
+               alt="FIG. II — Heterogeneous agent classes. A specimen plate showing five hexagonal device frames in a row, each with a distinguishing glyph: coding session (curly brackets), research conversation (open page), resident cron (clock face), embodied edge service (antenna with wave), and ephemeral parser (dashed outline). A lifespan band beneath shows the contrast: ~30 min, ~hours, months+, always-on, seconds."
+               loading="lazy" width="720" height="440"
+               class="w-full h-auto block" />
+        </figure>
+
+        <div class="grid md:grid-cols-3 gap-10 lg:gap-12">
 
         <article>
           <p class="label text-stone mb-4">i</p>
@@ -175,6 +200,7 @@ import PageFooter from '../components/PageFooter.astro';
           </a>
         </article>
 
+        </div>
       </div>
     </section>
 

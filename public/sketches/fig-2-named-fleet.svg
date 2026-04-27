@@ -33,6 +33,14 @@
     <line x1="700" y1="420" x2="686" y2="406" fill="none"/><circle cx="698" cy="418" r="1.6"/>
   </g>
 
+  <!-- Faint stipple background pattern in the specimen-plate area, like a plate's tooth -->
+  <g opacity="0.12">
+    <pattern id="stipple" patternUnits="userSpaceOnUse" width="4" height="4">
+      <circle cx="2" cy="2" r="0.35" fill="#7A1F1F"/>
+    </pattern>
+    <rect x="60" y="100" width="600" height="170" fill="url(#stipple)"/>
+  </g>
+
   <!-- Five specimens in a row, each on its own plinth -->
   <g filter="url(#rough2)">
 
@@ -112,13 +120,38 @@
       <text x="600" y="254" fill="#5C544A">PARSER</text>
     </g>
 
+    <!-- Lifespan band beneath specimens — feature annotation convention from
+         botanical plates: a hairline scale showing characteristic lifetime per class -->
+    <g stroke="#7A1F1F" stroke-width="0.6" opacity="0.55">
+      <line x1="80" y1="282" x2="640" y2="282"/>
+      <!-- Tick marks at each specimen's column -->
+      <line x1="120" y1="280" x2="120" y2="285"/>
+      <line x1="240" y1="280" x2="240" y2="285"/>
+      <line x1="360" y1="280" x2="360" y2="285"/>
+      <line x1="480" y1="280" x2="480" y2="285"/>
+      <line x1="600" y1="280" x2="600" y2="285"/>
+    </g>
+    <g font-family="'JetBrains Mono', ui-monospace, monospace"
+       font-size="8" letter-spacing="1.5" fill="#5C544A" text-anchor="middle" opacity="0.85">
+      <text x="120" y="296">~30 min</text>
+      <text x="240" y="296">~hours</text>
+      <text x="360" y="296">months+</text>
+      <text x="480" y="296">always-on</text>
+      <text x="600" y="296">seconds</text>
+    </g>
+    <text x="60" y="296" text-anchor="end"
+          font-family="'JetBrains Mono', ui-monospace, monospace"
+          font-size="8" letter-spacing="1.5" fill="#5C544A" opacity="0.7">
+      LIFESPAN
+    </text>
+
     <!-- Italic body subtitle -->
-    <text x="360" y="305"
+    <text x="360" y="325"
           font-family="'Fraunces Variable', Georgia, serif"
           font-size="14" font-style="italic" fill="#1A1612" text-anchor="middle">
       Each class is calibrated against its own baseline.
     </text>
-    <text x="360" y="325"
+    <text x="360" y="345"
           font-family="'Fraunces Variable', Georgia, serif"
           font-size="14" font-style="italic" fill="#5C544A" text-anchor="middle">
       Drift in I is not masked by noise from V.
