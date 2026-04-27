@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://cirwelsystems.com/sitemap.xml
+Sitemap: https://cirwel.org/sitemap.xml
