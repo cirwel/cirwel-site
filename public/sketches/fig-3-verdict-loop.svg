@@ -15,7 +15,7 @@
   <defs>
     <filter id="rough3" x="-2%" y="-2%" width="104%" height="104%">
       <feTurbulence type="fractalNoise" baseFrequency="0.95" numOctaves="2" seed="17" result="n"/>
-      <feDisplacementMap in="SourceGraphic" in2="n" scale="0.5"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="0.3"/>
     </filter>
 
     <pattern id="vHatch" patternUnits="userSpaceOnUse" width="3" height="3"
@@ -144,21 +144,9 @@
       <text x="206" y="204">W</text>
     </g>
 
-    <!-- Transition labels on the cycle ring — what carries an agent
-         from one verdict region to the next. Italic Fraunces, low contrast.
-         Centers placed ~13px outward along each diagonal so labels keep a
-         consistent ≥30px gap from the nearest verdict-hex corner. -->
-    <g font-family="'Fraunces Variable', Georgia, serif"
-       font-size="9.5" font-style="italic" fill="#7A1F1F" opacity="0.78" text-anchor="middle">
-      <!-- NE: PROCEED → GUIDE -->
-      <text x="455" y="129" transform="rotate(45 455 129)">tight margin</text>
-      <!-- SE: GUIDE → PAUSE -->
-      <text x="455" y="279" transform="rotate(-45 455 279)">no convergence</text>
-      <!-- SW: PAUSE → REJECT -->
-      <text x="265" y="279" transform="rotate(45 265 279)">irreparable</text>
-      <!-- NW: REJECT → PROCEED -->
-      <text x="265" y="129" transform="rotate(-45 265 129)">after dialectic</text>
-    </g>
+    <!-- (Transition labels moved out of filter group, below; placed
+         at the four corners of the plate, horizontal, well outside the
+         cycle ring so they don't overlap the dashed line.) -->
 
     <!-- Tiny radial tick marks on the cycle ring at each verdict crossing,
          the way a compass rose has degree marks -->
@@ -172,6 +160,22 @@
       <!-- W tick -->
       <line x1="242" y1="200" x2="248" y2="200"/>
     </g>
+  </g>
+
+  <!-- Transition labels — placed OUTSIDE the engraving filter (so the
+       text stays sharp) AND outside the cycle ring (radius 118 from
+       center 360,200), at distance ~146 in the four corner zones, with
+       horizontal orientation for legibility. No rotation, no ring overlap. -->
+  <g font-family="'Fraunces Variable', Georgia, serif"
+     font-size="10" font-style="italic" fill="#7A1F1F" opacity="0.85" text-anchor="middle">
+    <!-- NE: PROCEED → GUIDE -->
+    <text x="467" y="100">tight margin</text>
+    <!-- SE: GUIDE → PAUSE -->
+    <text x="467" y="308">no convergence</text>
+    <!-- SW: PAUSE → REJECT -->
+    <text x="253" y="308">irreparable</text>
+    <!-- NW: REJECT → PROCEED -->
+    <text x="253" y="100">after dialectic</text>
   </g>
 
   <!-- Plate-numeral marker, upper right -->

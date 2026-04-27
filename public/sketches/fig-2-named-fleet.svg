@@ -139,13 +139,7 @@
       <text x="480" y="296">always-on</text>
       <text x="600" y="296">seconds</text>
     </g>
-    <!-- Row title for the lifespan band, set as a small italic note above
-         the leftmost tick rather than a row-label that overflows the plate -->
-    <text x="80" y="274"
-          font-family="'Fraunces Variable', Georgia, serif"
-          font-size="9" font-style="italic" fill="#5C544A" opacity="0.78">
-      characteristic lifespan
-    </text>
+    <!-- (No row title — the duration labels under each tick are self-explanatory) -->
 
     <!-- Italic body subtitle -->
     <text x="360" y="325"
