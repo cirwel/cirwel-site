@@ -1,0 +1,526 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Build-time provenance — same pattern as the home page colophon.
+// The /ecosystem dossier is part of the same loop the system describes.
+const buildSha  = (process.env.CF_PAGES_COMMIT_SHA ?? '').slice(0, 8) || 'local';
+const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC';
+---
+<BaseLayout
+  title="Ecosystem — UNITARES · CIRWEL Systems"
+  description="The deeper view of UNITARES: server, plugin, named fleet, embodied edge, identity model, dialectic resolution, and shared knowledge graph. The runtime governance layer for heterogeneous AI-agent fleets, in detail."
+>
+  <!-- Masthead — journal-cover register -->
+  <div class="max-w-screen-xl mx-auto px-6 lg:px-12 pt-6 flex items-center justify-center gap-4">
+    <hr class="hairline flex-1 max-w-[140px]" />
+    <p class="label text-stone text-[0.62rem] tracking-[0.28em] whitespace-nowrap">
+      Independent Research &middot; Est. 2025
+    </p>
+    <hr class="hairline flex-1 max-w-[140px]" />
+  </div>
+
+  <header class="px-6 lg:px-12 pt-5 pb-4 max-w-screen-xl mx-auto flex items-center justify-between">
+    <a href="/" class="no-underline">
+      <span class="display smcp text-xl font-medium">CIRWEL Systems</span>
+    </a>
+    <nav aria-label="Primary" class="hidden md:flex items-center gap-7 label text-stone">
+      <a href="/#thesis"   class="no-underline hover:text-oxblood transition-colors">Thesis</a>
+      <a href="/ecosystem" class="no-underline text-oxblood">Ecosystem</a>
+      <a href="https://github.com/CIRWEL/unitares-paper-v6" class="no-underline hover:text-oxblood transition-colors">Paper</a>
+      <a href="https://github.com/CIRWEL/unitares" class="no-underline hover:text-oxblood transition-colors">Server</a>
+      <a href="https://github.com/CIRWEL/unitares-governance-plugin" class="no-underline hover:text-oxblood transition-colors">Plugin</a>
+      <a href="/#contact"  class="no-underline hover:text-oxblood transition-colors">Contact</a>
+    </nav>
+  </header>
+
+  <main class="px-6 lg:px-12 max-w-screen-xl mx-auto">
+
+    <!-- HERO -->
+    <section class="pt-16 pb-20 lg:pt-28 lg:pb-28 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-9">
+        <p class="label text-oxblood mb-8 reveal reveal-1">— A dossier on the running system</p>
+        <h1 class="display text-5xl md:text-7xl lg:text-8xl mb-10 reveal reveal-2">
+          One framework.<br/>
+          A <span class="italic">named</span> fleet.<br/>
+          A shared substrate.
+        </h1>
+        <p class="text-lg md:text-xl leading-relaxed text-stone max-w-prose reveal reveal-3">
+          The home page states the thesis. This page is the deeper view: the layers
+          that compose <span class="smcp">UNITARES</span>, the named processes that
+          live under it, how identity and lineage are kept honest, what happens
+          after a verdict, and the shared knowledge graph all of this writes into.
+        </p>
+        <div class="runcmd mt-8 max-w-prose reveal reveal-3">
+          <span class="prompt">$</span>
+          <span class="cmd">curl http://localhost:8767/mcp/health_check</span>
+          <span class="note">→ the same surface the fleet checks in against</span>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hairline mb-2"/>
+
+    <!-- RECEIPTS -->
+    <section class="py-10 grid grid-cols-12 gap-6 reveal reveal-4">
+      <div class="col-span-12 lg:col-span-3 mb-4 lg:mb-0">
+        <p class="label text-oxblood">— The receipts</p>
+      </div>
+      <dl class="col-span-12 lg:col-span-9 grid grid-cols-12 gap-y-5 gap-x-6">
+
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Paper</dt>
+        <dd class="col-span-8 md:col-span-9">
+          <a href="https://github.com/CIRWEL/unitares-paper-v6" class="font-medium">
+            UNITARES: Information-Theoretic Governance of Heterogeneous Agent Fleets
+          </a><span class="text-stone"> · Wang, 2026 · CC-BY 4.0</span>
+        </dd>
+
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">DOI</dt>
+        <dd class="col-span-8 md:col-span-9 font-mono text-sm">
+          <a href="https://doi.org/10.5281/zenodo.19647159">10.5281/zenodo.19647159</a>
+          <span class="text-stone">  (concept · resolves to latest)</span>
+        </dd>
+
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Patents</dt>
+        <dd class="col-span-8 md:col-span-9">
+          9<span class="text-stone">+ provisional, filed</span>
+        </dd>
+
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Components</dt>
+        <dd class="col-span-8 md:col-span-9 leading-relaxed">
+          Server <span class="text-stone">·</span>
+          Plugin <span class="text-stone">·</span>
+          Knowledge graph <span class="text-stone">·</span>
+          Named fleet <span class="text-stone">·</span>
+          Embodied edge <span class="text-stone">·</span>
+          Discord bridge
+        </dd>
+
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Code</dt>
+        <dd class="col-span-8 md:col-span-9 font-mono text-sm leading-relaxed">
+          <a href="https://github.com/CIRWEL/unitares">github.com/CIRWEL/unitares</a>
+          <span class="text-stone"> · server &amp; fleet, MIT</span><br/>
+          <a href="https://github.com/CIRWEL/unitares-governance-plugin">github.com/CIRWEL/unitares-governance-plugin</a>
+          <span class="text-stone"> · client plugin, MIT</span><br/>
+          <a href="https://huggingface.co/hikewa">huggingface.co/hikewa</a>
+          <span class="text-stone"> · datasets &amp; distilled models</span>
+        </dd>
+
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Production</dt>
+        <dd class="col-span-8 md:col-span-9">
+          Continuous since <span class="font-medium">November 2025</span>
+        </dd>
+      </dl>
+    </section>
+
+    <hr class="hairline mt-2 mb-20"/>
+
+    <!-- §01 LAYERS -->
+    <section id="layers" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§01 — How the layers fit together</p>
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
+          Paper, server, plugin, fleet.
+        </h2>
+        <div class="space-y-6 text-lg leading-relaxed text-ink max-w-prose">
+          <p class="dropcap">
+            A framework lives at four layers. The paper makes the claim. The server
+            is the claim's existence proof. The plugin is what makes the claim
+            <em>felt</em> from inside the agent loop. The fleet is what proves the
+            claim survives heterogeneity.
+          </p>
+          <p class="text-xl md:text-2xl italic text-ink leading-snug py-2">
+            A paper is a claim.<br/>A server is its existence proof.
+          </p>
+          <p>
+            <span class="label text-stone">Paper.</span>
+            The framework's formal description: a four-dimensional state vector,
+            class-conditional calibration, signed verdict provenance, and the
+            stability proofs that justify the runtime claims. CC-BY 4.0; citable
+            via the concept DOI.
+          </p>
+          <p>
+            <span class="label text-stone">Server.</span>
+            A reference implementation as an MCP service. PostgreSQL with the
+            Apache <span class="smcp">AGE</span> graph extension, pgvector for
+            semantic retrieval, Redis for transient state, Prometheus for
+            telemetry. Tools for onboarding, check-in, dialectic, knowledge
+            contribution, and recovery — every one of them auditable.
+          </p>
+          <p>
+            <span class="label text-stone">Plugin.</span>
+            A drop-in client for Claude Code and Codex. Hooks the agent into the
+            server so each turn issues real check-ins, receives real verdicts,
+            and writes real lineage. The plugin is what makes the framework felt
+            from inside the loop, not just observed from outside it.
+          </p>
+          <p>
+            <span class="label text-stone">Fleet.</span>
+            A small society of named processes — residents, event-driven scribes,
+            an embodied edge service, a Discord bridge — all governed by the
+            server, all reading and writing the same knowledge graph.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hairline"/>
+
+    <!-- §02 THE NAMED FLEET -->
+    <section id="fleet" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§02 — The named fleet</p>
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
+          Six processes. Distinct lifetimes. One framework.
+        </h2>
+        <p class="text-lg leading-relaxed text-stone max-w-prose mb-12">
+          A fleet is heterogeneous by design. Long-running residents see different
+          drift signatures than ephemeral coding sessions, which see different
+          signatures than an embodied edge service. Naming each role makes the
+          differences visible — and gives operators something to point at.
+        </p>
+
+        <dl class="grid md:grid-cols-2 gap-x-12 gap-y-10">
+
+          <div>
+            <dt class="display smcp text-xl mb-2">Vigil</dt>
+            <p class="label text-stone mb-2">Resident · half-hour cron</p>
+            <dd class="text-stone leading-relaxed">
+              Janitorial. Runs health checks, tends the knowledge graph, exercises
+              the test suite against itself. Catches what slow rot does to the
+              substrate.
+            </dd>
+          </div>
+
+          <div>
+            <dt class="display smcp text-xl mb-2">Sentinel</dt>
+            <p class="label text-stone mb-2">Resident · continuous</p>
+            <dd class="text-stone leading-relaxed">
+              Analytical. Watches the fleet, surfaces anomalies, keeps the
+              trajectory measured rather than ODE-inferred.
+            </dd>
+          </div>
+
+          <div>
+            <dt class="display smcp text-xl mb-2">Watcher</dt>
+            <p class="label text-stone mb-2">Event-driven · post-edit hook</p>
+            <dd class="text-stone leading-relaxed">
+              Local-LLM reviewer. Fires on every code edit, flags persistence and
+              concurrency hazards before commit. Resolution is auditable through
+              the commit history itself.
+            </dd>
+          </div>
+
+          <div>
+            <dt class="display smcp text-xl mb-2">Steward</dt>
+            <p class="label text-stone mb-2">In-process · five-minute interval</p>
+            <dd class="text-stone leading-relaxed">
+              Synchronizer inside the governance MCP. Reconciles edge-device
+              telemetry into the canonical state — the bridge between the
+              embodied surface and the central record.
+            </dd>
+          </div>
+
+          <div>
+            <dt class="display smcp text-xl mb-2">Chronicler</dt>
+            <p class="label text-stone mb-2">Resident · daily</p>
+            <dd class="text-stone leading-relaxed">
+              Longitudinal scribe. Captures the codebase's own metric series so
+              the repo carries its own <span class="smcp">EISV</span> trajectory
+              across releases.
+            </dd>
+          </div>
+
+          <div>
+            <dt class="display smcp text-xl mb-2">Lumen</dt>
+            <p class="label text-stone mb-2">Embodied · Raspberry Pi</p>
+            <dd class="text-stone leading-relaxed">
+              Edge resident with real sensors and persistent identity. Dual-process
+              broker architecture with graceful fallback — the only physically
+              situated process in the fleet.
+            </dd>
+          </div>
+
+        </dl>
+      </div>
+    </section>
+
+    <hr class="hairline"/>
+
+    <!-- §03 IDENTITY & LINEAGE -->
+    <section id="identity" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§03 — Identity &amp; lineage</p>
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
+          A name is cosmetic. The identity is the process.
+        </h2>
+        <div class="space-y-6 text-lg leading-relaxed text-ink max-w-prose">
+          <p>
+            Most agent governance lets agents <em>name</em> themselves into trust.
+            <span class="smcp">UNITARES</span> does not. A fresh process-instance
+            mints a fresh governance-identity by default. There is no
+            "look up by label" primitive, no auto-recovery into a previous slot,
+            no silent substitution of one agent for another.
+          </p>
+          <p class="text-xl md:text-2xl italic text-ink leading-snug py-2">
+            A name is what an agent claims.<br/>Identity is the process that claims it.
+          </p>
+          <p>
+            When continuity matters — a child of a prior session, a worker spawned
+            from a parent — lineage is <em>declared</em> via a parent reference,
+            not inherited by claim. The identity API exposes the source of every
+            label so an auditor can see whether a name was operator-assigned,
+            self-claimed, or system-generated. Honesty about provenance is
+            structural, not a checkbox.
+          </p>
+          <p>
+            The cost is friction at session start. The benefit is that the chain
+            of custody behind every verdict is real: the agent that produced an
+            outcome is the agent the system thinks it was, and the lineage that
+            led there is the lineage that actually led there.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hairline"/>
+
+    <!-- §04 VERDICTS IN MOTION -->
+    <section id="verdicts" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§04 — Verdicts in motion</p>
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
+          What happens after the verdict.
+        </h2>
+
+        <div class="grid md:grid-cols-4 gap-6 mb-12">
+          <div>
+            <p class="label text-stone mb-2">Verdict</p>
+            <p class="font-mono text-xl text-ink mb-2">proceed</p>
+            <p class="text-stone leading-relaxed text-base">State is healthy. Continue the work.</p>
+          </div>
+          <div>
+            <p class="label text-stone mb-2">Verdict</p>
+            <p class="font-mono text-xl text-ink mb-2">guide</p>
+            <p class="text-stone leading-relaxed text-base">Something is slightly off. Read the guidance, adjust approach.</p>
+          </div>
+          <div>
+            <p class="label text-stone mb-2">Verdict</p>
+            <p class="font-mono text-xl text-ink mb-2">pause</p>
+            <p class="text-stone leading-relaxed text-base">Stop. Reflect. Consider a dialectic review.</p>
+          </div>
+          <div>
+            <p class="label text-stone mb-2">Verdict</p>
+            <p class="font-mono text-xl text-ink mb-2">reject</p>
+            <p class="text-stone leading-relaxed text-base">Significant concern. Dialectic review or human input required.</p>
+          </div>
+        </div>
+
+        <div class="space-y-6 text-lg leading-relaxed text-ink max-w-prose">
+          <p>
+            A verdict is not the end of a turn — it is the start of a structured
+            response. Guidance produces a small course-correction. A pause opens
+            a <em>dialectic</em>: the agent submits a thesis defending its
+            intended action; a reviewer submits a counter-thesis or condition;
+            the system synthesizes the convergence point.
+          </p>
+          <p>
+            The dialectic is not optional theatre. It is how the system absorbs
+            disagreement without freezing into deadlock and without rubber-stamping
+            its way past concerns. Resolution is recorded and signed, so the next
+            time a similar shape appears, the prior reasoning is queryable.
+          </p>
+          <p>
+            Verdicts near a basin edge carry a <span class="font-mono text-base">tight</span>
+            margin flag. Operators who care about the difference between
+            <em>just inside</em> and <em>well inside</em> get to see it.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hairline"/>
+
+    <!-- §05 KNOWLEDGE GRAPH -->
+    <section id="knowledge" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§05 — The shared substrate</p>
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
+          One knowledge graph, written by the whole fleet.
+        </h2>
+        <div class="space-y-6 text-lg leading-relaxed text-ink max-w-prose">
+          <p>
+            Every agent in the fleet reads from and writes into a single shared
+            knowledge graph. Discoveries, decisions, dialectic resolutions, and
+            findings are first-class entries with status lifecycles — open,
+            resolved, archived — and rich tags that route them across the system.
+          </p>
+          <p class="text-xl md:text-2xl italic text-ink leading-snug py-2">
+            Memory in one head is fragile.<br/>Memory across the fleet is structural.
+          </p>
+          <p>
+            The graph runs on PostgreSQL with the Apache <span class="smcp">AGE</span>
+            extension and pgvector retrieval, joined by a hybrid reciprocal-rank-fusion
+            ranker. Search is the same surface for the operator at a dashboard and
+            for the agent in the middle of a check-in. Nothing the fleet learns
+            lives in one head.
+          </p>
+          <p>
+            That shared substrate is what turns a collection of agents into a
+            fleet. It is also what makes governance tractable: an action proposed
+            today can be checked against an outcome recorded last month, and an
+            outcome recorded today can update the priors that gate tomorrow's
+            actions.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hairline"/>
+
+    <!-- §06 ADJACENT COMPONENTS -->
+    <section id="adjacent" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§06 — Adjacent components</p>
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-10 leading-tight max-w-prose">
+          What sits next to the framework.
+        </h2>
+
+        <div class="space-y-12 max-w-prose">
+
+          <article>
+            <p class="label text-stone mb-3">Embodied edge</p>
+            <h3 class="display smcp text-2xl mb-3 leading-tight">Lumen</h3>
+            <p class="text-stone leading-relaxed">
+              An AI creature on a Raspberry Pi with real sensor fusion, persistent
+              identity across sessions, and a dual-process broker architecture
+              with graceful fallback. Derives a computational proprioception —
+              neural-band analogues — from system metrics. The reason runtime
+              self-state had to be a first-class artifact, not metadata.
+            </p>
+          </article>
+
+          <article>
+            <p class="label text-stone mb-3">Interpretable ML pipeline</p>
+            <h3 class="display smcp text-2xl mb-3 leading-tight">EISV-Lumen</h3>
+            <p class="text-stone leading-relaxed">
+              A three-layer system: rule-based generator → LoRA teacher on
+              Qwen3-4B → distilled RandomForest student for Pi deployment. The
+              trajectory dataset (21,449 records, nine shape classes) and three
+              corresponding models are public on
+              <a href="https://huggingface.co/hikewa" class="font-mono text-base">huggingface.co/hikewa</a>.
+              Affinity-weighted token sampling with online feedback —
+              interpretable end to end.
+            </p>
+          </article>
+
+          <article>
+            <p class="label text-stone mb-3">Operator surface</p>
+            <h3 class="display text-2xl mb-3 leading-tight">Discord Bridge</h3>
+            <p class="text-stone leading-relaxed">
+              A standalone bot that surfaces governance events, agent presence,
+              and autonomous actions as a living server — the operator's window
+              into a fleet that does not stop when the human does.
+            </p>
+          </article>
+
+          <article>
+            <p class="label text-stone mb-3">Open dashboard</p>
+            <h3 class="display text-2xl mb-3 leading-tight">Live state</h3>
+            <p class="text-stone leading-relaxed">
+              A read-only dashboard surface for fleet metrics,
+              <span class="smcp">EISV</span> trajectories, and the knowledge
+              graph. Read paths are open; destructive actions gate behind an
+              admin header. The same data the agents see, in the shape an
+              operator can act on.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <hr class="hairline"/>
+
+    <!-- §07 ENGAGE -->
+    <section id="contact" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§07 — Engage</p>
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-10 leading-tight">
+          Three ways in.
+        </h2>
+        <ul class="space-y-7 text-lg max-w-prose">
+          <li class="grid grid-cols-12 gap-4 items-baseline">
+            <span class="col-span-12 md:col-span-2 label text-stone">Read</span>
+            <span class="col-span-12 md:col-span-10">
+              <a href="https://github.com/CIRWEL/unitares-paper-v6" class="font-medium">UNITARES (Wang, 2026)</a>.
+              CC-BY 4.0, citable via the DOI above.
+            </span>
+          </li>
+          <li class="grid grid-cols-12 gap-4 items-baseline">
+            <span class="col-span-12 md:col-span-2 label text-stone">Run</span>
+            <span class="col-span-12 md:col-span-10">
+              The server at
+              <a href="https://github.com/CIRWEL/unitares" class="font-mono text-base">CIRWEL/unitares</a>
+              boots locally with one <span class="font-mono text-base">docker compose up</span>.
+              The plugin at
+              <a href="https://github.com/CIRWEL/unitares-governance-plugin" class="font-mono text-base">CIRWEL/unitares-governance-plugin</a>
+              drops into Claude Code or Codex and emits real verdicts against it.
+              Both are MIT.
+            </span>
+          </li>
+          <li class="grid grid-cols-12 gap-4 items-baseline">
+            <span class="col-span-12 md:col-span-2 label text-stone">Write</span>
+            <span class="col-span-12 md:col-span-10">
+              Direct to the founder:
+              <a href="mailto:founder@cirwel.org" class="font-mono text-base">founder@cirwel.org</a>.
+              Funders, researchers, and integrators all welcome.
+            </span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <hr class="hairline"/>
+
+  </main>
+
+  <footer class="px-6 lg:px-12 max-w-screen-xl mx-auto py-12 grid grid-cols-12 gap-6 text-sm text-stone">
+    <div class="col-span-12 md:col-span-4">
+      <p class="display smcp text-base font-medium text-ink mb-2">CIRWEL Systems</p>
+      <p>Independent research operator.</p>
+    </div>
+    <div class="col-span-12 md:col-span-4">
+      <p class="label mb-3 text-ink">Records</p>
+      <p>
+        ORCID <a href="https://orcid.org/0009-0006-7544-2374" class="font-mono">0009-0006-7544-2374</a><br/>
+        DOI <a href="https://doi.org/10.5281/zenodo.19647159" class="font-mono">10.5281/zenodo.19647159</a>
+      </p>
+    </div>
+    <div class="col-span-12 md:col-span-4 md:text-right">
+      <p class="label mb-3 text-ink">© 2026</p>
+      <p>All rights reserved unless noted.<br/>Plugin and paper carry their own licenses.</p>
+    </div>
+
+    <div class="col-span-12 mt-8 pt-6 border-t border-sepia/40 label text-stone text-center leading-loose">
+      Set in <span class="text-ink">Fraunces</span> &amp; <span class="text-ink">JetBrains Mono</span>
+      &middot; cream and oxblood
+      &middot; rendered from <span class="text-ink">{buildSha}</span> at <span class="text-ink">{buildTime}</span>
+      &middot; under <span class="text-ink">UNITARES</span> governance
+      &nbsp;—&nbsp; fin.
+    </div>
+  </footer>
+</BaseLayout>
