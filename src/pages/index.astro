@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
 
 // Build-time provenance — baked into the page so the colophon shows
 // the exact commit and time that produced it. Hermes-style receipt fetishism,
@@ -11,28 +12,7 @@ const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UT
   title="CIRWEL Systems — Runtime governance for heterogeneous AI-agent fleets"
   description="Continuous self-state telemetry, class-conditional calibration, and signed provenance for AI agents you didn't build yourself. Reference implementation of UNITARES (Wang 2026, DOI 10.5281/zenodo.19647159)."
 >
-  <!-- Masthead — journal-cover register -->
-  <div class="max-w-screen-xl mx-auto px-6 lg:px-12 pt-6 flex items-center justify-center gap-4">
-    <hr class="hairline flex-1 max-w-[140px]" />
-    <p class="label text-stone text-[0.62rem] tracking-[0.28em] whitespace-nowrap">
-      Independent Research &middot; Est. 2025
-    </p>
-    <hr class="hairline flex-1 max-w-[140px]" />
-  </div>
-
-  <header class="px-6 lg:px-12 pt-5 pb-4 max-w-screen-xl mx-auto flex items-center justify-between">
-    <a href="/" class="no-underline">
-      <span class="display smcp text-xl font-medium">CIRWEL Systems</span>
-    </a>
-    <nav aria-label="Primary" class="hidden md:flex items-center gap-7 label text-stone">
-      <a href="#thesis"   class="no-underline hover:text-oxblood transition-colors">Thesis</a>
-      <a href="/ecosystem" class="no-underline hover:text-oxblood transition-colors">Ecosystem</a>
-      <a href="https://doi.org/10.5281/zenodo.19647159" class="no-underline hover:text-oxblood transition-colors">Paper</a>
-      <a href="https://github.com/CIRWEL/unitares" class="no-underline hover:text-oxblood transition-colors">Server</a>
-      <a href="https://github.com/CIRWEL/unitares-governance-plugin" class="no-underline hover:text-oxblood transition-colors">Plugin</a>
-      <a href="#contact" class="no-underline hover:text-oxblood transition-colors">Contact</a>
-    </nav>
-  </header>
+  <PageHeader currentPath="/" />
 
   <main class="px-6 lg:px-12 max-w-screen-xl mx-auto">
 

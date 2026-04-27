@@ -1,0 +1,58 @@
+---
+interface Props {
+  /**
+   * Pathname of the current page, used to (a) emit cross-page hash links from
+   * non-home pages and (b) highlight the active section in the nav.
+   * Examples: '/', '/ecosystem'.
+   */
+  currentPath: string;
+}
+const { currentPath } = Astro.props;
+const onHome = currentPath === '/';
+const thesisHref  = onHome ? '#thesis'  : '/#thesis';
+const contactHref = onHome ? '#contact' : '/#contact';
+const isEcosystem = currentPath === '/ecosystem';
+---
+<!-- Masthead — journal-cover register -->
+<div class="max-w-screen-xl mx-auto px-6 lg:px-12 pt-6 flex items-center justify-center gap-4">
+  <hr class="hairline flex-1 max-w-[140px]" />
+  <p class="label text-stone text-[0.62rem] tracking-[0.28em] whitespace-nowrap">
+    Independent Research &middot; Est. 2025
+  </p>
+  <hr class="hairline flex-1 max-w-[140px]" />
+</div>
+
+<header class="px-6 lg:px-12 pt-5 pb-4 max-w-screen-xl mx-auto flex items-center justify-between gap-4">
+  <a href="/" class="no-underline shrink-0">
+    <span class="display smcp text-base sm:text-xl font-medium">CIRWEL Systems</span>
+  </a>
+  <nav aria-label="Primary" class="flex items-center gap-4 sm:gap-5 md:gap-7 label text-stone">
+    <a href={thesisHref}
+       class:list={["no-underline hover:text-oxblood transition-colors hidden sm:inline-block"]}>
+      Thesis
+    </a>
+    <a href="/ecosystem"
+       class:list={[
+         "no-underline transition-colors",
+         isEcosystem ? "text-oxblood" : "hover:text-oxblood",
+       ]}>
+      Ecosystem
+    </a>
+    <a href="https://doi.org/10.5281/zenodo.19647159"
+       class="no-underline hover:text-oxblood transition-colors hidden md:inline-block">
+      Paper
+    </a>
+    <a href="https://github.com/CIRWEL/unitares"
+       class="no-underline hover:text-oxblood transition-colors hidden md:inline-block">
+      Server
+    </a>
+    <a href="https://github.com/CIRWEL/unitares-governance-plugin"
+       class="no-underline hover:text-oxblood transition-colors hidden md:inline-block">
+      Plugin
+    </a>
+    <a href={contactHref}
+       class="no-underline hover:text-oxblood transition-colors">
+      Contact
+    </a>
+  </nav>
+</header>
