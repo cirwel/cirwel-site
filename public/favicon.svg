@@ -1,0 +1,22 @@
+<!--
+  CIRWEL Systems mark.
+
+  A single serif C in oxblood on cream-paper ground, with a hairline ring.
+  Cohesive with /public/og.svg (same palette, same Georgia fallback for the
+  Fraunces feel — browsers cannot load web fonts in favicons, so the choice
+  must render consistently from system fonts).
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Cream paper, slightly rounded -->
+  <rect x="0" y="0" width="32" height="32" rx="4" fill="#F5F1E8"/>
+
+  <!-- Hairline ring — sets the journal-page register at favicon scale -->
+  <rect x="0.5" y="0.5" width="31" height="31" rx="3.5"
+        fill="none" stroke="#C9C0AE" stroke-width="1"/>
+
+  <!-- Serif C in oxblood, centered -->
+  <text x="16" y="23.5" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="24" font-weight="500"
+        fill="#7A1F1F">C</text>
+</svg>
