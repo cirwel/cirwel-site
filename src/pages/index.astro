@@ -2,6 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import PageFooter from '../components/PageFooter.astro';
+import fig1Svg from '../../public/sketches/fig-1-measurement-gap.svg?raw';
+import fig2Svg from '../../public/sketches/fig-2-named-fleet.svg?raw';
+import fig3Svg from '../../public/sketches/fig-3-verdict-loop.svg?raw';
 ---
 <BaseLayout
   title="CIRWEL Systems — Runtime governance for heterogeneous AI-agent fleets"
@@ -105,11 +108,10 @@ import PageFooter from '../components/PageFooter.astro';
             Logs are what an agent did.<br/>Self-state is what it was while doing it.
           </p>
 
-          <figure class="my-10 max-w-3xl">
-            <img src="/sketches/fig-1-measurement-gap.svg"
-                 alt="FIG. I — The measurement gap. A time-series data plate showing dense measurement marks in pre-deployment and post-incident regions, with an empty middle region traversed by a dashed trajectory line and labeled 'the measurement gap, where the agent actually runs'."
-                 loading="lazy" width="720" height="440"
-                 class="w-full h-auto block" />
+          <figure class="my-10 max-w-3xl figure-svg"
+                  role="img"
+                  aria-label="FIG. I — The measurement gap. A time-series data plate showing dense measurement marks in pre-deployment and post-incident regions, with an empty middle region traversed by a dashed trajectory line and labeled 'the measurement gap, where the agent actually runs'.">
+            <Fragment set:html={fig1Svg} />
           </figure>
 
           <p class="max-w-prose">
@@ -145,11 +147,10 @@ import PageFooter from '../components/PageFooter.astro';
       </div>
       <div class="col-span-12 lg:col-span-9">
 
-        <figure class="mb-12 max-w-3xl">
-          <img src="/sketches/fig-2-named-fleet.svg"
-               alt="FIG. II — Heterogeneous agent classes. A specimen plate showing five hexagonal device frames in a row, each with a distinguishing glyph: coding session (curly brackets), research conversation (open page), resident cron (clock face), embodied edge service (antenna with wave), and ephemeral parser (dashed outline). A lifespan band beneath shows the contrast: ~30 min, ~hours, months+, always-on, seconds."
-               loading="lazy" width="720" height="440"
-               class="w-full h-auto block" />
+        <figure class="mb-12 max-w-3xl figure-svg"
+                role="img"
+                aria-label="FIG. II — Heterogeneous agent classes. A specimen plate showing five hexagonal device frames in a row, each with a distinguishing glyph: coding session (curly brackets), research conversation (open page), resident cron (clock face), embodied edge service (antenna with wave), and ephemeral parser (dashed outline). A lifespan band beneath shows the contrast: ~30 min, ~hours, months+, always-on, seconds.">
+          <Fragment set:html={fig2Svg} />
         </figure>
 
         <div class="grid md:grid-cols-3 gap-10 lg:gap-12">
@@ -250,11 +251,10 @@ import PageFooter from '../components/PageFooter.astro';
             continuously by UNITARES since November 2025.
           </p>
 
-          <figure class="my-10 max-w-3xl">
-            <img src="/sketches/fig-3-verdict-loop.svg"
-                 alt="FIG. III — The four verdicts. Proceed, Guide, Pause, and Reject arranged at the compass points of a closed dashed cycle around a central engraved hex device, with transition labels (tight margin, no convergence, irreparable, after dialectic) on the cycle ring."
-                 loading="lazy" width="720" height="440"
-                 class="w-full h-auto block" />
+          <figure class="my-10 max-w-3xl figure-svg"
+                  role="img"
+                  aria-label="FIG. III — The four verdicts. Proceed, Guide, Pause, and Reject arranged at the compass points of a closed dashed cycle around a central engraved hex device, with transition labels (tight margin, no convergence, irreparable, after dialectic) on the cycle ring.">
+            <Fragment set:html={fig3Svg} />
           </figure>
 
           <p class="max-w-prose">
@@ -325,3 +325,16 @@ import PageFooter from '../components/PageFooter.astro';
 
   <PageFooter publishersMark />
 </BaseLayout>
+
+<style is:global>
+  /* Inlined figure SVGs render filters at display × DPR resolution
+     instead of going through an <img> bitmap stage. The SVG element
+     keeps its own width/height attrs (set 3x viewBox for legacy
+     supersampling); these CSS rules force it to respond to the
+     containing <figure>'s max-width. */
+  .figure-svg > svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+</style>
