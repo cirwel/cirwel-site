@@ -24,11 +24,13 @@ import fig3Svg from '../../public/sketches/fig-3-verdict-loop.svg?raw';
           AI-agent <span class="italic">fleets.</span>
         </h1>
         <p class="text-lg md:text-xl leading-relaxed text-stone max-w-prose reveal reveal-3">
-          Most AI safety reasons about agents in two windows: pre-deployment evaluation
-          and post-incident forensics. Between them — <em>while agents are actually
-          running</em> — event traces are abundant, but there is no canonical reading
-          of an agent's own state. Continuous, class-calibrated self-state telemetry —
-          with signed provenance behind every intervention — supplies it.
+          CIRWEL Systems supplies the missing reading: continuous,
+          class-calibrated self-state telemetry for every agent, with signed
+          provenance behind every intervention. Most AI-safety work reasons
+          about agents in two windows — pre-deployment evaluation and
+          post-incident forensics. Between them, <em>while agents are actually
+          running</em>, event traces are abundant but there is no canonical
+          reading of an agent's own state.
         </p>
       </div>
     </section>
@@ -141,6 +143,40 @@ import fig3Svg from '../../public/sketches/fig-3-verdict-loop.svg?raw';
 
     <hr class="hairline"/>
 
+    <!-- INTERLUDE: First measurement -->
+    <section class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">— A measurement on our own fleet</p>
+      </div>
+      <div class="col-span-12 lg:col-span-9 max-w-prose">
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight">
+          Per-class and fleet-wide baselines disagree on 29% of verdicts.
+        </h2>
+        <div class="space-y-6 text-lg leading-relaxed text-ink">
+          <p>
+            On a 30-day slice of our own production data — 13,310 governance
+            observations across the fleet — replaying each decision with
+            per-class baselines instead of one fleet-wide baseline produces
+            a different verdict <span class="font-medium">28.9%</span> of
+            the time. The disagreement skews systematically: state vectors
+            the fleet-wide baseline classifies as healthy or borderline are
+            usually flagged as drifting under per-class baselines.
+            Per-class flip rates range 15&ndash;33%.
+          </p>
+          <p class="text-stone">
+            This is internal measurement, not external validation. But the
+            gap is large enough to show that averaging dissimilar agents
+            into one distribution is not a benign default; class-conditional
+            calibration is the response.
+            (§11.6 of the
+            <a href="https://doi.org/10.5281/zenodo.19647159">paper</a>.)
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hairline"/>
+
     <!-- §02 THREE PILLARS -->
     <section id="pillars" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
@@ -195,40 +231,6 @@ import fig3Svg from '../../public/sketches/fig-3-verdict-loop.svg?raw';
           </a>
         </article>
 
-        </div>
-      </div>
-    </section>
-
-    <hr class="hairline"/>
-
-    <!-- INTERLUDE: First measurement -->
-    <section class="py-16 lg:py-24 grid grid-cols-12 gap-6">
-      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
-        <p class="label text-oxblood">— A measurement on our own fleet</p>
-      </div>
-      <div class="col-span-12 lg:col-span-9 max-w-prose">
-        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight">
-          Per-class and fleet-wide baselines disagree on 29% of verdicts.
-        </h2>
-        <div class="space-y-6 text-lg leading-relaxed text-ink">
-          <p>
-            On a 30-day slice of our own production data — 13,310 governance
-            observations across the fleet — replaying each decision with
-            per-class baselines instead of one fleet-wide baseline produces
-            a different verdict <span class="font-medium">28.9%</span> of
-            the time. The disagreement skews systematically: state vectors
-            the fleet-wide baseline classifies as healthy or borderline are
-            usually flagged as drifting under per-class baselines.
-            Per-class flip rates range 15&ndash;33%.
-          </p>
-          <p class="text-stone">
-            This is internal measurement, not external validation. But the
-            gap is large enough to show that averaging dissimilar agents
-            into one distribution is not a benign default; class-conditional
-            calibration is the response.
-            (§11.6 of the
-            <a href="https://doi.org/10.5281/zenodo.19647159">paper</a>.)
-          </p>
         </div>
       </div>
     </section>
@@ -304,7 +306,7 @@ import fig3Svg from '../../public/sketches/fig-3-verdict-loop.svg?raw';
               </p>
               <div class="runcmd">
                 <span class="prompt">$</span>
-                <span class="cmd">git clone CIRWEL/unitares &amp;&amp; docker compose up</span>
+                <span class="cmd">gh repo clone CIRWEL/unitares &amp;&amp; cd unitares &amp;&amp; docker compose up</span>
                 <span class="note">→ http://localhost:8767/mcp/</span>
               </div>
             </div>
