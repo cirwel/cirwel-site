@@ -1,9 +1,9 @@
 {
-  "events_total": "64K+",
-  "events_7d": "7013",
-  "active_agents_7d": "27689",
-  "kg_discoveries": "1064",
-  "refreshed_at": "2026-06-18",
+  "events_total": "65K+",
+  "events_7d": "7031",
+  "active_agents_7d": "26948",
+  "kg_discoveries": "1069",
+  "refreshed_at": "2026-06-19",
   "source": "https://github.com/cirwel/unitares — single-operator self-traffic, not external adoption",
   "_note": "Auto-refreshed by ~/scripts/refresh-cirwel-stats.sh (launchd com.cirwel.site-refresh-stats)."
 }
