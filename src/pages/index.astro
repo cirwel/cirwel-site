@@ -165,9 +165,9 @@ import liveStats from '../data/live-stats.json';
             capacity, signal integrity, uncertainty, and the imbalance among them,
             updated from every check-in. The reading is calibrated against agents
             of the same <em>class</em> (a coding session, a research conversation, a
-            resident cron, an embodied service, an ephemeral parser), because a
+            resident cron, an embedded service, an ephemeral parser), because a
             long-running coding assistant does not behave like an ephemeral parser,
-            and neither behaves like an embodied service. Drift is then detected
+            and neither behaves like an embedded service. Drift is then detected
             against the right reference, not an averaged one.
           </p>
 
@@ -226,7 +226,7 @@ import liveStats from '../data/live-stats.json';
 
         <figure class="mb-12 max-w-3xl figure-svg"
                 role="img"
-                aria-label="FIG. II — Heterogeneous agent classes. A specimen plate showing five hexagonal device frames in a row, each with a distinguishing glyph: coding session (curly brackets), research conversation (open page), resident cron (clock face), embodied edge service (antenna with wave), and ephemeral parser (dashed outline). A lifespan band beneath shows the contrast: ~30 min, ~hours, months+, always-on, seconds.">
+                aria-label="FIG. II — Heterogeneous agent classes. A specimen plate showing five hexagonal device frames in a row, each with a distinguishing glyph: coding session (curly brackets), research conversation (open page), resident cron (clock face), embedded edge service (antenna with wave), and ephemeral parser (dashed outline). A lifespan band beneath shows the contrast: ~30 min, ~hours, months+, always-on, seconds.">
           <Fragment set:html={fig2Svg} />
         </figure>
 
@@ -291,7 +291,7 @@ import liveStats from '../data/live-stats.json';
             The system you read about on this page also wrote, tested, and shipped a
             meaningful fraction of itself. CIRWEL's development fleet — a heterogeneous
             mix of long-running resident agents, short-lived coding sessions, an
-            embodied edge service, and a Discord bridge — has been governed
+            embedded edge service, and a Discord bridge — has been governed
             continuously by UNITARES since November 2025.
           </p>
           <p class="max-w-prose">
