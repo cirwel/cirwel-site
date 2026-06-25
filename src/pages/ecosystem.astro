@@ -5,7 +5,7 @@ import PageFooter from '../components/PageFooter.astro';
 ---
 <BaseLayout
   title="Ecosystem — UNITARES · CIRWEL Systems"
-  description="The deeper view of UNITARES: server, plugin, named fleet, embedded edge, identity model, dialectic resolution, and shared knowledge graph. The runtime governance layer for heterogeneous AI-agent fleets, in detail."
+  description="The architecture of UNITARES: provable identity and lineage, a shared provenance-tracked knowledge graph, runtime verdicts, and the heterogeneous workloads it governs. The runtime layer for AI-agent fleets, in detail."
 >
   <PageHeader currentPath="/ecosystem" />
 
@@ -16,14 +16,13 @@ import PageFooter from '../components/PageFooter.astro';
       <div class="col-span-12 lg:col-span-9">
         <p class="label text-oxblood mb-8 reveal reveal-1">— A dossier on the running system</p>
         <h1 class="display text-5xl md:text-7xl lg:text-8xl mb-10 reveal reveal-2">
-          One framework.<br/>
-          A <span class="italic">named</span> fleet.<br/>
-          A shared substrate.
+          Identity. Memory.<br/>
+          State. <span class="italic">Verdict.</span>
         </h1>
         <p class="text-lg md:text-xl leading-relaxed text-stone max-w-prose reveal reveal-3">
-          Six processes living under one framework, sharing one substrate,
-          where every decision ties back to evidence.
-          The home page states the thesis; this page walks the anatomy.
+          Four answers, one substrate: who an agent is, what the fleet knows,
+          what state each agent is in, and why every action was allowed. The
+          home page states the thesis; this page is the architecture.
         </p>
       </div>
     </section>
@@ -52,10 +51,12 @@ import PageFooter from '../components/PageFooter.astro';
 
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Components</dt>
         <dd class="col-span-8 md:col-span-9 leading-relaxed">
+          Identity <span class="text-stone">·</span>
+          Knowledge graph <span class="text-stone">·</span>
+          Verdicts <span class="text-stone">·</span>
+          Governed workloads <span class="text-stone">·</span>
           Server <span class="text-stone">·</span>
           Plugin <span class="text-stone">·</span>
-          Knowledge graph <span class="text-stone">·</span>
-          Named fleet <span class="text-stone">·</span>
           Embedded edge
         </dd>
 
@@ -84,44 +85,29 @@ import PageFooter from '../components/PageFooter.astro';
         <p class="label text-oxblood">§01 — How the layers fit together</p>
       </div>
       <div class="col-span-12 lg:col-span-9">
-        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
+        <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">
           Paper, server, plugin, fleet.
         </h2>
-        <div class="space-y-6 text-lg leading-relaxed text-ink max-w-prose">
-          <p class="dropcap">
-            A framework lives at four layers. The paper makes the claim. The server
-            is the claim's existence proof. The plugin is what makes the claim
-            <em>felt</em> from inside the agent loop. The fleet is what proves the
-            claim survives heterogeneity.
-          </p>
-          <p class="text-xl md:text-2xl italic text-ink leading-snug py-2">
-            A paper is a claim.<br/>A server is its existence proof.
-          </p>
+        <p class="text-xl leading-snug text-ink max-w-prose mb-8 font-medium">
+          A claim, its existence proof, the thing that makes the claim
+          <em>felt</em> from inside the agent loop, and the proof it survives
+          heterogeneity.
+        </p>
+        <div class="space-y-5 text-lg leading-relaxed text-stone max-w-prose">
           <p>
-            The formal claim — a four-dimensional state vector,
-            class-conditional calibration, signed verdict provenance, the
-            stability proofs that justify them — is rendered as a running
+            The formal claim — a four-dimensional state vector, class-conditional
+            calibration, signed verdict provenance — runs as a live
             <span class="smcp">MCP</span> service: PostgreSQL with the Apache
-            <span class="smcp">AGE</span> graph extension, pgvector for
-            semantic retrieval, Redis for transient state, Prometheus for
-            telemetry. Every governance tool the fleet uses — onboard,
-            check-in, dialectic, knowledge contribution, recovery — runs
-            against this surface and is auditable through it.
+            <span class="smcp">AGE</span> graph extension, pgvector retrieval,
+            Redis for transient state, Prometheus for telemetry. Every governance
+            tool runs against this surface and is auditable through it.
           </p>
           <p>
-            The plugin closes the loop. It drops into Claude Code or Codex
-            and hooks the agent into the server, so each turn issues a real
-            check-in, receives a real verdict, and writes a real lineage
-            entry. Without the plugin, the framework is observed from outside
-            the agent. With it, the framework is <em>felt</em> from inside
-            the loop.
-          </p>
-          <p>
-            What runs under that plugin and against that server is the fleet:
-            a set of named long-running processes — residents, event-driven
-            reviewers, an embedded edge service — all governed by the same
-            server, all reading and writing the same knowledge graph. §02
-            names them.
+            The plugin drops into Claude Code or Codex and hooks the agent into
+            the server, so each turn issues a real check-in and receives a real
+            verdict. The four sections below are the substrate that makes that
+            possible: who acted (§02), what the fleet knows (§03), why an action
+            was allowed (§04), and the heterogeneous workloads it all governs (§05).
           </p>
         </div>
       </div>
@@ -129,26 +115,166 @@ import PageFooter from '../components/PageFooter.astro';
 
     <hr class="hairline"/>
 
-    <!-- §02 THE NAMED FLEET -->
-    <section id="fleet" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+    <!-- §02 IDENTITY & LINEAGE -->
+    <section id="identity" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
-        <p class="label text-oxblood">§02 — Governed workloads</p>
+        <p class="label text-oxblood">§02 — Identity &amp; lineage</p>
       </div>
       <div class="col-span-12 lg:col-span-9">
-        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
+        <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">
+          Who did what is provable, not claimed.
+        </h2>
+        <p class="text-xl leading-snug text-ink max-w-prose mb-8 font-medium">
+          A new process mints fresh governance-identity by default. Names are
+          claims, not credentials.
+        </p>
+        <div class="space-y-5 text-lg leading-relaxed text-stone max-w-prose">
+          <p>
+            There is no "look up by label," no auto-recovery into a previous slot,
+            no silent substitution of one agent for another. When continuity
+            matters — a child of a prior session, a spawned worker — lineage is
+            <em>declared</em> via a parent reference, not inherited by claim. The
+            identity API exposes the source of every label, so an auditor can see
+            whether a name was operator-assigned, self-claimed, or system-generated.
+          </p>
+          <p>
+            The cost is friction at session start. The benefit is that the chain
+            of custody behind every verdict is real: the agent that produced an
+            outcome is the agent the system thinks it was, and the lineage that
+            led there actually led there.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hairline"/>
+
+    <!-- §03 KNOWLEDGE GRAPH -->
+    <section id="knowledge" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§03 — The knowledge graph</p>
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">
+          One shared memory, written by the whole fleet.
+        </h2>
+        <p class="text-xl leading-snug text-ink max-w-prose mb-8 font-medium">
+          Every agent reads and writes one provenance-tracked graph. Nothing it
+          learns lives in one head; nothing it acts on is unsourced.
+        </p>
+        <div class="space-y-5 text-lg leading-relaxed text-stone max-w-prose">
+          <p>
+            Discoveries, decisions, dialectic resolutions, and findings are
+            first-class entries with status lifecycles — open, resolved, archived
+            — and tags that route them across the system. It runs on PostgreSQL
+            with the Apache <span class="smcp">AGE</span> extension and pgvector,
+            joined by a hybrid reciprocal-rank-fusion ranker. Search is the same
+            surface for the operator at a dashboard and the agent mid-check-in.
+          </p>
+          <p>
+            That shared substrate is what turns a collection of agents into a
+            fleet, and what makes governance tractable: an action proposed today
+            is checked against an outcome recorded last month, and an outcome
+            recorded today updates the priors that gate tomorrow's actions.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hairline"/>
+
+    <!-- §04 VERDICTS IN MOTION -->
+    <section id="verdicts" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§04 — Verdicts in motion</p>
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">
+          Three layers, not four flat verdicts.
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-10">
+          <div>
+            <p class="label text-stone mb-2">Action</p>
+            <p class="font-mono text-xl text-ink mb-3">proceed</p>
+            <dl class="space-y-2 text-base leading-relaxed">
+              <div>
+                <span class="font-mono text-ink">approve</span>
+                <span class="text-stone"> — state is healthy. Continue the work.</span>
+              </div>
+              <div>
+                <span class="font-mono text-ink">guide</span>
+                <span class="text-stone"> — something is slightly off. Read the guidance, adjust approach.</span>
+              </div>
+            </dl>
+          </div>
+          <div>
+            <p class="label text-stone mb-2">Action</p>
+            <p class="font-mono text-xl text-ink mb-3">pause</p>
+            <dl class="space-y-2 text-base leading-relaxed">
+              <div>
+                <span class="font-mono text-ink">reject</span>
+                <span class="text-stone"> — risk ceiling reached. Dialectic review or human input.</span>
+              </div>
+              <div>
+                <span class="font-mono text-ink">void · coherence · basin · cirs</span>
+                <span class="text-stone"> — a specific subsystem tripped: energy–integrity imbalance, fragmentation, out-of-basin, or oscillation circuit-breaker.</span>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+        <div class="space-y-5 text-lg leading-relaxed text-stone max-w-prose">
+          <p>
+            The decision is binary — <span class="font-mono text-base">proceed</span>
+            or <span class="font-mono text-base">pause</span> — qualified by a
+            <span class="font-mono text-base">sub_action</span>. Separately, each
+            cycle carries a thermodynamic health reading
+            (<span class="font-mono text-base">safe</span> /
+            <span class="font-mono text-base">caution</span> /
+            <span class="font-mono text-base">high-risk</span>) derived from the
+            state vector, not the decision. A <span class="font-mono text-base">pause</span>
+            opens a <em>dialectic</em>: the agent defends its intended action, a
+            reviewer submits a counter-thesis or condition, the system synthesizes
+            the convergence point — recorded and signed, so the next similar shape
+            is queryable.
+          </p>
+          <p>
+            Alongside the decision, each cycle reports one proprioceptive
+            <span class="font-mono text-base">margin</span> —
+            <span class="font-mono text-base">settling / comfortable / tight / warning / critical</span>
+            — measuring headroom to the nearest of three policy boundaries (risk
+            ceiling, coherence floor, void ceiling), with a companion
+            <span class="font-mono text-base">nearest_edge</span>. A proceed at risk
+            0.58 against a 0.70 pause threshold lands
+            <span class="font-mono text-base">margin: tight, nearest_edge: risk</span>
+            — not because one dimension crossed a floor, but because distance to the
+            nearest boundary fell inside the tight band.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hairline"/>
+
+    <!-- §05 GOVERNED WORKLOADS -->
+    <section id="fleet" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§05 — Governed workloads</p>
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">
           Six process classes, one calibration model.
         </h2>
-        <p class="text-lg leading-relaxed text-stone max-w-prose mb-12">
+        <p class="text-lg leading-relaxed text-stone max-w-prose mb-10">
           Class-conditional calibration only works if the classes are real.
-          CIRWEL's own deployment spans six kinds of process — from a half-hour
-          janitorial cron to an always-on analytical service to an embedded edge
-          device — each with a different state signature. They are the
-          heterogeneity the calibration is tested against; the
-          <span class="font-mono">monospace</span> tags are the running process
+          CIRWEL's own deployment spans six kinds of process, each with a different
+          state signature — the heterogeneity the calibration is tested against.
+          The <span class="font-mono">monospace</span> tags are the running process
           identifiers.
         </p>
 
-        <dl class="grid md:grid-cols-2 gap-x-12 gap-y-10">
+        <dl class="grid md:grid-cols-2 gap-x-12 gap-y-8">
 
           <div>
             <dt class="display text-xl mb-2">Janitorial sweep</dt>
@@ -173,8 +299,7 @@ import PageFooter from '../components/PageFooter.astro';
             <dd class="text-stone leading-relaxed">
               <p class="label text-stone mb-2">Event-driven · <span class="font-mono">watcher</span></p>
               A local-LLM reviewer that fires on every code edit and flags
-              persistence and concurrency hazards before commit — auditable
-              through the commit history itself.
+              persistence and concurrency hazards before commit.
             </dd>
           </div>
 
@@ -212,175 +337,6 @@ import PageFooter from '../components/PageFooter.astro';
 
     <hr class="hairline"/>
 
-    <!-- §03 IDENTITY & LINEAGE -->
-    <section id="identity" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
-      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
-        <p class="label text-oxblood">§03 — Identity &amp; lineage</p>
-      </div>
-      <div class="col-span-12 lg:col-span-9">
-        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
-          A name is cosmetic.
-        </h2>
-        <div class="space-y-6 text-lg leading-relaxed text-ink max-w-prose">
-          <p>
-            In <span class="smcp">UNITARES</span>, a new process-instance mints
-            a fresh governance-identity by default — names are claims, not credentials.
-            There is no "look up by label" primitive, no auto-recovery into a previous
-            slot, no silent substitution of one agent for another.
-          </p>
-          <p class="text-xl md:text-2xl italic text-ink leading-snug py-2">
-            A name is what an agent claims.<br/>Identity is the process that claims it.
-          </p>
-          <p>
-            When continuity matters — a child of a prior session, a worker spawned
-            from a parent — lineage is <em>declared</em> via a parent reference,
-            not inherited by claim. The identity API exposes the source of every
-            label so an auditor can see whether a name was operator-assigned,
-            self-claimed, or system-generated. Honesty about provenance is
-            structural, not a checkbox.
-          </p>
-          <p>
-            The cost is friction at session start. The benefit is that the chain
-            of custody behind every verdict is real: the agent that produced an
-            outcome is the agent the system thinks it was, and the lineage that
-            led there is the lineage that actually led there.
-          </p>
-          <p class="text-xl md:text-2xl italic text-ink leading-snug py-2">
-            Continuity lives in the graph, not in the agent.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <hr class="hairline"/>
-
-    <!-- §04 VERDICTS IN MOTION -->
-    <section id="verdicts" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
-      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
-        <p class="label text-oxblood">§04 — Verdicts in motion</p>
-      </div>
-      <div class="col-span-12 lg:col-span-9">
-        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
-          What happens after the verdict.
-        </h2>
-
-        <div class="grid md:grid-cols-2 gap-6 mb-12">
-          <div>
-            <p class="label text-stone mb-2">Action</p>
-            <p class="font-mono text-xl text-ink mb-3">proceed</p>
-            <dl class="space-y-2 text-base leading-relaxed">
-              <div>
-                <span class="font-mono text-ink">approve</span>
-                <span class="text-stone"> — state is healthy. Continue the work.</span>
-              </div>
-              <div>
-                <span class="font-mono text-ink">guide</span>
-                <span class="text-stone"> — something is slightly off. Read the guidance, adjust approach.</span>
-              </div>
-            </dl>
-          </div>
-          <div>
-            <p class="label text-stone mb-2">Action</p>
-            <p class="font-mono text-xl text-ink mb-3">pause</p>
-            <dl class="space-y-2 text-base leading-relaxed">
-              <div>
-                <span class="font-mono text-ink">reject</span>
-                <span class="text-stone"> — risk ceiling reached. Dialectic review or human input.</span>
-              </div>
-              <div>
-                <span class="font-mono text-ink">void · coherence · basin · cirs</span>
-                <span class="text-stone"> — a specific subsystem tripped: energy–integrity imbalance, fragmentation, out-of-basin, or oscillation circuit-breaker.</span>
-              </div>
-            </dl>
-          </div>
-        </div>
-
-        <div class="space-y-6 text-lg leading-relaxed text-ink max-w-prose">
-          <p>
-            The decision is binary — <span class="font-mono text-base">proceed</span>
-            or <span class="font-mono text-base">pause</span> — and a
-            <span class="font-mono text-base">sub_action</span> qualifies it. Separately,
-            each cycle carries a thermodynamic health reading —
-            <span class="font-mono text-base">safe</span>,
-            <span class="font-mono text-base">caution</span>, or
-            <span class="font-mono text-base">high-risk</span> — derived from the state
-            vector, not from the decision. Three layers, not four flat verdicts.
-          </p>
-          <p>
-            A decision is not the end of a turn — it is the start of a structured
-            response. A <span class="font-mono text-base">guide</span> produces a small
-            course-correction. A <span class="font-mono text-base">pause</span> opens
-            a <em>dialectic</em>: the agent submits a thesis defending its
-            intended action; a reviewer submits a counter-thesis or condition;
-            the system synthesizes the convergence point.
-          </p>
-          <p>
-            The dialectic is not for show. It is how the system absorbs
-            disagreement without freezing into deadlock and without rubber-stamping
-            its way past concerns. Resolution is recorded and signed, so the next
-            time a similar shape appears, the prior reasoning is queryable.
-          </p>
-          <p>
-            Alongside the decision, each cycle reports one proprioceptive
-            <span class="font-mono text-base">margin</span> —
-            <span class="font-mono text-base">settling</span>,
-            <span class="font-mono text-base">comfortable</span>,
-            <span class="font-mono text-base">tight</span>,
-            <span class="font-mono text-base">warning</span>, or
-            <span class="font-mono text-base">critical</span> — measuring headroom to the
-            nearest of three policy boundaries: the risk ceiling, the coherence floor, the
-            void ceiling. A companion <span class="font-mono text-base">nearest_edge</span>
-            names which boundary is closest. A <span class="font-mono text-base">proceed</span>
-            taken at risk 0.58 against a 0.70 pause threshold lands with
-            <span class="font-mono text-base">margin: tight, nearest_edge: risk</span> — not
-            because any one dimension crossed a floor, but because the distance to the nearest
-            boundary fell inside the tight band. Operators who care about the difference between
-            <em>just inside</em> and <em>well inside</em> get to see it.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <hr class="hairline"/>
-
-    <!-- §05 KNOWLEDGE GRAPH -->
-    <section id="knowledge" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
-      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
-        <p class="label text-oxblood">§05 — The shared substrate</p>
-      </div>
-      <div class="col-span-12 lg:col-span-9">
-        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
-          One knowledge graph, written by the whole fleet.
-        </h2>
-        <div class="space-y-6 text-lg leading-relaxed text-ink max-w-prose">
-          <p>
-            Every agent in the fleet reads from and writes into a single shared
-            knowledge graph. Discoveries, decisions, dialectic resolutions, and
-            findings are first-class entries with status lifecycles — open,
-            resolved, archived — and rich tags that route them across the system.
-          </p>
-          <p class="text-xl md:text-2xl italic text-ink leading-snug py-2">
-            Nothing the fleet learns lives in one head.
-          </p>
-          <p>
-            The graph runs on PostgreSQL with the Apache <span class="smcp">AGE</span>
-            extension and pgvector retrieval, joined by a hybrid reciprocal-rank-fusion
-            ranker. Search is the same surface for the operator at a dashboard and
-            for the agent in the middle of a check-in.
-          </p>
-          <p>
-            That shared substrate is what turns a collection of agents into a
-            fleet. It is also what makes governance tractable: an action proposed
-            today can be checked against an outcome recorded last month, and an
-            outcome recorded today can update the priors that gate tomorrow's
-            actions.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <hr class="hairline"/>
-
     <!-- §06 PUBLIC SURFACES -->
     <section id="adjacent" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
@@ -391,19 +347,17 @@ import PageFooter from '../components/PageFooter.astro';
           What you can touch from outside.
         </h2>
 
-        <div class="space-y-12 max-w-prose">
+        <div class="space-y-10 max-w-prose">
 
           <article>
             <p class="label text-stone mb-3">Interpretable ML pipeline</p>
             <h3 class="display smcp text-2xl mb-3 leading-tight">EISV-Lumen</h3>
             <p class="text-stone leading-relaxed">
-              A three-layer system: rule-based generator → LoRA teacher on
-              Qwen3-4B → distilled RandomForest student for Pi deployment. The
-              trajectory dataset (32,181 records, nine shape classes) and the
-              teacher and student models are public on
+              Rule-based generator → LoRA teacher on Qwen3-4B → distilled
+              RandomForest student for Pi deployment. The trajectory dataset
+              (32,181 records, nine shape classes) and the teacher and student
+              models are public on
               <a href="https://huggingface.co/hikewa" class="font-mono text-base">huggingface.co/hikewa</a>.
-              Affinity-weighted token sampling with online feedback —
-              interpretable end to end.
             </p>
           </article>
 
@@ -411,9 +365,9 @@ import PageFooter from '../components/PageFooter.astro';
             <p class="label text-stone mb-3">Operator surface</p>
             <h3 class="display text-2xl mb-3 leading-tight">Discord Bridge</h3>
             <p class="text-stone leading-relaxed">
-              A standalone bot that surfaces governance events, agent presence,
-              and autonomous actions as a living server — the operator's window
-              into a fleet that does not stop when the human does.
+              A standalone bot that surfaces governance events, agent presence, and
+              autonomous actions as a living server — the operator's window into a
+              fleet that does not stop when the human does.
             </p>
           </article>
 
