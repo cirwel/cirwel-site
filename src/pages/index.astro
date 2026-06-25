@@ -25,13 +25,19 @@ import liveStats from '../data/live-stats.json';
           AI-agent <span class="italic">fleets.</span>
         </h1>
         <p class="text-lg md:text-xl leading-relaxed text-stone max-w-prose reveal reveal-3">
-          CIRWEL Systems supplies the missing reading: continuous,
-          class-calibrated self-state telemetry for every agent, with signed
-          provenance behind every intervention. Most AI-safety work reasons
-          about agents in two windows — pre-deployment evaluation and
-          post-incident forensics. Between them, <em>while agents are actually
-          running</em>, event traces are abundant but there is no canonical
-          reading of an agent's own state.
+          Researchers study agents at two moments — before deployment, and
+          after an incident. In between, <em>while agents are actually
+          running</em>, the behavior that matters most happens where you can't
+          see it: the slow drift, the approach to failure. Traces are abundant,
+          but nothing reads an agent's own <em>state</em> while it acts.
+          UNITARES makes that window measurable — a continuous, class-calibrated
+          reading of each agent's state, with signed provenance behind every
+          intervention.
+        </p>
+        <p class="text-base md:text-lg leading-relaxed text-ink max-w-prose reveal reveal-3 mt-6">
+          The principle is one word — <em>nothing inferred</em>. State is
+          measured, identity is proven, memory is sourced, every action carries
+          a recorded reason. Never reconstructed after the fact.
         </p>
       </div>
     </section>
@@ -338,7 +344,7 @@ import liveStats from '../data/live-stats.json';
       </div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-10 leading-tight">
-          Three ways in.
+          Four ways in.
         </h2>
         <ul class="space-y-7 text-lg max-w-prose">
           <li class="grid grid-cols-12 gap-4 items-baseline">
@@ -365,6 +371,19 @@ import liveStats from '../data/live-stats.json';
                 <span class="cmd">gh repo clone CIRWEL/unitares &amp;&amp; cd unitares &amp;&amp; docker compose up</span>
                 <span class="note">→ http://localhost:8767/mcp/</span>
               </div>
+            </div>
+          </li>
+          <li class="grid grid-cols-12 gap-4 items-start">
+            <span class="col-span-12 md:col-span-2 label text-stone pt-1">Build on</span>
+            <div class="col-span-12 md:col-span-10 space-y-2">
+              <p>
+                The open artifacts: a <span class="font-medium">32,181-trajectory
+                EISV dataset</span>, distilled teacher and student models, and a
+                verdict-counterfactual reproducibility kit at
+                <a href="https://huggingface.co/hikewa" class="font-mono text-base">huggingface.co/hikewa</a>.
+                The calibration, drift, and provenance primitives are Apache-2 —
+                meant to be built on, not reimplemented.
+              </p>
             </div>
           </li>
           <li class="grid grid-cols-12 gap-4 items-baseline">

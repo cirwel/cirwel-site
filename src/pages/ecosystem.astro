@@ -132,77 +132,77 @@ import PageFooter from '../components/PageFooter.astro';
     <!-- §02 THE NAMED FLEET -->
     <section id="fleet" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
-        <p class="label text-oxblood">§02 — The named fleet</p>
+        <p class="label text-oxblood">§02 — Governed workloads</p>
       </div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
-          Six processes. Distinct lifetimes. One framework.
+          Six process classes, one calibration model.
         </h2>
         <p class="text-lg leading-relaxed text-stone max-w-prose mb-12">
-          A fleet is heterogeneous by design. Long-running residents see different
-          drift signatures than ephemeral coding sessions, which see different
-          signatures than an embedded edge service. Naming each role makes the
-          differences visible — and gives operators something to point at.
+          Class-conditional calibration only works if the classes are real.
+          CIRWEL's own deployment spans six kinds of process — from a half-hour
+          janitorial cron to an always-on analytical service to an embedded edge
+          device — each with a different state signature. They are the
+          heterogeneity the calibration is tested against; the
+          <span class="font-mono">monospace</span> tags are the running process
+          identifiers.
         </p>
 
         <dl class="grid md:grid-cols-2 gap-x-12 gap-y-10">
 
           <div>
-            <dt class="display smcp text-xl mb-2">Vigil</dt>
+            <dt class="display text-xl mb-2">Janitorial sweep</dt>
             <dd class="text-stone leading-relaxed">
-              <p class="label text-stone mb-2">Resident · half-hour cron</p>
-              Janitorial. Runs health checks, tends the knowledge graph, exercises
-              the test suite against itself. Catches what slow rot does to the
-              substrate.
+              <p class="label text-stone mb-2">30-min cron · <span class="font-mono">vigil</span></p>
+              Health checks, knowledge-graph tending, and a self-test against the
+              suite. Catches what slow rot does to the substrate.
             </dd>
           </div>
 
           <div>
-            <dt class="display smcp text-xl mb-2">Sentinel</dt>
+            <dt class="display text-xl mb-2">Continuous analysis</dt>
             <dd class="text-stone leading-relaxed">
-              <p class="label text-stone mb-2">Resident · continuous</p>
-              Analytical. Watches the fleet, surfaces anomalies, keeps the
-              trajectory measured rather than inferred.
+              <p class="label text-stone mb-2">Always-on · <span class="font-mono">sentinel</span></p>
+              Watches the fleet and surfaces anomalies, keeping the trajectory
+              measured rather than inferred.
             </dd>
           </div>
 
           <div>
-            <dt class="display smcp text-xl mb-2">Watcher</dt>
+            <dt class="display text-xl mb-2">Post-edit review</dt>
             <dd class="text-stone leading-relaxed">
-              <p class="label text-stone mb-2">Event-driven · post-edit hook</p>
-              Local-LLM reviewer. Fires on every code edit, flags persistence and
-              concurrency hazards before commit. Resolution is auditable through
-              the commit history itself.
+              <p class="label text-stone mb-2">Event-driven · <span class="font-mono">watcher</span></p>
+              A local-LLM reviewer that fires on every code edit and flags
+              persistence and concurrency hazards before commit — auditable
+              through the commit history itself.
             </dd>
           </div>
 
           <div>
-            <dt class="display smcp text-xl mb-2">Steward</dt>
+            <dt class="display text-xl mb-2">Edge synchronizer</dt>
             <dd class="text-stone leading-relaxed">
-              <p class="label text-stone mb-2">In-process · five-minute interval</p>
-              Synchronizer inside the governance MCP. Reconciles edge-device
-              telemetry into the canonical state — the bridge between the
-              embedded surface and the central record.
+              <p class="label text-stone mb-2">5-min interval · <span class="font-mono">steward</span></p>
+              Runs in-process inside the governance service, reconciling
+              edge-device telemetry into the canonical state.
             </dd>
           </div>
 
           <div>
-            <dt class="display smcp text-xl mb-2">Chronicler</dt>
+            <dt class="display text-xl mb-2">Longitudinal recorder</dt>
             <dd class="text-stone leading-relaxed">
-              <p class="label text-stone mb-2">Resident · daily</p>
-              Longitudinal recorder. Captures the codebase's own metric series so
-              the repo carries its own state-and-throughput trajectory across
-              releases.
+              <p class="label text-stone mb-2">Daily · <span class="font-mono">chronicler</span></p>
+              Captures the codebase's own metric series so the repo carries its
+              state-and-throughput trajectory across releases.
             </dd>
           </div>
 
           <div>
-            <dt class="display smcp text-xl mb-2">Embedded Edge Testbed</dt>
+            <dt class="display text-xl mb-2">Embedded edge device</dt>
             <dd class="text-stone leading-relaxed">
-              <p class="label text-stone mb-2">Embedded · Raspberry Pi</p>
-              Edge resident with real sensors and a stable cross-session identity. The only
-              physically situated process in the fleet — and the reason runtime
-              self-state had to be a first-class artifact, not metadata.
+              <p class="label text-stone mb-2">Raspberry Pi · real sensors</p>
+              The only physically situated process — real sensors, a stable
+              cross-session identity, and the reason runtime self-state had to be
+              a first-class artifact rather than metadata.
             </dd>
           </div>
 
