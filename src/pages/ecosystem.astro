@@ -264,33 +264,52 @@ import PageFooter from '../components/PageFooter.astro';
           What happens after the verdict.
         </h2>
 
-        <div class="grid md:grid-cols-4 gap-6 mb-12">
+        <div class="grid md:grid-cols-2 gap-6 mb-12">
           <div>
-            <p class="label text-stone mb-2">Verdict</p>
-            <p class="font-mono text-xl text-ink mb-2">proceed</p>
-            <p class="text-stone leading-relaxed text-base">State is healthy. Continue the work.</p>
+            <p class="label text-stone mb-2">Action</p>
+            <p class="font-mono text-xl text-ink mb-3">proceed</p>
+            <dl class="space-y-2 text-base leading-relaxed">
+              <div>
+                <span class="font-mono text-ink">approve</span>
+                <span class="text-stone"> — state is healthy. Continue the work.</span>
+              </div>
+              <div>
+                <span class="font-mono text-ink">guide</span>
+                <span class="text-stone"> — something is slightly off. Read the guidance, adjust approach.</span>
+              </div>
+            </dl>
           </div>
           <div>
-            <p class="label text-stone mb-2">Verdict</p>
-            <p class="font-mono text-xl text-ink mb-2">guide</p>
-            <p class="text-stone leading-relaxed text-base">Something is slightly off. Read the guidance, adjust approach.</p>
-          </div>
-          <div>
-            <p class="label text-stone mb-2">Verdict</p>
-            <p class="font-mono text-xl text-ink mb-2">pause</p>
-            <p class="text-stone leading-relaxed text-base">Stop. Reflect. Consider a dialectic review.</p>
-          </div>
-          <div>
-            <p class="label text-stone mb-2">Verdict</p>
-            <p class="font-mono text-xl text-ink mb-2">reject</p>
-            <p class="text-stone leading-relaxed text-base">Significant concern. Dialectic review or human input required.</p>
+            <p class="label text-stone mb-2">Action</p>
+            <p class="font-mono text-xl text-ink mb-3">pause</p>
+            <dl class="space-y-2 text-base leading-relaxed">
+              <div>
+                <span class="font-mono text-ink">reject</span>
+                <span class="text-stone"> — risk ceiling reached. Dialectic review or human input.</span>
+              </div>
+              <div>
+                <span class="font-mono text-ink">void · coherence · basin · cirs</span>
+                <span class="text-stone"> — a specific subsystem tripped: energy–integrity imbalance, fragmentation, out-of-basin, or oscillation circuit-breaker.</span>
+              </div>
+            </dl>
           </div>
         </div>
 
         <div class="space-y-6 text-lg leading-relaxed text-ink max-w-prose">
           <p>
-            A verdict is not the end of a turn — it is the start of a structured
-            response. Guidance produces a small course-correction. A pause opens
+            The decision is binary — <span class="font-mono text-base">proceed</span>
+            or <span class="font-mono text-base">pause</span> — and a
+            <span class="font-mono text-base">sub_action</span> qualifies it. Separately,
+            each cycle carries a thermodynamic health reading —
+            <span class="font-mono text-base">safe</span>,
+            <span class="font-mono text-base">caution</span>, or
+            <span class="font-mono text-base">high-risk</span> — derived from the state
+            vector, not from the decision. Three layers, not four flat verdicts.
+          </p>
+          <p>
+            A decision is not the end of a turn — it is the start of a structured
+            response. A <span class="font-mono text-base">guide</span> produces a small
+            course-correction. A <span class="font-mono text-base">pause</span> opens
             a <em>dialectic</em>: the agent submits a thesis defending its
             intended action; a reviewer submits a counter-thesis or condition;
             the system synthesizes the convergence point.
@@ -302,13 +321,21 @@ import PageFooter from '../components/PageFooter.astro';
             time a similar shape appears, the prior reasoning is queryable.
           </p>
           <p>
-            Verdicts that sit close to the edge of healthy state carry a
-            <span class="font-mono text-base">tight-margin</span> flag —
-            a <span class="font-mono text-base">proceed</span> at E=0.62
-            against a 0.60 floor lands with
-            <span class="font-mono text-base">margin: tight</span>.
-            Operators who care about the difference between <em>just inside</em>
-            and <em>well inside</em> get to see it.
+            Alongside the decision, each cycle reports one proprioceptive
+            <span class="font-mono text-base">margin</span> —
+            <span class="font-mono text-base">settling</span>,
+            <span class="font-mono text-base">comfortable</span>,
+            <span class="font-mono text-base">tight</span>,
+            <span class="font-mono text-base">warning</span>, or
+            <span class="font-mono text-base">critical</span> — measuring headroom to the
+            nearest of three policy boundaries: the risk ceiling, the coherence floor, the
+            void ceiling. A companion <span class="font-mono text-base">nearest_edge</span>
+            names which boundary is closest. A <span class="font-mono text-base">proceed</span>
+            taken at risk 0.58 against a 0.70 pause threshold lands with
+            <span class="font-mono text-base">margin: tight, nearest_edge: risk</span> — not
+            because any one dimension crossed a floor, but because the distance to the nearest
+            boundary fell inside the tight band. Operators who care about the difference between
+            <em>just inside</em> and <em>well inside</em> get to see it.
           </p>
         </div>
       </div>
