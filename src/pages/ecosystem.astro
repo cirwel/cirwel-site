@@ -2,6 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import PageFooter from '../components/PageFooter.astro';
+import fig4Svg from '../../public/sketches/fig-4-knowledge-graph.svg?raw';
+import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
 ---
 <BaseLayout
   title="Ecosystem — UNITARES · CIRWEL Systems"
@@ -144,6 +146,10 @@ import PageFooter from '../components/PageFooter.astro';
             led there actually led there.
           </p>
         </div>
+        <figure class="mt-12 max-w-3xl figure-svg" role="img"
+                aria-label="FIG. V — Identity and lineage. A declared lineage (parent to child, joined by parent_agent_id) beside two fresh process-instances that mint their own identity by default and share no edge.">
+          <Fragment set:html={fig5Svg} />
+        </figure>
       </div>
     </section>
 
@@ -178,6 +184,10 @@ import PageFooter from '../components/PageFooter.astro';
             recorded today updates the priors that gate tomorrow's actions.
           </p>
         </div>
+        <figure class="mt-12 max-w-3xl figure-svg" role="img"
+                aria-label="FIG. IV — The shared knowledge graph. A central substrate device with five entry-type nodes around it (discovery, decision, dialectic, finding, agent), connected as a graph rather than a star.">
+          <Fragment set:html={fig4Svg} />
+        </figure>
       </div>
     </section>
 
@@ -381,3 +391,11 @@ import PageFooter from '../components/PageFooter.astro';
 
   <PageFooter />
 </BaseLayout>
+
+<style is:global>
+  .figure-svg > svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+</style>
