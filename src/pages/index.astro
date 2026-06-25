@@ -9,7 +9,7 @@ import liveStats from '../data/live-stats.json';
 ---
 <BaseLayout
   title="CIRWEL Systems — Runtime governance for heterogeneous AI-agent fleets"
-  description="Continuous self-state telemetry, class-conditional calibration, and signed provenance for AI agents you didn't build yourself. Reference implementation of UNITARES (Wang 2026, DOI 10.5281/zenodo.19647159)."
+  description="Continuous self-state telemetry, a shared fleet knowledge graph, class-conditional calibration, and verifiable identity & provenance for AI agents you didn't build yourself. Reference implementation of UNITARES (Wang 2026, DOI 10.5281/zenodo.19647159)."
 >
   <PageHeader currentPath="/" />
 
@@ -238,7 +238,9 @@ import liveStats from '../data/live-stats.json';
           <p class="text-stone leading-relaxed mb-4">
             A coding agent and a research agent are not held to the same statistics.
             UNITARES learns separate baselines per agent class from production
-            telemetry, so drift in one class is not masked by noise from another.
+            telemetry, so drift in one class is not masked by noise from another —
+            caught while it is happening, early enough to intervene, late enough to
+            be evidence-based.
           </p>
           <a href="/ecosystem#layers" class="label text-oxblood inline-block hover:underline">
             → § how the layers fit together
@@ -247,24 +249,28 @@ import liveStats from '../data/live-stats.json';
 
         <article>
           <p class="label text-stone mb-4">ii</p>
-          <h3 class="display text-2xl mb-4 leading-tight">Drift detection at runtime</h3>
+          <h3 class="display text-2xl mb-4 leading-tight">Shared memory — the knowledge graph</h3>
           <p class="text-stone leading-relaxed mb-4">
-            Continuous state observation catches behavioral drift while it is
-            happening, not in the post-incident review. Verdicts arrive early enough
-            to intervene, late enough to be evidence-based.
+            One provenance-tracked graph the whole fleet reads and writes —
+            discoveries, decisions, and dialectic resolutions, queryable by the
+            operator and by the agent mid-task. Nothing the fleet learns lives in
+            one head; nothing it acts on is unsourced. Postgres with the Apache AGE
+            graph extension and pgvector retrieval, fused by reciprocal-rank ranking.
           </p>
-          <a href="/ecosystem#verdicts" class="label text-oxblood inline-block hover:underline">
-            → § verdicts in motion
+          <a href="/ecosystem#knowledge" class="label text-oxblood inline-block hover:underline">
+            → § the shared substrate
           </a>
         </article>
 
         <article>
           <p class="label text-stone mb-4">iii</p>
-          <h3 class="display text-2xl mb-4 leading-tight">Auditable provenance</h3>
+          <h3 class="display text-2xl mb-4 leading-tight">Verifiable identity &amp; provenance</h3>
           <p class="text-stone leading-relaxed mb-4">
-            Every intervention carries a signed lineage back to the observation that
-            triggered it. Regulators, underwriters, and the next-shift human can
-            replay the chain — not just read a verdict.
+            Identity is process-bound, not a claimable label: fresh agents mint fresh
+            identity, lineage is declared rather than inherited, and every intervention
+            carries a signed chain back to the observation that triggered it. Who did
+            what is provable, not asserted — replayable by a regulator, an underwriter,
+            or the next-shift human.
           </p>
           <a href="/ecosystem#identity" class="label text-oxblood inline-block hover:underline">
             → § identity &amp; lineage
@@ -295,17 +301,19 @@ import liveStats from '../data/live-stats.json';
             continuously by UNITARES since November 2025.
           </p>
           <p class="max-w-prose">
-            Each check-in produces one of four governance verdicts —
-            <span class="font-mono text-base">proceed</span>,
-            <span class="font-mono text-base">guide</span>,
-            <span class="font-mono text-base">pause</span>,
-            <span class="font-mono text-base">reject</span> — together with a signed
-            lineage back to the observation that triggered it.
+            Each check-in resolves to a binary action —
+            <span class="font-mono text-base">proceed</span> or
+            <span class="font-mono text-base">pause</span> — qualified by a sub-action
+            (<span class="font-mono text-base">approve</span> or
+            <span class="font-mono text-base">guide</span> under proceed;
+            <span class="font-mono text-base">reject</span> and other reasons under
+            pause), together with a signed lineage back to the observation that
+            triggered it.
           </p>
 
           <figure class="my-10 max-w-3xl figure-svg"
                   role="img"
-                  aria-label="FIG. III — The four verdicts. Proceed, Guide, Pause, and Reject arranged at the compass points of a closed dashed cycle around a central engraved hex device, with transition labels (tight margin, no convergence, irreparable, after dialectic) on the cycle ring.">
+                  aria-label="FIG. III — The verdict cycle. The common landing states — Proceed, Guide, Pause, and Reject — arranged at the compass points of a closed dashed cycle around a central engraved hex device, with transition labels (tight margin, no convergence, irreparable, after dialectic) on the cycle ring.">
             <Fragment set:html={fig3Svg} />
           </figure>
 
