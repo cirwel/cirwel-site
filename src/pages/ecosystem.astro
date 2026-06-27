@@ -4,6 +4,8 @@ import PageHeader from '../components/PageHeader.astro';
 import PageFooter from '../components/PageFooter.astro';
 import SectionRule from '../components/SectionRule.astro';
 import Ornament from '../components/Ornament.astro';
+import Medallion from '../components/Medallion.astro';
+import Tailpiece from '../components/Tailpiece.astro';
 import fig4Svg from '../../public/sketches/fig-4-knowledge-graph.svg?raw';
 import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
 ---
@@ -88,7 +90,7 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
     <section id="layers" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
         <p class="label text-oxblood">§01 — How the layers fit together</p>
-        <Ornament size="floret" class="hidden lg:block mt-7 opacity-70" />
+        <Medallion roman="I" class="hidden lg:block mt-7" />
       </div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">
@@ -125,7 +127,7 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
     <section id="identity" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
         <p class="label text-oxblood">§02 — Identity &amp; lineage</p>
-        <Ornament size="floret" class="hidden lg:block mt-7 opacity-70" />
+        <Medallion roman="II" class="hidden lg:block mt-7" />
       </div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">
@@ -164,7 +166,7 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
     <section id="knowledge" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
         <p class="label text-oxblood">§03 — The knowledge graph</p>
-        <Ornament size="floret" class="hidden lg:block mt-7 opacity-70" />
+        <Medallion roman="III" class="hidden lg:block mt-7" />
       </div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">
@@ -203,7 +205,7 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
     <section id="verdicts" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
         <p class="label text-oxblood">§04 — Verdicts in motion</p>
-        <Ornament size="floret" class="hidden lg:block mt-7 opacity-70" />
+        <Medallion roman="IV" class="hidden lg:block mt-7" />
       </div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">
@@ -278,7 +280,7 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
     <section id="fleet" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
         <p class="label text-oxblood">§05 — Governed workloads</p>
-        <Ornament size="floret" class="hidden lg:block mt-7 opacity-70" />
+        <Medallion roman="V" class="hidden lg:block mt-7" />
       </div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">
@@ -359,7 +361,7 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
     <section id="adjacent" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
         <p class="label text-oxblood">§06 — Public surfaces</p>
-        <Ornament size="floret" class="hidden lg:block mt-7 opacity-70" />
+        <Medallion roman="VI" class="hidden lg:block mt-7" />
       </div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-10 leading-tight max-w-prose">
@@ -394,7 +396,9 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
       </div>
     </section>
 
-    <SectionRule />
+    <div class="flex justify-center pt-10 pb-2">
+      <Tailpiece class="opacity-90" />
+    </div>
 
   </main>
 

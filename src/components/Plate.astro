@@ -1,0 +1,50 @@
+---
+/*
+  Plate — a decorative engraved frame.
+
+  Wraps slotted content in the same double-ruled border, corner fleurons, and
+  optional plate marker as the figure plates, turning an ordinary block (the
+  production-snapshot numbers) into a "data plate." Border is CSS so it never
+  distorts; the four corner fleurons are fixed-size SVGs pinned to the corners.
+*/
+interface Props {
+  /** Optional top-right plate marker, e.g. "DATA PLATE". */
+  marker?: string;
+  /** Extra classes on the outer wrapper. */
+  class?: string;
+  /** Padding utility for the inner content. Default roomy. */
+  pad?: string;
+}
+const { marker, class: cls = '', pad = 'p-7 lg:p-9' } = Astro.props;
+const corners = [
+  { pos: 'top-[3px] left-[3px]',     rot: '' },
+  { pos: 'top-[3px] right-[3px]',    rot: 'rotate-90' },
+  { pos: 'bottom-[3px] right-[3px]', rot: 'rotate-180' },
+  { pos: 'bottom-[3px] left-[3px]',  rot: '-rotate-90' },
+];
+---
+<div class:list={["relative", cls]}>
+  <!-- double rule -->
+  <div class="absolute inset-0 border border-oxblood/70 pointer-events-none"></div>
+  <div class="absolute inset-[5px] border border-oxblood/25 pointer-events-none"></div>
+
+  <!-- corner fleurons -->
+  {corners.map((c) => (
+    <span class:list={["absolute pointer-events-none", c.pos, c.rot]} aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="15" height="15">
+        <line x1="2" y1="2" x2="11" y2="11" stroke="#7A1F1F" stroke-width="0.8" />
+        <circle cx="3" cy="3" r="1.5" fill="#7A1F1F" />
+      </svg>
+    </span>
+  ))}
+
+  {marker && (
+    <span class="absolute top-2.5 right-4 label text-oxblood/80 text-[0.58rem] tracking-[0.22em] pointer-events-none">
+      {marker}
+    </span>
+  )}
+
+  <div class:list={["relative", pad]}>
+    <slot />
+  </div>
+</div>

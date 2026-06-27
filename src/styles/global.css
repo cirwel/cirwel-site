@@ -148,6 +148,31 @@ a:focus-visible {
 }
 
 /* ---------------------------------------------------------------------------
+   PLATE INK-IN
+   Each figure plate "inks in" left-to-right as it scrolls into view, the way
+   a press lays an engraving onto the sheet. Progressive enhancement: the hide
+   is scoped to .js so a no-script reader sees every plate immediately, and the
+   whole effect is suppressed under reduced-motion. An IntersectionObserver in
+   BaseLayout adds .is-inked when each plate enters the viewport.
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  /* Clip the inner <svg>, not the <figure>: a fully-clipped element reports
+     zero intersection to IntersectionObserver, which would deadlock the
+     observer that's supposed to reveal it. The <figure> stays unclipped so
+     it's detectable; the wipe runs on its child. */
+  .js .figure-svg > svg {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0.001;
+    transition: clip-path 1.05s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.5s ease-out;
+    will-change: clip-path;
+  }
+  .js .figure-svg.is-inked > svg {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+
+/* ---------------------------------------------------------------------------
    PRINT STYLESHEET
    The page literally pretends to be a publication; Cmd-P should give you a
    typeset article, not a screenshot of a webpage. Keep cream-and-ink on
@@ -172,6 +197,7 @@ a:focus-visible {
   .reveal, .reveal-1,
   .reveal-2, .reveal-3,
   .reveal-4, .reveal-5  { opacity: 1 !important; transform: none !important; animation: none !important; }
+  .figure-svg > svg     { clip-path: none !important; opacity: 1 !important; }
 
   /* Hide interactive chrome */
   nav[aria-label="Primary"],

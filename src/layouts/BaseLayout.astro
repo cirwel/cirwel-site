@@ -10,6 +10,9 @@ const ogImageUrl = new URL(ogImage, site).toString();
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Mark JS active before first paint so the plate ink-in hide (scoped to
+         .js in global.css) never flashes an un-hidden plate. -->
+    <script is:inline>document.documentElement.classList.add('js')</script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
@@ -41,5 +44,27 @@ const ogImageUrl = new URL(ogImage, site).toString();
   </head>
   <body class="font-serif text-ink bg-cream">
     <slot />
+    <script>
+      // Ink each figure plate in as it enters the viewport. Reduced-motion or
+      // no IntersectionObserver → reveal everything immediately.
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const plates = Array.from(document.querySelectorAll('.figure-svg'));
+      if (reduce || !('IntersectionObserver' in window)) {
+        plates.forEach((p) => p.classList.add('is-inked'));
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.add('is-inked');
+                io.unobserve(e.target);
+              }
+            }
+          },
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.12 }
+        );
+        plates.forEach((p) => io.observe(p));
+      }
+    </script>
   </body>
 </html>
