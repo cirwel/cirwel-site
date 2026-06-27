@@ -1,0 +1,55 @@
+---
+/*
+  Medallion — an engraved numeral roundel.
+
+  A small double-ruled disc carrying a Roman numeral in the page serif, with
+  registration ticks at 3 and 9 o'clock. Seats in a section's margin gutter
+  as the visual spine of the numbered sections — the chapter-numeral ornament
+  of an engraved book. Decorative; aria-hidden (the §NN label carries the
+  text meaning).
+*/
+interface Props {
+  /** Roman numeral to engrave, e.g. "I", "IV". */
+  roman: string;
+  class?: string;
+}
+const { roman, class: cls = '' } = Astro.props;
+const fid = 'med-' + Math.random().toString(36).slice(2, 8);
+// Numerals up to "VIII" need a touch less tracking to stay inside the ring.
+const tracking = roman.length >= 3 ? 0.5 : 1.5;
+---
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 64 64"
+  width="56"
+  height="56"
+  class={cls}
+  aria-hidden="true"
+  focusable="false"
+>
+  <defs>
+    <filter id={fid} x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="5" result="n" />
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="0.4" />
+    </filter>
+  </defs>
+
+  <g filter={`url(#${fid})`}>
+    <circle cx="32" cy="32" r="29" fill="none" stroke="#7A1F1F" stroke-width="1.3" />
+    <circle cx="32" cy="32" r="24.5" fill="none" stroke="#7A1F1F" stroke-width="0.5" />
+    <!-- registration ticks crossing the ring at 9 and 3 o'clock -->
+    <g stroke="#7A1F1F" stroke-width="0.8">
+      <line x1="1.5" y1="32" x2="7.5" y2="32" />
+      <line x1="56.5" y1="32" x2="62.5" y2="32" />
+    </g>
+    <!-- seated dots at 12 and 6 -->
+    <circle cx="32" cy="6.5" r="1.25" fill="#7A1F1F" />
+    <circle cx="32" cy="57.5" r="1.25" fill="#7A1F1F" />
+  </g>
+
+  <!-- Numeral kept crisp (outside the roughness) -->
+  <text x="32" y="40.5" text-anchor="middle"
+        font-family="'Fraunces Variable', Fraunces, Georgia, serif"
+        font-size="21" font-weight="600" letter-spacing={tracking} fill="#7A1F1F"
+        style="font-variation-settings:'opsz' 40">{roman}</text>
+</svg>

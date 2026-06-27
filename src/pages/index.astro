@@ -4,6 +4,10 @@ import PageHeader from '../components/PageHeader.astro';
 import PageFooter from '../components/PageFooter.astro';
 import SectionRule from '../components/SectionRule.astro';
 import Ornament from '../components/Ornament.astro';
+import Medallion from '../components/Medallion.astro';
+import Seal from '../components/Seal.astro';
+import Plate from '../components/Plate.astro';
+import Tailpiece from '../components/Tailpiece.astro';
 import frontispieceSvg from '../../public/sketches/frontispiece.svg?raw';
 import fig1Svg from '../../public/sketches/fig-1-measurement-gap.svg?raw';
 import fig2Svg from '../../public/sketches/fig-2-named-fleet.svg?raw';
@@ -118,32 +122,92 @@ import liveStats from '../data/live-stats.json';
     <section class="py-14 grid grid-cols-12 gap-6 reveal reveal-5">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
         <p class="label text-oxblood">— Production snapshot</p>
+        <Seal class="hidden lg:block mt-7" />
       </div>
       <div class="col-span-12 lg:col-span-9">
-        <dl class="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-8">
-          <div>
-            <dt class="label text-stone mb-2">Governance events</dt>
-            <dd class="display text-3xl md:text-4xl leading-none">{liveStats.events_total}</dd>
-          </div>
-          <div>
-            <dt class="label text-stone mb-2">Last 7 days</dt>
-            <dd class="display text-3xl md:text-4xl leading-none">{liveStats.events_7d}</dd>
-          </div>
-          <div>
-            <dt class="label text-stone mb-2">Active agents <span class="text-stone">(7d)</span></dt>
-            <dd class="display text-3xl md:text-4xl leading-none">{liveStats.active_agents_7d}</dd>
-          </div>
-          <div>
-            <dt class="label text-stone mb-2">KG discoveries</dt>
-            <dd class="display text-3xl md:text-4xl leading-none">{liveStats.kg_discoveries}</dd>
-          </div>
-        </dl>
-        <p class="text-sm text-stone mt-8 max-w-prose">
+        <Plate marker="Data plate">
+          <dl class="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-8">
+            <div>
+              <dt class="label text-stone mb-2">Governance events</dt>
+              <dd class="display text-3xl md:text-4xl leading-none">{liveStats.events_total}</dd>
+            </div>
+            <div>
+              <dt class="label text-stone mb-2">Last 7 days</dt>
+              <dd class="display text-3xl md:text-4xl leading-none">{liveStats.events_7d}</dd>
+            </div>
+            <div>
+              <dt class="label text-stone mb-2">Active agents <span class="text-stone">(7d)</span></dt>
+              <dd class="display text-3xl md:text-4xl leading-none">{liveStats.active_agents_7d}</dd>
+            </div>
+            <div>
+              <dt class="label text-stone mb-2">KG discoveries</dt>
+              <dd class="display text-3xl md:text-4xl leading-none">{liveStats.kg_discoveries}</dd>
+            </div>
+          </dl>
+        </Plate>
+        <p class="text-sm text-stone mt-6 max-w-prose">
           Self-traffic from a single-operator workstation, not external adoption — a
           stress test of the pipeline, not a market signal. Snapshot as of
           {liveStats.refreshed_at}, matched to the public README production snapshot.
         </p>
       </div>
+    </section>
+
+    <hr class="hairline"/>
+
+    <!-- LIST OF PLATES — a visual table of contents; navigate by picture -->
+    <section class="py-12 grid grid-cols-12 gap-6 reveal reveal-5">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">— List of plates</p>
+        <Ornament size="floret" class="hidden lg:block mt-7 opacity-70" />
+      </div>
+      <ol class="col-span-12 lg:col-span-9 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-5 gap-y-7">
+        <li>
+          <a href="#thesis" class="group block no-underline">
+            <span class="block aspect-[3/2] border border-sepia bg-cream p-1 transition-colors group-hover:border-oxblood">
+              <img src="/sketches/fig-1-measurement-gap.svg" alt="" loading="lazy" class="w-full h-full object-contain" />
+            </span>
+            <span class="mt-2 block label text-oxblood text-[0.6rem]">Pl. I</span>
+            <span class="block text-sm leading-snug text-stone group-hover:text-ink transition-colors">The measurement gap</span>
+          </a>
+        </li>
+        <li>
+          <a href="#pillars" class="group block no-underline">
+            <span class="block aspect-[3/2] border border-sepia bg-cream p-1 transition-colors group-hover:border-oxblood">
+              <img src="/sketches/fig-2-named-fleet.svg" alt="" loading="lazy" class="w-full h-full object-contain" />
+            </span>
+            <span class="mt-2 block label text-oxblood text-[0.6rem]">Pl. II</span>
+            <span class="block text-sm leading-snug text-stone group-hover:text-ink transition-colors">Heterogeneous agent classes</span>
+          </a>
+        </li>
+        <li>
+          <a href="#production" class="group block no-underline">
+            <span class="block aspect-[3/2] border border-sepia bg-cream p-1 transition-colors group-hover:border-oxblood">
+              <img src="/sketches/fig-3-verdict-loop.svg" alt="" loading="lazy" class="w-full h-full object-contain" />
+            </span>
+            <span class="mt-2 block label text-oxblood text-[0.6rem]">Pl. III</span>
+            <span class="block text-sm leading-snug text-stone group-hover:text-ink transition-colors">The verdict cycle</span>
+          </a>
+        </li>
+        <li>
+          <a href="/ecosystem#knowledge" class="group block no-underline">
+            <span class="block aspect-[3/2] border border-sepia bg-cream p-1 transition-colors group-hover:border-oxblood">
+              <img src="/sketches/fig-4-knowledge-graph.svg" alt="" loading="lazy" class="w-full h-full object-contain" />
+            </span>
+            <span class="mt-2 block label text-oxblood text-[0.6rem]">Pl. IV</span>
+            <span class="block text-sm leading-snug text-stone group-hover:text-ink transition-colors">The knowledge graph</span>
+          </a>
+        </li>
+        <li>
+          <a href="/ecosystem#identity" class="group block no-underline">
+            <span class="block aspect-[3/2] border border-sepia bg-cream p-1 transition-colors group-hover:border-oxblood">
+              <img src="/sketches/fig-5-identity-lineage.svg" alt="" loading="lazy" class="w-full h-full object-contain" />
+            </span>
+            <span class="mt-2 block label text-oxblood text-[0.6rem]">Pl. V</span>
+            <span class="block text-sm leading-snug text-stone group-hover:text-ink transition-colors">Identity &amp; lineage</span>
+          </a>
+        </li>
+      </ol>
     </section>
 
     <SectionRule class="mb-20" />
@@ -152,7 +216,7 @@ import liveStats from '../data/live-stats.json';
     <section id="thesis" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
         <p class="label text-oxblood">§01 — The thesis</p>
-        <Ornament size="floret" class="hidden lg:block mt-7 opacity-70" />
+        <Medallion roman="I" class="hidden lg:block mt-7" />
       </div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
@@ -241,7 +305,7 @@ import liveStats from '../data/live-stats.json';
     <section id="pillars" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
         <p class="label text-oxblood">§02 — Three pillars</p>
-        <Ornament size="floret" class="hidden lg:block mt-7 opacity-70" />
+        <Medallion roman="II" class="hidden lg:block mt-7" />
       </div>
       <div class="col-span-12 lg:col-span-9">
 
@@ -305,10 +369,10 @@ import liveStats from '../data/live-stats.json';
     <SectionRule />
 
     <!-- §03 IN PRODUCTION -->
-    <section class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+    <section id="production" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
         <p class="label text-oxblood">§03 — In production</p>
-        <Ornament size="floret" class="hidden lg:block mt-7 opacity-70" />
+        <Medallion roman="III" class="hidden lg:block mt-7" />
       </div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
@@ -357,7 +421,7 @@ import liveStats from '../data/live-stats.json';
     <section id="contact" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
         <p class="label text-oxblood">§04 — Engage</p>
-        <Ornament size="floret" class="hidden lg:block mt-7 opacity-70" />
+        <Medallion roman="IV" class="hidden lg:block mt-7" />
       </div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-10 leading-tight">
@@ -415,7 +479,9 @@ import liveStats from '../data/live-stats.json';
       </div>
     </section>
 
-    <SectionRule />
+    <div class="flex justify-center pt-10 pb-2">
+      <Tailpiece class="opacity-90" />
+    </div>
 
   </main>
 
