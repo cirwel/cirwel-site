@@ -4,6 +4,7 @@ import PageHeader from '../components/PageHeader.astro';
 import PageFooter from '../components/PageFooter.astro';
 import SectionRule from '../components/SectionRule.astro';
 import Ornament from '../components/Ornament.astro';
+import frontispieceSvg from '../../public/sketches/frontispiece.svg?raw';
 import fig1Svg from '../../public/sketches/fig-1-measurement-gap.svg?raw';
 import fig2Svg from '../../public/sketches/fig-2-named-fleet.svg?raw';
 import fig3Svg from '../../public/sketches/fig-3-verdict-loop.svg?raw';
@@ -41,7 +42,15 @@ import liveStats from '../data/live-stats.json';
           measured, identity is proven, memory is sourced, every action carries
           a recorded reason. Never reconstructed after the fact.
         </p>
-        <Ornament size="floret" class="mt-14 opacity-70 reveal reveal-3" />
+      </div>
+
+      <!-- Frontispiece vignette — the page opens with an image, after the
+           manner of a title page seating its device below the title. -->
+      <div class="col-span-12 flex justify-center mt-14 lg:mt-20 reveal reveal-4">
+        <figure class="w-full max-w-2xl figure-svg" role="img"
+                aria-label="Frontispiece — Runtime governance of a heterogeneous fleet. An engraved emblem: a central hex governance core, cross-hatched for depth, with the five agent classes (coding, research, resident, embodied, ephemeral parser) orbiting it on a dashed ring, each joined to the core by a spoke, over a banderole reading 'Nothing inferred'.">
+          <Fragment set:html={frontispieceSvg} />
+        </figure>
       </div>
     </section>
 
