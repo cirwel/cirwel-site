@@ -2,6 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import PageFooter from '../components/PageFooter.astro';
+import SectionRule from '../components/SectionRule.astro';
+import Ornament from '../components/Ornament.astro';
 import fig1Svg from '../../public/sketches/fig-1-measurement-gap.svg?raw';
 import fig2Svg from '../../public/sketches/fig-2-named-fleet.svg?raw';
 import fig3Svg from '../../public/sketches/fig-3-verdict-loop.svg?raw';
@@ -39,6 +41,7 @@ import liveStats from '../data/live-stats.json';
           measured, identity is proven, memory is sourced, every action carries
           a recorded reason. Never reconstructed after the fact.
         </p>
+        <Ornament size="floret" class="mt-14 opacity-70 reveal reveal-3" />
       </div>
     </section>
 
@@ -134,12 +137,13 @@ import liveStats from '../data/live-stats.json';
       </div>
     </section>
 
-    <hr class="hairline mb-20"/>
+    <SectionRule class="mb-20" />
 
     <!-- §01 THE THESIS -->
     <section id="thesis" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
         <p class="label text-oxblood">§01 — The thesis</p>
+        <Ornament size="floret" class="hidden lg:block mt-7 opacity-70" />
       </div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
@@ -187,19 +191,20 @@ import liveStats from '../data/live-stats.json';
       </div>
     </section>
 
-    <hr class="hairline"/>
+    <SectionRule />
 
     <!-- INTERLUDE: First measurement -->
     <section class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
         <p class="label text-oxblood">— A measurement on our own fleet</p>
+        <Ornament size="floret" class="hidden lg:block mt-7 opacity-70" />
       </div>
       <div class="col-span-12 lg:col-span-9 max-w-prose">
         <h2 class="display text-3xl md:text-5xl mb-8 leading-tight">
           On replay, per-class and fleet-wide baselines disagree on 29% of verdicts.
         </h2>
         <div class="space-y-6 text-lg leading-relaxed text-ink">
-          <p>
+          <p class="dropcap">
             On a 30-day slice of our own production data — 13,310 governance
             observations across the fleet — replaying each decision with
             per-class baselines instead of one fleet-wide baseline produces
@@ -221,12 +226,13 @@ import liveStats from '../data/live-stats.json';
       </div>
     </section>
 
-    <hr class="hairline"/>
+    <SectionRule />
 
     <!-- §02 THREE PILLARS -->
     <section id="pillars" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
         <p class="label text-oxblood">§02 — Three pillars</p>
+        <Ornament size="floret" class="hidden lg:block mt-7 opacity-70" />
       </div>
       <div class="col-span-12 lg:col-span-9">
 
@@ -287,19 +293,20 @@ import liveStats from '../data/live-stats.json';
       </div>
     </section>
 
-    <hr class="hairline"/>
+    <SectionRule />
 
     <!-- §03 IN PRODUCTION -->
     <section class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
         <p class="label text-oxblood">§03 — In production</p>
+        <Ornament size="floret" class="hidden lg:block mt-7 opacity-70" />
       </div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
           Governing its own development.
         </h2>
         <div class="space-y-6 text-lg leading-relaxed text-stone">
-          <p class="max-w-prose">
+          <p class="dropcap max-w-prose">
             The system you read about on this page also wrote, tested, and shipped a
             meaningful fraction of itself. CIRWEL's development fleet — a heterogeneous
             mix of long-running resident agents, short-lived coding sessions, an
@@ -335,12 +342,13 @@ import liveStats from '../data/live-stats.json';
       </div>
     </section>
 
-    <hr class="hairline"/>
+    <SectionRule />
 
     <!-- §04 ENGAGE -->
     <section id="contact" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
         <p class="label text-oxblood">§04 — Engage</p>
+        <Ornament size="floret" class="hidden lg:block mt-7 opacity-70" />
       </div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-10 leading-tight">
@@ -398,7 +406,7 @@ import liveStats from '../data/live-stats.json';
       </div>
     </section>
 
-    <hr class="hairline"/>
+    <SectionRule />
 
   </main>
 
