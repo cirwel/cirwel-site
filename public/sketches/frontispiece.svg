@@ -1,0 +1,161 @@
+<!--
+  FRONTISPIECE — Runtime governance of a heterogeneous fleet.
+
+  A title-page vignette in the same copperplate-engraving register as the
+  five figure plates and the publisher's mark. The composition is an emblem:
+
+    • a central hex device (the governance core), nested and cross-hatched
+      on its right faces for engraved depth, the way logo-engraved.svg is;
+    • the five agent classes from FIG. II as small specimen hexes orbiting
+      it on a dashed ring, each joined to the core by a hairline spoke —
+      the heterogeneous fleet under one calibration;
+    • a banderole carrying the site's one principle, NOTHING INFERRED.
+
+  Drawn so the landing page opens with an image, not a wall of type. The
+  line-art sits under a hand-cut roughness filter; the title and caption
+  stay crisp for legibility.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 540" width="1360" height="1080">
+  <defs>
+    <filter id="fpRough" x="-3%" y="-3%" width="106%" height="106%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="9" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="0.5"/>
+    </filter>
+
+    <!-- 45° hatch for the core's shadowed faces -->
+    <pattern id="fpHatch" patternUnits="userSpaceOnUse" width="3.2" height="3.2" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="3.2" stroke="#7A1F1F" stroke-width="0.42"/>
+    </pattern>
+
+    <!-- Flat-top specimen hex, R=21 (orbit devices) -->
+    <polygon id="fpSpec" points="-10.5,-18.2 10.5,-18.2 21,0 10.5,18.2 -10.5,18.2 -21,0"/>
+
+    <!-- Nested core hexes -->
+    <polygon id="fpCoreOuter" points="-27,-46.8 27,-46.8 54,0 27,46.8 -27,46.8 -54,0"/>
+    <polygon id="fpCoreInner" points="-22,-38.1 22,-38.1 44,0 22,38.1 -22,38.1 -44,0"/>
+    <polygon id="fpCoreSeat"  points="-6,-10.4 6,-10.4 12,0 6,10.4 -6,10.4 -12,0"/>
+  </defs>
+
+  <!-- Cream paper -->
+  <rect width="680" height="540" fill="#F5F1E8"/>
+
+  <!-- Plate frame -->
+  <rect x="20" y="20" width="640" height="500" fill="none" stroke="#7A1F1F" stroke-width="1.2"/>
+  <rect x="26" y="26" width="628" height="488" fill="none" stroke="#7A1F1F" stroke-width="0.4"/>
+
+  <!-- Corner fleurons -->
+  <g stroke="#7A1F1F" stroke-width="0.7" fill="#7A1F1F">
+    <line x1="20" y1="20" x2="36" y2="36" fill="none"/><circle cx="22" cy="22" r="1.6"/>
+    <line x1="660" y1="20" x2="644" y2="36" fill="none"/><circle cx="658" cy="22" r="1.6"/>
+    <line x1="20" y1="520" x2="36" y2="504" fill="none"/><circle cx="22" cy="518" r="1.6"/>
+    <line x1="660" y1="520" x2="644" y2="504" fill="none"/><circle cx="658" cy="518" r="1.6"/>
+  </g>
+
+  <!-- Top ornamental swag -->
+  <g stroke="#7A1F1F" stroke-width="0.7" fill="none">
+    <path d="M 312 30 Q 340 20, 368 30"/>
+    <circle cx="340" cy="27" r="1.8" fill="#7A1F1F"/>
+    <line x1="324" y1="30" x2="316" y2="20"/>
+    <line x1="356" y1="30" x2="364" y2="20"/>
+  </g>
+
+  <!-- Frontispiece label -->
+  <text x="340" y="58" text-anchor="middle"
+        font-family="'JetBrains Mono', ui-monospace, monospace"
+        font-size="10.5" letter-spacing="5" fill="#7A1F1F" font-weight="500">FRONTISPIECE</text>
+
+  <!-- ===================== EMBLEM (engraved line-art) ===================== -->
+  <g filter="url(#fpRough)">
+    <!-- Orbit ring -->
+    <circle cx="340" cy="258" r="140" fill="none" stroke="#7A1F1F" stroke-width="0.7"
+            stroke-dasharray="3 4" opacity="0.45"/>
+
+    <!-- Spokes: core vicinity → each specimen edge -->
+    <g stroke="#7A1F1F" stroke-width="0.7" opacity="0.55">
+      <line x1="340"   y1="198"   x2="340"   y2="138"/>
+      <line x1="397.0" y1="239.4" x2="454.1" y2="220.9"/>
+      <line x1="375.3" y1="306.6" x2="410.5" y2="355.1"/>
+      <line x1="304.7" y1="306.6" x2="269.5" y2="355.1"/>
+      <line x1="283.0" y1="239.4" x2="225.9" y2="220.9"/>
+    </g>
+
+    <!-- Five specimen devices on the ring -->
+    <!-- I · CODING — { } -->
+    <g transform="translate(340,118)">
+      <use href="#fpSpec" fill="#F5F1E8" stroke="#7A1F1F" stroke-width="1.3"/>
+      <text x="0" y="5" text-anchor="middle"
+            font-family="'JetBrains Mono', ui-monospace, monospace"
+            font-size="15" font-weight="500" fill="#7A1F1F">{ }</text>
+    </g>
+    <!-- II · RESEARCH — open page -->
+    <g transform="translate(476.1,214.7)">
+      <use href="#fpSpec" fill="#F5F1E8" stroke="#7A1F1F" stroke-width="1.3"/>
+      <g stroke="#7A1F1F" stroke-width="0.9" fill="none">
+        <rect x="-8" y="-7" width="16" height="14"/>
+        <line x1="-5" y1="-3" x2="5" y2="-3"/>
+        <line x1="-5" y1="0"  x2="5" y2="0"/>
+        <line x1="-5" y1="3"  x2="2" y2="3"/>
+      </g>
+    </g>
+    <!-- III · RESIDENT — clock -->
+    <g transform="translate(422.3,371.3)">
+      <use href="#fpSpec" fill="#F5F1E8" stroke="#7A1F1F" stroke-width="1.3"/>
+      <circle cx="0" cy="0" r="9" fill="none" stroke="#7A1F1F" stroke-width="0.9"/>
+      <line x1="0" y1="0" x2="0" y2="-6.5" stroke="#7A1F1F" stroke-width="1"/>
+      <line x1="0" y1="0" x2="4.5" y2="2"  stroke="#7A1F1F" stroke-width="1"/>
+      <circle cx="0" cy="0" r="1.1" fill="#7A1F1F"/>
+    </g>
+    <!-- IV · EMBODIED — antenna -->
+    <g transform="translate(257.7,371.3)">
+      <use href="#fpSpec" fill="#F5F1E8" stroke="#7A1F1F" stroke-width="1.3"/>
+      <g stroke="#7A1F1F" stroke-width="0.9" fill="none">
+        <line x1="0" y1="-8" x2="0" y2="4"/>
+        <circle cx="0" cy="-8" r="1.6" fill="#7A1F1F"/>
+        <path d="M -7 4 Q 0 10, 7 4"/>
+        <path d="M -10 2.5 Q 0 12.5, 10 2.5" opacity="0.6"/>
+      </g>
+    </g>
+    <!-- V · PARSER — ephemeral, dashed -->
+    <g transform="translate(203.9,214.7)">
+      <use href="#fpSpec" fill="#F5F1E8" stroke="#7A1F1F" stroke-width="1.3" stroke-dasharray="3.5 2"/>
+      <path d="M -7 -4 L 0 -4 L 0 0 L 7 0 L 7 4 L -7 4 Z"
+            fill="none" stroke="#7A1F1F" stroke-width="0.9"/>
+    </g>
+
+    <!-- Central core device -->
+    <use href="#fpCoreOuter" transform="translate(340,258)" fill="#F5F1E8" stroke="#7A1F1F" stroke-width="1.6"/>
+    <use href="#fpCoreInner" transform="translate(340,258)" fill="none" stroke="#7A1F1F" stroke-width="0.5"/>
+    <!-- Shadowed right faces, cross-hatched -->
+    <clipPath id="fpCoreClip"><use href="#fpCoreInner" transform="translate(340,258)"/></clipPath>
+    <g clip-path="url(#fpCoreClip)">
+      <rect x="340" y="212" width="48" height="92" fill="url(#fpHatch)" opacity="0.55"/>
+    </g>
+    <!-- Seated printer's device -->
+    <use href="#fpCoreSeat" transform="translate(340,258)" fill="#7A1F1F"/>
+    <circle cx="340" cy="258" r="3.4" fill="#F5F1E8"/>
+
+    <!-- Motto banderole, seated below the core -->
+    <g>
+      <path d="M 228 312 L 452 312 L 444 328 L 452 344 L 228 344 L 236 328 Z"
+            fill="#F5F1E8" stroke="#7A1F1F" stroke-width="0.8"/>
+      <line x1="236" y1="316" x2="444" y2="316" stroke="#7A1F1F" stroke-width="0.3" opacity="0.7"/>
+    </g>
+  </g>
+
+  <!-- Motto text (crisp, above the filtered art) -->
+  <text x="340" y="332" text-anchor="middle"
+        font-family="'JetBrains Mono', ui-monospace, monospace"
+        font-size="12" letter-spacing="4.5" fill="#7A1F1F" font-weight="500">NOTHING INFERRED</text>
+
+  <!-- Caption divider with centered fleuron dot -->
+  <line x1="150" y1="452" x2="324" y2="452" stroke="#C9C0AE" stroke-width="0.6"/>
+  <circle cx="340" cy="452" r="1.8" fill="#7A1F1F"/>
+  <line x1="356" y1="452" x2="530" y2="452" stroke="#C9C0AE" stroke-width="0.6"/>
+
+  <text x="340" y="476" text-anchor="middle"
+        font-family="'JetBrains Mono', ui-monospace, monospace"
+        font-size="11" letter-spacing="3" fill="#7A1F1F">RUNTIME GOVERNANCE OF A HETEROGENEOUS FLEET</text>
+  <text x="340" y="496" text-anchor="middle"
+        font-family="'Fraunces Variable', Georgia, serif"
+        font-size="12" font-style="italic" fill="#5C544A">State measured, identity proven, every action sourced.</text>
+</svg>
