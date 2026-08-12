@@ -12,12 +12,18 @@ const onHome = currentPath === '/';
 const thesisHref  = onHome ? '#thesis'  : '/#thesis';
 const contactHref = onHome ? '#contact' : '/#contact';
 const isEcosystem = currentPath === '/ecosystem';
+const isResearch  = currentPath === '/research';
 ---
-<!-- Masthead — journal-cover register -->
+<!--
+  Masthead — journal-cover register.
+  The eyebrow carries the single-operator disclosure on every page. It is not
+  a modesty line: the numbers on this site are only readable in light of it,
+  and burying it would make the rest less credible, not more.
+-->
 <div class="max-w-screen-xl mx-auto px-6 lg:px-12 pt-6 flex items-center justify-center gap-4">
   <hr class="hairline flex-1 max-w-[140px]" />
   <p class="label text-stone text-[0.62rem] tracking-[0.28em] whitespace-nowrap">
-    Independent Research &middot; Est. 2025
+    Independent &middot; Single-operator &middot; Est. 2025
   </p>
   <hr class="hairline flex-1 max-w-[140px]" />
 </div>
@@ -32,13 +38,20 @@ const isEcosystem = currentPath === '/ecosystem';
   <a href="/" class="no-underline shrink-0 flex items-center gap-2.5">
     <img src="/mark-c-illuminated.svg" alt=""
          class="block w-[30px] h-[30px] sm:w-[36px] sm:h-[36px]" />
-    <span class="display smcp text-lg sm:text-xl font-medium">CIRWEL Systems</span>
+    <span class="display smcp text-lg sm:text-xl font-medium">CIRWEL Research</span>
   </a>
   <nav aria-label="Primary"
        class="flex flex-wrap items-center justify-center sm:justify-end gap-x-5 gap-y-2 sm:gap-5 md:gap-7 label text-stone">
     <a href={thesisHref}
        class="no-underline hover:text-oxblood transition-colors">
       Thesis
+    </a>
+    <a href="/research"
+       class:list={[
+         "no-underline transition-colors",
+         isResearch ? "text-oxblood" : "hover:text-oxblood",
+       ]}>
+      Research
     </a>
     <a href="/ecosystem"
        class:list={[
