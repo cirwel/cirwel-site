@@ -107,12 +107,12 @@
 
     <!-- Italic body subtitle -->
     <text x="360" y="322"
-          font-family="'Fraunces Variable', Georgia, serif"
+          font-family="'EB Garamond Variable', Georgia, serif"
           font-size="14" font-style="italic" fill="#1A1612" text-anchor="middle">
       A name is a claim, not a credential.
     </text>
     <text x="360" y="342"
-          font-family="'Fraunces Variable', Georgia, serif"
+          font-family="'EB Garamond Variable', Georgia, serif"
           font-size="14" font-style="italic" fill="#5C544A" text-anchor="middle">
       Lineage is declared, never inherited; the label's source is always exposed.
     </text>
@@ -128,7 +128,7 @@
     FIG. V · IDENTITY &amp; LINEAGE
   </text>
   <text x="360" y="408"
-        font-family="'Fraunces Variable', Georgia, serif"
+        font-family="'EB Garamond Variable', Georgia, serif"
         font-size="11" font-style="italic" fill="#5C544A" text-anchor="middle">
     Who did what is provable, because identity is bound to the process that claims it.
   </text>

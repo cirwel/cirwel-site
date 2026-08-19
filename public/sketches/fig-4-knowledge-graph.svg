@@ -128,12 +128,12 @@
 
     <!-- Italic body subtitle -->
     <text x="360" y="328"
-          font-family="'Fraunces Variable', Georgia, serif"
+          font-family="'EB Garamond Variable', Georgia, serif"
           font-size="14" font-style="italic" fill="#1A1612" text-anchor="middle">
       Postgres + Apache AGE + pgvector, joined by reciprocal-rank fusion.
     </text>
     <text x="360" y="348"
-          font-family="'Fraunces Variable', Georgia, serif"
+          font-family="'EB Garamond Variable', Georgia, serif"
           font-size="14" font-style="italic" fill="#5C544A" text-anchor="middle">
       Every entry carries provenance and a status lifecycle.
     </text>
@@ -149,7 +149,7 @@
     FIG. IV · THE SHARED KNOWLEDGE GRAPH
   </text>
   <text x="360" y="408"
-        font-family="'Fraunces Variable', Georgia, serif"
+        font-family="'EB Garamond Variable', Georgia, serif"
         font-size="11" font-style="italic" fill="#5C544A" text-anchor="middle">
     One graph, written by the whole fleet; nothing it learns lives in one head.
   </text>
