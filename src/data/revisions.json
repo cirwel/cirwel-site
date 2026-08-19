@@ -1,0 +1,35 @@
+{
+  "_note": "Errata — corrections to what this site has said. Not a changelog: an entry earns its place only where a previous version was wrong, imprecise, or silent about something it should have stated. Backfilled from git history on 2026-08-19; every entry verified against its diff. Append by hand, newest first.",
+  "entries": [
+    {
+      "date": "2026-08-19",
+      "where": "Production snapshot",
+      "note": "Four figures stood without provenance, and the single-operator scope already carried in the source data was never rendered. Both corrected.",
+      "commit": "85c28b3"
+    },
+    {
+      "date": "2026-08-14",
+      "where": "Hero",
+      "note": "The copy announced a principle of one word and then gave a two-word phrase.",
+      "commit": "061f72f"
+    },
+    {
+      "date": "2026-08-13",
+      "where": "A measurement on our own fleet",
+      "note": "The negative outcome-prediction result was not stated at all. Added, with its pre-registered kill criterion.",
+      "commit": "99a0fdb"
+    },
+    {
+      "date": "2026-08-06",
+      "where": "Identity and lineage",
+      "note": "The chain of custody was described as real. It records origin, not truth; scoped to what is declared and attributable.",
+      "commit": "eef3844"
+    },
+    {
+      "date": "2026-07-02",
+      "where": "Production snapshot",
+      "note": "The caption said the figures were matched to the frozen public snapshot. They are live, on the same meter as it.",
+      "commit": "137cf2c"
+    }
+  ]
+}

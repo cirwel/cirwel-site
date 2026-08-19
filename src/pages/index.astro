@@ -8,6 +8,7 @@ import Medallion from '../components/Medallion.astro';
 import Seal from '../components/Seal.astro';
 import Plate from '../components/Plate.astro';
 import Tailpiece from '../components/Tailpiece.astro';
+import ShoulderNote from '../components/ShoulderNote.astro';
 import frontispieceSvg from '../../public/sketches/frontispiece.svg?raw';
 import fig1Svg from '../../public/sketches/fig-1-measurement-gap.svg?raw';
 import fig2Svg from '../../public/sketches/fig-2-named-fleet.svg?raw';
@@ -327,13 +328,17 @@ const fmtStat = (v: string) => (/^\d+$/.test(v) ? Number(v).toLocaleString('en-U
             usually flagged as drifting under per-class baselines.
             Per-class flip rates range 15&ndash;33%.
           </p>
+          <ShoulderNote>
+            &sect;11.6 of the
+            <a href="https://doi.org/10.5281/zenodo.19647159">paper</a>
+            <span class="font-mono text-xs">10.5281/zenodo.19647159</span>
+          </ShoulderNote>
+
           <p class="text-stone">
             This is measured on our own production data. The gap is large
             enough to show that averaging dissimilar agents into one
             distribution is not a benign default; class-conditional
             calibration is the response.
-            (§11.6 of the
-            <a href="https://doi.org/10.5281/zenodo.19647159">paper</a>.)
           </p>
           <p class="text-stone">
             The instrument is held to the same bar. Where a result is
@@ -536,7 +541,7 @@ const fmtStat = (v: string) => (/^\d+$/.test(v) ? Number(v).toLocaleString('en-U
 
   </main>
 
-  <PageFooter publishersMark />
+  <PageFooter publishersMark errata />
 </BaseLayout>
 
 <style is:global>

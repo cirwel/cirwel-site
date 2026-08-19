@@ -1,0 +1,48 @@
+---
+/*
+  Errata — the page's record of its own corrections.
+
+  A publication that revises silently is asking to be taken on faith, which is
+  the one thing this site argues against. So the colophon carries what changed
+  and when, in the same form a printed errata slip would: date, where, what was
+  wrong. Load-bearing ornament — it is apparatus, not decoration, and it fails
+  the house rule the moment it stops naming a real correction.
+
+  Entries live in src/data/revisions.json and are verified against their diffs
+  before being added. This is NOT a changelog: additions, refactors and stats
+  refreshes do not belong here.
+*/
+import revisions from '../data/revisions.json';
+
+interface Props {
+  /** How many of the most recent corrections to set. Default 5. */
+  limit?: number;
+}
+const { limit = 5 } = Astro.props;
+const shown  = revisions.entries.slice(0, limit);
+const hidden = revisions.entries.length - shown.length;
+---
+<section class="col-span-12 mt-10 pt-6 border-t border-sepia/40" aria-labelledby="errata-heading">
+  <p id="errata-heading" class="label text-oxblood mb-4">— Errata</p>
+
+  <ol class="errata">
+    {shown.map((r) => (
+      <li>
+        <span class="font-mono text-xs text-stone whitespace-nowrap">{r.date}</span>
+        <span class="errata-note">
+          <span class="smcp text-ink">{r.where}</span>
+          <span class="text-stone"> &mdash; {r.note}</span>
+          <a href={`https://github.com/cirwel/cirwel-site/commit/${r.commit}`}
+             class="font-mono text-xs text-stone whitespace-nowrap">{r.commit}</a>
+        </span>
+      </li>
+    ))}
+  </ol>
+
+  {hidden > 0 && (
+    <p class="text-stone text-sm mt-4">
+      {hidden} earlier {hidden === 1 ? 'correction' : 'corrections'} in the
+      <a href="https://github.com/cirwel/cirwel-site/commits/master"> repository history</a>.
+    </p>
+  )}
+</section>

@@ -39,6 +39,8 @@ html {
   font-feature-settings: 'kern', 'liga', 'onum', 'pnum';
   font-size: 17px;
   text-rendering: geometricPrecision;
+  /* clear the running head when an in-page anchor lands */
+  scroll-padding-top: 3.4rem;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -125,6 +127,106 @@ body::before {
 .legend dd {
   margin: 0;
   line-height: 1.55;
+}
+
+/* Shoulder note — a citation set in the gutter beside its passage rather than
+   as a parenthetical inside it. Below the gutter breakpoint there is no margin
+   to sit in, so it falls back to a ruled note under the passage. */
+.shoulder-note {
+  display: block;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: theme('colors.stone');
+  border-top: 1px solid theme('colors.sepia');
+  padding-top: 0.5rem;
+  margin-top: 1.5rem;
+}
+.shoulder-note .label {
+  display: block;
+  font-size: 0.6rem;
+  margin-bottom: 0.35rem;
+}
+@media (min-width: 1024px) {
+  .shoulder-note {
+    float: right;
+    clear: right;
+    width: 11.5rem;
+    margin: 0.4rem -13.5rem 1.2rem 2rem;
+    border-top: 1px solid theme('colors.sepia');
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   RUNNING HEAD
+   The folio line: volume on the left, current section on the right, a single
+   hairline under it. Sits above the paper grain, recedes to nothing when it has
+   no section to name. Hidden entirely without JS and under print, where page
+   position is carried by the paper itself.
+   --------------------------------------------------------------------------- */
+#running-head {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1100;
+  display: none;
+  align-items: baseline;
+  gap: 0.6em;
+  padding: 0.62rem 1.5rem 0.55rem;
+  background: rgba(245, 241, 232, 0.94);
+  backdrop-filter: saturate(120%) blur(2px);
+  border-bottom: 1px solid theme('colors.sepia');
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: theme('colors.stone');
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.js #running-head { display: flex; }
+#running-head.is-shown { opacity: 1; transform: translateY(0); }
+#running-head .rh-mark {
+  font-family: "Bodoni Moda Variable", "Bodoni Fallback", Didot, Georgia, serif;
+  font-variation-settings: 'opsz' 16;
+  font-weight: 700;
+  font-size: 0.86rem;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  color: theme('colors.ink');
+}
+#running-head .rh-sep { color: theme('colors.sepia'); }
+#running-head .rh-section { color: theme('colors.oxblood'); }
+@media (prefers-reduced-motion: reduce) {
+  #running-head { transition: opacity 0.28s ease; transform: none; }
+}
+@media print { #running-head { display: none !important; } }
+
+/* Errata list — date in its own column so the corrections align on one edge,
+   the way a printed errata slip sets them. */
+.errata {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.65rem 1.1rem;
+  font-size: 0.92rem;
+}
+.errata li {
+  display: contents;
+}
+.errata-note {
+  line-height: 1.55;
+}
+.errata-note a {
+  margin-left: 0.45em;
+  text-decoration-color: rgba(122, 31, 31, 0.25);
+}
+@media (max-width: 640px) {
+  .errata { grid-template-columns: 1fr; gap: 0.2rem 0; }
+  .errata li { display: block; margin-bottom: 0.9rem; }
 }
 
 /* Force oldstyle figures inside serif text contexts */
