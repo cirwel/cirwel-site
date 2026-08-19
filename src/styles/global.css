@@ -86,6 +86,47 @@ body::before {
   letter-spacing: 0.06em;
 }
 
+/* ---------------------------------------------------------------------------
+   REFERENCE MARKS
+   An engraved plate keys its parts to a legend beneath the rule. Here the same
+   apparatus carries provenance: a measured figure states which meter produced
+   it. Ornamental in form, load-bearing in function — the page's whole claim is
+   that nothing is inferred, and an unsourced number on this page would be.
+   The mark itself is aria-hidden; the figure carries aria-describedby so a
+   screen reader gets the note rather than a floating letter.
+   --------------------------------------------------------------------------- */
+.refmark {
+  font-family: "Bodoni Moda Variable", "Bodoni Fallback", Didot, Georgia, serif;
+  font-variation-settings: 'opsz' 16;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 0.4em;
+  line-height: 1;
+  vertical-align: 0.85em;
+  margin-left: 0.1em;
+  letter-spacing: 0;
+  color: #7A1F1F;
+}
+
+/* Legend row: the reference letter sits in its own narrow column so the notes
+   align on a single left edge, as a plate legend does. */
+.legend {
+  display: grid;
+  grid-template-columns: 1.15rem 1fr;
+  gap: 0.5rem 0.35rem;
+}
+.legend dt {
+  font-family: "Bodoni Moda Variable", "Bodoni Fallback", Didot, Georgia, serif;
+  font-variation-settings: 'opsz' 16;
+  font-style: italic;
+  color: #7A1F1F;
+  line-height: 1.55;
+}
+.legend dd {
+  margin: 0;
+  line-height: 1.55;
+}
+
 /* Force oldstyle figures inside serif text contexts */
 .fnums {
   font-variant-numeric: oldstyle-nums proportional-nums;
