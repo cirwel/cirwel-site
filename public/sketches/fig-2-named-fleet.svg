@@ -143,12 +143,12 @@
 
     <!-- Italic body subtitle -->
     <text x="360" y="325"
-          font-family="'Fraunces Variable', Georgia, serif"
+          font-family="'EB Garamond Variable', Georgia, serif"
           font-size="14" font-style="italic" fill="#1A1612" text-anchor="middle">
       Each class is calibrated against its own baseline.
     </text>
     <text x="360" y="345"
-          font-family="'Fraunces Variable', Georgia, serif"
+          font-family="'EB Garamond Variable', Georgia, serif"
           font-size="14" font-style="italic" fill="#5C544A" text-anchor="middle">
       Drift in I is not masked by noise from V.
     </text>
@@ -169,7 +169,7 @@
     FIG. II · HETEROGENEOUS AGENT CLASSES
   </text>
   <text x="360" y="408"
-        font-family="'Fraunces Variable', Georgia, serif"
+        font-family="'EB Garamond Variable', Georgia, serif"
         font-size="11" font-style="italic" fill="#5C544A" text-anchor="middle">
     A specimen plate. Five representative classes; the catalog is open.
   </text>

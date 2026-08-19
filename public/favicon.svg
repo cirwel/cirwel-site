@@ -3,8 +3,9 @@
 
   A single serif C in oxblood on cream-paper ground, with a hairline ring.
   Cohesive with /public/og.svg (same palette, same Georgia fallback for the
-  Fraunces feel — browsers cannot load web fonts in favicons, so the choice
-  must render consistently from system fonts).
+  page's old-style feel — browsers cannot load web fonts in favicons, so the
+  choice must render consistently from system fonts. Georgia is a closer stand-in
+  for EB Garamond than it ever was for Fraunces).
 -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
   <!-- Cream paper, slightly rounded -->

@@ -20,7 +20,7 @@
   </text>
   <line x1="830" y1="100" x2="1080" y2="100" stroke="#C9C0AE" stroke-width="1"/>
 
-  <!-- Wordmark — small-caps, Fraunces-feel via Georgia fallback -->
+  <!-- Wordmark — small-caps, old-style feel via Georgia fallback -->
   <text x="600" y="240" text-anchor="middle"
         font-size="92" font-weight="500" letter-spacing="6"
         fill="#1A1612" font-style="normal"

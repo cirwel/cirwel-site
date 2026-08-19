@@ -12,8 +12,11 @@ export default {
         sepia:   '#C9C0AE',
       },
       fontFamily: {
-        serif: ['"Fraunces Variable"', 'Fraunces Fallback', 'ui-serif', 'Georgia', 'serif'],
-        mono:  ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+        // Two roles, two faces. `serif` is the reading face applied to <body>;
+        // the didone is reached through the .display class, never as a default.
+        serif:   ['"EB Garamond Variable"', 'Garamond Fallback', 'ui-serif', 'Georgia', 'serif'],
+        display: ['"Bodoni Moda Variable"', 'Bodoni Fallback', 'Didot', 'Georgia', 'serif'],
+        mono:    ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       maxWidth: {
         prose: '40rem',

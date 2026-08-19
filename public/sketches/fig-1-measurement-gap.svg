@@ -51,7 +51,7 @@
     <text x="540" y="72">POST-INCIDENT</text>
   </g>
   <!-- Sub-labels: nature of the data in each region -->
-  <g font-family="'Fraunces Variable', Georgia, serif"
+  <g font-family="'EB Garamond Variable', Georgia, serif"
      font-size="10" font-style="italic" fill="#7A1F1F" text-anchor="middle">
     <text x="160" y="86">benchmarks</text>
     <text x="350" y="86" opacity="0.6">(unknown)</text>
@@ -178,12 +178,12 @@
 
   <!-- Marginalia (kept outside filter, sharp) -->
   <text x="615" y="118"
-        font-family="'Fraunces Variable', Georgia, serif"
+        font-family="'EB Garamond Variable', Georgia, serif"
         font-size="9" font-style="italic" fill="#5C544A" text-anchor="end">
     (drawn after the fact)
   </text>
   <text x="80" y="105"
-        font-family="'Fraunces Variable', Georgia, serif"
+        font-family="'EB Garamond Variable', Georgia, serif"
         font-size="9" font-style="italic" fill="#5C544A">
     (drawn before deployment)
   </text>
@@ -202,22 +202,20 @@
   <!-- The key gloss, centered above the trajectory in the middle region.
        Outside the engraving filter so the typography stays crisp. -->
   <text x="350" y="145" text-anchor="middle"
-        font-family="'Fraunces Variable', Georgia, serif"
-        font-size="20" font-style="italic" fill="#7A1F1F" font-weight="500"
-        font-variation-settings="'opsz' 144, 'WONK' 1">
+        font-family="'Bodoni Moda Variable', Didot, Georgia, serif"
+        font-size="20" font-style="italic" fill="#7A1F1F" font-weight="500" font-variation-settings="'opsz' 96">
     the measurement gap
   </text>
   <text x="350" y="163" text-anchor="middle"
-        font-family="'Fraunces Variable', Georgia, serif"
+        font-family="'EB Garamond Variable', Georgia, serif"
         font-size="11" font-style="italic" fill="#5C544A">
     where the agent actually runs
   </text>
 
   <!-- Question marks scattered through the middle region around the trajectory
        (low opacity, varying sizes). Some above the trajectory, some below. -->
-  <g font-family="'Fraunces Variable', Georgia, serif"
-     font-style="italic" fill="#7A1F1F" font-weight="500"
-     font-variation-settings="'opsz' 144, 'WONK' 1">
+  <g font-family="'EB Garamond Variable', Georgia, serif"
+     font-style="italic" fill="#7A1F1F" font-weight="500">
     <text x="278" y="180" font-size="13" opacity="0.40">?</text>
     <text x="320" y="220" font-size="11" opacity="0.32">?</text>
     <text x="370" y="178" font-size="14" opacity="0.42">?</text>
@@ -241,7 +239,7 @@
     FIG. I · THE MEASUREMENT GAP
   </text>
   <text x="360" y="408"
-        font-family="'Fraunces Variable', Georgia, serif"
+        font-family="'EB Garamond Variable', Georgia, serif"
         font-size="11" font-style="italic" fill="#5C544A" text-anchor="middle">
     What lies between the model that was tested and the failure that is forensically reconstructed.
   </text>

@@ -28,7 +28,7 @@ const fmtStat = (v: string) => (/^\d+$/.test(v) ? Number(v).toLocaleString('en-U
     <section class="pt-16 pb-20 lg:pt-28 lg:pb-28 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-9">
         <p class="label text-oxblood mb-8 reveal reveal-1">— A research preface, with running code</p>
-        <h1 class="display text-5xl md:text-7xl lg:text-8xl mb-10 reveal reveal-2">
+        <h1 class="display text-5xl md:text-7xl lg:text-8xl !leading-[1.14] mb-10 reveal reveal-2">
           Runtime governance<br/>
           for heterogeneous<br/>
           AI-agent <span class="italic">fleets.</span>
@@ -131,19 +131,19 @@ const fmtStat = (v: string) => (/^\d+$/.test(v) ? Number(v).toLocaleString('en-U
           <dl class="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-8">
             <div>
               <dt class="label text-stone mb-2">Governance events</dt>
-              <dd class="display text-3xl md:text-4xl leading-none">{fmtStat(liveStats.events_total)}</dd>
+              <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.events_total)}</dd>
             </div>
             <div>
               <dt class="label text-stone mb-2">Last 7 days</dt>
-              <dd class="display text-3xl md:text-4xl leading-none">{fmtStat(liveStats.events_7d)}</dd>
+              <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.events_7d)}</dd>
             </div>
             <div>
               <dt class="label text-stone mb-2">Agents seen <span class="text-stone">(7d)</span></dt>
-              <dd class="display text-3xl md:text-4xl leading-none">{fmtStat(liveStats.active_agents_7d)}</dd>
+              <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.active_agents_7d)}</dd>
             </div>
             <div>
               <dt class="label text-stone mb-2">KG discoveries</dt>
-              <dd class="display text-3xl md:text-4xl leading-none">{fmtStat(liveStats.kg_discoveries)}</dd>
+              <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.kg_discoveries)}</dd>
             </div>
           </dl>
         </Plate>

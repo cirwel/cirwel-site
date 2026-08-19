@@ -1,5 +1,7 @@
-@import '@fontsource-variable/fraunces/full.css';
-@import '@fontsource-variable/fraunces/full-italic.css';
+@import '@fontsource-variable/bodoni-moda/opsz.css';
+@import '@fontsource-variable/bodoni-moda/opsz-italic.css';
+@import '@fontsource-variable/eb-garamond/index.css';
+@import '@fontsource-variable/eb-garamond/wght-italic.css';
 @import '@fontsource/jetbrains-mono/400.css';
 @import '@fontsource/jetbrains-mono/500.css';
 
@@ -11,13 +13,25 @@
   --grain-opacity: 0.04;
 }
 
-/* Prevent CLS from font-loading by adjusting fallback font metrics */
+/* Prevent CLS from font-loading by adjusting fallback font metrics.
+   size-adjust matches the fallback's x-height to the webfont's; the ascent and
+   descent overrides are the webfont's own hhea metrics divided by that same
+   factor. Both faces are measured, not estimated — EB Garamond x-height
+   0.4000em, Bodoni Moda 0.4600em, Georgia 0.4814em. */
 @font-face {
-  font-family: 'Fraunces Fallback';
+  font-family: 'Garamond Fallback';
   src: local('Georgia'), local('Times New Roman');
-  size-adjust: 100%;
-  ascent-override: 90%;
-  descent-override: 22%;
+  size-adjust: 83.09%;
+  ascent-override: 121.19%;
+  descent-override: 35.87%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Bodoni Fallback';
+  src: local('Didot'), local('Georgia'), local('Times New Roman');
+  size-adjust: 95.55%;
+  ascent-override: 117.74%;
+  descent-override: 41.86%;
   line-gap-override: 0%;
 }
 
@@ -41,9 +55,20 @@ body::before {
 }
 
 .display {
-  font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
-  letter-spacing: -0.035em;
-  line-height: 0.96;
+  font-family: "Bodoni Moda Variable", "Bodoni Fallback", Didot, Georgia, serif;
+  font-variation-settings: 'opsz' 96;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.14;
+}
+
+/* The wordmark lockup is display-role but set at ~18px, where an optical size
+   of 96 leaves Bodoni's hairlines too fine to hold. Drop to the small optical
+   master, which thickens the thins, and add weight to match. */
+.display.smcp {
+  font-variation-settings: 'opsz' 16;
+  font-weight: 700;
+  letter-spacing: 0.08em;
 }
 
 .label {
@@ -61,7 +86,7 @@ body::before {
   letter-spacing: 0.06em;
 }
 
-/* Force oldstyle figures inside Fraunces text contexts */
+/* Force oldstyle figures inside serif text contexts */
 .fnums {
   font-variant-numeric: oldstyle-nums proportional-nums;
 }
@@ -69,8 +94,8 @@ body::before {
 /* Editorial drop cap — applied to first paragraph of §01 */
 .dropcap::first-letter {
   float: left;
-  font-family: "Fraunces Variable", "Fraunces Fallback", Fraunces, serif;
-  font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+  font-family: "Bodoni Moda Variable", "Bodoni Fallback", Didot, Georgia, serif;
+  font-variation-settings: 'opsz' 96;
   font-size: 5.4em;
   line-height: 0.86;
   font-weight: 600;
@@ -208,7 +233,7 @@ a:focus-visible {
   .hairline             { background: #888; }
 
   /* Display hierarchy — tighten for paper */
-  .display              { font-variation-settings: 'opsz' 96, 'SOFT' 100, 'WONK' 0; }
+  .display              { font-variation-settings: 'opsz' 40; }
   h1.display            { font-size: 28pt; line-height: 1.05; }
   h2.display            { font-size: 18pt; line-height: 1.15; }
   h3.display            { font-size: 13pt; line-height: 1.2; }
