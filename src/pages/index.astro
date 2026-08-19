@@ -131,26 +131,64 @@ const fmtStat = (v: string) => (/^\d+$/.test(v) ? Number(v).toLocaleString('en-U
           <dl class="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-8">
             <div>
               <dt class="label text-stone mb-2">Governance events</dt>
-              <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.events_total)}</dd>
+              <dd class="display text-3xl md:text-4xl !leading-[1.14]" aria-describedby="fig-a">
+                {fmtStat(liveStats.events_total)}<span class="refmark" aria-hidden="true">a</span>
+              </dd>
             </div>
             <div>
               <dt class="label text-stone mb-2">Last 7 days</dt>
-              <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.events_7d)}</dd>
+              <dd class="display text-3xl md:text-4xl !leading-[1.14]" aria-describedby="fig-b">
+                {fmtStat(liveStats.events_7d)}<span class="refmark" aria-hidden="true">b</span>
+              </dd>
             </div>
             <div>
               <dt class="label text-stone mb-2">Agents seen <span class="text-stone">(7d)</span></dt>
-              <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.active_agents_7d)}</dd>
+              <dd class="display text-3xl md:text-4xl !leading-[1.14]" aria-describedby="fig-c">
+                {fmtStat(liveStats.active_agents_7d)}<span class="refmark" aria-hidden="true">c</span>
+              </dd>
             </div>
             <div>
               <dt class="label text-stone mb-2">KG discoveries</dt>
-              <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.kg_discoveries)}</dd>
+              <dd class="display text-3xl md:text-4xl !leading-[1.14]" aria-describedby="fig-d">
+                {fmtStat(liveStats.kg_discoveries)}<span class="refmark" aria-hidden="true">d</span>
+              </dd>
             </div>
+          </dl>
+
+          <!-- Plate legend — each figure keyed to the meter that produced it.
+               The letters are the plate's own apparatus, not decoration: a page
+               whose thesis is "nothing inferred" cannot ask to be believed on
+               four unsourced numbers. -->
+          <hr class="hairline mt-9 mb-5" />
+          <dl class="legend text-sm text-stone max-w-prose">
+            <dt>a</dt>
+            <dd id="fig-a">
+              <span class="font-mono text-xs">audit.events</span>, cumulative since
+              November&nbsp;2025. Rounded down to a whole million, never a decimal &mdash;
+              the figure understates by design. Same meter the public repository reports.
+            </dd>
+            <dt>b</dt>
+            <dd id="fig-b">
+              <span class="font-mono text-xs">audit.events</span>, rolling seven days
+              to the date below.
+            </dd>
+            <dt>c</dt>
+            <dd id="fig-c">
+              <span class="font-mono text-xs">core.agent_state</span>, distinct identities,
+              rolling seven days. A narrower meter than <em>a</em> and <em>b</em>: check-ins,
+              not every governance event.
+            </dd>
+            <dt>d</dt>
+            <dd id="fig-d">
+              <span class="font-mono text-xs">kg.entries.count</span>, current value from
+              the governance server.
+            </dd>
           </dl>
         </Plate>
         <p class="text-sm text-stone mt-6 max-w-prose">
-          Live figures from our production fleet, in continuous operation since
-          November 2025. Refreshed {liveStats.refreshed_at}; same meter as the
-          public repository's frozen production snapshot.
+          Measured {liveStats.refreshed_at}, refreshed daily against the production
+          fleet, in continuous operation since November 2025. Single-operator
+          self-traffic &mdash; our own fleet, not external adoption.
         </p>
       </div>
     </section>
