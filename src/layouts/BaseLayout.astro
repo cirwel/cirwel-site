@@ -43,7 +43,71 @@ const ogImageUrl = new URL(ogImage, site).toString();
     <title>{title}</title>
   </head>
   <body class="font-serif text-ink bg-cream">
+    <!-- Running head — the folio line of a printed volume. Load-bearing: on a
+         page this long the reader otherwise has no indication of position. The
+         text is derived from each section's own §NN label rather than declared
+         twice, so it cannot drift from the page. JS-only and aria-hidden: it
+         duplicates headings that are already in the document. -->
+    <div id="running-head" aria-hidden="true">
+      <span class="rh-mark smcp">CIRWEL Systems</span>
+      <span class="rh-sep">&middot;</span>
+      <span class="rh-section"></span>
+    </div>
+
     <slot />
+    <script>
+      // Running head. Each numbered section carries its own "§NN — Name" label;
+      // read it from the DOM rather than restating it, so the folio line can
+      // never disagree with the section it names. Reveals once the masthead has
+      // scrolled away, hides again at the foot so it never sits over the colophon.
+      (() => {
+        const head = document.getElementById('running-head');
+        const label = head && head.querySelector('.rh-section');
+        if (!head || !label) return;
+
+        const sections = Array.from(document.querySelectorAll('section')).filter((el) => {
+          const l = el.querySelector('.label');
+          return l && l.textContent.trim().startsWith('\u00A7');
+        });
+        if (!sections.length) return;
+
+        const masthead = document.querySelector('header');
+        const footer = document.querySelector('footer');
+        let current = '';
+
+        const set = (text: string) => {
+          if (text === current) return;
+          current = text;
+          label.textContent = text;
+        };
+
+        const update = () => {
+          const pastMasthead = !masthead || masthead.getBoundingClientRect().bottom < 0;
+          const atFoot = footer && footer.getBoundingClientRect().top < window.innerHeight * 0.6;
+
+          // The active section is the last one whose top has passed the folio line.
+          let active = null;
+          for (const el of sections) {
+            if (el.getBoundingClientRect().top <= 80) active = el;
+          }
+          const activeLabel = active && active.querySelector('.label');
+          if (activeLabel) set((activeLabel.textContent || '').trim());
+
+          head.classList.toggle('is-shown', Boolean(pastMasthead && activeLabel && !atFoot));
+        };
+
+        let ticking = false;
+        const onScroll = () => {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(() => { update(); ticking = false; });
+        };
+        addEventListener('scroll', onScroll, { passive: true });
+        addEventListener('resize', onScroll);
+        update();
+      })();
+    </script>
+
     <script>
       // Ink each figure plate in as it enters the viewport. Reduced-motion or
       // no IntersectionObserver → reveal everything immediately.

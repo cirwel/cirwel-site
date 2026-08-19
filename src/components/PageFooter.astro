@@ -1,4 +1,6 @@
 ---
+import Errata from './Errata.astro';
+
 interface Props {
   /**
    * Render the publisher's mark (engraved hex device + flanking hairlines)
@@ -6,8 +8,13 @@ interface Props {
    * homepage colophon — not on interior pages. Default: false.
    */
   publishersMark?: boolean;
+  /**
+   * Render the errata block above the colophon. Content pages only — a 404
+   * has nothing to have been wrong about.
+   */
+  errata?: boolean;
 }
-const { publishersMark = false } = Astro.props;
+const { publishersMark = false, errata = false } = Astro.props;
 
 // PageFooter — single source of truth for the colophon + records block.
 // Build-time provenance is computed here so the three pages that mount
@@ -32,6 +39,8 @@ const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UT
     <p class="label mb-3 text-ink">© 2026</p>
     <p>All rights reserved unless noted.<br/>Plugin and paper carry their own licenses.</p>
   </div>
+
+  {errata && <Errata />}
 
   {publishersMark && (
     <div class="col-span-12 mt-12 flex items-center justify-center gap-5">
