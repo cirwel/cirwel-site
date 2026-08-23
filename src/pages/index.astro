@@ -513,8 +513,9 @@ const fmtStat = (v: string) => (/^\d+$/.test(v) ? Number(v).toLocaleString('en-U
             <span class="col-span-12 md:col-span-2 label text-stone pt-1">Build on</span>
             <div class="col-span-12 md:col-span-10 space-y-2">
               <p>
-                The open artifacts: a <span class="font-medium">32,181-trajectory
-                EISV dataset</span>, distilled teacher and student models, and a
+                The open artifacts: an EISV dataset of <span class="font-medium">32,181 labeled
+                windows</span> (20,655 overlapping real windows from one 39-day Raspberry Pi run
+                plus 11,526 synthetic), distilled teacher and student models, and a
                 verdict-counterfactual reproducibility kit at
                 <a href="https://huggingface.co/hikewa" class="font-mono text-base">huggingface.co/hikewa</a>.
                 The calibration, drift, and provenance primitives are Apache-2 —
