@@ -9,7 +9,7 @@
     • the five agent classes from FIG. II as small specimen hexes orbiting
       it on a dashed ring, each joined to the core by a hairline spoke —
       the heterogeneous fleet under one calibration;
-    • a banderole carrying the site's one principle, NOTHING INFERRED.
+    • a banderole carrying the site's one principle, NOTHING SILENTLY ASSUMED.
 
   Drawn so the landing page opens with an image, not a wall of type. The
   line-art sits under a hand-cut roughness filter; the title and caption
@@ -136,16 +136,16 @@
 
     <!-- Motto banderole, seated below the core -->
     <g>
-      <path d="M 228 312 L 452 312 L 444 328 L 452 344 L 228 344 L 236 328 Z"
+      <path d="M 202 312 L 478 312 L 470 328 L 478 344 L 202 344 L 210 328 Z"
             fill="#F5F1E8" stroke="#7A1F1F" stroke-width="0.8"/>
-      <line x1="236" y1="316" x2="444" y2="316" stroke="#7A1F1F" stroke-width="0.3" opacity="0.7"/>
+      <line x1="210" y1="316" x2="470" y2="316" stroke="#7A1F1F" stroke-width="0.3" opacity="0.7"/>
     </g>
   </g>
 
   <!-- Motto text (crisp, above the filtered art) -->
   <text x="340" y="332" text-anchor="middle"
         font-family="'JetBrains Mono', ui-monospace, monospace"
-        font-size="12" letter-spacing="4.5" fill="#7A1F1F" font-weight="500">NOTHING INFERRED</text>
+        font-size="10" letter-spacing="3" fill="#7A1F1F" font-weight="500">NOTHING SILENTLY ASSUMED</text>
 
   <!-- Caption divider with centered fleuron dot -->
   <line x1="150" y1="452" x2="324" y2="452" stroke="#C9C0AE" stroke-width="0.6"/>
@@ -157,5 +157,5 @@
         font-size="11" letter-spacing="3" fill="#7A1F1F">RUNTIME GOVERNANCE OF A HETEROGENEOUS FLEET</text>
   <text x="340" y="496" text-anchor="middle"
         font-family="'EB Garamond Variable', Georgia, serif"
-        font-size="12" font-style="italic" fill="#5C544A">State measured, identity proven, every action sourced.</text>
+        font-size="12" font-style="italic" fill="#5C544A">State estimated, identity bound, every verdict sourced.</text>
 </svg>
