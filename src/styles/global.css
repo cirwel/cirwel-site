@@ -93,7 +93,7 @@ body::before {
    An engraved plate keys its parts to a legend beneath the rule. Here the same
    apparatus carries provenance: a measured figure states which meter produced
    it. Ornamental in form, load-bearing in function — the page's whole claim is
-   that nothing is inferred, and an unsourced number on this page would be.
+   that assumptions stay visible, and an unsourced number would violate it.
    The mark itself is aria-hidden; the figure carries aria-describedby so a
    screen reader gets the note rather than a floating letter.
    --------------------------------------------------------------------------- */
@@ -302,14 +302,14 @@ a:focus-visible {
 @media (prefers-reduced-motion: no-preference) {
   .reveal {
     opacity: 0;
-    transform: translateY(10px);
-    animation: fade-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+    transform: translateY(8px);
+    animation: fade-up 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
   }
-  .reveal-1 { animation-delay: 0.05s; }
-  .reveal-2 { animation-delay: 0.18s; }
-  .reveal-3 { animation-delay: 0.34s; }
-  .reveal-4 { animation-delay: 0.52s; }
-  .reveal-5 { animation-delay: 0.70s; }
+  .reveal-1 { animation-delay: 0.03s; }
+  .reveal-2 { animation-delay: 0.08s; }
+  .reveal-3 { animation-delay: 0.14s; }
+  .reveal-4 { animation-delay: 0.22s; }
+  .reveal-5 { animation-delay: 0.30s; }
 }
 @keyframes fade-up {
   to { opacity: 1; transform: translateY(0); }
@@ -421,4 +421,3 @@ a:focus-visible {
   /* Page footer: print the build SHA + URL on every page */
   footer .label         { font-size: 8pt; }
 }
-

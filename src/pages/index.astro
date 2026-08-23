@@ -19,7 +19,7 @@ const fmtStat = (v: string) => (/^\d+$/.test(v) ? Number(v).toLocaleString('en-U
 ---
 <BaseLayout
   title="CIRWEL Systems — Runtime governance for heterogeneous AI-agent fleets"
-  description="Continuous self-state telemetry, a shared fleet knowledge graph, class-conditional calibration, and verifiable identity & provenance for AI agents you didn't build yourself. Reference implementation of UNITARES (Wang 2026, DOI 10.5281/zenodo.19647159)."
+  description="Runtime state estimates from process-attributed check-ins, class-conditional calibration, shared memory, and process-bound identity for heterogeneous AI-agent fleets. Reference implementation of UNITARES (Wang 2026, DOI 10.5281/zenodo.19647159)."
 >
   <PageHeader currentPath="/" />
 
@@ -35,27 +35,33 @@ const fmtStat = (v: string) => (/^\d+$/.test(v) ? Number(v).toLocaleString('en-U
           AI-agent <span class="italic">fleets.</span>
         </h1>
         <p class="text-lg md:text-xl leading-relaxed text-stone max-w-prose reveal reveal-3">
-          Researchers study agents at two moments — before deployment, and
-          after an incident. In between, <em>while agents are actually
-          running</em>, the behavior that matters most happens where you can't
-          see it: the slow drift, the approach to failure. Traces are abundant,
-          but nothing reads an agent's own <em>state</em> while it acts.
-          UNITARES makes that window measurable — a continuous, class-calibrated
-          reading of each agent's state, with signed provenance behind every
-          intervention.
+          Most agent evaluation concentrates on two moments — before deployment
+          and after an incident. UNITARES covers the missing middle: it estimates
+          a running agent's operational state from recorded check-ins,
+          calibrates that estimate by workload class, and returns an auditable
+          proceed-or-pause decision while the work is still underway.
         </p>
         <p class="text-base md:text-lg leading-relaxed text-ink max-w-prose reveal reveal-3 mt-6">
-          One principle — <em>nothing inferred</em>. State is
-          measured, identity is proven, memory is sourced, every action carries
-          a recorded reason. Never reconstructed after the fact.
+          One principle — <em>nothing silently assumed</em>. State estimates come
+          from observed signals, identity is process-bound, memory is sourced,
+          and every verdict records its reason.
         </p>
+        <nav aria-label="Ways into UNITARES"
+             class="mt-10 pt-5 border-t border-sepia flex flex-wrap gap-x-8 gap-y-3 reveal reveal-4">
+          <a href="https://doi.org/10.5281/zenodo.19647159"
+             class="label text-oxblood no-underline hover:underline">→ Read the paper</a>
+          <a href="/ecosystem"
+             class="label text-oxblood no-underline hover:underline">→ Inspect the architecture</a>
+          <a href="https://github.com/cirwel/unitares"
+             class="label text-oxblood no-underline hover:underline">→ Run the server</a>
+        </nav>
       </div>
 
       <!-- Frontispiece vignette — the page opens with an image, after the
            manner of a title page seating its device below the title. -->
       <div class="col-span-12 flex justify-center mt-14 lg:mt-20 reveal reveal-4">
         <figure class="w-full max-w-2xl figure-svg" role="img"
-                aria-label="Frontispiece — Runtime governance of a heterogeneous fleet. An engraved emblem: a central hex governance core, cross-hatched for depth, with the five agent classes (coding, research, resident, embodied, ephemeral parser) orbiting it on a dashed ring, each joined to the core by a spoke, over a banderole reading 'Nothing inferred'.">
+                aria-label="Frontispiece — Runtime governance of a heterogeneous fleet. An engraved emblem: a central hex governance core, cross-hatched for depth, with the five agent classes (coding, research, resident, embodied, ephemeral parser) orbiting it on a dashed ring, each joined to the core by a spoke, over a banderole reading 'Nothing silently assumed'.">
           <Fragment set:html={frontispieceSvg} />
         </figure>
       </div>
@@ -158,8 +164,8 @@ const fmtStat = (v: string) => (/^\d+$/.test(v) ? Number(v).toLocaleString('en-U
 
           <!-- Plate legend — each figure keyed to the meter that produced it.
                The letters are the plate's own apparatus, not decoration: a page
-               whose thesis is "nothing inferred" cannot ask to be believed on
-               four unsourced numbers. -->
+               committed to sourcing every claim cannot ask to be believed on
+               four unattributed numbers. -->
           <hr class="hairline mt-9 mb-5" />
           <dl class="legend text-sm text-stone max-w-prose">
             <dt>a</dt>
@@ -265,13 +271,10 @@ const fmtStat = (v: string) => (/^\d+$/.test(v) ? Number(v).toLocaleString('en-U
         </h2>
         <div class="space-y-6 text-lg leading-relaxed text-ink">
           <p class="dropcap max-w-prose">
-            Operating a heterogeneous agent fleet in continuous production surfaces
-            a class of failure that pre-deployment evaluation and post-incident
-            forensics don't catch: the slow, silent drift of agent state across
-            hours and days of normal running. The traces show <em>what</em> the
-            agent did, abundantly. They don't show <em>what state it was in while
-            doing it</em> — because nothing on the agent or alongside it is
-            producing that reading.
+            Pre-deployment evaluation and post-incident forensics miss a slower
+            failure: agent state drifting across hours or days of ordinary work.
+            Traces are abundant, but they describe behavior rather than the
+            operational state in which it occurred.
           </p>
           <p class="text-xl md:text-2xl italic text-ink leading-snug py-2 max-w-prose">
             Logs are what an agent did.<br/>Self-state is what it was while doing it.
@@ -284,22 +287,20 @@ const fmtStat = (v: string) => (/^\d+$/.test(v) ? Number(v).toLocaleString('en-U
           </figure>
 
           <p class="max-w-prose">
-            CIRWEL's response is a runtime layer that gives each agent a continuous
-            reading of its own state — a four-dimensional vector summarizing
-            capacity, signal integrity, uncertainty, and the imbalance among them,
-            updated from every check-in. The reading is calibrated against agents
-            of the same <em>class</em> (a coding session, a research conversation, a
-            resident cron, an embedded service, an ephemeral parser), because a
-            long-running coding assistant does not behave like an ephemeral parser,
-            and neither behaves like an embedded service. Drift is then detected
-            against the right reference, not an averaged one.
+            UNITARES produces a runtime estimate: a four-dimensional vector of
+            capacity, signal integrity, uncertainty, and their imbalance, updated
+            from each check-in. It calibrates the estimate against the agent's
+            workload <em>class</em> — coding session, research conversation,
+            resident cron, embedded service, or ephemeral parser — so drift is
+            compared with the right reference rather than a fleet-wide average.
           </p>
 
           <p class="max-w-prose">
-            The framework is described in
-            <a href="https://doi.org/10.5281/zenodo.19647159">a paper</a>
-            and has been governing CIRWEL's own development fleet continuously
-            since November 2025.
+            The <a href="https://doi.org/10.5281/zenodo.19647159">paper</a>
+            defines the framework; the
+            <a href="https://github.com/cirwel/unitares">server</a> and
+            <a href="https://github.com/cirwel/unitares-governance-plugin">client plugin</a>
+            run it against CIRWEL's own development fleet.
           </p>
         </div>
       </div>
@@ -378,9 +379,8 @@ const fmtStat = (v: string) => (/^\d+$/.test(v) ? Number(v).toLocaleString('en-U
           <p class="text-stone leading-relaxed mb-4">
             A coding agent and a research agent are not held to the same statistics.
             UNITARES learns separate baselines per agent class from production
-            telemetry, so drift in one class is not masked by noise from another —
-            caught while it is happening, early enough to intervene, late enough to
-            be evidence-based.
+            telemetry, so class-specific drift remains visible instead of being
+            masked by another class's noise.
           </p>
           <a href="/ecosystem#layers" class="label text-oxblood inline-block hover:underline">
             → § how the layers fit together
@@ -393,9 +393,9 @@ const fmtStat = (v: string) => (/^\d+$/.test(v) ? Number(v).toLocaleString('en-U
           <p class="text-stone leading-relaxed mb-4">
             One provenance-tracked graph the whole fleet reads and writes —
             discoveries, decisions, and dialectic resolutions, queryable by the
-            operator and by the agent mid-task. Nothing the fleet learns lives in
-            one head; nothing it acts on is unsourced. Postgres with the Apache AGE
-            graph extension and pgvector retrieval, fused by reciprocal-rank ranking.
+            operator and by the agent mid-task. Each entry keeps its source and
+            status; a reciprocal-rank ranker fuses graph and semantic retrieval
+            over Postgres, Apache AGE, and pgvector.
           </p>
           <a href="/ecosystem#knowledge" class="label text-oxblood inline-block hover:underline">
             → § the shared substrate
@@ -404,14 +404,13 @@ const fmtStat = (v: string) => (/^\d+$/.test(v) ? Number(v).toLocaleString('en-U
 
         <article>
           <p class="label text-stone mb-4">iii</p>
-          <h3 class="display text-2xl mb-4 leading-tight">Verifiable identity &amp; provenance</h3>
+          <h3 class="display text-2xl mb-4 leading-tight">Process-bound identity &amp; provenance</h3>
           <p class="text-stone leading-relaxed mb-4">
             Identity is process-bound, not a claimable label: fresh agents mint fresh
             identity, lineage is declared rather than inherited, and every intervention
-            carries a signed chain back to the observation that triggered it. Which
-            process acted is provable; what it claims about itself is recorded with
-            its source, not taken on faith — replayable by a regulator, an
-            underwriter, or the next-shift human.
+            records a provenance chain back to the observation that triggered it.
+            Process attribution and label provenance are auditable; an agent's claims
+            about itself are recorded as sourced claims, not trusted facts.
           </p>
           <a href="/ecosystem#identity" class="label text-oxblood inline-block hover:underline">
             → § identity &amp; lineage
@@ -449,8 +448,8 @@ const fmtStat = (v: string) => (/^\d+$/.test(v) ? Number(v).toLocaleString('en-U
             (<span class="font-mono text-base">approve</span> or
             <span class="font-mono text-base">guide</span> under proceed;
             <span class="font-mono text-base">reject</span> and other reasons under
-            pause), together with a signed lineage back to the observation that
-            triggered it.
+            pause), together with recorded provenance back to the observation that
+            triggered the decision.
           </p>
 
           <figure class="my-10 max-w-3xl figure-svg"

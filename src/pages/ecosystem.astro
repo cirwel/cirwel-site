@@ -11,7 +11,7 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
 ---
 <BaseLayout
   title="Ecosystem — UNITARES · CIRWEL Systems"
-  description="The architecture of UNITARES: provable identity and lineage, a shared provenance-tracked knowledge graph, runtime verdicts, and the heterogeneous workloads it governs. The runtime layer for AI-agent fleets, in detail."
+  description="The architecture of UNITARES: process-bound identity and declared lineage, a shared provenance-tracked knowledge graph, runtime verdicts, and the heterogeneous workloads it governs. The runtime layer for AI-agent fleets, in detail."
 >
   <PageHeader currentPath="/ecosystem" />
 
@@ -26,9 +26,9 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
           State. <span class="italic">Verdict.</span>
         </h1>
         <p class="text-lg md:text-xl leading-relaxed text-stone max-w-prose reveal reveal-3">
-          Four answers, one substrate: who an agent is, what the fleet knows,
-          what state each agent is in, and why every action was allowed. The
-          home page states the thesis; this page is the architecture.
+          Four answers, one substrate: which process acted, what the fleet knows,
+          how each agent's state was estimated, and why each verdict was issued.
+          The home page states the thesis; this page shows the architecture.
         </p>
         <Ornament size="floret" class="mt-14 opacity-70 reveal reveal-3" />
       </div>
@@ -104,9 +104,9 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
           Paper, server, plugin, fleet.
         </h2>
         <p class="text-xl leading-snug text-ink max-w-prose mb-8 font-medium">
-          The paper states the claim. The server proves it runs. The plugin
-          makes it <em>felt</em> from inside the agent loop, and the fleet
-          proves it survives heterogeneity.
+          The paper states the claim. The server shows it running. The plugin
+          makes it <em>felt</em> from inside the agent loop, and the fleet shows
+          it operating across heterogeneous workloads.
         </p>
         <div class="space-y-5 text-lg leading-relaxed text-stone max-w-prose">
           <p class="dropcap">
@@ -121,8 +121,9 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
             The plugin drops into Claude Code or Codex and hooks the agent into
             the server, so each turn issues a real check-in and receives a real
             verdict. The four sections below are the substrate that makes that
-            possible: who acted (§02), what the fleet knows (§03), why an action
-            was allowed (§04), and the heterogeneous workloads it all governs (§05).
+            possible: who acted (§02), what the fleet knows (§03), why each verdict
+            was issued (§04), and the heterogeneous workloads it all
+            governs (§05).
           </p>
         </div>
       </div>
@@ -138,7 +139,7 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
       </div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">
-          Who did what is provable, not claimed.
+          Process attribution is recorded, not reconstructed.
         </h2>
         <p class="text-xl leading-snug text-ink max-w-prose mb-8 font-medium">
           A new process mints fresh governance-identity by default. Names are
@@ -146,19 +147,18 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
         </p>
         <div class="space-y-5 text-lg leading-relaxed text-stone max-w-prose">
           <p class="dropcap">
-            There is no "look up by label," no auto-recovery into a previous slot,
-            no silent substitution of one agent for another. When continuity
+            There is no label-based lookup, automatic recovery into a previous
+            slot, or silent substitution of one agent for another. When continuity
             matters — a child of a prior session, a spawned worker — lineage is
             <em>declared</em> via a parent reference, not inherited by claim. The
-            identity API exposes the source of every label, so an auditor can see
-            whether a name was operator-assigned, self-claimed, or system-generated.
+            identity API records the source of every label, so an auditor can see
+            whether it was operator-assigned, self-claimed, or system-generated.
           </p>
           <p>
-            The cost is friction at session start. The benefit is that the chain
-            of custody behind every verdict is recorded at its source: the agent
-            that produced an outcome is the agent the system thinks it was, and
-            the lineage behind it is declared and attributable — not
-            reconstructed after the fact.
+            That adds friction at session start. In return, verdicts carry a
+            recorded chain of custody: the process identity that produced an
+            outcome is bound to the live session, and its lineage is declared and
+            attributable rather than reconstructed after the fact.
           </p>
         </div>
         <figure class="mt-12 max-w-3xl figure-svg" role="img"
@@ -319,7 +319,7 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
             <dd class="text-stone leading-relaxed">
               <p class="label text-stone mb-2">Always-on · <span class="font-mono">sentinel</span></p>
               Watches the fleet and surfaces anomalies, keeping the trajectory
-              measured rather than inferred.
+              observable while it unfolds.
             </dd>
           </div>
 
