@@ -2,6 +2,12 @@
   "_note": "Errata — corrections to what this site has said. Not a changelog: an entry earns its place only where a previous version was wrong, imprecise, or silent about something it should have stated. Backfilled from git history on 2026-08-19; every entry verified against its diff. Append by hand, newest first.",
   "entries": [
     {
+      "date": "2026-08-26",
+      "where": "Governed workloads",
+      "note": "Six workloads were listed with nothing said about the roster being deployment configuration, and the published client package was named nowhere on the site. Both stated.",
+      "commit": "ba65cb1"
+    },
+    {
       "date": "2026-08-19",
       "where": "Production snapshot",
       "note": "Four figures stood without provenance, and the single-operator scope already carried in the source data was never rendered. Both corrected.",
