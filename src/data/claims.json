@@ -1,6 +1,5 @@
 {
   "_note": "Claims register — every load-bearing figure this site publishes, the source that carries it, and the exact string that must be present in that source. Checked daily by scripts/check-claims.py against the LIVE site and the LIVE sources, so it verifies what is published rather than what is in the tree. Not a changelog and not a style guide: an entry earns its place only if the site states something a reader could check. Written 2026-08-26 after a figure sat live for 14 days beside a citation that never contained it.",
-
   "sources": {
     "contract": {
       "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/ontology/eisv-proprioception-contract.md",
@@ -11,14 +10,17 @@
       "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/proposals/eisv-outcome-grounding-stop-rule-v0.md",
       "human": "https://github.com/cirwel/unitares/blob/master/docs/proposals/eisv-outcome-grounding-stop-rule-v0.md",
       "role": "Defines the single pre-registered outcome read and its kill criterion."
+    },
+    "agents-readme": {
+      "url": "https://raw.githubusercontent.com/cirwel/unitares/master/agents/README.md",
+      "human": "https://github.com/cirwel/unitares/blob/master/agents/README.md",
+      "role": "States which parts of agents/ are the public contract and which are examples."
     }
   },
-
   "pages": {
     "home": "https://cirwel.org/",
     "ecosystem": "https://cirwel.org/ecosystem/"
   },
-
   "claims": [
     {
       "id": "leg-c-persistence",
@@ -58,11 +60,35 @@
       "page": "home",
       "site_says": "pre-registered for December 2026",
       "source": "stop-rule",
-      "must_contain": ["2026-12-01", "kill criterion"],
+      "must_contain": [
+        "2026-12-01",
+        "kill criterion"
+      ],
       "why": "Both the date and the existence of a written kill criterion are load-bearing; 'pre-registered' without one is just a plan."
+    },
+    {
+      "id": "workloads-not-the-contract",
+      "page": "ecosystem",
+      "site_says": "built on it and are explicitly not part of it",
+      "source": "agents-readme",
+      "must_contain": [
+        "not** part of the public contract",
+        "examples of how to build a resident agent, not as load-bearing governance internals"
+      ],
+      "why": "The whole four-tier claim rests on the reference workloads being examples rather than contract. If that line ever softens, the page is describing a boundary the repo no longer draws."
+    },
+    {
+      "id": "workload-entry-point",
+      "page": "ecosystem",
+      "site_says": "with no change to the server's repository at all",
+      "source": "agents-readme",
+      "must_contain": [
+        "unitares.resident_progress_sources",
+        "no change to this repo is required"
+      ],
+      "why": "This is the strongest plug-and-play claim on the site and the only one that says an adopter never has to touch our repo. It is quoted from agents/README.md and must not outlive it."
     }
   ],
-
   "retired_phrasings": [
     {
       "text": "at predicting negative task outcomes",
@@ -71,15 +97,19 @@
       "why": "Attributed individuality-v2 leg C to outcome prediction. Lived on the page for 14 days because a correction written on 2026-08-12 stayed on an unmerged branch while _canonical/FACTS.md kept the wrong version, so a later session read FACTS.md and re-asserted it. This entry exists to make that specific re-assertion loud."
     }
   ],
-
   "not_mechanically_checked": [
     {
-      "claims": ["28.9% band change", "per-class flip rates 15–33%"],
+      "claims": [
+        "28.9% band change",
+        "per-class flip rates 15–33%"
+      ],
       "anchor": "Paper §11.6, DOI 10.5281/zenodo.19647159",
       "why": "Anchored to a frozen, citable publication rather than a moving document. Deliberately NOT re-derived: it is a snapshot with a citation, not a current measurement. Listed here so the gap in coverage is stated rather than inferred."
     },
     {
-      "claims": ["production counters on the data plate"],
+      "claims": [
+        "production counters on the data plate"
+      ],
       "anchor": "src/data/live-stats.json",
       "why": "Already covered by the daily refresh from governance state, which is the same meter the public unitares README uses."
     }
