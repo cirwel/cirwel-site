@@ -120,7 +120,8 @@ import Tailpiece from '../components/Tailpiece.astro';
             <dd class="text-stone leading-relaxed">
               Does prior state anticipate a bad outcome better than simply knowing
               the previous outcome? This is the load-bearing one, and it is the
-              one with a negative result.
+              one that is still open: it had an answer that read negative, and
+              that answer has since been withdrawn.
             </dd>
           </div>
           <div>
@@ -169,43 +170,18 @@ import Tailpiece from '../components/Tailpiece.astro';
           </div>
 
           <div>
-            <p class="label text-oxblood mb-3">Negative result · prior state does not anticipate bad outcomes</p>
+            <p class="label text-oxblood mb-3">Negative result · the per-agent reference does not beat persistence</p>
             <p class="text-lg leading-relaxed mb-4">
-              Where outcome prediction was measurable at all, prior state lost to
-              a baseline that only knows what happened to that agent last time.
-              <strong>No lift survives the null.</strong>
-            </p>
-            <p class="text-stone leading-relaxed mb-4">
-              The measurement was powered to see a moderate effect: at 101 independent
-              bad clusters, the minimum detectable lift in ranking quality is around
-              0.05, and nothing that size is there. I state that as sensitivity evidence
-              and not as a verdict, because a ranking statistic is the wrong instrument
-              to hang a verdict on. It is threshold-free, so it averages over operating
-              points no one would deploy; it is insensitive at this class imbalance; and
-              it is silent on calibration, which is the property a verdict boundary at a
-              fixed threshold actually depends on.
-            </p>
-            <p class="text-stone leading-relaxed">
-              A pre-registered confirmatory read on this question is scheduled, with a
-              kill criterion written before the data is seen. Between now and then the
-              question is closed to ad-hoc re-runs, because repeatedly asking it surfaces
-              a selected maximum that the null model already accounts for.
-            </p>
-          </div>
-
-          <div>
-            <p class="label text-oxblood mb-3">Second negative result · the per-agent reference does not beat persistence</p>
-            <p class="text-lg leading-relaxed mb-4">
-              A separate pre-registered test asked whether the per-agent reference
-              earns its description as a reference at all.
+              A pre-registered test asked whether the per-agent reference earns its
+              description as a reference at all.
               <strong>Zero of seven streams beat last-value persistence</strong>
               (win rates 0.32&ndash;0.48); one of seven did at the interim read.
             </p>
             <p class="text-stone leading-relaxed">
-              Two caveats travel with that number because the specification says they
+              Three caveats travel with that number because the specification says they
               must. It scores a cold-started reconstruction of the reference rather than
-              the deployed one, and the pooled cross-dimension binomial is
-              anti-conservative. The honest reading is that the reference is not
+              the deployed one; three of the seven nominal agents are the same Raspberry
+              Pi; and the pooled cross-dimension binomial is anti-conservative. The honest reading is that the reference is not
               currently earning its description, not that a correctly warmed one could
               not. This is a different question from the one above, measured on a
               different test, and I keep them apart on purpose: borrowing a clean
@@ -252,6 +228,32 @@ import Tailpiece from '../components/Tailpiece.astro';
         <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
           Untested as deployed. Not refuted.
         </h2>
+        <p class="label text-oxblood mb-3">Withdrawn · prior state and bad outcomes</p>
+        <p class="text-lg leading-relaxed max-w-prose mb-6">
+          The prediction question is open for a harder reason than thin data. It
+          had an answer that read negative, and that answer has been withdrawn:
+          the ablation behind it drew on a contaminated cohort, and its
+          permutation blocks were not independent adjudicated failures, so what
+          it produced is provenance rather than evidence. Unresolved is not the
+          same as negative. I am no more willing to bank a convenient loss than a
+          convenient win.
+        </p>
+        <p class="text-stone leading-relaxed max-w-prose mb-6">
+          What survives is the sensitivity, not the direction. At 101 independent
+          bad clusters the minimum detectable lift in ranking quality is around
+          0.05, so the measurement was powered to see a moderate effect. I state
+          that as sensitivity evidence and not as a verdict, because a ranking
+          statistic is the wrong instrument to hang a verdict on: it is
+          threshold-free, so it averages over operating points no one would
+          deploy; it is insensitive at this class imbalance; and it is silent on
+          calibration, which is the property a verdict boundary at a fixed
+          threshold actually depends on. One pre-registered confirmatory read is
+          scheduled for December 2026, with a kill criterion written before the
+          data is seen. Between now and then the question is closed to ad-hoc
+          re-runs, because repeatedly asking it surfaces a selected maximum the
+          null model already accounts for.
+        </p>
+        <p class="label text-oxblood mb-3">Under-powered · self-predictability</p>
         <p class="text-lg leading-relaxed text-stone max-w-prose mb-6">
           Agents are distinguishable and their state is non-stationary, but the
           pre-registered self-predictability test did not clear its own bar against
