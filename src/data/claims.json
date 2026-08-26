@@ -1,0 +1,87 @@
+{
+  "_note": "Claims register — every load-bearing figure this site publishes, the source that carries it, and the exact string that must be present in that source. Checked daily by scripts/check-claims.py against the LIVE site and the LIVE sources, so it verifies what is published rather than what is in the tree. Not a changelog and not a style guide: an entry earns its place only if the site states something a reader could check. Written 2026-08-26 after a figure sat live for 14 days beside a citation that never contained it.",
+
+  "sources": {
+    "contract": {
+      "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/ontology/eisv-proprioception-contract.md",
+      "human": "https://github.com/cirwel/unitares/blob/master/docs/ontology/eisv-proprioception-contract.md",
+      "role": "Authority for what may be claimed about EISV and in what words."
+    },
+    "stop-rule": {
+      "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/proposals/eisv-outcome-grounding-stop-rule-v0.md",
+      "human": "https://github.com/cirwel/unitares/blob/master/docs/proposals/eisv-outcome-grounding-stop-rule-v0.md",
+      "role": "Defines the single pre-registered outcome read and its kill criterion."
+    }
+  },
+
+  "pages": {
+    "home": "https://cirwel.org/",
+    "ecosystem": "https://cirwel.org/ecosystem/"
+  },
+
+  "claims": [
+    {
+      "id": "leg-c-persistence",
+      "page": "home",
+      "site_says": "beat a last-value persistence baseline on none of seven streams",
+      "source": "contract",
+      "must_contain": [
+        "The per-agent reference does useful work",
+        "0/7 streams beat persistence",
+        "win rates 0.32–0.48"
+      ],
+      "why": "The claim NAME is asserted next to the figure, not just the document. Pinning the document alone is exactly what let this figure be borrowed from claim 3 and published as claim 4."
+    },
+    {
+      "id": "leg-c-verdict-scope",
+      "page": "home",
+      "site_says": "benchmark failure for the reconstruction",
+      "source": "contract",
+      "must_contain": [
+        "BENCHMARK FAIL for the cold-start reconstruction; UNIDENTIFIED for the warmed deployed EMA"
+      ],
+      "why": "The page must not upgrade a reconstruction's benchmark failure into a verdict on the reference that actually runs."
+    },
+    {
+      "id": "outcome-unresolved",
+      "page": "home",
+      "site_says": "unresolved rather than negative",
+      "source": "contract",
+      "must_contain": [
+        "WITHDRAWN FOR TARGET INFERENCE",
+        "the question is unresolved, not negative"
+      ],
+      "why": "If the contract ever re-opens or re-closes this, the page is stating the wrong status the same day."
+    },
+    {
+      "id": "december-read",
+      "page": "home",
+      "site_says": "pre-registered for December 2026",
+      "source": "stop-rule",
+      "must_contain": ["2026-12-01", "kill criterion"],
+      "why": "Both the date and the existence of a written kill criterion are load-bearing; 'pre-registered' without one is just a plan."
+    }
+  ],
+
+  "retired_phrasings": [
+    {
+      "text": "at predicting negative task outcomes",
+      "retired": "2026-08-26",
+      "commit": "3ed9cde",
+      "why": "Attributed individuality-v2 leg C to outcome prediction. Lived on the page for 14 days because a correction written on 2026-08-12 stayed on an unmerged branch while _canonical/FACTS.md kept the wrong version, so a later session read FACTS.md and re-asserted it. This entry exists to make that specific re-assertion loud."
+    }
+  ],
+
+  "not_mechanically_checked": [
+    {
+      "claims": ["28.9% band change", "per-class flip rates 15–33%"],
+      "anchor": "Paper §11.6, DOI 10.5281/zenodo.19647159",
+      "why": "Anchored to a frozen, citable publication rather than a moving document. Deliberately NOT re-derived: it is a snapshot with a citation, not a current measurement. Listed here so the gap in coverage is stated rather than inferred."
+    },
+    {
+      "claims": ["production counters on the data plate"],
+      "anchor": "src/data/live-stats.json",
+      "why": "Already covered by the daily refresh from governance state, which is the same meter the public unitares README uses."
+    }
+  ]
+}
