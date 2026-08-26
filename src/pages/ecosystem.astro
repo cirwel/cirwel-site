@@ -128,6 +128,85 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
             governs (§05).
           </p>
         </div>
+
+        <!--
+          The product stack, set out rather than illustrated.
+
+          Added 2026-08-26. Everything below §01 described what the system
+          does; nothing said what it is SHAPED like, so the six workloads in
+          §05 read as the architecture by default. They are one tier of four,
+          and the other three are what an adopter actually gets. Typographic
+          on purpose: a stack is structure, and apparatus states structure
+          better than a picture of it.
+        -->
+        <h3 class="display text-2xl md:text-3xl mt-16 mb-4 leading-tight max-w-prose">
+          Four tiers, and only one of them is ours.
+        </h3>
+        <p class="text-lg leading-relaxed text-stone max-w-prose mb-8">
+          UNITARES is not the six processes in §05. It is a governed core, a
+          published contract, an optional userland, and whatever you decide to
+          run on top of them. Only the last tier is populated by this
+          deployment, and a fresh install starts it empty.
+        </p>
+
+        <ol class="max-w-prose mb-8">
+          <li class="grid grid-cols-12 gap-x-6 gap-y-1 py-5 border-t border-sepia/40">
+            <div class="col-span-12 md:col-span-3 mb-2 md:mb-0">
+              <p class="label text-oxblood">Core</p>
+              <p class="font-mono text-xs text-stone mt-1">CIRWEL/unitares</p>
+            </div>
+            <p class="col-span-12 md:col-span-9 text-stone leading-relaxed">
+              Governance, audit, the knowledge graph and dialectic: the part
+              that records, scores, interrupts and remembers. It is the whole
+              of what has to be trusted.
+            </p>
+          </li>
+          <li class="grid grid-cols-12 gap-x-6 gap-y-1 py-5 border-t border-sepia/40">
+            <div class="col-span-12 md:col-span-3 mb-2 md:mb-0">
+              <p class="label text-oxblood">Contract</p>
+              <p class="font-mono text-xs text-stone mt-1">unitares-sdk</p>
+            </div>
+            <p class="col-span-12 md:col-span-9 text-stone leading-relaxed">
+              Identity, check-ins, policy responses, memory. The published
+              package an agent is written against, and the only tier it has to
+              depend on. The workloads in §05 are built on it and are
+              explicitly not part of it.
+            </p>
+          </li>
+          <li class="grid grid-cols-12 gap-x-6 gap-y-1 py-5 border-t border-sepia/40">
+            <div class="col-span-12 md:col-span-3 mb-2 md:mb-0">
+              <p class="label text-oxblood">Userland</p>
+              <p class="font-mono text-xs text-stone mt-1">CIRWEL/unitares-resident</p>
+            </div>
+            <p class="col-span-12 md:col-span-9 text-stone leading-relaxed">
+              The conversation loop, provider adapters, tools, scheduling and
+              queues. Optional by construction: an agent that already has a
+              loop of its own speaks to the contract directly and skips this
+              tier entirely.
+            </p>
+          </li>
+          <li class="grid grid-cols-12 gap-x-6 gap-y-1 py-5 border-t border-b border-sepia/40">
+            <div class="col-span-12 md:col-span-3 mb-2 md:mb-0">
+              <p class="label text-oxblood">Workloads</p>
+              <p class="font-mono text-xs text-stone mt-1">yours</p>
+            </div>
+            <p class="col-span-12 md:col-span-9 text-stone leading-relaxed">
+              Whatever you run. The roster is deployment configuration; the
+              documented route is to depend on the <span class="smcp">SDK</span>
+              and follow the cycle pattern the reference agents use. A workload
+              can register its own progress source through an entry point,
+              with no change to the server's repository at all.
+            </p>
+          </li>
+        </ol>
+
+        <p class="text-stone leading-relaxed max-w-prose">
+          Two of the workloads listed in §05 belong to none of those tiers.
+          Lumen is a physically situated device this operator owns, and its
+          edge synchronizer exists to reconcile that device. They appear on
+          this page as evidence of heterogeneity, not as parts of anything you
+          would install.
+        </p>
       </div>
     </section>
 
@@ -303,10 +382,11 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
           calibration is tested against.
         </p>
         <p class="text-lg leading-relaxed text-stone max-w-prose mb-10">
-          Six is this deployment's roster, not the architecture. The roster is
-          deployment configuration and a fresh install starts with none, so
-          these names serve as a calibration partition and a display order
-          rather than as a fixture of the system. The contract keeps behavior
+          Six is this deployment's roster, not the architecture. These are the
+          bottom tier of the four set out in §01, and the only tier this
+          deployment populates: the roster is configuration and a fresh install
+          starts with none, so these names serve as a calibration partition and
+          a display order rather than as a fixture of the system. The contract keeps behavior
           keyed to what a process declares it is, not to what it is called. The
           <span class="font-mono">monospace</span> tags below are the running
           process identifiers.

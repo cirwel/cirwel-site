@@ -10,6 +10,11 @@
       "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/proposals/eisv-outcome-grounding-stop-rule-v0.md",
       "human": "https://github.com/cirwel/unitares/blob/master/docs/proposals/eisv-outcome-grounding-stop-rule-v0.md",
       "role": "Defines the single pre-registered outcome read and its kill criterion."
+    },
+    "agents-readme": {
+      "url": "https://raw.githubusercontent.com/cirwel/unitares/master/agents/README.md",
+      "human": "https://github.com/cirwel/unitares/blob/master/agents/README.md",
+      "role": "States which parts of agents/ are the public contract and which are examples."
     }
   },
   "pages": {
@@ -96,6 +101,28 @@
         "0.05 AUC"
       ],
       "why": "The bound survives the cohort withdrawal because it is a power calculation, not a result. It is quoted as sensitivity evidence for an open question and must never drift back into standing for a verdict."
+    },
+    {
+      "id": "workloads-not-the-contract",
+      "page": "ecosystem",
+      "site_says": "built on it and are explicitly not part of it",
+      "source": "agents-readme",
+      "must_contain": [
+        "not** part of the public contract",
+        "examples of how to build a resident agent, not as load-bearing governance internals"
+      ],
+      "why": "The whole four-tier claim rests on the reference workloads being examples rather than contract. If that line ever softens, the page is describing a boundary the repo no longer draws."
+    },
+    {
+      "id": "workload-entry-point",
+      "page": "ecosystem",
+      "site_says": "with no change to the server's repository at all",
+      "source": "agents-readme",
+      "must_contain": [
+        "unitares.resident_progress_sources",
+        "no change to this repo is required"
+      ],
+      "why": "This is the strongest plug-and-play claim on the site and the only one that says an adopter never has to touch our repo. It is quoted from agents/README.md and must not outlive it."
     }
   ],
   "retired_phrasings": [
