@@ -511,7 +511,20 @@ const fmtStat = (v: string) => (/^\d+$/.test(v) ? Number(v).toLocaleString('en-U
           </li>
           <li class="grid grid-cols-12 gap-4 items-start">
             <span class="col-span-12 md:col-span-2 label text-stone pt-1">Build on</span>
-            <div class="col-span-12 md:col-span-10 space-y-2">
+            <div class="col-span-12 md:col-span-10 space-y-4">
+              <p>
+                <span class="font-medium">The agent contract</span> is a published
+                package, versioned separately from the server: the check-in loop,
+                EISV state, identity anchors and lease client an agent needs in
+                order to be governed. The workloads listed on the ecosystem page
+                are reference implementations of it, and the roster they belong to
+                is deployment configuration that a fresh install leaves empty.
+              </p>
+              <div class="runcmd">
+                <span class="prompt">$</span>
+                <span class="cmd">pip install unitares-sdk</span>
+                <span class="note">→ import unitares_sdk</span>
+              </div>
               <p>
                 The open artifacts: an EISV dataset of <span class="font-medium">32,181 labeled
                 windows</span> (20,655 overlapping real windows from one 39-day Raspberry Pi run

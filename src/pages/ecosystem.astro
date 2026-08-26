@@ -78,6 +78,8 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
           <span class="text-stone"> · server &amp; fleet, Apache 2.0</span><br/>
           <a href="https://github.com/cirwel/unitares-governance-plugin">github.com/cirwel/unitares-governance-plugin</a>
           <span class="text-stone"> · client plugin, Apache 2.0</span><br/>
+          <a href="https://pypi.org/project/unitares-sdk/">pypi.org/project/unitares-sdk</a>
+          <span class="text-stone"> · agent contract, Apache 2.0</span><br/>
           <a href="https://huggingface.co/hikewa">huggingface.co/hikewa</a>
           <span class="text-stone"> · datasets &amp; distilled models</span>
         </dd>
@@ -294,13 +296,20 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
         <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">
           Six workloads, one calibration model.
         </h2>
-        <p class="text-lg leading-relaxed text-stone max-w-prose mb-10">
+        <p class="text-lg leading-relaxed text-stone max-w-prose mb-6">
           Class-conditional calibration only works if the classes are grounded
           in real workloads. CIRWEL's own deployment spans six kinds of process,
           each with a different state signature: the heterogeneity the
           calibration is tested against.
-          The <span class="font-mono">monospace</span> tags are the running process
-          identifiers.
+        </p>
+        <p class="text-lg leading-relaxed text-stone max-w-prose mb-10">
+          Six is this deployment's roster, not the architecture. The roster is
+          deployment configuration and a fresh install starts with none, so
+          these names serve as a calibration partition and a display order
+          rather than as a fixture of the system. The contract keeps behavior
+          keyed to what a process declares it is, not to what it is called. The
+          <span class="font-mono">monospace</span> tags below are the running
+          process identifiers.
         </p>
 
         <dl class="grid md:grid-cols-2 gap-x-12 gap-y-8">
@@ -378,6 +387,21 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
         </h2>
 
         <div class="space-y-10 max-w-prose">
+
+          <article>
+            <p class="label text-stone mb-3">The adopter's contract</p>
+            <h3 class="display smcp text-2xl mb-3 leading-tight">unitares-sdk</h3>
+            <p class="text-stone leading-relaxed">
+              The client contract is a published package, not this repository's
+              internals:
+              <a href="https://pypi.org/project/unitares-sdk/" class="font-mono text-base whitespace-nowrap">pip install unitares-sdk</a>.
+              The workloads in §05 are reference implementations built on it and
+              are explicitly not part of it.
+              <a href="https://github.com/cirwel/unitares-resident" class="font-mono text-base">CIRWEL/unitares-resident</a>
+              is the first-party agent userland on the same contract: the server
+              owns governance, the resident owns the conversation loop.
+            </p>
+          </article>
 
           <article>
             <p class="label text-stone mb-3">Interpretable ML pipeline</p>
