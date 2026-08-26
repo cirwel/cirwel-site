@@ -1,0 +1,385 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import PageFooter from '../components/PageFooter.astro';
+import SectionRule from '../components/SectionRule.astro';
+import Ornament from '../components/Ornament.astro';
+import Medallion from '../components/Medallion.astro';
+import Tailpiece from '../components/Tailpiece.astro';
+---
+<BaseLayout
+  title="Research program — CIRWEL Research"
+  description="The research program behind UNITARES: the hypotheses under test, the experiments that have closed, the results that came back negative, and the questions that remain open and under-powered. Maintained as a record, not a pitch."
+>
+  <PageHeader currentPath="/research" />
+
+  <main class="px-6 lg:px-12 max-w-screen-xl mx-auto">
+
+    <!-- HERO -->
+    <section class="pt-16 pb-20 lg:pt-28 lg:pb-28 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-9">
+        <p class="label text-oxblood mb-8 reveal reveal-1">— The research program, including its failures</p>
+        <h1 class="display text-5xl md:text-7xl lg:text-8xl mb-10 reveal reveal-2">
+          What I am testing.<br/>
+          What already <span class="italic">failed.</span>
+        </h1>
+        <p class="text-lg md:text-xl leading-relaxed text-stone max-w-prose reveal reveal-3">
+          This page is the program behind the paper: the questions under test,
+          the experiments that have closed, and the results that came back
+          negative. It is kept as a record rather than a pitch. An experiment
+          that failed stays on the page, with the number that failed it.
+        </p>
+        <p class="text-base md:text-lg leading-relaxed text-ink max-w-prose reveal reveal-3 mt-6">
+          I am one person. There is no group behind the plural, so there is no
+          plural: everything below was set, run, and recorded by me, against a
+          fleet I operate myself.
+        </p>
+        <Ornament size="floret" class="mt-14 opacity-70 reveal reveal-3" />
+      </div>
+    </section>
+
+    <hr class="hairline mb-2"/>
+
+    <!-- RECEIPTS -->
+    <section class="py-10 grid grid-cols-12 gap-6 reveal reveal-4">
+      <div class="col-span-12 lg:col-span-3 mb-4 lg:mb-0">
+        <p class="label text-oxblood">— The receipts</p>
+      </div>
+      <dl class="col-span-12 lg:col-span-9 grid grid-cols-12 gap-y-5 gap-x-6">
+
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Program</dt>
+        <dd class="col-span-8 md:col-span-9">
+          Runtime self-state telemetry for AI-agent fleets
+          <span class="text-stone">· begun September 2025</span>
+        </dd>
+
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Operator</dt>
+        <dd class="col-span-8 md:col-span-9">
+          <span class="smcp">Kenny Wang</span>
+          <span class="text-stone">· sole operator, no staff · ORCID</span>
+          <a href="https://orcid.org/0009-0006-7544-2374" class="font-mono text-sm">0009-0006-7544-2374</a>
+        </dd>
+
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Evidence base</dt>
+        <dd class="col-span-8 md:col-span-9">
+          4M+ governance events
+          <span class="text-stone">· one operator's fleet, in continuous operation since November 2025.
+          Self-traffic, not adoption.</span>
+        </dd>
+
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Papers</dt>
+        <dd class="col-span-8 md:col-span-9 leading-relaxed">
+          <a href="https://doi.org/10.5281/zenodo.19647159" class="font-mono text-sm">10.5281/zenodo.19647159</a>
+          <span class="text-stone"> · UNITARES, CC-BY 4.0</span><br/>
+          <a href="https://doi.org/10.5281/zenodo.20098168" class="font-mono text-sm">10.5281/zenodo.20098168</a>
+          <span class="text-stone"> · Trajectory Identity, preprint</span><br/>
+          <a href="https://doi.org/10.5281/zenodo.19705151" class="font-mono text-sm">10.5281/zenodo.19705151</a>
+          <span class="text-stone"> · counterfactual replay data</span>
+        </dd>
+
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Reproduction</dt>
+        <dd class="col-span-8 md:col-span-9 font-mono text-sm leading-relaxed">
+          <a href="https://github.com/cirwel/unitares-repro-v6">github.com/cirwel/unitares-repro-v6</a>
+          <span class="text-stone"> · repro kit</span><br/>
+          <a href="https://huggingface.co/hikewa">huggingface.co/hikewa</a>
+          <span class="text-stone"> · datasets &amp; distilled models</span>
+        </dd>
+      </dl>
+    </section>
+
+    <SectionRule class="mt-2 mb-20" />
+
+    <!-- §01 THE QUESTION -->
+    <section id="question" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§01 — The question under test</p>
+        <Medallion roman="I" class="hidden lg:block mt-7" />
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
+          Does an agent's own state carry information its outputs do not?
+        </h2>
+        <p class="text-lg leading-relaxed text-stone max-w-prose mb-8">
+          UNITARES measures each agent continuously while it works and grades it
+          against its own operating point rather than one fleet-wide formula.
+          The program asks whether that reading is worth taking. It separates
+          into three questions that succeed or fail independently, and conflating
+          them is the most common way this kind of claim goes wrong.
+        </p>
+
+        <dl class="max-w-prose space-y-6">
+          <div>
+            <dt class="display text-xl mb-2">1. Discrimination</dt>
+            <dd class="text-stone leading-relaxed">
+              Are agents distinguishable from each other by state alone, and does
+              a given agent stay distinguishable over time?
+            </dd>
+          </div>
+          <div>
+            <dt class="display text-xl mb-2">2. Prediction</dt>
+            <dd class="text-stone leading-relaxed">
+              Does prior state anticipate a bad outcome better than simply knowing
+              the previous outcome? This is the load-bearing one, and it is the
+              one that is still open: it had an answer that read negative, and
+              that answer has since been withdrawn.
+            </dd>
+          </div>
+          <div>
+            <dt class="display text-xl mb-2">3. Intervention</dt>
+            <dd class="text-stone leading-relaxed">
+              Does acting on the state estimate improve anything measurable? Not
+              yet answerable at this fleet size, and I say so rather than
+              gesturing at it.
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <SectionRule class="my-8" />
+
+    <!-- §02 SETTLED -->
+    <section id="settled" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§02 — Closed, including the negatives</p>
+        <Medallion roman="II" class="hidden lg:block mt-7" />
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
+          Two results. One of them is a failure.
+        </h2>
+
+        <div class="max-w-prose space-y-10">
+          <div>
+            <p class="label text-stone mb-3">Result · calibration changes the reading</p>
+            <p class="text-lg leading-relaxed mb-4">
+              In offline counterfactual replay over a 13,310-row production slice,
+              <strong>28.9% of risk-band assignments would change</strong> when each
+              agent class is measured against its own operating point instead of one
+              fleet-wide formula.
+            </p>
+            <p class="text-stone leading-relaxed">
+              Three caveats travel with that number and none of them are optional.
+              It is <em>would change</em>, not <em>changed</em>: this is offline replay,
+              not a measured benefit of the deployed mechanism. Two things vary at once
+              in the comparison (class-conditional grounding and the coherence form), so
+              it cannot be attributed to calibration alone. And it is one honest snapshot
+              of a moving quantity: the published reproduction CSV yields 28.8% on 13,292
+              rows, while the same counterfactual run four days later yields 44.3%.
+            </p>
+          </div>
+
+          <div>
+            <p class="label text-oxblood mb-3">Negative result · the per-agent reference does not beat persistence</p>
+            <p class="text-lg leading-relaxed mb-4">
+              A pre-registered test asked whether the per-agent reference earns its
+              description as a reference at all.
+              <strong>Zero of seven streams beat last-value persistence</strong>
+              (win rates 0.32&ndash;0.48); one of seven did at the interim read.
+            </p>
+            <p class="text-stone leading-relaxed">
+              Three caveats travel with that number because the specification says they
+              must. It scores a cold-started reconstruction of the reference rather than
+              the deployed one; three of the seven nominal agents are the same Raspberry
+              Pi; and the pooled cross-dimension binomial is anti-conservative. The honest reading is that the reference is not
+              currently earning its description, not that a correctly warmed one could
+              not. This is a different question from the one above, measured on a
+              different test, and I keep them apart on purpose: borrowing a clean
+              ordinal result from one question to stand in for a messier one next door
+              is how an honest number becomes a dishonest claim.
+            </p>
+          </div>
+
+          <div>
+            <p class="label text-stone mb-3">What would settle it, and has not been run</p>
+            <p class="text-stone leading-relaxed">
+              Discrimination is not decision value. The question that matters operationally
+              is whether acting on the state estimate at the deployed threshold beats not
+              acting, and no ranking metric answers that in either direction. Settling it
+              needs interventional data or a fleet I do not operate. Until then the honest
+              status is that the cheap version of the question has a negative answer and
+              the expensive version is untouched.
+            </p>
+          </div>
+
+          <div>
+            <p class="label text-stone mb-3">Method finding · the fleet cannot answer this question</p>
+            <p class="text-stone leading-relaxed">
+              Validating prediction on organic fleet traffic turns out to be structurally
+              impossible rather than merely underpowered: the population of tool failures
+              and the population carrying state readings are disjoint. This was discovered
+              by building the analysis and finding the join empty. It is recorded so the
+              next person does not spend the same weeks on it.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <SectionRule class="my-8" />
+
+    <!-- §03 OPEN -->
+    <section id="open" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§03 — Open, and under-powered</p>
+        <Medallion roman="III" class="hidden lg:block mt-7" />
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
+          Untested as deployed. Not refuted.
+        </h2>
+        <p class="label text-oxblood mb-3">Withdrawn · prior state and bad outcomes</p>
+        <p class="text-lg leading-relaxed max-w-prose mb-6">
+          The prediction question is open for a harder reason than thin data. It
+          had an answer that read negative, and that answer has been withdrawn:
+          the ablation behind it drew on a contaminated cohort, and its
+          permutation blocks were not independent adjudicated failures, so what
+          it produced is provenance rather than evidence. Unresolved is not the
+          same as negative. I am no more willing to bank a convenient loss than a
+          convenient win.
+        </p>
+        <p class="text-stone leading-relaxed max-w-prose mb-6">
+          What survives is the sensitivity, not the direction. At 101 independent
+          bad clusters the minimum detectable lift in ranking quality is around
+          0.05, so the measurement was powered to see a moderate effect. I state
+          that as sensitivity evidence and not as a verdict, because a ranking
+          statistic is the wrong instrument to hang a verdict on: it is
+          threshold-free, so it averages over operating points no one would
+          deploy; it is insensitive at this class imbalance; and it is silent on
+          calibration, which is the property a verdict boundary at a fixed
+          threshold actually depends on. One pre-registered confirmatory read is
+          scheduled for December 2026, with a kill criterion written before the
+          data is seen. Between now and then the question is closed to ad-hoc
+          re-runs, because repeatedly asking it surfaces a selected maximum the
+          null model already accounts for.
+        </p>
+        <p class="label text-oxblood mb-3">Under-powered · self-predictability</p>
+        <p class="text-lg leading-relaxed text-stone max-w-prose mb-6">
+          Agents are distinguishable and their state is non-stationary, but the
+          pre-registered self-predictability test did not clear its own bar against
+          a persistence and AR(1) null. That test ran on roughly four effective
+          agents. Four is not a sample; it is an anecdote with error bars.
+        </p>
+        <p class="text-lg leading-relaxed max-w-prose mb-6">
+          The distinction I hold to, because collapsing it would be its own
+          inaccuracy: thin labels and a four-agent fleet are limits of the
+          <em>instrument</em>, not verdicts on the idea. Equally, an untested
+          hypothesis is not a supported one, and I do not present it as one.
+        </p>
+        <blockquote class="border-l-2 border-oxblood pl-6 my-10 max-w-prose">
+          <p class="display text-xl md:text-2xl leading-snug italic">
+            Some of what I set out to demonstrate, I cannot yet demonstrate.
+          </p>
+        </blockquote>
+        <p class="text-stone leading-relaxed max-w-prose">
+          What closes this gap is not more analysis of the same four agents. It is
+          either a fleet I do not operate, or an adversarial evaluation with labels
+          I did not generate. Both require someone other than me.
+        </p>
+      </div>
+    </section>
+
+    <SectionRule class="my-8" />
+
+    <!-- §04 METHOD -->
+    <section id="method" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§04 — How the program is run</p>
+        <Medallion roman="IV" class="hidden lg:block mt-7" />
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
+          Commitments that cost something.
+        </h2>
+        <p class="text-lg leading-relaxed text-stone max-w-prose mb-10">
+          A one-person program has no peer review and no colleague to catch a
+          convenient reading. These are the substitutes. They are only worth
+          stating because each one has already cost me a result I wanted.
+        </p>
+
+        <dl class="max-w-prose space-y-8">
+          <div>
+            <dt class="display text-xl mb-2">Pre-registration with a kill criterion</dt>
+            <dd class="text-stone leading-relaxed">
+              Hypotheses get a fixed read date and a written criterion for
+              abandonment, both set before the data is seen. One has already fired
+              and returned a failure. The criterion executed as written.
+            </dd>
+          </div>
+          <div>
+            <dt class="display text-xl mb-2">No ad-hoc re-runs of a bounded question</dt>
+            <dd class="text-stone leading-relaxed">
+              Once a question has a measured bound, it gets one scheduled read.
+              Re-asking until the answer improves is the most comfortable way to
+              fool yourself with real data.
+            </dd>
+          </div>
+          <div>
+            <dt class="display text-xl mb-2">A verified-claims registry, with retirements</dt>
+            <dd class="text-stone leading-relaxed">
+              Every figure appearing in a paper, grant, or on this site resolves to
+              one source of record with its caveat attached. Figures found to be
+              wrong go in a retired table and are never used again. Two of them were
+              dataset row counts I had misread as download counts.
+            </dd>
+          </div>
+          <div>
+            <dt class="display text-xl mb-2">Stated scope of enforcement</dt>
+            <dd class="text-stone leading-relaxed">
+              A paused agent is blocked from further check-ins and knowledge-graph
+              writes. It is not a sandbox and it does not block file writes. The
+              stronger claim would be easier to make and would not survive contact.
+            </dd>
+          </div>
+          <div>
+            <dt class="display text-xl mb-2">Single-operator disclosure</dt>
+            <dd class="text-stone leading-relaxed">
+              Every number here comes from a fleet I run myself. Event volume is
+              self-traffic, not adoption. Stating this is what makes the rest of the
+              numbers worth reading.
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <SectionRule class="my-8" />
+
+    <!-- §05 WANTED -->
+    <section id="wanted" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§05 — What the program needs</p>
+        <Medallion roman="V" class="hidden lg:block mt-7" />
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
+          A skeptic, not an endorsement.
+        </h2>
+        <p class="text-lg leading-relaxed text-stone max-w-prose mb-6">
+          The binding constraint on this program is not compute, funding, or code.
+          It is that every result so far has been produced and checked by the same
+          person. The single most useful thing anyone can do with it is try to break
+          it on data I did not generate.
+        </p>
+        <p class="text-lg leading-relaxed max-w-prose mb-10">
+          Concretely: an adversarial evaluation on a public agentic-misalignment
+          benchmark, run by someone with no stake in the answer, against a trivial
+          baseline. If the state reading adds nothing over the baseline, that is a
+          publishable result and I will publish it.
+        </p>
+        <p class="text-stone leading-relaxed max-w-prose">
+          If you work on evaluations, multi-agent systems, or runtime oversight and
+          want to take a swing at it, the code and data are open and the reproduction
+          kit runs.
+          <a href="/#contact" class="font-medium">Get in touch</a>.
+        </p>
+      </div>
+    </section>
+
+    <div class="flex justify-center pt-10 pb-4">
+      <Tailpiece class="opacity-80" />
+    </div>
+  </main>
+
+  <PageFooter />
+</BaseLayout>

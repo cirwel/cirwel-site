@@ -1,6 +1,5 @@
 {
   "_note": "Claims register — every load-bearing figure this site publishes, the source that carries it, and the exact string that must be present in that source. Checked daily by scripts/check-claims.py against the LIVE site and the LIVE sources, so it verifies what is published rather than what is in the tree. Not a changelog and not a style guide: an entry earns its place only if the site states something a reader could check. Written 2026-08-26 after a figure sat live for 14 days beside a citation that never contained it.",
-
   "sources": {
     "contract": {
       "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/ontology/eisv-proprioception-contract.md",
@@ -13,12 +12,11 @@
       "role": "Defines the single pre-registered outcome read and its kill criterion."
     }
   },
-
   "pages": {
     "home": "https://cirwel.org/",
-    "ecosystem": "https://cirwel.org/ecosystem/"
+    "ecosystem": "https://cirwel.org/ecosystem/",
+    "research": "https://cirwel.org/research/"
   },
-
   "claims": [
     {
       "id": "leg-c-persistence",
@@ -58,28 +56,75 @@
       "page": "home",
       "site_says": "pre-registered for December 2026",
       "source": "stop-rule",
-      "must_contain": ["2026-12-01", "kill criterion"],
+      "must_contain": [
+        "2026-12-01",
+        "kill criterion"
+      ],
       "why": "Both the date and the existence of a written kill criterion are load-bearing; 'pre-registered' without one is just a plan."
+    },
+    {
+      "id": "research-leg-c",
+      "page": "research",
+      "site_says": "Zero of seven streams beat last-value persistence",
+      "source": "contract",
+      "must_contain": [
+        "The per-agent reference does useful work",
+        "0/7 streams beat persistence",
+        "win rates 0.32–0.48",
+        "Three of the seven nominal"
+      ],
+      "why": "The page states all three caveats the contract attaches, including the one about three of seven agents being the same Pi. If the contract ever drops a caveat, the page is carrying a claim its source no longer supports."
+    },
+    {
+      "id": "research-outcome-withdrawn",
+      "page": "research",
+      "site_says": "that answer has been withdrawn",
+      "source": "contract",
+      "must_contain": [
+        "WITHDRAWN FOR TARGET INFERENCE",
+        "the question is unresolved, not negative"
+      ],
+      "why": "The page files this question under open rather than closed. If the contract re-closes it in either direction, the page's own section structure is wrong, not just its wording."
+    },
+    {
+      "id": "research-sensitivity-bound",
+      "page": "research",
+      "site_says": "At 101 independent bad clusters the minimum detectable lift",
+      "source": "stop-rule",
+      "must_contain": [
+        "101",
+        "0.05 AUC"
+      ],
+      "why": "The bound survives the cohort withdrawal because it is a power calculation, not a result. It is quoted as sensitivity evidence for an open question and must never drift back into standing for a verdict."
     }
   ],
-
   "retired_phrasings": [
     {
       "text": "at predicting negative task outcomes",
       "retired": "2026-08-26",
       "commit": "3ed9cde",
       "why": "Attributed individuality-v2 leg C to outcome prediction. Lived on the page for 14 days because a correction written on 2026-08-12 stayed on an unmerged branch while _canonical/FACTS.md kept the wrong version, so a later session read FACTS.md and re-asserted it. This entry exists to make that specific re-assertion loud."
+    },
+    {
+      "text": "No lift survives the null",
+      "retired": "2026-08-26",
+      "commit": "(never published)",
+      "why": "Written on the research-identity branch on 2026-08-11 and removed before that page first shipped, so it was never live. Guarded anyway: it is the branch's own overclaim about outcome prediction, and reviving that branch's copy is the most likely way it would reach the site."
     }
   ],
-
   "not_mechanically_checked": [
     {
-      "claims": ["28.9% band change", "per-class flip rates 15–33%"],
+      "claims": [
+        "28.9% band change",
+        "per-class flip rates 15–33%"
+      ],
       "anchor": "Paper §11.6, DOI 10.5281/zenodo.19647159",
       "why": "Anchored to a frozen, citable publication rather than a moving document. Deliberately NOT re-derived: it is a snapshot with a citation, not a current measurement. Listed here so the gap in coverage is stated rather than inferred."
     },
     {
-      "claims": ["production counters on the data plate"],
+      "claims": [
+        "production counters on the data plate"
+      ],
       "anchor": "src/data/live-stats.json",
       "why": "Already covered by the daily refresh from governance state, which is the same meter the public unitares README uses."
     }

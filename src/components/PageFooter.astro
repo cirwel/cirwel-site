@@ -24,8 +24,13 @@ const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UT
 ---
 <footer class="px-6 lg:px-12 max-w-screen-xl mx-auto py-12 grid grid-cols-12 gap-6 text-sm text-stone">
   <div class="col-span-12 md:col-span-4">
-    <p class="display smcp text-base font-medium text-ink mb-2">CIRWEL Systems</p>
-    <p>Independent research operator.</p>
+    <p class="display smcp text-base font-medium text-ink mb-2">CIRWEL Research</p>
+    <p>
+      The independent research program of CIRWEL&nbsp;Systems, founded 2025 in
+      Colorado. One operator, no staff, no plural voice: everything published
+      under this name was set, run, and recorded by
+      <span class="smcp text-ink">Kenny&nbsp;Wang</span> alone.
+    </p>
   </div>
   <div class="col-span-12 md:col-span-4">
     <p class="label mb-3 text-ink">Records</p>
@@ -45,7 +50,7 @@ const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UT
   {publishersMark && (
     <div class="col-span-12 mt-12 flex items-center justify-center gap-5">
       <hr class="hairline flex-1 max-w-[140px]" />
-      <img src="/logo-engraved.svg" alt="CIRWEL Systems publisher's device"
+      <img src="/logo-engraved.svg" alt="CIRWEL Research publisher's device"
            width="80" height="80" class="block" />
       <hr class="hairline flex-1 max-w-[140px]" />
     </div>
