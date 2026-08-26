@@ -3,6 +3,12 @@
   "entries": [
     {
       "date": "2026-08-26",
+      "where": "A measurement on our own fleet",
+      "note": "The headline negative result named the wrong test and the wrong status: 0 of 7 streams is the individuality axiom test's leg C, not outcome prediction, and outcome validity is unresolved rather than negative. Both corrected against the contract.",
+      "commit": "3ed9cde"
+    },
+    {
+      "date": "2026-08-26",
       "where": "Governed workloads",
       "note": "Six workloads were listed with nothing said about the roster being deployment configuration, and the published client package was named nowhere on the site. Both stated.",
       "commit": "ba65cb1"
