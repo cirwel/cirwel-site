@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "type": "module",
   "private": true,
-  "description": "cirwelsystems.com — runtime governance for heterogeneous AI-agent fleets",
+  "description": "cirwel.org — runtime governance for heterogeneous AI-agent fleets",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CIRWEL/cirwel-site.git"
