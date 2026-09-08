@@ -25,6 +25,11 @@
       "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/integration/MCP_CLIENTS.md",
       "human": "https://github.com/cirwel/unitares/blob/master/docs/integration/MCP_CLIENTS.md",
       "role": "Authority for the client-facing endpoint and the client-neutrality claim."
+    },
+    "testbed-prereg": {
+      "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/proposals/accountable-testbed-metrics-preregistration-v1.md",
+      "human": "https://github.com/cirwel/unitares/blob/master/docs/proposals/accountable-testbed-metrics-preregistration-v1.md",
+      "role": "The frozen evaluation plan for the federated multi-principal testbed. Authority for what that benchmark measures and for whether it has been run."
     }
   },
   "pages": {
@@ -112,6 +117,28 @@
         "0.05 AUC"
       ],
       "why": "The bound survives the cohort withdrawal because it is a power calculation, not a result. It is quoted as sensitivity evidence for an open question and must never drift back into standing for a verdict."
+    },
+    {
+      "id": "research-federated-unrun",
+      "page": "research",
+      "site_says": "No benchmark run has been executed",
+      "source": "testbed-prereg",
+      "must_contain": [
+        "FROZEN 2026-08-05",
+        "No headline, ablation, or scale-sweep runs had been"
+      ],
+      "why": "The page files Question II as designed and frozen but not run. Every drift here runs in the direction that flatters the page, so if the registration ever records completed headline runs the status line must change with it."
+    },
+    {
+      "id": "research-federated-regimes",
+      "page": "research",
+      "site_says": "prompt-only, log-only, federated per-principal runtime governance, and a centralized-governor reference",
+      "source": "testbed-prereg",
+      "must_contain": [
+        "prompt-only, log-only, federated per-principal",
+        "centralized-governor reference"
+      ],
+      "why": "The four regimes are the whole measurement claim: without the centralized-governor arm the price of decentralization would be asserted rather than measured. Naming them on the page requires the frozen registration to still name them."
     },
     {
       "id": "workloads-not-the-contract",
