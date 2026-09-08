@@ -51,9 +51,13 @@ import Tailpiece from '../components/Tailpiece.astro';
     <SectionRule class="mt-2 mb-20" />
 
     <section id="question" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
-      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="label text-oxblood">§01 — The question under test</p><Medallion roman="I" class="hidden lg:block mt-7" /></div>
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="label text-oxblood">§01 — The questions under test</p><Medallion roman="I" class="hidden lg:block mt-7" /></div>
       <div class="col-span-12 lg:col-span-9">
-        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">Does an agent's runtime state carry information its outputs do not?</h2>
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">Two questions, at two scales.</h2>
+        <p class="text-lg leading-relaxed text-stone max-w-prose mb-14">One asks what can be read from a single agent while it works. The other asks what can be held to account between principals who do not trust each other. They are separate questions with separate evidence, and only the first has results.</p>
+
+        <p class="label text-stone mb-3">Question I · one agent</p>
+        <h3 class="display text-2xl md:text-4xl mb-8 leading-tight max-w-prose">Does an agent's runtime state carry information its outputs do not?</h3>
         <div class="space-y-6 max-w-prose">
           <p class="text-lg leading-relaxed text-stone">
             Here, <strong>state</strong> means an operational estimate built from recorded behavioral and system signals. It is not privileged access to a model's hidden internal state, thoughts, or chain of reasoning.
@@ -68,6 +72,25 @@ import Tailpiece from '../components/Tailpiece.astro';
           <div><dt class="display text-xl mb-2">2. Prediction</dt><dd class="text-stone leading-relaxed">Does prior state anticipate a bad outcome better than simpler baselines? This is still open; an earlier negative-looking answer was withdrawn because the cohort and permutation structure did not support that inference.</dd></div>
           <div><dt class="display text-xl mb-2">3. Intervention</dt><dd class="text-stone leading-relaxed">Does acting on the state estimate improve anything measurable? This remains untested at the required scale.</dd></div>
         </dl>
+
+        <hr class="hairline my-14 max-w-prose" />
+
+        <p class="label text-stone mb-3">Question II · many principals</p>
+        <h3 class="display text-2xl md:text-4xl mb-8 leading-tight max-w-prose">Can accountability hold between principals who share no root of trust?</h3>
+        <div class="space-y-6 max-w-prose">
+          <p class="text-lg leading-relaxed text-stone">
+            Agents increasingly act across infrastructure built and operated by different principals who do not trust one another and share no central controller. The safety-relevant questions there are relational: which process acted, who authorized it, what delegation chain led to it, and which control boundary committed the external effect.
+          </p>
+          <p class="text-lg leading-relaxed text-stone">
+            The proposed answer is per-principal governance mediated by verifiable attestation rather than a trusted center, evaluated against four control regimes: prompt-only, log-only, federated per-principal runtime governance, and a centralized-governor reference. The point of the fourth is to measure the price of decentralization rather than assume it.
+          </p>
+        </div>
+
+        <dl class="max-w-prose space-y-6 mt-10">
+          <div><dt class="display text-xl mb-2">Status · designed and frozen, not run</dt><dd class="text-stone leading-relaxed">The evaluation plan was pre-registered and frozen on 2026-08-05, before any evaluated scenario set existed. No benchmark run has been executed against it, so nothing on this page reports a federated result.</dd></div>
+          <div><dt class="display text-xl mb-2">What exists today</dt><dd class="text-stone leading-relaxed">The federation primitives were exercised live against the deployed server on 2026-06-30: per-principal credential self-proof, cross-principal attestation, credential isolation, and lineage held as claimed rather than trusted. Both principals ran from a single host, and the server detected and labelled that co-location. That is mechanism validation, not two organizations with conflicting interests. The multi-host case is not built.</dd></div>
+          <div><dt class="display text-xl mb-2">Preprint</dt><dd class="text-stone leading-relaxed"><a href="https://doi.org/10.5281/zenodo.21930161" class="font-medium">Accountability Without a Trusted Center</a><span class="text-stone"> · design and pre-registered evaluation plan · DOI </span><span class="font-mono text-sm">10.5281/zenodo.21930161</span></dd></div>
+        </dl>
       </div>
     </section>
 
@@ -77,6 +100,7 @@ import Tailpiece from '../components/Tailpiece.astro';
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="label text-oxblood">§02 — Closed, including negatives</p><Medallion roman="II" class="hidden lg:block mt-7" /></div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">What the current record actually supports.</h2>
+        <p class="text-stone leading-relaxed max-w-prose mb-10">Everything in this section belongs to Question I. Question II has produced no results to record.</p>
         <div class="max-w-prose space-y-10">
           <article>
             <p class="label text-stone mb-3">Result · calibration changes the reading</p>
