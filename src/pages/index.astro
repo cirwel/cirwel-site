@@ -38,7 +38,7 @@ const fmtStat = (v: string) => (/^\d+$/.test(v) ? Number(v).toLocaleString('en-U
         </p>
         <nav aria-label="Ways into UNITARES"
              class="mt-10 pt-5 border-t border-sepia flex flex-wrap gap-x-8 gap-y-3 reveal reveal-4">
-          <a href="https://github.com/cirwel/unitares"
+          <a href="/build"
              class="label text-oxblood no-underline hover:underline">→ Run UNITARES</a>
           <a href="/ecosystem"
              class="label text-oxblood no-underline hover:underline">→ See how it fits together</a>
@@ -247,7 +247,7 @@ const fmtStat = (v: string) => (/^\d+$/.test(v) ? Number(v).toLocaleString('en-U
           <li class="grid grid-cols-12 gap-4 items-start">
             <span class="col-span-12 md:col-span-2 label text-stone pt-1">Run</span>
             <div class="col-span-12 md:col-span-10 space-y-3">
-              <p><a href="https://github.com/cirwel/unitares" class="font-medium">UNITARES</a> boots locally with Docker Compose and exposes MCP, REST, an SDK, and a dashboard.</p>
+              <p><a href="https://github.com/cirwel/unitares" class="font-medium">UNITARES</a> boots locally with Docker Compose and exposes MCP, REST, an SDK, and a dashboard. The <a href="/build" class="font-medium">build page</a> walks the whole path.</p>
               <div class="runcmd">
                 <span class="prompt">$</span>
                 <span class="cmd">gh repo clone CIRWEL/unitares &amp;&amp; cd unitares &amp;&amp; docker compose up -d --wait</span>

@@ -13,6 +13,7 @@ const thesisHref  = onHome ? '#thesis'  : '/#thesis';
 const contactHref = onHome ? '#contact' : '/#contact';
 const isEcosystem = currentPath === '/ecosystem';
 const isResearch  = currentPath === '/research';
+const isBuild     = currentPath === '/build';
 ---
 <!--
   Masthead — journal-cover register.
@@ -60,6 +61,13 @@ const isResearch  = currentPath === '/research';
        ]}>
       Ecosystem
     </a>
+    <a href="/build"
+       class:list={[
+         "no-underline transition-colors",
+         isBuild ? "text-oxblood" : "hover:text-oxblood",
+       ]}>
+      Build
+    </a>
     <a href="https://doi.org/10.5281/zenodo.19647159"
        class="no-underline hover:text-oxblood transition-colors">
       Paper
@@ -67,10 +75,6 @@ const isResearch  = currentPath === '/research';
     <a href="https://github.com/cirwel/unitares"
        class="no-underline hover:text-oxblood transition-colors">
       Server
-    </a>
-    <a href="https://github.com/cirwel/unitares-governance-plugin"
-       class="no-underline hover:text-oxblood transition-colors">
-      Plugin
     </a>
     <a href={contactHref}
        class="no-underline hover:text-oxblood transition-colors">

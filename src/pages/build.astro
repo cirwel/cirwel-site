@@ -1,0 +1,321 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import PageFooter from '../components/PageFooter.astro';
+import SectionRule from '../components/SectionRule.astro';
+import Ornament from '../components/Ornament.astro';
+import Medallion from '../components/Medallion.astro';
+import Tailpiece from '../components/Tailpiece.astro';
+
+// Code plates are held here rather than inline so the braces never collide
+// with Astro's expression syntax, and so the exact strings are diffable.
+const mcpHttp = `{
+  "mcpServers": {
+    "unitares": {
+      "type": "http",
+      "url": "http://localhost:8767/mcp/"
+    }
+  }
+}`;
+
+const mcpStdio = `{
+  "mcpServers": {
+    "unitares": {
+      "command": "npx",
+      "args": ["mcp-remote", "http://localhost:8767/mcp/"]
+    }
+  }
+}`;
+
+const loop = `session = start_session(force_new=True)
+sid = session["client_session_id"]
+
+result = sync_state(
+    response_text=output,
+    complexity=0.6,
+    confidence=0.8,
+    client_session_id=sid,
+)
+if result.get("state_summary", {}).get("action") == "pause":
+    return_to_operator(result.get("next_action"))
+
+record_result(
+    outcome_type="test_passed" if tests_passed else "test_failed",
+    prediction_id=result.get("prediction_id"),
+    client_session_id=sid,
+)
+state = check_working_state(client_session_id=sid)`;
+---
+<BaseLayout
+  title="Build on UNITARES — CIRWEL Systems"
+  description="The working path into UNITARES: run the server with Docker Compose, connect any MCP client, run the check-in loop, and build a resident on the public SDK contract."
+>
+  <PageHeader currentPath="/build" />
+
+  <main class="px-6 lg:px-12 max-w-screen-xl mx-auto">
+
+    <section class="pt-16 pb-20 lg:pt-28 lg:pb-28 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-9">
+        <p class="label text-oxblood mb-8 reveal reveal-1">— The working path</p>
+        <h1 class="display text-5xl md:text-7xl lg:text-8xl !leading-[1.14] mb-10 reveal reveal-2">
+          Build on <span class="italic">it.</span>
+        </h1>
+        <p class="text-lg md:text-xl leading-relaxed text-stone max-w-prose reveal reveal-3">
+          Four steps: run the server, point a client at it, run the check-in loop, and decide what to do with what comes back.
+          <span class="font-medium text-ink">There is no account, no hosted tier, and no outbound call. The install is a Compose file on hardware you control.</span>
+        </p>
+        <p class="text-base md:text-lg leading-relaxed text-ink max-w-prose reveal reveal-3 mt-6">
+          The <a href="/">home page</a> states the problem and <a href="/ecosystem">the ecosystem page</a> describes the architecture.
+          This page is the part you type. What the instrument has and has not been shown to do is in <a href="#limits">§05</a>, and in full on the <a href="/research">research page</a>.
+        </p>
+        <Ornament size="floret" class="mt-14 opacity-70 reveal reveal-3" />
+      </div>
+    </section>
+
+    <hr class="hairline mb-2"/>
+
+    <section class="py-10 grid grid-cols-12 gap-6 reveal reveal-4">
+      <div class="col-span-12 lg:col-span-3 mb-4 lg:mb-0">
+        <p class="label text-oxblood">— What you need</p>
+      </div>
+      <dl class="col-span-12 lg:col-span-9 grid grid-cols-12 gap-y-5 gap-x-6">
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Server</dt>
+        <dd class="col-span-8 md:col-span-9"><a href="https://github.com/cirwel/unitares" class="font-medium">CIRWEL/unitares</a><span class="text-stone"> · Apache 2.0 · Docker Compose</span></dd>
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Endpoint</dt>
+        <dd class="col-span-8 md:col-span-9"><span class="font-mono text-sm">http://localhost:8767/mcp/</span><span class="text-stone"> · Streamable HTTP · REST at <span class="font-mono text-sm">/v1/tools/call</span></span></dd>
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Contract</dt>
+        <dd class="col-span-8 md:col-span-9"><a href="https://pypi.org/project/unitares-sdk/" class="font-mono text-sm">unitares-sdk</a><span class="text-stone"> · for agents you write yourself</span></dd>
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Runtime</dt>
+        <dd class="col-span-8 md:col-span-9 text-stone">Python 3.12+ · PostgreSQL with AGE and pgvector · Redis · optional Elixir/OTP coordination</dd>
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Suited to</dt>
+        <dd class="col-span-8 md:col-span-9 text-stone">one operator running several long-lived agents on their own infrastructure. Usually not worth the overhead for short-lived chat turns.</dd>
+      </dl>
+    </section>
+
+    <SectionRule class="mt-2 mb-20" />
+
+    <!-- §01 RUN IT -->
+    <section id="run" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§01 — Run the server</p>
+        <Medallion roman="I" class="hidden lg:block mt-7" />
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">One compose file, on your own machine.</h2>
+        <p class="text-xl leading-snug text-ink max-w-prose mb-8 font-medium">Self-hosted by design. Identity, telemetry, evidence, and policy history never leave it.</p>
+
+        <div class="max-w-prose">
+          <div class="runcmd">
+            <span class="prompt">$</span>
+            <span class="cmd">gh repo clone CIRWEL/unitares &amp;&amp; cd unitares &amp;&amp; docker compose up -d --wait</span>
+          </div>
+          <div class="space-y-5 text-lg leading-relaxed text-stone mt-8">
+            <p class="dropcap">
+              That brings up PostgreSQL with AGE and pgvector, Redis, the lease plane, and the server on loopback. MCP clients connect at <span class="font-mono text-base text-ink">localhost:8767/mcp/</span>, the self-hosted dashboard is at <span class="font-mono text-base text-ink">/dashboard</span>, and <span class="font-mono text-base text-ink">/health</span> answers for readiness checks.
+            </p>
+            <p>
+              The repository README pins the latest verified release tag. Clone that tag instead of the default branch if you want a fixed checkout; the source version can run ahead of it.
+            </p>
+          </div>
+
+          <p class="label text-stone mt-12 mb-4">Then watch it move</p>
+          <div class="runcmd">
+            <span class="prompt">$</span>
+            <span class="cmd">make demo</span>
+            <span class="note">onboards a process, sends six governed check-ins</span>
+          </div>
+          <div class="runcmd mt-4">
+            <span class="prompt">$</span>
+            <span class="cmd">make coordination-demo</span>
+            <span class="note">two agents contend for one surface and hand it off</span>
+          </div>
+          <p class="text-lg leading-relaxed text-stone mt-8">
+            The second one is the identity guarantee biting rather than being described: governance exchanges each agent's continuity credential for a single-use, request-bound attestation, refuses one agent's attestation when it claims the other's identifier, refuses a captured attestation on replay, and moves a governed surface through an identity-checked handoff before releasing it.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <SectionRule />
+
+    <!-- §02 CONNECT -->
+    <section id="connect" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§02 — Connect a client</p>
+        <Medallion roman="II" class="hidden lg:block mt-7" />
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">Client-neutral at the boundary.</h2>
+        <p class="text-xl leading-snug text-ink max-w-prose mb-8 font-medium">Any client that speaks Streamable HTTP MCP can connect. Nothing about the server assumes a model vendor.</p>
+
+        <div class="max-w-prose space-y-5 text-lg leading-relaxed text-stone">
+          <p class="dropcap">
+            The same server answers Codex, Claude Code, Cursor, Goose, Hermes, hosted connectors, and custom hosts. Add it the way that client adds any HTTP MCP server:
+          </p>
+        </div>
+
+        <div class="max-w-prose mt-8"><pre class="codeplate">{mcpHttp}</pre></div>
+
+        <div class="max-w-prose space-y-5 text-lg leading-relaxed text-stone mt-8">
+          <p>
+            A client without native HTTP support bridges through stdio. Claude Desktop is the usual case:
+          </p>
+        </div>
+
+        <div class="max-w-prose mt-8"><pre class="codeplate">{mcpStdio}</pre></div>
+
+        <div class="max-w-prose space-y-5 text-lg leading-relaxed text-stone mt-8">
+          <p>
+            No agent-name header is configured anywhere. The agent identifies itself in its first call, which is the point: a name in a config file is a label, and a label is not an identity.
+          </p>
+          <p>
+            Non-MCP callers post to <span class="font-mono text-base text-ink">/v1/tools/call</span> instead. For Codex and Claude Code, session lifecycle and hooks are packaged separately as <a href="https://github.com/cirwel/unitares-governance-plugin" class="font-mono text-base">unitares-governance-plugin</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <SectionRule />
+
+    <!-- §03 THE LOOP -->
+    <section id="loop" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§03 — Run the loop</p>
+        <Medallion roman="III" class="hidden lg:block mt-7" />
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">Four calls, and a decision that stays yours.</h2>
+
+        <div class="max-w-prose mt-8"><pre class="codeplate">{loop}</pre></div>
+
+        <ol class="max-w-prose mt-12 mb-8">
+          <li class="grid grid-cols-12 gap-x-6 gap-y-1 py-5 border-t border-sepia/40">
+            <div class="col-span-12 md:col-span-3 mb-2 md:mb-0"><p class="label text-oxblood">Identify</p><p class="font-mono text-xs text-stone mt-1">start_session</p></div>
+            <p class="col-span-12 md:col-span-9 text-stone leading-relaxed">Binds every later write to this process instance. A fresh process mints fresh identity; continuity across a restart is declared, never inferred from a reused display name.</p>
+          </li>
+          <li class="grid grid-cols-12 gap-x-6 gap-y-1 py-5 border-t border-sepia/40">
+            <div class="col-span-12 md:col-span-3 mb-2 md:mb-0"><p class="label text-oxblood">Claim</p><p class="font-mono text-xs text-stone mt-1">sync_state</p></div>
+            <p class="col-span-12 md:col-span-9 text-stone leading-relaxed">Records what the process says it did, and how confident it is. Returns a policy action of proceed, guide, or pause, always with a named reason and a next step.</p>
+          </li>
+          <li class="grid grid-cols-12 gap-x-6 gap-y-1 py-5 border-t border-sepia/40">
+            <div class="col-span-12 md:col-span-3 mb-2 md:mb-0"><p class="label text-oxblood">Ground</p><p class="font-mono text-xs text-stone mt-1">record_result</p></div>
+            <p class="col-span-12 md:col-span-9 text-stone leading-relaxed">Attaches the real outcome to the claim that predicted it, through the check-in's own <span class="font-mono text-xs">prediction_id</span>. Skip this call and the state estimate is self-report with extra steps.</p>
+          </li>
+          <li class="grid grid-cols-12 gap-x-6 gap-y-1 py-5 border-t border-b border-sepia/40">
+            <div class="col-span-12 md:col-span-3 mb-2 md:mb-0"><p class="label text-oxblood">Read</p><p class="font-mono text-xs text-stone mt-1">check_working_state</p></div>
+            <p class="col-span-12 md:col-span-9 text-stone leading-relaxed">Reads the current verdict without writing anything.</p>
+          </li>
+        </ol>
+
+        <div class="max-w-prose space-y-5 text-lg leading-relaxed text-stone">
+          <p>
+            Treat the action, the reason, and the next step as the stable contract; the enforcement record rides alongside them. A pause on a governed write surface refuses that agent's later check-ins until recovery succeeds. Everything your agent does outside those surfaces is a boundary you honor, not one the server can close for you, and the page that says otherwise is selling something.
+          </p>
+          <p>
+            A default profile advertises the checkpoint loop, shared memory, structured review, advisory consultation, and recovery. <span class="font-mono text-base text-ink">GOVERNANCE_TOOL_MODE</span> narrows that to the loop alone or widens it to the full surface. The profile decides what discovery advertises, never what dispatches, but schema-driven clients only offer a model what discovery returned, so an unadvertised tool is unreachable in practice.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <SectionRule />
+
+    <!-- §04 RESIDENT -->
+    <section id="resident" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§04 — Build a resident</p>
+        <Medallion roman="IV" class="hidden lg:block mt-7" />
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">The contract is a package, not our repository.</h2>
+
+        <div class="max-w-prose">
+          <div class="runcmd">
+            <span class="prompt">$</span>
+            <span class="cmd">pip install unitares-sdk</span>
+          </div>
+          <div class="space-y-5 text-lg leading-relaxed text-stone mt-8">
+            <p class="dropcap">
+              For an agent that runs for weeks rather than minutes, the SDK handles connection, identity, check-ins, heartbeats, and knowledge participation. Preserve its identity anchor across restarts with <span class="font-mono text-base text-ink">identity(agent_uuid=...)</span> rather than minting a new one each run, or its history restarts with it.
+            </p>
+            <p>
+              A workload registers its own progress source through the <span class="font-mono text-base text-ink">unitares.resident_progress_sources</span> entry-point group, with no change to the server's repository at all. That is the whole plug-and-play claim, and it is the strongest one on this site because it is the only one that says you never have to touch our code.
+            </p>
+            <p>
+              The lowercase agents in the server repository are reference clients and operational examples. They are built on it and are explicitly not part of it, so read them as worked examples rather than a framework to subclass. <a href="https://github.com/cirwel/unitares-resident" class="font-mono text-base">CIRWEL/unitares-resident</a> is the first-party userland on the same public contract; it is an early skeleton, not yet a usable general-purpose agent.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <SectionRule />
+
+    <!-- §05 LIMITS -->
+    <section id="limits" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§05 — What it does not do</p>
+        <Medallion roman="V" class="hidden lg:block mt-7" />
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">A state instrument, not an outcome oracle.</h2>
+
+        <div class="max-w-prose space-y-5 text-lg leading-relaxed text-stone">
+          <p class="dropcap">
+            UNITARES does not decide whether an output is correct or ethical, and it cannot detect deliberate concealment without independent evidence. A process capable enough to optimize against a monitored proxy can do so.
+          </p>
+          <p class="text-ink">
+            No governed-versus-ungoverned comparison has yet shown an incident prevented or an outcome improved. The circuit breaker demonstrably actuates. That it protects anything is untested, and adopting this software on the strength of a benefit claim would mean adopting it on a claim nobody has established.
+          </p>
+          <p>
+            It also replaces nothing you already run:
+          </p>
+        </div>
+
+        <dl class="max-w-prose mt-10 mb-10">
+          <div class="grid grid-cols-12 gap-x-6 gap-y-1 py-5 border-t border-sepia/40">
+            <dt class="col-span-12 md:col-span-3 mb-2 md:mb-0"><p class="label text-oxblood">Evals</p><p class="font-mono text-xs text-stone mt-1">between runs</p></dt>
+            <dd class="col-span-12 md:col-span-9 text-stone leading-relaxed">Is this model good enough for a defined task?</dd>
+          </div>
+          <div class="grid grid-cols-12 gap-x-6 gap-y-1 py-5 border-t border-sepia/40">
+            <dt class="col-span-12 md:col-span-3 mb-2 md:mb-0"><p class="label text-oxblood">Guardrails</p><p class="font-mono text-xs text-stone mt-1">per action</p></dt>
+            <dd class="col-span-12 md:col-span-9 text-stone leading-relaxed">Is this action allowed, and is it contained?</dd>
+          </div>
+          <div class="grid grid-cols-12 gap-x-6 gap-y-1 py-5 border-t border-b border-sepia/40">
+            <dt class="col-span-12 md:col-span-3 mb-2 md:mb-0"><p class="label text-oxblood">UNITARES</p><p class="font-mono text-xs text-stone mt-1">continuously</p></dt>
+            <dd class="col-span-12 md:col-span-9 text-stone leading-relaxed">What has this running process been doing, what evidence supports its claims, and what state is it in now?</dd>
+          </div>
+        </dl>
+
+        <div class="max-w-prose space-y-5 text-lg leading-relaxed text-stone">
+          <p>
+            Every deployment number this site publishes comes from one operator's own fleet, where most of the governed agents are also the ones building the system. The <a href="/research">research page</a> keeps the open questions, the withdrawn results, and the pre-registered read that will settle one of them.
+          </p>
+        </div>
+
+        <ul class="space-y-7 text-lg max-w-prose mt-12">
+          <li class="grid grid-cols-12 gap-4 items-baseline">
+            <span class="col-span-12 md:col-span-2 label text-stone">Manual</span>
+            <span class="col-span-12 md:col-span-10"><a href="https://github.com/cirwel/unitares/blob/master/docs/manual/README.md" class="font-medium">Install, operate, and configure</a></span>
+          </li>
+          <li class="grid grid-cols-12 gap-4 items-baseline">
+            <span class="col-span-12 md:col-span-2 label text-stone">Evidence</span>
+            <span class="col-span-12 md:col-span-10"><a href="https://github.com/cirwel/unitares/blob/master/docs/EVIDENCE_AND_LIMITS.md" class="font-medium">Evidence and limits, in full</a></span>
+          </li>
+          <li class="grid grid-cols-12 gap-4 items-baseline">
+            <span class="col-span-12 md:col-span-2 label text-stone">Vocabulary</span>
+            <span class="col-span-12 md:col-span-10"><a href="https://cirwel.github.io/unitares/glossary.html" class="font-medium">Public glossary</a></span>
+          </li>
+          <li class="grid grid-cols-12 gap-4 items-baseline">
+            <span class="col-span-12 md:col-span-2 label text-stone">Contact</span>
+            <span class="col-span-12 md:col-span-10"><a href="mailto:founder@cirwel.org" class="font-mono text-base">founder@cirwel.org</a></span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="flex justify-center pt-10 pb-2"><Tailpiece class="opacity-90" /></div>
+  </main>
+
+  <PageFooter errata />
+</BaseLayout>

@@ -276,6 +276,25 @@ body::before {
 .runcmd .cmd    { color: #1A1612; }
 .runcmd .note   { color: #5C544A; font-size: 0.78rem; margin-left: auto; }
 
+/* Multi-line sibling of .runcmd — a configuration or call sequence that cannot
+   be said in one line. Same rules for the same reason: hairlines, no tint, no
+   chrome. A block of code on this page is a displayed figure, not a terminal
+   screenshot, so it must not import a code editor's colour scheme. Scrolls on
+   its own rather than widening the measure. */
+.codeplate {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.82rem;
+  line-height: 1.75;
+  color: theme('colors.ink');
+  padding: 1.1em 0.1em;
+  border-top: 1px solid theme('colors.sepia');
+  border-bottom: 1px solid theme('colors.sepia');
+  overflow-x: auto;
+  white-space: pre;
+  tab-size: 2;
+}
+.codeplate .dim { color: theme('colors.stone'); }
+
 .hairline {
   height: 1px;
   background: theme('colors.sepia');
@@ -396,6 +415,9 @@ a:focus-visible {
   .runcmd .prompt,
   .runcmd .cmd,
   .runcmd .note         { color: #000 !important; }
+  .codeplate            { border-color: #888; padding: 0.6em 0; white-space: pre-wrap; }
+  .codeplate,
+  .codeplate .dim       { color: #000 !important; }
 
   /* Receipts panel: keep but compact */
   dl                    { font-size: 10pt; }
