@@ -15,12 +15,23 @@
       "url": "https://raw.githubusercontent.com/cirwel/unitares/master/agents/README.md",
       "human": "https://github.com/cirwel/unitares/blob/master/agents/README.md",
       "role": "States which parts of agents/ are the public contract and which are examples."
+    },
+    "readme": {
+      "url": "https://raw.githubusercontent.com/cirwel/unitares/master/README.md",
+      "human": "https://github.com/cirwel/unitares/blob/master/README.md",
+      "role": "The server's own front page. Authority for the install path, the loop, and what the project says it has NOT shown."
+    },
+    "mcp-clients": {
+      "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/integration/MCP_CLIENTS.md",
+      "human": "https://github.com/cirwel/unitares/blob/master/docs/integration/MCP_CLIENTS.md",
+      "role": "Authority for the client-facing endpoint and the client-neutrality claim."
     }
   },
   "pages": {
     "home": "https://cirwel.org/",
     "ecosystem": "https://cirwel.org/ecosystem/",
-    "research": "https://cirwel.org/research/"
+    "research": "https://cirwel.org/research/",
+    "build": "https://cirwel.org/build/"
   },
   "claims": [
     {
@@ -123,6 +134,49 @@
         "no change to this repo is required"
       ],
       "why": "This is the strongest plug-and-play claim on the site and the only one that says an adopter never has to touch our repo. It is quoted from agents/README.md and must not outlive it."
+    },
+    {
+      "id": "build-endpoint",
+      "page": "build",
+      "site_says": "localhost:8767/mcp/",
+      "source": "mcp-clients",
+      "must_contain": [
+        "http://localhost:8767/mcp/",
+        "Any client that supports Streamable HTTP MCP"
+      ],
+      "why": "This page hands a reader a port and a path to paste into a config file. A wrong one costs them an afternoon, and the client-neutrality sentence is what licenses printing the config without naming a vendor."
+    },
+    {
+      "id": "build-benefit-untested",
+      "page": "build",
+      "site_says": "No governed-versus-ungoverned comparison has yet shown an incident prevented or an outcome improved",
+      "source": "readme",
+      "must_contain": [
+        "No governed-versus-ungoverned comparison has yet shown an incident prevented",
+        "state instrument, not an outcome oracle"
+      ],
+      "why": "The one guard that matters on a page written to get people to install something. A build page is where an unearned benefit claim would be most useful and least honest, so the disclaimer is pinned to the server's own words rather than to this page's restraint."
+    },
+    {
+      "id": "build-entry-point",
+      "page": "build",
+      "site_says": "with no change to the server's repository at all",
+      "source": "agents-readme",
+      "must_contain": [
+        "unitares.resident_progress_sources",
+        "no change to this repo is required"
+      ],
+      "why": "Same assertion as the ecosystem entry, checked separately because it is stated on a second page. A claim is only covered on the page it appears on."
+    },
+    {
+      "id": "build-resident-skeleton",
+      "page": "build",
+      "site_says": "early skeleton, not yet a usable general-purpose agent",
+      "source": "readme",
+      "must_contain": [
+        "skeleton, not yet a usable general-purpose agent"
+      ],
+      "why": "An UNDERclaim, pinned for the same reason as the overclaims. If unitares-resident matures and the README drops this line, the build page will be talking a reader out of the very thing it should be pointing them at."
     }
   ],
   "retired_phrasings": [
