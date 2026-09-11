@@ -179,7 +179,7 @@
       "site_says": "No governed-versus-ungoverned comparison has yet shown an incident prevented or an outcome improved",
       "source": "readme",
       "must_contain": [
-        "No governed-versus-ungoverned comparison has yet shown an incident prevented",
+        "No governed-versus-ungoverned comparison has shown an incident prevented",
         "state instrument, not an outcome oracle"
       ],
       "why": "The one guard that matters on a page written to get people to install something. A build page is where an unearned benefit claim would be most useful and least honest, so the disclaimer is pinned to the server's own words rather than to this page's restraint."
