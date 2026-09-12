@@ -13,6 +13,15 @@ const ogImageUrl = new URL(ogImage, site).toString();
     <!-- Mark JS active before first paint so the plate ink-in hide (scoped to
          .js in global.css) never flashes an un-hidden plate. -->
     <script is:inline>document.documentElement.classList.add('js')</script>
+    <!-- Which impression to pull, decided before first paint so a reader who
+         asked for one never sees the other flash first. Absent a stored
+         choice nothing is set and the system preference decides in CSS. -->
+    <script is:inline>
+      try {
+        var i = localStorage.getItem('cirwel-impression');
+        if (i === 'dark' || i === 'light') document.documentElement.setAttribute('data-theme', i);
+      } catch (e) {}
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
@@ -20,7 +29,8 @@ const ogImageUrl = new URL(ogImage, site).toString();
 
     <link rel="icon" type="image/svg+xml" href="/favicon-hex.svg" />
     <link rel="alternate icon" type="image/png" href="/og.png" />
-    <meta name="theme-color" content="#F5F1E8" />
+    <meta name="theme-color" content="#F5F1E8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#15110D" media="(prefers-color-scheme: dark)" />
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -105,6 +115,51 @@ const ogImageUrl = new URL(ogImage, site).toString();
         addEventListener('scroll', onScroll, { passive: true });
         addEventListener('resize', onScroll);
         update();
+      })();
+    </script>
+
+    <script>
+      // Impression control. Three states, because two would force a reader to
+      // choose one impression forever the moment they touched it: auto follows
+      // the system, day and night override it. The chosen state is what the
+      // control names; the label is the state, not the action.
+      (() => {
+        const btn = document.getElementById('impression');
+        if (!btn) return;
+        const text = btn.querySelector('[data-impression-state]');
+        const order = ['auto', 'day', 'night'];
+        const attr = { auto: null, day: 'light', night: 'dark' };
+        const says = {
+          auto:  'Impression follows your system. Change to day.',
+          day:   'Impression: day. Change to night.',
+          night: 'Impression: night. Change to automatic.',
+        };
+
+        let state = 'auto';
+        try {
+          const stored = localStorage.getItem('cirwel-impression');
+          if (stored === 'light') state = 'day';
+          else if (stored === 'dark') state = 'night';
+        } catch (e) {}
+
+        const apply = () => {
+          const v = attr[state];
+          if (v) document.documentElement.setAttribute('data-theme', v);
+          else document.documentElement.removeAttribute('data-theme');
+          if (text) text.textContent = state.toUpperCase();
+          btn.setAttribute('aria-label', says[state]);
+          btn.setAttribute('title', says[state]);
+          try {
+            if (v) localStorage.setItem('cirwel-impression', v);
+            else localStorage.removeItem('cirwel-impression');
+          } catch (e) {}
+        };
+
+        apply();
+        btn.addEventListener('click', () => {
+          state = order[(order.indexOf(state) + 1) % order.length];
+          apply();
+        });
       })();
     </script>
 

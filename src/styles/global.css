@@ -10,8 +10,127 @@
 @tailwind utilities;
 
 :root {
+  /* ---------------------------------------------------------------------
+     THE TWO IMPRESSIONS
+     Light = copperplate line engraving on laid cream. Dark = the same plate
+     pulled as a MEZZOTINT: a ground bitten to print solid, lights burnished
+     back out of it.
+
+     ⚠ The dark set is NOT ratio-parity with the light set, and the first cut
+     of this file was wrong to aim for it. Parity is paper logic, and a screen
+     is emissive, not reflective. Two corrections fall out of that, in opposite
+     directions:
+
+       TEXT comes DOWN. Light glyphs on a dark ground bloom into their
+       counters (irradiation), so matching cream's 16:1 body contrast reads as
+       glare, not as authority. Body ink sits at 12.5:1, about 0.78x light.
+
+       DRAWN MARKS come UP. A thin light line on a dark ground reads thinner
+       than a thin dark line on paper, so strict parity makes the whole
+       engraved apparatus recede. Rules sit at 2.2:1, about 1.36x light, and
+       the plate frames carry their own per-impression alphas below so the
+       frames land on light's measured weight rather than three-quarters of it.
+
+     One ratio cannot be matched and is not: the accent. Oxblood carries 9.1:1
+     on cream, and reaching that on this ground means a salmon pink, not a red.
+     The sanguine stops at 6.4:1, about 0.70x, which is the hue holding its
+     ground against the arithmetic. Say so rather than quietly claiming parity.
+
+     Values are RGB triplets so Tailwind's /40 opacity modifiers still work.
+     --------------------------------------------------------------------- */
+  --c-cream:   245 241 232;  /* #F5F1E8 — the sheet */
+  --c-ink:     26 22 18;     /* #1A1612 — the line */
+  --c-oxblood: 122 31 31;    /* #7A1F1F — the accent */
+  --c-ochre:   184 134 47;   /* #B8862F */
+  --c-stone:   92 84 74;     /* #5C544A — secondary voice */
+  --c-sepia:   201 192 174;  /* #C9C0AE — hairlines */
+
   --grain-opacity: 0.04;
+  --grain-blend: multiply;
+  /* Paper tooth: warm dark specks pressed into a light sheet. */
+  --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.10 0 0 0 0 0.08 0 0 0 0 0.04 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  /* The engraved double rule. An alpha, not a colour, so the frame keeps the
+     accent's hue; per impression because the same alpha does not carry the
+     same weight on paper and on glass. Light: 4.4:1 outer, 1.6:1 inner. */
+  --plate-outer: rgb(var(--c-oxblood) / 0.70);
+  --plate-inner: rgb(var(--c-oxblood) / 0.25);
+
+  --running-head-bg: rgb(245 241 232 / 0.94);
+  color-scheme: light;
 }
+
+/* The mezzotint tokens are applied twice: once for readers whose system asks
+   for dark, once for readers who asked this page directly.
+   `:not([data-theme="light"])` lets an explicit choice win over the system
+   preference in BOTH directions. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --c-cream:   21 17 13;     /* #15110D — bistre-black ground */
+    --c-ink:     219 210 191;  /* #DBD2BF — 12.5:1, DOWN from cream's 16:1 */
+    --c-oxblood: 224 122 95;   /* #E07A5F — sanguine, 6.4:1; see the note */
+    --c-ochre:   156 112 40;   /* #9C7028 — 4.3:1 (carries no markup today) */
+    --c-stone:   168 159 144;  /* #A89F90 — 7.2:1, near cream's 6.6:1 */
+    --c-sepia:   85 74 60;     /* #554A3C — 2.2:1, UP from cream's 1.6:1 */
+
+    --grain-opacity: 0.05;
+    --grain-blend: screen;
+    /* Plate tooth: on a mezzotint ground the grain is what catches the light,
+       so the specks lighten rather than darken. */
+    --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.86 0 0 0 0 0.80 0 0 0 0 0.68 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+    /* Lifted so the frame lands on light's 4.4:1 / 1.6:1 instead of the
+       3.0:1 / 1.4:1 the light alphas give on this ground. */
+    --plate-outer: rgb(var(--c-oxblood) / 0.80);
+    --plate-inner: rgb(var(--c-oxblood) / 0.30);
+
+    --running-head-bg: rgb(21 17 13 / 0.94);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --c-cream:   21 17 13;
+  --c-ink:     219 210 191;
+  --c-oxblood: 224 122 95;
+  --c-ochre:   156 112 40;
+  --c-stone:   168 159 144;
+  --c-sepia:   85 74 60;
+
+  --grain-opacity: 0.05;
+  --grain-blend: screen;
+  --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.86 0 0 0 0 0.80 0 0 0 0 0.68 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  --plate-outer: rgb(var(--c-oxblood) / 0.80);
+  --plate-inner: rgb(var(--c-oxblood) / 0.30);
+
+  --running-head-bg: rgb(21 17 13 / 0.94);
+  color-scheme: dark;
+}
+
+/* ---------------------------------------------------------------------------
+   RE-INKING THE ENGRAVINGS
+   Every plate, ornament, seal and brand mark on this site is inline SVG whose
+   colours are presentation ATTRIBUTES baked into the art. Rather than fork six
+   figures into a second palette — two files to keep in step, which is the
+   failure mode this site's whole apparatus exists to prevent — the attribute
+   values are remapped to the live tokens. A CSS declaration outranks a
+   presentation attribute, so one rule re-inks every drawing at once and the
+   art stays single-source.
+   --------------------------------------------------------------------------- */
+[fill="#7A1F1F"]   { fill:   rgb(var(--c-oxblood)); }
+[stroke="#7A1F1F"] { stroke: rgb(var(--c-oxblood)); }
+[fill="#F5F1E8"]   { fill:   rgb(var(--c-cream)); }
+[stroke="#F5F1E8"] { stroke: rgb(var(--c-cream)); }
+[fill="#1A1612"]   { fill:   rgb(var(--c-ink)); }
+[stroke="#1A1612"] { stroke: rgb(var(--c-ink)); }
+[fill="#5C544A"]   { fill:   rgb(var(--c-stone)); }
+[stroke="#5C544A"] { stroke: rgb(var(--c-stone)); }
+[fill="#C9C0AE"]   { fill:   rgb(var(--c-sepia)); }
+[stroke="#C9C0AE"] { stroke: rgb(var(--c-sepia)); }
+[fill="#B8862F"]   { fill:   rgb(var(--c-ochre)); }
+[stroke="#B8862F"] { stroke: rgb(var(--c-ochre)); }
+
 
 /* Prevent CLS from font-loading by adjusting fallback font metrics.
    size-adjust matches the fallback's x-height to the webfont's; the ascent and
@@ -50,10 +169,10 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.10 0 0 0 0 0.08 0 0 0 0 0.04 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image: var(--grain);
   opacity: var(--grain-opacity);
   z-index: 1000;
-  mix-blend-mode: multiply;
+  mix-blend-mode: var(--grain-blend);
 }
 
 .display {
@@ -107,7 +226,7 @@ body::before {
   vertical-align: 0.85em;
   margin-left: 0.1em;
   letter-spacing: 0;
-  color: #7A1F1F;
+  color: rgb(var(--c-oxblood));
 }
 
 /* Legend row: the reference letter sits in its own narrow column so the notes
@@ -121,7 +240,7 @@ body::before {
   font-family: "Bodoni Moda Variable", "Bodoni Fallback", Didot, Georgia, serif;
   font-variation-settings: 'opsz' 16;
   font-style: italic;
-  color: #7A1F1F;
+  color: rgb(var(--c-oxblood));
   line-height: 1.55;
 }
 .legend dd {
@@ -136,8 +255,8 @@ body::before {
   display: block;
   font-size: 0.82rem;
   line-height: 1.5;
-  color: theme('colors.stone');
-  border-top: 1px solid theme('colors.sepia');
+  color: rgb(var(--c-stone));
+  border-top: 1px solid rgb(var(--c-sepia));
   padding-top: 0.5rem;
   margin-top: 1.5rem;
 }
@@ -152,7 +271,7 @@ body::before {
     clear: right;
     width: 11.5rem;
     margin: 0.4rem -13.5rem 1.2rem 2rem;
-    border-top: 1px solid theme('colors.sepia');
+    border-top: 1px solid rgb(var(--c-sepia));
   }
 }
 
@@ -173,14 +292,14 @@ body::before {
   align-items: baseline;
   gap: 0.6em;
   padding: 0.62rem 1.5rem 0.55rem;
-  background: rgba(245, 241, 232, 0.94);
+  background: var(--running-head-bg);
   backdrop-filter: saturate(120%) blur(2px);
-  border-bottom: 1px solid theme('colors.sepia');
+  border-bottom: 1px solid rgb(var(--c-sepia));
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 0.62rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: theme('colors.stone');
+  color: rgb(var(--c-stone));
   opacity: 0;
   transform: translateY(-100%);
   transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -194,10 +313,10 @@ body::before {
   font-size: 0.86rem;
   letter-spacing: 0.08em;
   text-transform: none;
-  color: theme('colors.ink');
+  color: rgb(var(--c-ink));
 }
-#running-head .rh-sep { color: theme('colors.sepia'); }
-#running-head .rh-section { color: theme('colors.oxblood'); }
+#running-head .rh-sep { color: rgb(var(--c-sepia)); }
+#running-head .rh-section { color: rgb(var(--c-oxblood)); }
 @media (prefers-reduced-motion: reduce) {
   #running-head { transition: opacity 0.28s ease; transform: none; }
 }
@@ -222,7 +341,7 @@ body::before {
 }
 .errata-note a {
   margin-left: 0.45em;
-  text-decoration-color: rgba(122, 31, 31, 0.25);
+  text-decoration-color: rgb(var(--c-oxblood) / 0.3);
 }
 @media (max-width: 640px) {
   .errata { grid-template-columns: 1fr; gap: 0.2rem 0; }
@@ -242,7 +361,7 @@ body::before {
   font-size: 5.4em;
   line-height: 0.86;
   font-weight: 600;
-  color: #7A1F1F;
+  color: rgb(var(--c-oxblood));
   margin-right: 0.08em;
   margin-top: 0.02em;
   margin-bottom: -0.06em;
@@ -268,13 +387,13 @@ body::before {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 0.95rem;
   padding: 0.9em 0.1em;
-  border-top: 1px solid theme('colors.sepia');
-  border-bottom: 1px solid theme('colors.sepia');
+  border-top: 1px solid rgb(var(--c-sepia));
+  border-bottom: 1px solid rgb(var(--c-sepia));
   user-select: text;
 }
-.runcmd .prompt { color: #7A1F1F; user-select: none; }
-.runcmd .cmd    { color: #1A1612; }
-.runcmd .note   { color: #5C544A; font-size: 0.78rem; margin-left: auto; }
+.runcmd .prompt { color: rgb(var(--c-oxblood)); user-select: none; }
+.runcmd .cmd    { color: rgb(var(--c-ink)); }
+.runcmd .note   { color: rgb(var(--c-stone)); font-size: 0.78rem; margin-left: auto; }
 
 /* Multi-line sibling of .runcmd — a configuration or call sequence that cannot
    be said in one line. Same rules for the same reason: hairlines, no tint, no
@@ -285,35 +404,38 @@ body::before {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 0.82rem;
   line-height: 1.75;
-  color: theme('colors.ink');
+  color: rgb(var(--c-ink));
   padding: 1.1em 0.1em;
-  border-top: 1px solid theme('colors.sepia');
-  border-bottom: 1px solid theme('colors.sepia');
+  border-top: 1px solid rgb(var(--c-sepia));
+  border-bottom: 1px solid rgb(var(--c-sepia));
   overflow-x: auto;
   white-space: pre;
   tab-size: 2;
 }
-.codeplate .dim { color: theme('colors.stone'); }
+.codeplate .dim { color: rgb(var(--c-stone)); }
+
+.plate-rule       { border: 1px solid var(--plate-outer); }
+.plate-rule-inner { border: 1px solid var(--plate-inner); }
 
 .hairline {
   height: 1px;
-  background: theme('colors.sepia');
+  background: rgb(var(--c-sepia));
   border: 0;
 }
 
 a {
   color: inherit;
   text-decoration-line: underline;
-  text-decoration-color: rgba(122, 31, 31, 0.3);
+  text-decoration-color: rgb(var(--c-oxblood) / 0.35);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.22em;
   transition: text-decoration-color 0.2s ease;
 }
 a:hover {
-  text-decoration-color: rgba(122, 31, 31, 1);
+  text-decoration-color: rgb(var(--c-oxblood));
 }
 a:focus-visible {
-  outline: 2px solid #7A1F1F;
+  outline: 2px solid rgb(var(--c-oxblood));
   outline-offset: 3px;
   border-radius: 1px;
 }
@@ -367,6 +489,21 @@ a:focus-visible {
    interactive chrome, keep masthead + colophon as page header/footer.
    --------------------------------------------------------------------------- */
 @media print {
+  /* Paper is paper. A mezzotint ground would empty a cartridge and a reader
+     who prints this wants the engraving, so the sheet returns to cream-and-ink
+     regardless of which impression was on screen. */
+  :root, :root[data-theme="dark"] {
+    --c-cream:   245 241 232;
+    --c-ink:     26 22 18;
+    --c-oxblood: 122 31 31;
+    --c-ochre:   184 134 47;
+    --c-stone:   92 84 74;
+    --c-sepia:   201 192 174;
+    --plate-outer: rgb(var(--c-oxblood) / 0.70);
+    --plate-inner: rgb(var(--c-oxblood) / 0.25);
+    color-scheme: light;
+  }
+
   @page {
     size: A4;
     margin: 22mm 18mm;
