@@ -9,10 +9,12 @@
  * oxblood rises to a burnished sanguine, because a 0.5px hairline in #7A1F1F
  * on black does not survive the pull.
  *
- * Each dark token holds the SAME contrast ratio against its ground that its
- * light counterpart holds against cream (rules ~1.5:1, secondary text ~7:1,
- * accent >=4.5:1). That is what keeps the two impressions the same design and
- * not two designs.
+ * The dark set is deliberately NOT ratio-parity with the light set: a screen
+ * is emissive, so light text blooms and light hairlines thin. Body ink comes
+ * DOWN to ~0.78x cream's contrast, drawn marks come UP (rules ~1.36x), and the
+ * accent stops at ~0.70x because reaching oxblood's 9.1:1 on this ground means
+ * a salmon pink rather than a red. The full reasoning and every measured ratio
+ * are in src/styles/global.css, which is where these values are consumed.
  *
  * The hex literals below are load-bearing beyond documentation:
  * cirwel.github.io/scripts/check-index.py leg E parses THIS FILE for
@@ -30,11 +32,11 @@ const light = {
 
 const dark = {
   creamDark:   '#15110D',
-  inkDark:     '#E8E0D0',
-  oxbloodDark: '#D0604A',
-  ochreDark:   '#D6A44A',
+  inkDark:     '#DBD2BF',
+  oxbloodDark: '#E07A5F',
+  ochreDark:   '#9C7028',
   stoneDark:   '#A89F90',
-  sepiaDark:   '#3A3229',
+  sepiaDark:   '#554A3C',
 };
 
 /* The six names stay ROLES — `text-stone` means "secondary voice", not "grey".

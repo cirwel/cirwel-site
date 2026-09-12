@@ -14,9 +14,28 @@
      THE TWO IMPRESSIONS
      Light = copperplate line engraving on laid cream. Dark = the same plate
      pulled as a MEZZOTINT: a ground bitten to print solid, lights burnished
-     back out of it. Not an inversion — every dark token holds the same
-     contrast ratio against its ground that its light counterpart holds
-     against cream, so the two are one design pulled twice.
+     back out of it.
+
+     ⚠ The dark set is NOT ratio-parity with the light set, and the first cut
+     of this file was wrong to aim for it. Parity is paper logic, and a screen
+     is emissive, not reflective. Two corrections fall out of that, in opposite
+     directions:
+
+       TEXT comes DOWN. Light glyphs on a dark ground bloom into their
+       counters (irradiation), so matching cream's 16:1 body contrast reads as
+       glare, not as authority. Body ink sits at 12.5:1, about 0.78x light.
+
+       DRAWN MARKS come UP. A thin light line on a dark ground reads thinner
+       than a thin dark line on paper, so strict parity makes the whole
+       engraved apparatus recede. Rules sit at 2.2:1, about 1.36x light, and
+       the plate frames carry their own per-impression alphas below so the
+       frames land on light's measured weight rather than three-quarters of it.
+
+     One ratio cannot be matched and is not: the accent. Oxblood carries 9.1:1
+     on cream, and reaching that on this ground means a salmon pink, not a red.
+     The sanguine stops at 6.4:1, about 0.70x, which is the hue holding its
+     ground against the arithmetic. Say so rather than quietly claiming parity.
+
      Values are RGB triplets so Tailwind's /40 opacity modifiers still work.
      --------------------------------------------------------------------- */
   --c-cream:   245 241 232;  /* #F5F1E8 — the sheet */
@@ -31,6 +50,12 @@
   /* Paper tooth: warm dark specks pressed into a light sheet. */
   --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.10 0 0 0 0 0.08 0 0 0 0 0.04 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 
+  /* The engraved double rule. An alpha, not a colour, so the frame keeps the
+     accent's hue; per impression because the same alpha does not carry the
+     same weight on paper and on glass. Light: 4.4:1 outer, 1.6:1 inner. */
+  --plate-outer: rgb(var(--c-oxblood) / 0.70);
+  --plate-inner: rgb(var(--c-oxblood) / 0.25);
+
   --running-head-bg: rgb(245 241 232 / 0.94);
   color-scheme: light;
 }
@@ -42,17 +67,22 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --c-cream:   21 17 13;     /* #15110D — bistre-black ground */
-    --c-ink:     232 224 208;  /* #E8E0D0 — burnished light */
-    --c-oxblood: 208 96 74;    /* #D0604A — sanguine, lifted to 4.99:1 */
-    --c-ochre:   214 164 74;   /* #D6A44A */
-    --c-stone:   168 159 144;  /* #A89F90 — 7.3:1, as stone is on cream */
-    --c-sepia:   58 50 41;     /* #3A3229 — 1.5:1, as sepia is on cream */
+    --c-ink:     219 210 191;  /* #DBD2BF — 12.5:1, DOWN from cream's 16:1 */
+    --c-oxblood: 224 122 95;   /* #E07A5F — sanguine, 6.4:1; see the note */
+    --c-ochre:   156 112 40;   /* #9C7028 — 4.3:1 (carries no markup today) */
+    --c-stone:   168 159 144;  /* #A89F90 — 7.2:1, near cream's 6.6:1 */
+    --c-sepia:   85 74 60;     /* #554A3C — 2.2:1, UP from cream's 1.6:1 */
 
     --grain-opacity: 0.05;
     --grain-blend: screen;
     /* Plate tooth: on a mezzotint ground the grain is what catches the light,
        so the specks lighten rather than darken. */
     --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.86 0 0 0 0 0.80 0 0 0 0 0.68 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+    /* Lifted so the frame lands on light's 4.4:1 / 1.6:1 instead of the
+       3.0:1 / 1.4:1 the light alphas give on this ground. */
+    --plate-outer: rgb(var(--c-oxblood) / 0.80);
+    --plate-inner: rgb(var(--c-oxblood) / 0.30);
 
     --running-head-bg: rgb(21 17 13 / 0.94);
     color-scheme: dark;
@@ -61,15 +91,18 @@
 
 :root[data-theme="dark"] {
   --c-cream:   21 17 13;
-  --c-ink:     232 224 208;
-  --c-oxblood: 208 96 74;
-  --c-ochre:   214 164 74;
+  --c-ink:     219 210 191;
+  --c-oxblood: 224 122 95;
+  --c-ochre:   156 112 40;
   --c-stone:   168 159 144;
-  --c-sepia:   58 50 41;
+  --c-sepia:   85 74 60;
 
   --grain-opacity: 0.05;
   --grain-blend: screen;
   --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.86 0 0 0 0 0.80 0 0 0 0 0.68 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  --plate-outer: rgb(var(--c-oxblood) / 0.80);
+  --plate-inner: rgb(var(--c-oxblood) / 0.30);
 
   --running-head-bg: rgb(21 17 13 / 0.94);
   color-scheme: dark;
@@ -381,6 +414,9 @@ body::before {
 }
 .codeplate .dim { color: rgb(var(--c-stone)); }
 
+.plate-rule       { border: 1px solid var(--plate-outer); }
+.plate-rule-inner { border: 1px solid var(--plate-inner); }
+
 .hairline {
   height: 1px;
   background: rgb(var(--c-sepia));
@@ -463,6 +499,8 @@ a:focus-visible {
     --c-ochre:   184 134 47;
     --c-stone:   92 84 74;
     --c-sepia:   201 192 174;
+    --plate-outer: rgb(var(--c-oxblood) / 0.70);
+    --plate-inner: rgb(var(--c-oxblood) / 0.25);
     color-scheme: light;
   }
 
