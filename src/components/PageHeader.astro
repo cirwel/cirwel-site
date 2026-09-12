@@ -7,6 +7,8 @@ interface Props {
    */
   currentPath: string;
 }
+import markSvg from '../../public/mark-c-illuminated.svg?raw';
+
 const { currentPath } = Astro.props;
 const onHome = currentPath === '/';
 const thesisHref  = onHome ? '#thesis'  : '/#thesis';
@@ -37,8 +39,10 @@ const isBuild     = currentPath === '/build';
 -->
 <header class="px-6 lg:px-12 pt-5 pb-4 max-w-screen-xl mx-auto flex flex-col items-center gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
   <a href="/" class="no-underline shrink-0 flex items-center gap-2.5">
-    <img src="/mark-c-illuminated.svg" alt=""
-         class="block w-[30px] h-[30px] sm:w-[36px] sm:h-[36px]" />
+    <!-- The device is inlined rather than linked so it is re-inked by the same
+         tokens as the rest of the page. As an <img> it would keep its cream
+         plate and sit as a lit tile on a mezzotint ground. -->
+    <span class="mark-device block w-[30px] h-[30px] sm:w-[36px] sm:h-[36px]" aria-hidden="true"><Fragment set:html={markSvg} /></span>
     <span class="display smcp text-lg sm:text-xl font-medium">CIRWEL Research</span>
   </a>
   <nav aria-label="Primary"
@@ -80,5 +84,44 @@ const isBuild     = currentPath === '/build';
        class="no-underline hover:text-oxblood transition-colors">
       Contact
     </a>
+
+    <!--
+      Impression control. The house register is a line engraving pulled on
+      cream; the dark register is the same plate pulled as a mezzotint. Which
+      one a reader gets is theirs to say, so the control is stated rather than
+      inferred — the same rule the rest of this site is built on. Hidden
+      without JS, where it could not do anything.
+    -->
+    <span class="impression-sep" aria-hidden="true"></span>
+    <button id="impression" type="button" aria-label="Impression: automatic"
+            class="impression no-underline hover:text-oxblood transition-colors">
+      <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true">
+        <circle cx="8" cy="8" r="6.6" fill="none" stroke="currentColor" stroke-width="1"/>
+        <path d="M 8 1.4 A 6.6 6.6 0 0 1 8 14.6 Z" fill="currentColor"/>
+        <g stroke="currentColor" stroke-width="0.6" opacity="0.85">
+          <line x1="3.2" y1="5.4" x2="6.4" y2="5.4"/>
+          <line x1="2.2" y1="8"   x2="6.4" y2="8"/>
+          <line x1="3.2" y1="10.6" x2="6.4" y2="10.6"/>
+        </g>
+      </svg>
+      <span data-impression-state>AUTO</span>
+    </button>
   </nav>
 </header>
+
+<style is:global>
+  /* The device carries its own 200x200 viewBox; let it fill the sized span. */
+  .mark-device > svg { display: block; width: 100%; height: 100%; }
+
+  /* Quiet by default: the control is apparatus, not a call to action. It sits
+     in the nav's own voice and only earns colour on hover or focus. */
+  .impression { display: none; align-items: center; gap: 0.42em; cursor: pointer;
+                background: none; border: 0; padding: 0; color: inherit;
+                font: inherit; letter-spacing: inherit; line-height: 1; }
+  .js .impression { display: inline-flex; }
+  .impression [data-impression-state] { font-variant-numeric: tabular-nums; min-width: 3.1em; text-align: left; }
+  .impression:focus-visible { outline: 2px solid rgb(var(--c-oxblood)); outline-offset: 3px; border-radius: 1px; }
+  .impression-sep { display: none; width: 1px; height: 0.9em; background: rgb(var(--c-sepia)); }
+  .js .impression-sep { display: inline-block; }
+  @media print { .impression, .impression-sep { display: none !important; } }
+</style>
