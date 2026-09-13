@@ -36,34 +36,25 @@
      The sanguine stops at 5.9:1, about 0.65x, which is the hue holding its
      ground against the arithmetic. Say so rather than quietly claiming parity.
 
-     TWO ACCENTS, ONE OF THEM ONLY AT NIGHT. Lifting oxblood far enough to be
-     legible drags its hue from crimson toward terracotta, and terracotta on a
-     warm near-black is Halloween. The fix is not a redder red — at this
-     lightness there is no redder red — it is to stop asking one colour to be
-     both the ink and the plate:
+     ONE ACCENT, at night as in daylight. The night impression first shipped
+     a terracotta accent, which on a warm near-black ground reads as Halloween
+     — the hue had drifted from crimson at 0deg to 13deg in the course of being
+     lifted for legibility. A second, cool accent was then tried for the
+     engraved apparatus and rejected on sight: a green structure under a red
+     ink does not belong to this register, whatever the material argument for
+     it. What was actually wrong was the hue and a gold token that was pumpkin.
+     Both are fixed here, and the palette stays one accent wide.
 
-       --c-oxblood is the INK. Labels, links, the drop cap, reference marks,
-       the brand device. Hue pulled back to 7deg, chroma dropped: a printed
-       red, not a costume orange.
-
-       --c-patina is the PLATE. Frames, ornaments, seals, tailpieces. The
-       plate is copper. Copper tarnishes; ink does not. So at night the
-       apparatus has gone verdigris and the ink has not, and the page stops
-       being orange-on-black because its largest coloured areas are now cool.
-
-     ⛔ Verdigris is NOT mint. Mint is hue 162 at 72% chroma and is the
-     AI-default tell this house style exists to avoid; this is the same hue at
-     23%, which is oxidised metal rather than a dev-tool accent.
-
-     In LIGHT, --c-patina is simply oxblood. The cream impression has one
-     accent, exactly as ratified, and none of this machinery is visible there.
+     ⛔ Do not reintroduce a second accent for the dark impression. Do not
+     "fix" the accent by making it more orange to gain contrast; at this
+     lightness there is no redder red, and the answer is to accept 5.9:1
+     rather than to leave the hue.
 
      Values are RGB triplets so Tailwind's /40 opacity modifiers still work.
      --------------------------------------------------------------------- */
   --c-cream:   245 241 232;  /* #F5F1E8 — the sheet */
   --c-ink:     26 22 18;     /* #1A1612 — the line */
-  --c-oxblood: 122 31 31;    /* #7A1F1F — the ink */
-  --c-patina:  122 31 31;    /* the plate; on cream it IS the ink */
+  --c-oxblood: 122 31 31;    /* #7A1F1F — the accent */
   --c-ochre:   184 134 47;   /* #B8862F */
   --c-stone:   92 84 74;     /* #5C544A — secondary voice */
   --c-sepia:   201 192 174;  /* #C9C0AE — hairlines */
@@ -76,8 +67,8 @@
   /* The engraved double rule. An alpha, not a colour, so the frame keeps the
      accent's hue; per impression because the same alpha does not carry the
      same weight on paper and on glass. Light: 4.4:1 outer, 1.6:1 inner. */
-  --plate-outer: rgb(var(--c-patina) / 0.70);
-  --plate-inner: rgb(var(--c-patina) / 0.25);
+  --plate-outer: rgb(var(--c-oxblood) / 0.70);
+  --plate-inner: rgb(var(--c-oxblood) / 0.25);
 
   --running-head-bg: rgb(245 241 232 / 0.94);
   color-scheme: light;
@@ -91,8 +82,9 @@
   :root:not([data-theme="light"]) {
     --c-cream:   21 17 13;     /* #15110D — bistre-black ground */
     --c-ink:     219 210 191;  /* #DBD2BF — 12.5:1, DOWN from cream's 16:1 */
-    --c-oxblood: 203 122 112;  /* #CB7A70 — the ink, 5.9:1, hue 7 not 13 */
-    --c-patina:  127 175 162;  /* #7FAFA2 — the tarnished plate, 7.7:1 */
+    --c-oxblood: 203 122 112;  /* #CB7A70 — 5.9:1, hue 7 not the 13 that read
+                                  as Halloween. No gold token: it was pumpkin
+                                  and carried no markup. */
     --c-stone:   168 159 144;  /* #A89F90 — 7.2:1, near cream's 6.6:1 */
     --c-sepia:   85 74 60;     /* #554A3C — 2.2:1, UP from cream's 1.6:1 */
 
@@ -104,8 +96,8 @@
 
     /* Lifted so the frame lands on light's 4.4:1 / 1.6:1 instead of the
        3.0:1 / 1.4:1 the light alphas give on this ground. */
-    --plate-outer: rgb(var(--c-patina) / 0.70);
-    --plate-inner: rgb(var(--c-patina) / 0.24);
+    --plate-outer: rgb(var(--c-oxblood) / 0.70);
+    --plate-inner: rgb(var(--c-oxblood) / 0.30);
 
     --running-head-bg: rgb(21 17 13 / 0.94);
     color-scheme: dark;
@@ -116,7 +108,6 @@
   --c-cream:   21 17 13;
   --c-ink:     219 210 191;
   --c-oxblood: 203 122 112;
-  --c-patina:  127 175 162;
   --c-stone:   168 159 144;
   --c-sepia:   85 74 60;
 
@@ -124,8 +115,8 @@
   --grain-blend: screen;
   --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.86 0 0 0 0 0.80 0 0 0 0 0.68 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 
-  --plate-outer: rgb(var(--c-patina) / 0.70);
-  --plate-inner: rgb(var(--c-patina) / 0.24);
+  --plate-outer: rgb(var(--c-oxblood) / 0.70);
+  --plate-inner: rgb(var(--c-oxblood) / 0.30);
 
   --running-head-bg: rgb(21 17 13 / 0.94);
   color-scheme: dark;
@@ -141,13 +132,8 @@
    presentation attribute, so one rule re-inks every drawing at once and the
    art stays single-source.
    --------------------------------------------------------------------------- */
-[fill="#7A1F1F"]   { fill:   rgb(var(--c-patina)); }
-[stroke="#7A1F1F"] { stroke: rgb(var(--c-patina)); }
-/* The brand device is not apparatus. It is the mark itself, it is the same
-   mark the favicon and the share card carry, and it stays in ink so the
-   identity does not change colour with the reader's system setting. */
-.mark-device [fill="#7A1F1F"]   { fill:   rgb(var(--c-oxblood)); }
-.mark-device [stroke="#7A1F1F"] { stroke: rgb(var(--c-oxblood)); }
+[fill="#7A1F1F"]   { fill:   rgb(var(--c-oxblood)); }
+[stroke="#7A1F1F"] { stroke: rgb(var(--c-oxblood)); }
 [fill="#F5F1E8"]   { fill:   rgb(var(--c-cream)); }
 [stroke="#F5F1E8"] { stroke: rgb(var(--c-cream)); }
 [fill="#1A1612"]   { fill:   rgb(var(--c-ink)); }
@@ -527,9 +513,8 @@ a:focus-visible {
     --c-ochre:   184 134 47;
     --c-stone:   92 84 74;
     --c-sepia:   201 192 174;
-    --c-patina:  122 31 31;
-    --plate-outer: rgb(var(--c-patina) / 0.70);
-    --plate-inner: rgb(var(--c-patina) / 0.25);
+    --plate-outer: rgb(var(--c-oxblood) / 0.70);
+    --plate-inner: rgb(var(--c-oxblood) / 0.25);
     color-scheme: light;
   }
 
