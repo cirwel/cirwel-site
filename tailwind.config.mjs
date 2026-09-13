@@ -12,9 +12,14 @@
  * The dark set is deliberately NOT ratio-parity with the light set: a screen
  * is emissive, so light text blooms and light hairlines thin. Body ink comes
  * DOWN to ~0.78x cream's contrast, drawn marks come UP (rules ~1.36x), and the
- * accent stops at ~0.70x because reaching oxblood's 9.1:1 on this ground means
- * a salmon pink rather than a red. The full reasoning and every measured ratio
- * are in src/styles/global.css, which is where these values are consumed.
+ * accent stops at ~0.65x because reaching oxblood's 9.1:1 on this ground means
+ * a salmon pink rather than a red.
+ *
+ * Night also splits the accent in two: oxblood is the INK and patina is the
+ * PLATE, because one colour lifted far enough to be legible drifts to
+ * terracotta, and terracotta on warm near-black is Halloween. In light,
+ * patina IS oxblood and the cream impression still has exactly one accent.
+ * The full reasoning and every measured ratio are in src/styles/global.css.
  *
  * The hex literals below are load-bearing beyond documentation:
  * cirwel.github.io/scripts/check-index.py leg E parses THIS FILE for
@@ -33,8 +38,8 @@ const light = {
 const dark = {
   creamDark:   '#15110D',
   inkDark:     '#DBD2BF',
-  oxbloodDark: '#E07A5F',
-  ochreDark:   '#9C7028',
+  oxbloodDark: '#CB7A70',
+  patinaDark:  '#7FAFA2',
   stoneDark:   '#A89F90',
   sepiaDark:   '#554A3C',
 };
