@@ -8,6 +8,23 @@
   for EB Garamond than it ever was for Fraunces).
 -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!--
+    The tab mark follows the reader's system into the dark impression. Same
+    attribute remap the page uses, declared inside the file because a favicon
+    is loaded as an image and cannot be reached by the page's CSS. It follows
+    prefers-color-scheme only: a reader who overrides the page to day while
+    their system is dark keeps a dark tab mark, which is a seam worth having
+    over a cream tile burning in a dark toolbar.
+  -->
+  <style>
+    @media (prefers-color-scheme: dark) {
+      [fill="#F5F1E8"]   { fill:   #15110D; }
+      [fill="#7A1F1F"]   { fill:   #7FAFA2; }
+      [stroke="#7A1F1F"] { stroke: #7FAFA2; }
+      [fill="#C9C0AE"]   { fill:   #554A3C; }
+      [stroke="#C9C0AE"] { stroke: #554A3C; }
+    }
+  </style>
   <!-- Cream paper, slightly rounded -->
   <rect x="0" y="0" width="32" height="32" rx="4" fill="#F5F1E8"/>
 

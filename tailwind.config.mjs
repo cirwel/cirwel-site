@@ -15,9 +15,10 @@
  * accent stops at ~0.65x because reaching oxblood's 9.1:1 on this ground means
  * a salmon pink rather than a red.
  *
- * The palette is ONE accent wide in both impressions. A second, cool accent
- * for the engraved apparatus was tried at night and rejected. The full
- * reasoning and every measured ratio are in src/styles/global.css.
+ * ONE accent per impression, and at night it is verdigris rather than a red.
+ * No red survives being lifted onto this ground: it must give up the darkness
+ * that makes it oxblood, so it arrives washed and orange. See the three-pass
+ * record and every measured ratio in src/styles/global.css.
  *
  * The hex literals below are load-bearing beyond documentation:
  * cirwel.github.io/scripts/check-index.py leg E parses THIS FILE for
@@ -36,7 +37,7 @@ const light = {
 const dark = {
   creamDark:   '#15110D',
   inkDark:     '#DBD2BF',
-  oxbloodDark: '#CB7A70',
+  oxbloodDark: '#7FAFA2',
   stoneDark:   '#A89F90',
   sepiaDark:   '#554A3C',
 };
