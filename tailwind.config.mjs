@@ -15,11 +15,9 @@
  * accent stops at ~0.65x because reaching oxblood's 9.1:1 on this ground means
  * a salmon pink rather than a red.
  *
- * Night also splits the accent in two: oxblood is the INK and patina is the
- * PLATE, because one colour lifted far enough to be legible drifts to
- * terracotta, and terracotta on warm near-black is Halloween. In light,
- * patina IS oxblood and the cream impression still has exactly one accent.
- * The full reasoning and every measured ratio are in src/styles/global.css.
+ * The palette is ONE accent wide in both impressions. A second, cool accent
+ * for the engraved apparatus was tried at night and rejected. The full
+ * reasoning and every measured ratio are in src/styles/global.css.
  *
  * The hex literals below are load-bearing beyond documentation:
  * cirwel.github.io/scripts/check-index.py leg E parses THIS FILE for
@@ -39,7 +37,6 @@ const dark = {
   creamDark:   '#15110D',
   inkDark:     '#DBD2BF',
   oxbloodDark: '#CB7A70',
-  patinaDark:  '#7FAFA2',
   stoneDark:   '#A89F90',
   sepiaDark:   '#554A3C',
 };
