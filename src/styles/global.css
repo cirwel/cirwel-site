@@ -36,19 +36,30 @@
      The sanguine stops at 5.9:1, about 0.65x, which is the hue holding its
      ground against the arithmetic. Say so rather than quietly claiming parity.
 
-     ONE ACCENT, at night as in daylight. The night impression first shipped
-     a terracotta accent, which on a warm near-black ground reads as Halloween
-     — the hue had drifted from crimson at 0deg to 13deg in the course of being
-     lifted for legibility. A second, cool accent was then tried for the
-     engraved apparatus and rejected on sight: a green structure under a red
-     ink does not belong to this register, whatever the material argument for
-     it. What was actually wrong was the hue and a gold token that was pumpkin.
-     Both are fixed here, and the palette stays one accent wide.
+     ONE ACCENT PER IMPRESSION, and at night it is not a red. This took three
+     passes to get right, so the record is worth keeping:
 
-     ⛔ Do not reintroduce a second accent for the dark impression. Do not
-     "fix" the accent by making it more orange to gain contrast; at this
-     lightness there is no redder red, and the answer is to accept 5.9:1
-     rather than to leave the hue.
+       1. Oxblood lifted for legibility lands at hue 13, terracotta, which on
+          a warm near-black is Halloween. A gold token made it worse.
+       2. Splitting the accent — sanguine ink over a verdigris plate — was
+          tried and rejected on sight. A green structure under a red ink is
+          two palettes sharing a page, whatever the material argument for it.
+       3. Verdigris ALONE. Nothing clashes because there is no second colour
+          to clash with.
+
+     The reason this is not merely taste: there is no red available here. To
+     stay legible on this ground oxblood must give up the darkness that makes
+     it oxblood, so every candidate red arrives washed and arrives orange, and
+     the best one reaches only 0.65x the presence oxblood has on cream.
+     Verdigris was chosen FOR this ground and reaches 0.84x. The accent role
+     is the same in both impressions; the pigment that fills it is not, which
+     is already true of every other token here — cream is bistre-black at
+     night and the ink is ivory.
+
+     ⛔ Do not "restore" a red accent at night, and do not add a second accent
+     to carry one. Both were tried. ⛔ Verdigris is NOT mint: mint is hue 162
+     at 72% chroma and is the AI-default tell this house style exists to
+     avoid; this is the same hue at 23%, which is oxidised metal.
 
      Values are RGB triplets so Tailwind's /40 opacity modifiers still work.
      --------------------------------------------------------------------- */
@@ -82,9 +93,9 @@
   :root:not([data-theme="light"]) {
     --c-cream:   21 17 13;     /* #15110D — bistre-black ground */
     --c-ink:     219 210 191;  /* #DBD2BF — 12.5:1, DOWN from cream's 16:1 */
-    --c-oxblood: 203 122 112;  /* #CB7A70 — 5.9:1, hue 7 not the 13 that read
-                                  as Halloween. No gold token: it was pumpkin
-                                  and carried no markup. */
+    --c-oxblood: 127 175 162;  /* #7FAFA2 — verdigris, 7.7:1. The accent role,
+                                  filled at night by the pigment that suits the
+                                  ground. No gold token: it was pumpkin. */
     --c-stone:   168 159 144;  /* #A89F90 — 7.2:1, near cream's 6.6:1 */
     --c-sepia:   85 74 60;     /* #554A3C — 2.2:1, UP from cream's 1.6:1 */
 
@@ -96,8 +107,9 @@
 
     /* Lifted so the frame lands on light's 4.4:1 / 1.6:1 instead of the
        3.0:1 / 1.4:1 the light alphas give on this ground. */
+    /* lands on light's measured frame weight: 4.3:1 outer, 1.6:1 inner */
     --plate-outer: rgb(var(--c-oxblood) / 0.70);
-    --plate-inner: rgb(var(--c-oxblood) / 0.30);
+    --plate-inner: rgb(var(--c-oxblood) / 0.26);
 
     --running-head-bg: rgb(21 17 13 / 0.94);
     color-scheme: dark;
@@ -107,7 +119,7 @@
 :root[data-theme="dark"] {
   --c-cream:   21 17 13;
   --c-ink:     219 210 191;
-  --c-oxblood: 203 122 112;
+  --c-oxblood: 127 175 162;
   --c-stone:   168 159 144;
   --c-sepia:   85 74 60;
 
@@ -116,7 +128,7 @@
   --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.86 0 0 0 0 0.80 0 0 0 0 0.68 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 
   --plate-outer: rgb(var(--c-oxblood) / 0.70);
-  --plate-inner: rgb(var(--c-oxblood) / 0.30);
+  --plate-inner: rgb(var(--c-oxblood) / 0.26);
 
   --running-head-bg: rgb(21 17 13 / 0.94);
   color-scheme: dark;
