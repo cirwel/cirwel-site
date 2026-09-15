@@ -100,5 +100,23 @@ const ogImageUrl = new URL(ogImage, site).toString();
       })();
     </script>
 
+    <script>
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const plates = Array.from(document.querySelectorAll('.figure-svg'));
+      if (reduce || !('IntersectionObserver' in window)) {
+        plates.forEach((plate) => plate.classList.add('is-inked'));
+      } else {
+        const observer = new IntersectionObserver((entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-inked');
+              observer.unobserve(entry.target);
+            }
+          }
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+        plates.forEach((plate) => observer.observe(plate));
+      }
+    </script>
+
   </body>
 </html>

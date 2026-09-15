@@ -4,6 +4,7 @@ import PageHeader from '../components/PageHeader.astro';
 import PageFooter from '../components/PageFooter.astro';
 import Medallion from '../components/Medallion.astro';
 import Ornament from '../components/Ornament.astro';
+import fig3Svg from '../../public/sketches/fig-3-verdict-loop.svg?raw';
 
 const mcpHttp = `{
   "mcpServers": {
@@ -36,7 +37,7 @@ next_step = result["next_action"]`;
   <main class="px-6 lg:px-12 max-w-screen-xl mx-auto">
     <section class="pt-14 pb-20 lg:pt-20 lg:pb-24 border-b border-sepia/50">
       <p class="label text-oxblood mb-6">Build</p>
-      <h1 class="display text-5xl md:text-6xl lg:text-7xl !leading-[1.08] mb-8 max-w-4xl">Begin with a record worth carrying.</h1>
+      <h1 class="display text-5xl md:text-6xl lg:text-7xl !leading-[1.08] mb-8 max-w-4xl">Run UNITARES.</h1>
       <p class="text-xl leading-relaxed text-stone max-w-3xl">Run the server, connect an existing client, and let each piece of work return an attributed record with a reason and a next step.</p>
       <Ornament size="floret" class="mt-10 opacity-80" />
     </section>
@@ -83,6 +84,7 @@ next_step = result["next_action"]`;
           <article><p class="label text-oxblood mb-3">Next step</p><p class="text-stone leading-relaxed">The agent receives something useful to do rather than a verdict alone.</p></article>
         </div>
         <p class="text-stone leading-relaxed mt-8">Add <span class="font-mono text-sm">confidence</span> only when the agent is deliberately making a prediction. When the result becomes known, <span class="font-mono text-sm">record_result</span> connects the outcome to that prediction.</p>
+        <figure class="mt-12 figure-svg" role="img" aria-label="The UNITARES action, reason, next-step, and result loop."><Fragment set:html={fig3Svg} /></figure>
       </div>
     </section>
 

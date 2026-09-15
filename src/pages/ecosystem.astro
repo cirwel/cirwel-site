@@ -4,6 +4,8 @@ import PageHeader from '../components/PageHeader.astro';
 import PageFooter from '../components/PageFooter.astro';
 import Medallion from '../components/Medallion.astro';
 import Ornament from '../components/Ornament.astro';
+import fig4Svg from '../../public/sketches/fig-4-knowledge-graph.svg?raw';
+import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
 ---
 <BaseLayout
   title="How UNITARES works — CIRWEL Systems"
@@ -14,7 +16,7 @@ import Ornament from '../components/Ornament.astro';
   <main class="px-6 lg:px-12 max-w-screen-xl mx-auto">
     <section class="pt-14 pb-20 lg:pt-20 lg:pb-24 border-b border-sepia/50">
       <p class="label text-oxblood mb-6">The system</p>
-      <h1 class="display text-5xl md:text-6xl lg:text-7xl !leading-[1.08] mb-8 max-w-4xl">Many agents. One thread.</h1>
+      <h1 class="display text-5xl md:text-6xl lg:text-7xl !leading-[1.08] mb-8 max-w-4xl">The UNITARES system.</h1>
       <p class="text-xl leading-relaxed text-stone max-w-3xl">UNITARES sits beside agent runtimes. It records attribution, evidence, shared understanding, policy, and coordination while each person, model, client, and organization keeps its own role.</p>
       <Ornament size="floret" class="mt-10 opacity-80" />
     </section>
@@ -58,12 +60,15 @@ import Ornament from '../components/Ornament.astro';
         <Medallion roman="II" class="hidden lg:block mt-7 mb-8" />
         <h2 class="display text-3xl md:text-4xl leading-tight">Roles remain distinct.</h2>
       </div>
-      <dl class="col-span-12 lg:col-span-8 grid sm:grid-cols-2 gap-x-10 gap-y-10">
-        <div><dt class="display text-2xl mb-3">Agent</dt><dd class="text-stone leading-relaxed">Any actor in the system, human or software. User, operator, reviewer, and worker are roles an agent may hold.</dd></div>
-        <div><dt class="display text-2xl mb-3">Process</dt><dd class="text-stone leading-relaxed">One execution instance. It receives its own identity so its actions can be attributed precisely.</dd></div>
-        <div><dt class="display text-2xl mb-3">Principal</dt><dd class="text-stone leading-relaxed">The authority responsible for credentials, infrastructure, or delegated action.</dd></div>
-        <div><dt class="display text-2xl mb-3">Lineage</dt><dd class="text-stone leading-relaxed">A declared relationship showing how work or authority moved between process instances.</dd></div>
-      </dl>
+      <div class="col-span-12 lg:col-span-8">
+        <dl class="grid sm:grid-cols-2 gap-x-10 gap-y-10">
+          <div><dt class="display text-2xl mb-3">Agent</dt><dd class="text-stone leading-relaxed">Any actor in the system, human or software. User, operator, reviewer, and worker are roles an agent may hold.</dd></div>
+          <div><dt class="display text-2xl mb-3">Process</dt><dd class="text-stone leading-relaxed">One execution instance. It receives its own identity so its actions can be attributed precisely.</dd></div>
+          <div><dt class="display text-2xl mb-3">Principal</dt><dd class="text-stone leading-relaxed">The authority responsible for credentials, infrastructure, or delegated action.</dd></div>
+          <div><dt class="display text-2xl mb-3">Lineage</dt><dd class="text-stone leading-relaxed">A declared relationship showing how work or authority moved between process instances.</dd></div>
+        </dl>
+        <figure class="mt-12 max-w-3xl figure-svg" role="img" aria-label="Declared identity and lineage across process instances."><Fragment set:html={fig5Svg} /></figure>
+      </div>
     </section>
 
     <section class="py-16 lg:py-24 border-t border-sepia/50">
@@ -82,6 +87,7 @@ import Ornament from '../components/Ornament.astro';
           <p class="text-stone leading-relaxed">Return a named action, reason, and next step. Coordinate overlapping work through claims, leases, handoffs, and recovery.</p>
         </article>
       </div>
+      <figure class="mt-14 max-w-3xl mx-auto figure-svg" role="img" aria-label="A shared, provenance-tracked knowledge graph."><Fragment set:html={fig4Svg} /></figure>
     </section>
 
     <section class="py-16 lg:py-24 border-t border-sepia/50 grid grid-cols-12 gap-6">
