@@ -1,6 +1,16 @@
 ---
+interface Props { publishersMark?: boolean; }
+const { publishersMark = false } = Astro.props;
 ---
-<footer class="px-6 lg:px-12 max-w-screen-xl mx-auto py-10 border-t border-sepia/50 text-sm text-stone flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+<footer class="px-6 lg:px-12 max-w-screen-xl mx-auto py-10 border-t border-sepia/50 text-sm text-stone">
+  {publishersMark && (
+    <div class="mb-10 flex items-center justify-center gap-5">
+      <hr class="hairline flex-1 max-w-[140px]" />
+      <img src="/logo-engraved.svg" alt="CIRWEL publisher's device" width="80" height="80" class="block" />
+      <hr class="hairline flex-1 max-w-[140px]" />
+    </div>
+  )}
+  <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
   <div class="max-w-md">
     <p class="display smcp text-base font-medium text-ink mb-2">CIRWEL Systems</p>
     <p>Research and open infrastructure for accountable work across people, processes, and systems.</p>
@@ -12,4 +22,5 @@
     <a href="mailto:founder@cirwel.org">Contact</a>
   </nav>
   <p class="md:text-right whitespace-nowrap">© 2026 CIRWEL</p>
+  </div>
 </footer>
