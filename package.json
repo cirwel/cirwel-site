@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "type": "module",
   "private": true,
-  "description": "cirwel.org — runtime governance for heterogeneous AI-agent fleets",
+  "description": "cirwel.org \u2014 accountability infrastructure for long-running AI agents",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CIRWEL/cirwel-site.git"
@@ -12,7 +12,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "og": "node scripts/render-og.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -25,6 +26,7 @@
     "typescript": "^5.7.3"
   },
   "devDependencies": {
-    "@types/node": "^25.6.0"
+    "@types/node": "^25.6.0",
+    "playwright-core": "^1.63.0"
   }
 }

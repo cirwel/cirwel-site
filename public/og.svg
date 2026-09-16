@@ -1,8 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" font-family="Georgia, 'Times New Roman', serif">
-  <!-- Cream paper -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" font-family="'Bodoni Moda Variable', 'Bodoni Moda', Didot, Georgia, 'Times New Roman', serif">
+  <!-- Share card. Its text is set from the same three strings the site hero
+       uses (EDITORIAL.md): the headline, the tagline, the receipts. Rendered
+       to og.png with the house faces by scripts/render-og.mjs; viewed raw it
+       falls back to Georgia. Cream paper, one accent. -->
   <rect width="1200" height="630" fill="#F5F1E8"/>
 
-  <!-- Subtle paper grain (procedural turbulence) -->
   <defs>
     <filter id="grain" x="0" y="0" width="100%" height="100%">
       <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/>
@@ -11,57 +13,42 @@
   </defs>
   <rect width="1200" height="630" fill="white" filter="url(#grain)" opacity="0.06"/>
 
-  <!-- Top masthead: hairlines flanking a small-caps label -->
-  <line x1="120" y1="100" x2="370" y2="100" stroke="#C9C0AE" stroke-width="1"/>
-  <text x="600" y="105" text-anchor="middle"
+  <!-- Masthead -->
+  <line x1="120" y1="96" x2="380" y2="96" stroke="#C9C0AE" stroke-width="1"/>
+  <text x="600" y="101" text-anchor="middle"
         font-family="'JetBrains Mono', ui-monospace, monospace"
-        font-size="14" letter-spacing="4" fill="#5C544A" font-weight="500">
-    INDEPENDENT  RESEARCH  ·  EST.  2025
-  </text>
-  <line x1="830" y1="100" x2="1080" y2="100" stroke="#C9C0AE" stroke-width="1"/>
+        font-size="14" letter-spacing="4" fill="#5C544A" font-weight="500">INDEPENDENT  RESEARCH  ·  EST.  2025</text>
+  <line x1="820" y1="96" x2="1080" y2="96" stroke="#C9C0AE" stroke-width="1"/>
 
-  <!-- Wordmark — small-caps, old-style feel via Georgia fallback -->
-  <text x="600" y="240" text-anchor="middle"
-        font-size="92" font-weight="500" letter-spacing="6"
-        fill="#1A1612" font-style="normal"
-        font-variant="small-caps">
-    Cirwel Systems
-  </text>
+  <!-- Wordmark -->
+  <text x="600" y="182" text-anchor="middle"
+        font-size="44" font-weight="700" letter-spacing="5"
+        fill="#1A1612" font-variant="small-caps">Cirwel Research</text>
 
-  <!-- Display tagline: the site hero's three lines, verbatim (src/pages/index.astro) -->
-  <text x="600" y="350" text-anchor="middle"
-        font-size="46" font-weight="500" letter-spacing="-1.4"
-        fill="#1A1612">Infrastructure for</text>
-  <text x="600" y="402" text-anchor="middle"
-        font-size="46" font-weight="500" letter-spacing="-1.4"
-        fill="#1A1612">long-lived</text>
-  <text x="600" y="454" text-anchor="middle"
-        font-size="46" font-weight="500" letter-spacing="-1.4"
-        fill="#1A1612">AI <tspan font-style="italic" fill="#1A1612">agents.</tspan></text>
+  <!-- Headline: the site hero, verbatim -->
+  <text x="600" y="318" text-anchor="middle"
+        font-size="104" font-weight="600" letter-spacing="-2"
+        fill="#1A1612">Many agents,</text>
+  <text x="600" y="428" text-anchor="middle"
+        font-size="104" font-weight="600" letter-spacing="-2" font-style="italic"
+        fill="#1A1612">one record.</text>
 
-  <!-- Bottom hairline + receipts row -->
-  <line x1="120" y1="520" x2="1080" y2="520" stroke="#C9C0AE" stroke-width="1"/>
-
-  <!-- Receipts: paper · DOI · ORCID -->
-  <text x="120" y="558"
+  <!-- Tagline: the server README's, verbatim -->
+  <text x="600" y="486" text-anchor="middle"
         font-family="'JetBrains Mono', ui-monospace, monospace"
-        font-size="13" letter-spacing="2.4" fill="#5C544A" font-weight="500">
-    UNITARES (WANG, 2026)
-  </text>
-  <text x="600" y="558" text-anchor="middle"
-        font-family="'JetBrains Mono', ui-monospace, monospace"
-        font-size="13" letter-spacing="1" fill="#5C544A">
-    DOI 10.5281/zenodo.19647159
-  </text>
-  <text x="1080" y="558" text-anchor="end"
-        font-family="'JetBrains Mono', ui-monospace, monospace"
-        font-size="13" letter-spacing="1" fill="#5C544A">
-    cirwel.org
-  </text>
+        font-size="14" letter-spacing="3.2" fill="#7A1F1F" font-weight="500">ACCOUNTABILITY INFRASTRUCTURE FOR LONG-RUNNING AI AGENTS</text>
 
-  <!-- "fin." closer, oxblood -->
-  <text x="600" y="595" text-anchor="middle"
-        font-size="18" font-style="italic" fill="#7A1F1F" letter-spacing="1">
-    fin.
-  </text>
+  <!-- Receipts -->
+  <line x1="120" y1="530" x2="1080" y2="530" stroke="#C9C0AE" stroke-width="1"/>
+  <text x="120" y="566"
+        font-family="'JetBrains Mono', ui-monospace, monospace"
+        font-size="13" letter-spacing="2.4" fill="#5C544A" font-weight="500">UNITARES (WANG, 2026)</text>
+  <text x="600" y="566" text-anchor="middle"
+        font-family="'JetBrains Mono', ui-monospace, monospace"
+        font-size="13" letter-spacing="1" fill="#5C544A">DOI 10.5281/zenodo.19647159</text>
+  <text x="1080" y="566" text-anchor="end"
+        font-family="'JetBrains Mono', ui-monospace, monospace"
+        font-size="13" letter-spacing="1" fill="#5C544A">cirwel.org</text>
+  <text x="600" y="602" text-anchor="middle"
+        font-size="18" font-style="italic" fill="#7A1F1F" letter-spacing="1">fin.</text>
 </svg>

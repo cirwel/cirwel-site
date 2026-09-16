@@ -220,11 +220,25 @@ body::before {
 
 .label {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 0.72rem;
+  font-size: 0.76rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   font-weight: 500;
 }
+
+/* The one call to action on a page. Set in the display face at reading size
+   rather than as a 13px tracked label, because the way into the product must
+   not be the least visible thing on the screen. */
+.cta {
+  font-family: "Bodoni Moda Variable", "Bodoni Fallback", Didot, Georgia, serif;
+  font-variation-settings: 'opsz' 40;
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: -0.005em;
+  color: rgb(var(--c-oxblood));
+  text-decoration: none;
+}
+.cta:hover { text-decoration: underline; text-decoration-color: rgb(var(--c-oxblood)); text-underline-offset: 0.18em; }
 
 /* Small caps for proper-noun lockups (wordmark, byline) — old-book typography */
 .smcp {
