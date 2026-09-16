@@ -1,59 +1,243 @@
 {
-  "_note": "Claims register for public statements that depend on moving technical sources. The site presents current understanding; Git history and source documents retain superseded wording.",
+  "_note": "Claims register — every load-bearing figure this site publishes, the source that carries it, and the exact string that must be present in that source. Checked daily by scripts/check-claims.py against the LIVE site and the LIVE sources, so it verifies what is published rather than what is in the tree. Not a changelog and not a style guide: an entry earns its place only if the site states something a reader could check. Written 2026-08-26 after a figure sat live for 14 days beside a citation that never contained it.",
   "sources": {
+    "contract": {
+      "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/ontology/eisv-proprioception-contract.md",
+      "human": "https://github.com/cirwel/unitares/blob/master/docs/ontology/eisv-proprioception-contract.md",
+      "role": "Authority for what may be claimed about EISV and in what words."
+    },
+    "stop-rule": {
+      "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/proposals/eisv-outcome-grounding-stop-rule-v0.md",
+      "human": "https://github.com/cirwel/unitares/blob/master/docs/proposals/eisv-outcome-grounding-stop-rule-v0.md",
+      "role": "Defines the single pre-registered outcome read and its kill criterion."
+    },
+    "agents-readme": {
+      "url": "https://raw.githubusercontent.com/cirwel/unitares/master/agents/README.md",
+      "human": "https://github.com/cirwel/unitares/blob/master/agents/README.md",
+      "role": "States which parts of agents/ are the public contract and which are examples."
+    },
     "readme": {
       "url": "https://raw.githubusercontent.com/cirwel/unitares/master/README.md",
       "human": "https://github.com/cirwel/unitares/blob/master/README.md",
-      "role": "Authority for the verified install path and the boundary of demonstrated benefit."
+      "role": "The server's own front page. Authority for the install path and the loop."
+    },
+    "evidence-limits": {
+      "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/EVIDENCE_AND_LIMITS.md",
+      "human": "https://github.com/cirwel/unitares/blob/master/docs/EVIDENCE_AND_LIMITS.md",
+      "role": "The current evidence ledger. Authority for mechanism, outcome, and benefit scope."
+    },
+    "resident-readme": {
+      "url": "https://raw.githubusercontent.com/cirwel/unitares-resident/master/README.md",
+      "human": "https://github.com/cirwel/unitares-resident/blob/master/README.md",
+      "role": "The resident project's own status and product-boundary statement."
     },
     "mcp-clients": {
       "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/integration/MCP_CLIENTS.md",
       "human": "https://github.com/cirwel/unitares/blob/master/docs/integration/MCP_CLIENTS.md",
-      "role": "Authority for the client-neutral MCP endpoint."
+      "role": "Authority for the client-facing endpoint and the client-neutrality claim."
     },
     "testbed-prereg": {
       "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/proposals/accountable-testbed-metrics-preregistration-v1.md",
       "human": "https://github.com/cirwel/unitares/blob/master/docs/proposals/accountable-testbed-metrics-preregistration-v1.md",
-      "role": "Authority for the current federation evaluation stage."
+      "role": "The frozen evaluation plan for the federated multi-principal testbed. Authority for what that benchmark measures and for whether it has been run."
     }
   },
   "pages": {
+    "home": "https://cirwel.org/",
+    "ecosystem": "https://cirwel.org/ecosystem/",
     "research": "https://cirwel.org/research/",
     "build": "https://cirwel.org/build/"
   },
   "claims": [
     {
-      "id": "build-endpoint",
-      "page": "build",
-      "site_says": "http://localhost:8767/mcp/",
-      "source": "mcp-clients",
+      "id": "leg-c-persistence",
+      "page": "home",
+      "site_says": "beat a last-value persistence baseline on none of seven streams",
+      "source": "contract",
       "must_contain": [
-        "http://localhost:8767/mcp/",
-        "Any client that supports"
+        "The per-agent reference does useful work",
+        "0/7 streams beat persistence",
+        "win rates 0.32–0.48"
       ],
-      "why": "The page gives readers a concrete endpoint and claims a client-neutral boundary."
+      "why": "The claim NAME is asserted next to the figure, not just the document. Pinning the document alone is exactly what let this figure be borrowed from claim 3 and published as claim 4."
     },
     {
-      "id": "build-boundary",
-      "page": "build",
-      "site_says": "UNITARES does not determine whether an output is correct or ethical",
-      "source": "readme",
+      "id": "leg-c-verdict-scope",
+      "page": "home",
+      "site_says": "benchmark failure for the reconstruction",
+      "source": "contract",
       "must_contain": [
-        "does not decide whether an output is correct or ethical",
-        "No governed-versus-ungoverned comparison has shown an incident prevented"
+        "BENCHMARK FAIL for the cold-start reconstruction; UNIDENTIFIED for the warmed deployed EMA"
       ],
-      "why": "The concise build path must preserve the software's actual authority and evidence boundary."
+      "why": "The page must not upgrade a reconstruction's benchmark failure into a verdict on the reference that actually runs."
     },
     {
-      "id": "federation-stage",
+      "id": "outcome-unresolved",
+      "page": "home",
+      "site_says": "unresolved rather than negative",
+      "source": "contract",
+      "must_contain": [
+        "WITHDRAWN FOR TARGET INFERENCE",
+        "the question is unresolved, not negative"
+      ],
+      "why": "If the contract ever re-opens or re-closes this, the page is stating the wrong status the same day."
+    },
+    {
+      "id": "december-read",
+      "page": "home",
+      "site_says": "pre-registered for December 2026",
+      "source": "stop-rule",
+      "must_contain": [
+        "2026-12-01",
+        "kill criterion"
+      ],
+      "why": "Both the date and the existence of a written kill criterion are load-bearing; 'pre-registered' without one is just a plan."
+    },
+    {
+      "id": "research-leg-c",
       "page": "research",
-      "site_says": "Protocol and evaluation design exist; multi-host evaluation is next",
+      "site_says": "Zero of seven streams beat last-value persistence",
+      "source": "contract",
+      "must_contain": [
+        "The per-agent reference does useful work",
+        "0/7 streams beat persistence",
+        "win rates 0.32–0.48",
+        "Three of the seven nominal"
+      ],
+      "why": "The page states all three caveats the contract attaches, including the one about three of seven agents being the same Pi. If the contract ever drops a caveat, the page is carrying a claim its source no longer supports."
+    },
+    {
+      "id": "research-outcome-withdrawn",
+      "page": "research",
+      "site_says": "that answer has been withdrawn",
+      "source": "contract",
+      "must_contain": [
+        "WITHDRAWN FOR TARGET INFERENCE",
+        "the question is unresolved, not negative"
+      ],
+      "why": "The page files this question under open rather than closed. If the contract re-closes it in either direction, the page's own section structure is wrong, not just its wording."
+    },
+    {
+      "id": "research-sensitivity-bound",
+      "page": "research",
+      "site_says": "At 101 independent bad clusters the minimum detectable lift",
+      "source": "stop-rule",
+      "must_contain": [
+        "101",
+        "0.05 AUC"
+      ],
+      "why": "The bound survives the cohort withdrawal because it is a power calculation, not a result. It is quoted as sensitivity evidence for an open question and must never drift back into standing for a verdict."
+    },
+    {
+      "id": "research-federated-unrun",
+      "page": "research",
+      "site_says": "No benchmark run has been executed",
       "source": "testbed-prereg",
       "must_contain": [
         "FROZEN 2026-08-05",
         "No headline, ablation, or scale-sweep runs had been"
       ],
-      "why": "The research map should advance when the planned federation evaluation advances."
+      "why": "The page files Question II as designed and frozen but not run. Every drift here runs in the direction that flatters the page, so if the registration ever records completed headline runs the status line must change with it."
+    },
+    {
+      "id": "research-federated-regimes",
+      "page": "research",
+      "site_says": "prompt-only, log-only, federated per-principal runtime governance, and a centralized-governor reference",
+      "source": "testbed-prereg",
+      "must_contain": [
+        "prompt-only, log-only, federated per-principal",
+        "centralized-governor reference"
+      ],
+      "why": "The four regimes are the whole measurement claim: without the centralized-governor arm the price of decentralization would be asserted rather than measured. Naming them on the page requires the frozen registration to still name them."
+    },
+    {
+      "id": "workloads-not-the-contract",
+      "page": "ecosystem",
+      "site_says": "built on it and are explicitly not part of it",
+      "source": "agents-readme",
+      "must_contain": [
+        "not** part of the public contract",
+        "examples of how to build a resident agent, not as load-bearing governance internals"
+      ],
+      "why": "The whole four-tier claim rests on the reference workloads being examples rather than contract. If that line ever softens, the page is describing a boundary the repo no longer draws."
+    },
+    {
+      "id": "workload-entry-point",
+      "page": "ecosystem",
+      "site_says": "with no change to the server's repository at all",
+      "source": "agents-readme",
+      "must_contain": [
+        "unitares.resident_progress_sources",
+        "no change to this repo is required"
+      ],
+      "why": "This is the strongest plug-and-play claim on the site and the only one that says an adopter never has to touch our repo. It is quoted from agents/README.md and must not outlive it."
+    },
+    {
+      "id": "build-endpoint",
+      "page": "build",
+      "site_says": "localhost:8767/mcp/",
+      "source": "mcp-clients",
+      "must_contain": [
+        "http://localhost:8767/mcp/",
+        "Any client that supports Streamable HTTP MCP"
+      ],
+      "why": "This page hands a reader a port and a path to paste into a config file. A wrong one costs them an afternoon, and the client-neutrality sentence is what licenses printing the config without naming a vendor."
+    },
+    {
+      "id": "build-benefit-untested",
+      "page": "build",
+      "site_says": "No governed-versus-ungoverned comparison has yet shown an incident prevented or an outcome improved",
+      "source": "evidence-limits",
+      "must_contain": [
+        "No governed-versus-ungoverned comparison has shown an incident prevented or an outcome improved by pausing",
+        "Incident prevention or benefit from pausing"
+      ],
+      "why": "The one guard that matters on a page written to get people to install something. A build page is where an unearned benefit claim would be most useful and least honest, so the disclaimer is pinned to the server's own words rather than to this page's restraint."
+    },
+    {
+      "id": "build-entry-point",
+      "page": "build",
+      "site_says": "with no change to the server's repository at all",
+      "source": "agents-readme",
+      "must_contain": [
+        "unitares.resident_progress_sources",
+        "no change to this repo is required"
+      ],
+      "why": "Same assertion as the ecosystem entry, checked separately because it is stated on a second page. A claim is only covered on the page it appears on."
+    },
+    {
+      "id": "build-resident-skeleton",
+      "page": "build",
+      "site_says": "early skeleton, not yet a usable general-purpose agent",
+      "source": "resident-readme",
+      "must_contain": [
+        "early skeleton",
+        "not a usable general-purpose agent"
+      ],
+      "why": "An UNDERclaim, pinned for the same reason as the overclaims. If unitares-resident matures and the README drops this line, the build page will be talking a reader out of the very thing it should be pointing them at."
+    }
+  ],
+  "retired_phrasings": [
+    {
+      "text": "at predicting negative task outcomes",
+      "retired": "2026-08-26",
+      "commit": "3ed9cde",
+      "why": "Attributed individuality-v2 leg C to outcome prediction. Lived on the page for 14 days because a correction written on 2026-08-12 stayed on an unmerged branch while _canonical/FACTS.md kept the wrong version, so a later session read FACTS.md and re-asserted it. This entry exists to make that specific re-assertion loud."
+    },
+    {
+      "text": "No lift survives the null",
+      "retired": "2026-08-26",
+      "commit": "(never published)",
+      "why": "Written on the research-identity branch on 2026-08-11 and removed before that page first shipped, so it was never live. Guarded anyway: it is the branch's own overclaim about outcome prediction, and reviving that branch's copy is the most likely way it would reach the site."
+    }
+  ],
+  "not_mechanically_checked": [
+    {
+      "claims": [
+        "production counters on the data plate"
+      ],
+      "anchor": "src/data/live-stats.json",
+      "why": "Already covered by the daily refresh from governance state, which is the same meter the public unitares README uses."
     }
   ]
 }

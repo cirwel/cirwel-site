@@ -1,0 +1,23 @@
+---
+/*
+  ShoulderNote — a marginal note in the section gutter.
+
+  The historical place for a citation: beside the passage it supports, not
+  inside it. Used where a reference would otherwise interrupt the measure with
+  a parenthetical. Load-bearing by the house rule — a shoulder note must carry
+  a real reference; it is not a place to put atmosphere.
+
+  On narrow screens there is no margin, so it falls back inline beneath the
+  passage, hairline-ruled, still reading as apparatus.
+*/
+interface Props {
+  /** Short label above the note, e.g. "Cited". */
+  label?: string;
+  class?: string;
+}
+const { label = 'Cited', class: cls = '' } = Astro.props;
+---
+<aside class:list={["shoulder-note", cls]}>
+  <span class="label text-oxblood/80">{label}</span>
+  <span class="shoulder-body"><slot /></span>
+</aside>

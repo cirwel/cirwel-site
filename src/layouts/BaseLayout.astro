@@ -41,7 +41,7 @@ const ogImageUrl = new URL(ogImage, site).toString();
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="CIRWEL Systems — accountable infrastructure for continuous agent work" />
+    <meta property="og:image:alt" content="CIRWEL Systems — Runtime governance for heterogeneous AI-agent fleets" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
@@ -53,7 +53,71 @@ const ogImageUrl = new URL(ogImage, site).toString();
     <title>{title}</title>
   </head>
   <body class="font-serif text-ink bg-cream">
+    <!-- Running head — the folio line of a printed volume. Load-bearing: on a
+         page this long the reader otherwise has no indication of position. The
+         text is derived from each section's own §NN label rather than declared
+         twice, so it cannot drift from the page. JS-only and aria-hidden: it
+         duplicates headings that are already in the document. -->
+    <div id="running-head" aria-hidden="true">
+      <span class="rh-mark smcp">CIRWEL Research</span>
+      <span class="rh-sep">&middot;</span>
+      <span class="rh-section"></span>
+    </div>
+
     <slot />
+    <script>
+      // Running head. Each numbered section carries its own "§NN — Name" label;
+      // read it from the DOM rather than restating it, so the folio line can
+      // never disagree with the section it names. Reveals once the masthead has
+      // scrolled away, hides again at the foot so it never sits over the colophon.
+      (() => {
+        const head = document.getElementById('running-head');
+        const label = head && head.querySelector('.rh-section');
+        if (!head || !label) return;
+
+        const sections = Array.from(document.querySelectorAll('section')).filter((el) => {
+          const l = el.querySelector('.label');
+          return l && l.textContent.trim().startsWith('\u00A7');
+        });
+        if (!sections.length) return;
+
+        const masthead = document.querySelector('header');
+        const footer = document.querySelector('footer');
+        let current = '';
+
+        const set = (text: string) => {
+          if (text === current) return;
+          current = text;
+          label.textContent = text;
+        };
+
+        const update = () => {
+          const pastMasthead = !masthead || masthead.getBoundingClientRect().bottom < 0;
+          const atFoot = footer && footer.getBoundingClientRect().top < window.innerHeight * 0.6;
+
+          // The active section is the last one whose top has passed the folio line.
+          let active = null;
+          for (const el of sections) {
+            if (el.getBoundingClientRect().top <= 80) active = el;
+          }
+          const activeLabel = active && active.querySelector('.label');
+          if (activeLabel) set((activeLabel.textContent || '').trim());
+
+          head.classList.toggle('is-shown', Boolean(pastMasthead && activeLabel && !atFoot));
+        };
+
+        let ticking = false;
+        const onScroll = () => {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(() => { update(); ticking = false; });
+        };
+        addEventListener('scroll', onScroll, { passive: true });
+        addEventListener('resize', onScroll);
+        update();
+      })();
+    </script>
+
     <script>
       // Impression control. Three states, because two would force a reader to
       // choose one impression forever the moment they touched it: auto follows
@@ -65,8 +129,8 @@ const ogImageUrl = new URL(ogImage, site).toString();
         const text = btn.querySelector('[data-impression-state]');
         type Impression = 'auto' | 'day' | 'night';
         const order: Impression[] = ['auto', 'day', 'night'];
-        const attr = { auto: null, day: 'light', night: 'dark' };
-        const says = {
+        const attr: Record<Impression, 'light' | 'dark' | null> = { auto: null, day: 'light', night: 'dark' };
+        const says: Record<Impression, string> = {
           auto:  'Impression follows your system. Change to day.',
           day:   'Impression: day. Change to night.',
           night: 'Impression: night. Change to automatic.',
@@ -101,22 +165,26 @@ const ogImageUrl = new URL(ogImage, site).toString();
     </script>
 
     <script>
+      // Ink each figure plate in as it enters the viewport. Reduced-motion or
+      // no IntersectionObserver → reveal everything immediately.
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const plates = Array.from(document.querySelectorAll('.figure-svg'));
       if (reduce || !('IntersectionObserver' in window)) {
-        plates.forEach((plate) => plate.classList.add('is-inked'));
+        plates.forEach((p) => p.classList.add('is-inked'));
       } else {
-        const observer = new IntersectionObserver((entries) => {
-          for (const entry of entries) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-inked');
-              observer.unobserve(entry.target);
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.add('is-inked');
+                io.unobserve(e.target);
+              }
             }
-          }
-        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
-        plates.forEach((plate) => observer.observe(plate));
+          },
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.12 }
+        );
+        plates.forEach((p) => io.observe(p));
       }
     </script>
-
   </body>
 </html>

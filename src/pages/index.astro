@@ -2,120 +2,276 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import PageFooter from '../components/PageFooter.astro';
+import SectionRule from '../components/SectionRule.astro';
 import Medallion from '../components/Medallion.astro';
-import Ornament from '../components/Ornament.astro';
+import Seal from '../components/Seal.astro';
+import Plate from '../components/Plate.astro';
 import Tailpiece from '../components/Tailpiece.astro';
+import liveStats from '../data/live-stats.json';
+
+const fmtStat = (v: string) => (/^\d+$/.test(v) ? Number(v).toLocaleString('en-US') : v);
 ---
 <BaseLayout
-  title="CIRWEL Systems — Infrastructure for continuous agent work"
-  description="UNITARES keeps identity, evidence, decisions, and next steps connected as work moves across people, processes, and systems."
+  title="CIRWEL Systems — Infrastructure for long-lived AI agents"
+  description="UNITARES keeps identity, evidence, memory, runtime state, and coordination accountable across long-running AI-agent work. Open-source research and infrastructure from CIRWEL Systems."
 >
   <PageHeader currentPath="/" />
 
   <main class="px-6 lg:px-12 max-w-screen-xl mx-auto">
-    <section class="pt-16 pb-24 lg:pt-28 lg:pb-32 grid grid-cols-12 gap-6">
-      <div class="col-span-12 lg:col-span-10">
-        <p class="label text-oxblood mb-8">Infrastructure for work that continues</p>
-        <h1 class="display text-5xl md:text-7xl lg:text-8xl !leading-[1.08] mb-10 max-w-5xl">
-          Agent continuity.
+
+    <!-- HERO -->
+    <section class="pt-16 pb-20 lg:pt-28 lg:pb-28 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-9">
+        <p class="label text-oxblood mb-8 reveal reveal-1">— Independent research, with running code</p>
+        <h1 class="display text-5xl md:text-7xl lg:text-8xl !leading-[1.14] mb-10 reveal reveal-2">
+          Agent<br/>
+          <span class="italic">continuity.</span>
         </h1>
-        <p class="text-xl md:text-2xl leading-relaxed text-ink max-w-3xl">
-          People and software agents hand work across prompts, processes, machines, and organizations. UNITARES preserves who acted, what they learned, what evidence they carried, and what should happen next.
+        <p class="text-lg md:text-xl leading-relaxed text-stone max-w-prose reveal reveal-3">
+          Long-running agents restart, lose context, hand work off, and accumulate claims and decisions over time.
+          <span class="font-medium text-ink">UNITARES keeps identity, evidence, memory, runtime state, and coordination tied to one accountable record across those boundaries.</span>
         </p>
-        <p class="text-lg leading-relaxed text-stone max-w-3xl mt-6">
-          It is a shared accountability layer beside the tools and models you already use—not another agent framework and not a replacement for human judgment.
+        <p class="text-base md:text-lg leading-relaxed text-ink max-w-prose reveal reveal-3 mt-6">
+          It runs alongside model providers and agent frameworks rather than replacing them. The goal is simple:
+          make it easier to tell <em>who did what, what evidence supported it, and what should happen next</em> when the work lasts longer than one prompt or process.
         </p>
-        <nav aria-label="Start with UNITARES" class="mt-10 flex flex-wrap gap-x-8 gap-y-4">
-          <a href="/ecosystem#handoff" class="label text-oxblood no-underline hover:underline">See one handoff →</a>
-          <a href="/build" class="label text-oxblood no-underline hover:underline">Run UNITARES →</a>
+        <nav aria-label="Ways into UNITARES"
+             class="mt-10 pt-5 border-t border-sepia flex flex-wrap gap-x-8 gap-y-3 reveal reveal-4">
+          <a href="/build"
+             class="label text-oxblood no-underline hover:underline">→ Run UNITARES</a>
+          <a href="/ecosystem"
+             class="label text-oxblood no-underline hover:underline">→ See how it fits together</a>
+          <a href="/research"
+             class="label text-oxblood no-underline hover:underline">→ Read the research</a>
         </nav>
-        <Ornament size="floret" class="mt-12 opacity-80" />
       </div>
     </section>
 
-    <section id="handoff" class="py-16 lg:py-24 border-y border-sepia/50">
-      <div class="grid grid-cols-12 gap-6 mb-12">
-        <div class="col-span-12 lg:col-span-4"><p class="label text-oxblood">I · One thread of work</p><Medallion roman="I" class="hidden lg:block mt-7" /></div>
-        <div class="col-span-12 lg:col-span-8">
-          <h2 class="display text-3xl md:text-5xl leading-tight mb-5">A handoff without amnesia.</h2>
-          <p class="text-lg text-stone leading-relaxed max-w-2xl">The useful unit is not a chat session. It is the work that continues through changing actors and runtimes.</p>
+    <hr class="hairline mb-2"/>
+
+    <!-- RECEIPTS -->
+    <section class="py-10 grid grid-cols-12 gap-6 reveal reveal-4">
+      <div class="col-span-12 lg:col-span-3 mb-4 lg:mb-0">
+        <p class="label text-oxblood">— The receipts</p>
+      </div>
+      <dl class="col-span-12 lg:col-span-9 grid grid-cols-12 gap-y-5 gap-x-6">
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Software</dt>
+        <dd class="col-span-8 md:col-span-9">
+          <a href="https://github.com/cirwel/unitares" class="font-medium">UNITARES</a>
+          <span class="text-stone"> · Apache 2.0 · server + SDK + agent interfaces</span>
+        </dd>
+
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Paper</dt>
+        <dd class="col-span-8 md:col-span-9">
+          <a href="https://doi.org/10.5281/zenodo.19647159" class="font-medium">UNITARES: Information-Theoretic Governance of Heterogeneous Agent Fleets</a>
+          <span class="text-stone"> · Wang, 2026 · CC-BY 4.0</span>
+        </dd>
+
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Production</dt>
+        <dd class="col-span-8 md:col-span-9">
+          Running continuously <span class="font-medium">since November 2025</span>
+          <span class="text-stone"> · CIRWEL's long-running development environment</span>
+        </dd>
+
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">For</dt>
+        <dd class="col-span-8 md:col-span-9 text-stone">
+          agents — human and software — doing, directing, or evaluating long-running work
+        </dd>
+
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Author</dt>
+        <dd class="col-span-8 md:col-span-9">
+          <span class="smcp">Kenny Wang</span> <span class="text-stone">· Independent Researcher · ORCID</span>
+          <a href="https://orcid.org/0009-0006-7544-2374" class="font-mono text-sm">0009-0006-7544-2374</a>
+        </dd>
+      </dl>
+    </section>
+
+    <hr class="hairline mt-2"/>
+
+    <!-- Production snapshot -->
+    <section class="py-14 grid grid-cols-12 gap-6 reveal reveal-5">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">— Production snapshot</p>
+        <Seal class="hidden lg:block mt-7" />
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <Plate marker="Data plate">
+          <dl class="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-8">
+            <div>
+              <dt class="label text-stone mb-2">Recorded events</dt>
+              <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.events_total)}</dd>
+            </div>
+            <div>
+              <dt class="label text-stone mb-2">Last 7 days</dt>
+              <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.events_7d)}</dd>
+            </div>
+            <div>
+              <dt class="label text-stone mb-2">Agent identities <span class="text-stone">(7d)</span></dt>
+              <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.active_agents_7d)}</dd>
+            </div>
+            <div>
+              <dt class="label text-stone mb-2">Shared findings</dt>
+              <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.kg_discoveries)}</dd>
+            </div>
+          </dl>
+        </Plate>
+        <p class="text-sm text-stone mt-6 max-w-prose">
+          Measured {liveStats.refreshed_at}. These are records from CIRWEL's own development environment, not external adoption or evidence of improved outcomes.
+        </p>
+      </div>
+    </section>
+
+    <SectionRule class="mb-12" />
+
+    <!-- §01 THE PROBLEM -->
+    <section id="thesis" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§01 — The problem</p>
+        <Medallion roman="I" class="hidden lg:block mt-7" />
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
+          A long-running agent outlives any one process.
+        </h2>
+        <div class="space-y-6 text-lg leading-relaxed text-ink max-w-prose">
+          <p class="dropcap">
+            A coding session may restart. A research agent may lose context. A task may move to another process. Evidence may arrive after the process that made the claim is gone.
+            Logs can show each run, but they do not by themselves keep identity, evidence, memory, state, and responsibility connected across those boundaries.
+          </p>
+          <p>
+            UNITARES is the layer around that work. It binds writes to identity, keeps evidence attached to claims, carries shared memory with provenance, records policy decisions and recovery, and supports review and coordination without forcing every agent to use the same model or harness.
+          </p>
         </div>
       </div>
-      <ol class="grid md:grid-cols-3 gap-8 lg:gap-12">
-        <li class="border-t border-oxblood pt-5">
-          <p class="label text-oxblood mb-4">I · Direct</p>
-          <h3 class="display text-2xl mb-3">A person sets the work in motion.</h3>
-          <p class="text-stone leading-relaxed">The objective, authority, constraints, and initial evidence enter the record with their source intact.</p>
-        </li>
-        <li class="border-t border-oxblood pt-5">
-          <p class="label text-oxblood mb-4">II · Act</p>
-          <h3 class="display text-2xl mb-3">A software process does the work.</h3>
-          <p class="text-stone leading-relaxed">Claims, tests, decisions, and discoveries remain attributable to the process that produced them.</p>
-        </li>
-        <li class="border-t border-oxblood pt-5">
-          <p class="label text-oxblood mb-4">III · Continue</p>
-          <h3 class="display text-2xl mb-3">The next agent can proceed.</h3>
-          <p class="text-stone leading-relaxed">A successor receives provenance, open questions, evidence, and the next useful action instead of reconstructing the work from fragments.</p>
-        </li>
-      </ol>
     </section>
 
-    <section class="py-16 lg:py-24 grid grid-cols-12 gap-6">
-      <div class="col-span-12 lg:col-span-4">
-        <p class="label text-oxblood mb-4">II · What remains connected</p>
-        <Medallion roman="II" class="hidden lg:block mt-7 mb-8" />
-        <h2 class="display text-3xl md:text-4xl leading-tight">Enough structure to understand and continue.</h2>
+    <SectionRule />
+
+    <!-- §02 WHAT IT KEEPS TOGETHER -->
+    <section id="pillars" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§02 — What UNITARES keeps together</p>
+        <Medallion roman="II" class="hidden lg:block mt-7" />
       </div>
-      <div class="col-span-12 lg:col-span-8 grid sm:grid-cols-2 gap-x-10 gap-y-12">
+      <div class="col-span-12 lg:col-span-9 grid md:grid-cols-3 gap-10 lg:gap-12">
         <article>
-          <h3 class="display text-2xl mb-3">Identity and lineage</h3>
-          <p class="text-stone leading-relaxed">Actions are bound to process identity. Continuity and delegation are declared, so a familiar name never substitutes for attribution.</p>
+          <p class="label text-stone mb-4">i</p>
+          <h3 class="display text-2xl mb-4 leading-tight">Identity &amp; evidence</h3>
+          <p class="text-stone leading-relaxed mb-4">
+            Activity is tied to a process identity rather than a display name. Claims can carry tests, outcomes, reviews, and other evidence with their source retained.
+          </p>
+          <a href="/ecosystem#identity" class="label text-oxblood inline-block hover:underline">→ identity &amp; lineage</a>
         </article>
+
         <article>
-          <h3 class="display text-2xl mb-3">Evidence and outcomes</h3>
-          <p class="text-stone leading-relaxed">Claims can carry tests, observations, reviews, and later outcomes without losing where each piece came from.</p>
+          <p class="label text-stone mb-4">ii</p>
+          <h3 class="display text-2xl mb-4 leading-tight">Memory &amp; review</h3>
+          <p class="text-stone leading-relaxed mb-4">
+            Agents can search and write shared findings with provenance, ask for review, and preserve disagreement and resolution without burying them in chat history.
+          </p>
+          <a href="/ecosystem#knowledge" class="label text-oxblood inline-block hover:underline">→ shared memory</a>
         </article>
+
         <article>
-          <h3 class="display text-2xl mb-3">Shared understanding</h3>
-          <p class="text-stone leading-relaxed">Agents can recover durable findings, disagreements, and decisions without treating chat history as collective memory.</p>
-        </article>
-        <article>
-          <h3 class="display text-2xl mb-3">Reason and next action</h3>
-          <p class="text-stone leading-relaxed">Every policy response names its reason and a next step. The purpose is informed progress, with intervention reserved for boundaries that require it.</p>
+          <p class="label text-stone mb-4">iii</p>
+          <h3 class="display text-2xl mb-4 leading-tight">State &amp; coordination</h3>
+          <p class="text-stone leading-relaxed mb-4">
+            Longitudinal check-ins produce an auditable runtime record. Leases, handoffs, policy actions, and recovery keep work coordinated when processes overlap or fail.
+          </p>
+          <a href="/ecosystem#layers" class="label text-oxblood inline-block hover:underline">→ architecture</a>
         </article>
       </div>
     </section>
 
-    <section class="py-16 lg:py-24 border-y border-sepia/50 grid grid-cols-12 gap-6">
-      <div class="col-span-12 lg:col-span-4"><p class="label text-oxblood">III · Available now</p><Medallion roman="III" class="hidden lg:block mt-7" /></div>
-      <div class="col-span-12 lg:col-span-8">
-        <h2 class="display text-3xl md:text-5xl leading-tight mb-8">Open, self-hosted, and client-neutral.</h2>
-        <dl class="space-y-6 max-w-3xl">
-          <div class="grid grid-cols-12 gap-4 border-t border-sepia/40 pt-5">
-            <dt class="col-span-12 sm:col-span-3 label text-stone">Server</dt>
-            <dd class="col-span-12 sm:col-span-9"><a href="https://github.com/cirwel/unitares" class="font-medium">CIRWEL/unitares</a> <span class="text-stone">· Apache 2.0 · MCP and REST</span></dd>
-          </div>
-          <div class="grid grid-cols-12 gap-4 border-t border-sepia/40 pt-5">
-            <dt class="col-span-12 sm:col-span-3 label text-stone">Client contract</dt>
-            <dd class="col-span-12 sm:col-span-9"><a href="https://pypi.org/project/unitares-sdk/" class="font-mono text-sm">unitares-sdk</a> <span class="text-stone">· identity, evidence, memory, policy, and coordination</span></dd>
-          </div>
-          <div class="grid grid-cols-12 gap-4 border-t border-sepia/40 pt-5">
-            <dt class="col-span-12 sm:col-span-3 label text-stone">Research</dt>
-            <dd class="col-span-12 sm:col-span-9"><a href="/research" class="font-medium">Questions, evidence, and current understanding</a></dd>
-          </div>
-        </dl>
+    <SectionRule />
+
+    <!-- §03 RESEARCH -->
+    <section id="research" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§03 — The research question</p>
+        <Medallion roman="III" class="hidden lg:block mt-7" />
+      </div>
+      <div class="col-span-12 lg:col-span-9 max-w-prose">
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight">
+          Can runtime state add useful information beyond logs and outputs?
+        </h2>
+        <div class="space-y-6 text-lg leading-relaxed text-ink">
+          <p class="dropcap">
+            UNITARES also estimates how an agent is operating over time from recorded behavioral and operational signals. This is an instrument under evaluation, not a claim that the system can read a model's hidden thoughts or reliably predict failure.
+          </p>
+          <p class="text-stone">
+            Predictive value remains unresolved. Negative and inconclusive results are kept in the public record, and the detailed measurement program lives on the <a href="/research">research page</a> rather than in the product definition.
+          </p>
+        </div>
       </div>
     </section>
 
-    <section id="contact" class="py-20 lg:py-28 max-w-3xl">
-      <p class="label text-oxblood mb-5">Begin</p>
-      <h2 class="display text-4xl md:text-6xl leading-tight mb-7">Give the next agent somewhere solid to stand.</h2>
-      <div class="flex flex-wrap gap-x-8 gap-y-4">
-        <a href="/build" class="label text-oxblood no-underline hover:underline">Build on UNITARES →</a>
-        <a href="mailto:founder@cirwel.org" class="label text-oxblood no-underline hover:underline">Talk with CIRWEL →</a>
+    <SectionRule />
+
+    <!-- §04 DOGFOOD -->
+    <section id="production" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§04 — In use</p>
+        <Medallion roman="IV" class="hidden lg:block mt-7" />
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">UNITARES helps build UNITARES.</h2>
+        <div class="space-y-6 text-lg leading-relaxed text-stone max-w-prose">
+          <p class="dropcap">
+            CIRWEL's development agents use the same surfaces described here: attributed memory, advisory consultation, structured review, evidence-linked check-ins, and coordinated handoffs. Advice stays advice; it does not become decision authority just because another model produced it.
+          </p>
+          <p>
+            The system has been running in CIRWEL's development environment since November 2025. That is evidence that the mechanisms are exercised under real use, not evidence that they outperform an alternative.
+          </p>
+        </div>
       </div>
     </section>
-    <Tailpiece class="pb-14 opacity-80" />
+
+    <SectionRule />
+
+    <!-- §05 ENGAGE -->
+    <section id="contact" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§05 — Start here</p>
+        <Medallion roman="V" class="hidden lg:block mt-7" />
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-10 leading-tight">Run it, read it, or inspect the evidence.</h2>
+        <ul class="space-y-7 text-lg max-w-prose">
+          <li class="grid grid-cols-12 gap-4 items-start">
+            <span class="col-span-12 md:col-span-2 label text-stone pt-1">Run</span>
+            <div class="col-span-12 md:col-span-10 space-y-3">
+              <p><a href="https://github.com/cirwel/unitares" class="font-medium">UNITARES</a> boots locally with Docker Compose and exposes MCP, REST, an SDK, and a dashboard. The <a href="/build" class="font-medium">build page</a> walks the whole path.</p>
+              <div class="runcmd">
+                <span class="prompt">$</span>
+                <span class="cmd">gh repo clone CIRWEL/unitares &amp;&amp; cd unitares &amp;&amp; docker compose up -d --wait</span>
+              </div>
+            </div>
+          </li>
+          <li class="grid grid-cols-12 gap-4 items-baseline">
+            <span class="col-span-12 md:col-span-2 label text-stone">Research</span>
+            <span class="col-span-12 md:col-span-10">
+              <a href="/research" class="font-medium">Research record</a> ·
+              <a href="https://doi.org/10.5281/zenodo.19647159" class="font-medium">paper</a> ·
+              <a href="https://huggingface.co/hikewa" class="font-medium">datasets</a>
+            </span>
+          </li>
+          <li class="grid grid-cols-12 gap-4 items-baseline">
+            <span class="col-span-12 md:col-span-2 label text-stone">Architecture</span>
+            <span class="col-span-12 md:col-span-10"><a href="/ecosystem" class="font-medium">See the system map and companion projects.</a></span>
+          </li>
+          <li class="grid grid-cols-12 gap-4 items-baseline">
+            <span class="col-span-12 md:col-span-2 label text-stone">Contact</span>
+            <span class="col-span-12 md:col-span-10"><a href="mailto:founder@cirwel.org" class="font-mono text-base">founder@cirwel.org</a></span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="flex justify-center pt-10 pb-2">
+      <Tailpiece class="opacity-90" />
+    </div>
+
   </main>
 
   <PageFooter publishersMark />
