@@ -2,111 +2,174 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import PageFooter from '../components/PageFooter.astro';
-import Medallion from '../components/Medallion.astro';
+import SectionRule from '../components/SectionRule.astro';
 import Ornament from '../components/Ornament.astro';
+import Medallion from '../components/Medallion.astro';
+import Tailpiece from '../components/Tailpiece.astro';
+import fig4Svg from '../../public/sketches/fig-4-knowledge-graph.svg?raw';
+import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
 ---
 <BaseLayout
-  title="How UNITARES works — CIRWEL Systems"
-  description="How people, software processes, clients, and UNITARES share identity, evidence, memory, and next actions without becoming one agent system."
+  title="How UNITARES fits together — CIRWEL Systems"
+  description="The UNITARES architecture: identity, evidence, memory, runtime state, review, policy, and coordination behind one shared contract for long-running AI-agent work."
 >
   <PageHeader currentPath="/ecosystem" />
 
   <main class="px-6 lg:px-12 max-w-screen-xl mx-auto">
-    <section class="pt-14 pb-20 lg:pt-20 lg:pb-24 border-b border-sepia/50">
-      <p class="label text-oxblood mb-6">The system</p>
-      <h1 class="display text-5xl md:text-6xl lg:text-7xl !leading-[1.08] mb-8 max-w-4xl">Many agents. One thread.</h1>
-      <p class="text-xl leading-relaxed text-stone max-w-3xl">UNITARES sits beside agent runtimes. It records attribution, evidence, shared understanding, policy, and coordination while each person, model, client, and organization keeps its own role.</p>
-      <Ornament size="floret" class="mt-10 opacity-80" />
+
+    <section class="pt-16 pb-20 lg:pt-28 lg:pb-28 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-9">
+        <p class="label text-oxblood mb-8 reveal reveal-1">— The running system, in detail</p>
+        <h1 class="display text-5xl md:text-7xl lg:text-8xl !leading-[1.14] mb-10 reveal reveal-2">
+          How UNITARES<br/>
+          fits <span class="italic">together.</span>
+        </h1>
+        <p class="text-lg md:text-xl leading-relaxed text-stone max-w-prose reveal reveal-3">
+          UNITARES puts identity, evidence, memory, runtime state, review, policy, and coordination behind one shared contract. Different models and agent harnesses can use the same accountable layer without becoming the same agent system.
+        </p>
+        <p class="text-base md:text-lg leading-relaxed text-ink max-w-prose reveal reveal-3 mt-6">
+          The home page explains the problem. This page shows the shape of the system, then goes deeper into identity, shared memory, verdicts, and the workloads CIRWEL runs on top of it.
+        </p>
+        <Ornament size="floret" class="mt-14 opacity-70 reveal reveal-3" />
+      </div>
     </section>
 
-    <section id="handoff" class="py-16 lg:py-24">
-      <div class="grid grid-cols-12 gap-6 mb-12">
-        <div class="col-span-12 lg:col-span-4"><p class="label text-oxblood">I · One handoff</p><Medallion roman="I" class="hidden lg:block mt-7" /></div>
-        <div class="col-span-12 lg:col-span-8">
-          <h2 class="display text-3xl md:text-5xl leading-tight mb-5">Work moves. Its context remains legible.</h2>
-          <p class="text-lg text-stone leading-relaxed max-w-2xl">The actors do not need to share a model, a chat history, or a runtime. They need a common way to attribute and recover the work.</p>
-        </div>
-      </div>
+    <hr class="hairline mb-2"/>
 
-      <ol class="grid md:grid-cols-4 border-y border-sepia/60">
-        <li class="p-6 md:border-r border-sepia/60">
-          <p class="label text-oxblood mb-5">I · Directing agent</p>
-          <h3 class="display text-2xl mb-3">Defines the work</h3>
-          <p class="text-stone leading-relaxed">A person or service provides purpose, authority, and constraints.</p>
-        </li>
-        <li class="p-6 border-t md:border-t-0 md:border-r border-sepia/60">
-          <p class="label text-oxblood mb-5">II · Runtime</p>
-          <h3 class="display text-2xl mb-3">Performs an action</h3>
-          <p class="text-stone leading-relaxed">Codex, Claude, Hermes, or a custom process acts through its existing tools.</p>
-        </li>
-        <li class="p-6 border-t md:border-t-0 md:border-r border-sepia/60">
-          <p class="label text-oxblood mb-5">III · UNITARES</p>
-          <h3 class="display text-2xl mb-3">Keeps the record</h3>
-          <p class="text-stone leading-relaxed">Identity, evidence, findings, decisions, and next actions retain provenance.</p>
-        </li>
-        <li class="p-6 border-t md:border-t-0 border-sepia/60">
-          <p class="label text-oxblood mb-5">IV · Successor</p>
-          <h3 class="display text-2xl mb-3">Continues with context</h3>
-          <p class="text-stone leading-relaxed">The next human or software agent can understand what happened and proceed.</p>
-        </li>
-      </ol>
-    </section>
-
-    <section class="py-16 lg:py-24 border-t border-sepia/50 grid grid-cols-12 gap-6">
-      <div class="col-span-12 lg:col-span-4">
-        <p class="label text-oxblood mb-4">II · Vocabulary</p>
-        <Medallion roman="II" class="hidden lg:block mt-7 mb-8" />
-        <h2 class="display text-3xl md:text-4xl leading-tight">Roles remain distinct.</h2>
+    <section class="py-10 grid grid-cols-12 gap-6 reveal reveal-4">
+      <div class="col-span-12 lg:col-span-3 mb-4 lg:mb-0">
+        <p class="label text-oxblood">— The receipts</p>
       </div>
-      <dl class="col-span-12 lg:col-span-8 grid sm:grid-cols-2 gap-x-10 gap-y-10">
-        <div><dt class="display text-2xl mb-3">Agent</dt><dd class="text-stone leading-relaxed">Any actor in the system, human or software. User, operator, reviewer, and worker are roles an agent may hold.</dd></div>
-        <div><dt class="display text-2xl mb-3">Process</dt><dd class="text-stone leading-relaxed">One execution instance. It receives its own identity so its actions can be attributed precisely.</dd></div>
-        <div><dt class="display text-2xl mb-3">Principal</dt><dd class="text-stone leading-relaxed">The authority responsible for credentials, infrastructure, or delegated action.</dd></div>
-        <div><dt class="display text-2xl mb-3">Lineage</dt><dd class="text-stone leading-relaxed">A declared relationship showing how work or authority moved between process instances.</dd></div>
+      <dl class="col-span-12 lg:col-span-9 grid grid-cols-12 gap-y-5 gap-x-6">
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Core</dt>
+        <dd class="col-span-8 md:col-span-9"><a href="https://github.com/cirwel/unitares" class="font-medium">CIRWEL/unitares</a><span class="text-stone"> · Apache 2.0</span></dd>
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Contract</dt>
+        <dd class="col-span-8 md:col-span-9"><a href="https://pypi.org/project/unitares-sdk/" class="font-mono text-sm">unitares-sdk</a><span class="text-stone"> · identity, check-ins, evidence, memory, policy</span></dd>
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Research</dt>
+        <dd class="col-span-8 md:col-span-9"><a href="https://doi.org/10.5281/zenodo.19647159" class="font-medium">UNITARES paper</a><span class="text-stone"> · Wang, 2026 · CC-BY 4.0</span></dd>
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Production</dt>
+        <dd class="col-span-8 md:col-span-9">In continuous operation <span class="font-medium">since November 2025</span><span class="text-stone"> · CIRWEL's own deployment</span></dd>
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Vocabulary</dt>
+        <dd class="col-span-8 md:col-span-9"><a href="https://cirwel.github.io/unitares/glossary.html">Public glossary</a><span class="text-stone"> · terms, definitions, and drift corrections</span></dd>
       </dl>
     </section>
 
-    <section class="py-16 lg:py-24 border-t border-sepia/50">
-      <p class="label text-oxblood mb-8">III · The shared layer</p>
-      <div class="grid md:grid-cols-3 gap-10">
-        <article>
-          <h2 class="display text-3xl mb-4">Attribute</h2>
-          <p class="text-stone leading-relaxed">Bind actions and claims to process identity. Declare continuity, lineage, and delegation rather than inferring them from names.</p>
-        </article>
-        <article>
-          <h2 class="display text-3xl mb-4">Understand</h2>
-          <p class="text-stone leading-relaxed">Attach evidence and outcomes to claims. Preserve durable findings, review, disagreement, and resolution with their source.</p>
-        </article>
-        <article>
-          <h2 class="display text-3xl mb-4">Proceed</h2>
-          <p class="text-stone leading-relaxed">Return a named action, reason, and next step. Coordinate overlapping work through claims, leases, handoffs, and recovery.</p>
-        </article>
+    <SectionRule class="mt-2 mb-20" />
+
+    <section id="layers" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
+        <p class="label text-oxblood">§01 — System shape</p>
+        <Medallion roman="I" class="hidden lg:block mt-7" />
+      </div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">Core, contract, userland, workloads.</h2>
+        <p class="text-xl leading-snug text-ink max-w-prose mb-8 font-medium">
+          UNITARES is the layer around agent work, not the agent loop itself.
+        </p>
+        <div class="space-y-5 text-lg leading-relaxed text-stone max-w-prose">
+          <p class="dropcap">
+            The core owns identity, provenance, longitudinal state, policy and recovery, audit, shared knowledge, review, and coordination. The public SDK is the contract agents depend on. A first-party resident userland exists, but it is optional: Claude Code, Codex, Hermes, or a custom runtime can speak to the same contract directly.
+          </p>
+          <p>
+            Underneath, the deployed service uses PostgreSQL with AGE and pgvector, Redis for transient state, and MCP/REST interfaces. Those are implementation details of the shared layer, not requirements on the model or conversation loop above it.
+          </p>
+        </div>
+
+        <ol class="max-w-prose mt-12 mb-8">
+          <li class="grid grid-cols-12 gap-x-6 gap-y-1 py-5 border-t border-sepia/40">
+            <div class="col-span-12 md:col-span-3 mb-2 md:mb-0"><p class="label text-oxblood">Core</p><p class="font-mono text-xs text-stone mt-1">CIRWEL/unitares</p></div>
+            <p class="col-span-12 md:col-span-9 text-stone leading-relaxed">Identity, evidence, state, policy, recovery, audit, memory, review, and coordination.</p>
+          </li>
+          <li class="grid grid-cols-12 gap-x-6 gap-y-1 py-5 border-t border-sepia/40">
+            <div class="col-span-12 md:col-span-3 mb-2 md:mb-0"><p class="label text-oxblood">Contract</p><p class="font-mono text-xs text-stone mt-1">unitares-sdk</p></div>
+            <p class="col-span-12 md:col-span-9 text-stone leading-relaxed">The public client surface an agent uses to identify itself, check in, attach evidence, read policy, and participate in shared memory.</p>
+          </li>
+          <li class="grid grid-cols-12 gap-x-6 gap-y-1 py-5 border-t border-sepia/40">
+            <div class="col-span-12 md:col-span-3 mb-2 md:mb-0"><p class="label text-oxblood">Userland</p><p class="font-mono text-xs text-stone mt-1">optional</p></div>
+            <p class="col-span-12 md:col-span-9 text-stone leading-relaxed">Conversation loops, model providers, tools, scheduling, and queues remain outside Core.</p>
+          </li>
+          <li class="grid grid-cols-12 gap-x-6 gap-y-1 py-5 border-t border-b border-sepia/40">
+            <div class="col-span-12 md:col-span-3 mb-2 md:mb-0"><p class="label text-oxblood">Workloads</p><p class="font-mono text-xs text-stone mt-1">yours</p></div>
+            <p class="col-span-12 md:col-span-9 text-stone leading-relaxed">Coding sessions, research agents, residents, services, or whatever else you run. A fresh install starts without CIRWEL's roster.</p>
+          </li>
+        </ol>
       </div>
     </section>
 
-    <section class="py-16 lg:py-24 border-t border-sepia/50 grid grid-cols-12 gap-6">
-      <div class="col-span-12 lg:col-span-4"><p class="label text-oxblood">IV · The boundary</p><Medallion roman="IV" class="hidden lg:block mt-7" /></div>
-      <div class="col-span-12 lg:col-span-8 grid md:grid-cols-2 gap-10">
-        <article class="border-t border-oxblood pt-5">
-          <h2 class="display text-3xl mb-4">UNITARES owns the record.</h2>
-          <p class="text-stone leading-relaxed">Identity, provenance, longitudinal state, shared findings, policy history, review, and coordination live behind one public contract.</p>
-        </article>
-        <article class="border-t border-sepia pt-5">
-          <h2 class="display text-3xl mb-4">Your runtime owns the work.</h2>
-          <p class="text-stone leading-relaxed">Models, prompts, conversation loops, tools, queues, and external effects remain with the systems already responsible for them.</p>
-        </article>
+    <SectionRule />
+
+    <section id="identity" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="label text-oxblood">§02 — Identity &amp; lineage</p><Medallion roman="II" class="hidden lg:block mt-7" /></div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">Process attribution is recorded, not reconstructed.</h2>
+        <p class="text-xl leading-snug text-ink max-w-prose mb-8 font-medium">Names are labels. Identity is bound to the process that acted.</p>
+        <div class="space-y-5 text-lg leading-relaxed text-stone max-w-prose">
+          <p class="dropcap">Fresh processes mint fresh identity by default. When continuity or lineage matters, it is explicitly declared rather than inferred from a reused display name. Labels retain their source so an auditor can distinguish operator-assigned, self-claimed, and system-generated descriptions.</p>
+          <p>This adds friction at session start in exchange for a clear chain of attribution across claims, evidence, reviews, and coordination.</p>
+        </div>
+        <figure class="mt-12 max-w-3xl figure-svg" role="img" aria-label="Declared identity and lineage across process instances."><Fragment set:html={fig5Svg} /></figure>
       </div>
     </section>
 
-    <section class="py-16 lg:py-24 border-t border-sepia/50 grid grid-cols-12 gap-6">
-      <div class="col-span-12 lg:col-span-4"><p class="label text-oxblood">V · Use it</p><Medallion roman="V" class="hidden lg:block mt-7" /></div>
-      <div class="col-span-12 lg:col-span-8 space-y-6">
-        <p class="text-xl leading-relaxed"><a href="https://github.com/cirwel/unitares" class="font-medium">UNITARES Core</a> exposes MCP, REST, and a self-hosted dashboard.</p>
-        <p class="text-xl leading-relaxed"><a href="https://pypi.org/project/unitares-sdk/" class="font-mono text-base">unitares-sdk</a> gives custom agents the same identity, evidence, memory, policy, and coordination contract.</p>
-        <p><a href="/build" class="label text-oxblood no-underline hover:underline">Run the verified path →</a></p>
+    <SectionRule />
+
+    <section id="knowledge" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="label text-oxblood">§03 — Shared memory</p><Medallion roman="III" class="hidden lg:block mt-7" /></div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">Findings survive the process that discovered them.</h2>
+        <p class="text-xl leading-snug text-ink max-w-prose mb-8 font-medium">Human and software agents share one provenance-tracked knowledge surface.</p>
+        <div class="space-y-5 text-lg leading-relaxed text-stone max-w-prose">
+          <p class="dropcap">Operators and users are agents too. Here, <em>agent</em> means any actor in the system: a person or software process that acts, directs, evaluates, or carries work forward. Discoveries, decisions, review outcomes, and findings are stored with source, status, and lifecycle rather than disappearing into one chat history.</p>
+          <p>The important property is not the graph technology. It is that later work can recover what was learned, who recorded it, and whether it was superseded or resolved.</p>
+        </div>
+        <figure class="mt-12 max-w-3xl figure-svg" role="img" aria-label="Shared provenance-tracked knowledge graph."><Fragment set:html={fig4Svg} /></figure>
       </div>
     </section>
+
+    <SectionRule />
+
+    <section id="verdicts" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="label text-oxblood">§04 — Policy &amp; review</p><Medallion roman="IV" class="hidden lg:block mt-7" /></div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">Advice, evidence, and authority stay separate.</h2>
+        <div class="space-y-5 text-lg leading-relaxed text-stone max-w-prose">
+          <p class="dropcap">A check-in can return a proceed or pause policy action with a named reason. Advisory consultation can add model evidence without becoming a decision. Structured review records disagreement and conditions rather than silently replacing the original author or directing agent.</p>
+          <p>When a governed surface is paused, recovery is recorded as a separate event. Actions outside UNITARES-owned surfaces remain the host's responsibility.</p>
+        </div>
+      </div>
+    </section>
+
+    <SectionRule />
+
+    <section id="workloads" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="label text-oxblood">§05 — CIRWEL's workloads</p><Medallion roman="V" class="hidden lg:block mt-7" /></div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">The deployment is evidence, not the architecture.</h2>
+        <p class="text-lg leading-relaxed text-stone max-w-prose mb-10">CIRWEL uses UNITARES across long-running resident agents, short-lived coding sessions, operational monitors, and an embedded Raspberry Pi testbed. Those processes are deployment configuration. They demonstrate that the same contract can span different lifetimes and runtimes; a fresh installation does not inherit them.</p>
+      </div>
+    </section>
+
+    <SectionRule />
+
+    <section id="surfaces" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="label text-oxblood">§06 — Public surfaces</p><Medallion roman="VI" class="hidden lg:block mt-7" /></div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">What you can use from outside.</h2>
+        <p class="text-lg leading-relaxed text-stone max-w-prose mb-10">Each of these is described here as a surface. <a href="/build" class="font-medium">The build page</a> is how you actually reach one.</p>
+        <div class="space-y-10 max-w-prose">
+          <article><p class="label text-stone mb-3">Server</p><h3 class="display text-2xl mb-3 leading-tight">UNITARES Core</h3><p class="text-stone leading-relaxed"><a href="https://github.com/cirwel/unitares" class="font-mono text-base">CIRWEL/unitares</a> exposes MCP, REST, a dashboard, and the governance runtime.</p></article>
+          <article><p class="label text-stone mb-3">Client contract</p><h3 class="display smcp text-2xl mb-3 leading-tight">unitares-sdk</h3><p class="text-stone leading-relaxed"><a href="https://pypi.org/project/unitares-sdk/" class="font-mono text-base">pip install unitares-sdk</a> gives custom agents the public identity, check-in, evidence, memory, and coordination interfaces.</p></article>
+          <article><p class="label text-stone mb-3">Optional userland</p><h3 class="display text-2xl mb-3 leading-tight">UNITARES Resident</h3><p class="text-stone leading-relaxed"><a href="https://github.com/cirwel/unitares-resident" class="font-mono text-base">CIRWEL/unitares-resident</a> is the first-party agent userland built on the same public contract; it is not part of Core.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <div class="flex justify-center pt-10 pb-2"><Tailpiece class="opacity-90" /></div>
   </main>
 
   <PageFooter />
 </BaseLayout>
+
+<style is:global>
+  .figure-svg > svg { display: block; width: 100%; height: auto; }
+</style>

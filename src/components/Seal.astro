@@ -1,0 +1,67 @@
+---
+/*
+  Seal — an engraved credential stamp.
+
+  A round, double-ruled seal with circular legend (top and bottom arcs),
+  a hex device at center, and star separators at the sides. Renders the
+  "in continuous operation since November 2025" fact as a mark you read at
+  a glance instead of a sentence. Engraved register, not literal wax — single
+  oxblood ink to sit with the plates. Decorative; aria-hidden.
+*/
+interface Props {
+  class?: string;
+}
+const { class: cls = '' } = Astro.props;
+const fid = 'seal-' + Math.random().toString(36).slice(2, 8);
+---
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 120 120"
+  width="120"
+  height="120"
+  class={cls}
+  aria-hidden="true"
+  focusable="false"
+>
+  <defs>
+    <filter id={fid} x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="3" result="n" />
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="0.5" />
+    </filter>
+    <path id={fid + '-top'} d="M 16 60 A 44 44 0 0 1 104 60" fill="none" />
+    <path id={fid + '-bot'} d="M 16 60 A 44 44 0 0 0 104 60" fill="none" />
+    <polygon id={fid + '-hex'} points="-9,-15.6 9,-15.6 18,0 9,15.6 -9,15.6 -18,0" />
+  </defs>
+
+  <g filter={`url(#${fid})`}>
+    <!-- Concentric rules -->
+    <circle cx="60" cy="60" r="56" fill="none" stroke="#7A1F1F" stroke-width="1.4" />
+    <circle cx="60" cy="60" r="51" fill="none" stroke="#7A1F1F" stroke-width="0.5" />
+    <circle cx="60" cy="60" r="33" fill="none" stroke="#7A1F1F" stroke-width="0.6" />
+
+    <!-- Side star separators at 9 and 3 o'clock -->
+    <g stroke="#7A1F1F" stroke-width="0.8">
+      <path d="M 5 60 l 5 0 M 7.5 57.5 l 0 5 M 5.7 57.7 l 3.6 3.6 M 5.7 62.3 l 3.6 -3.6" />
+      <path d="M 110 60 l 5 0 M 112.5 57.5 l 0 5 M 110.7 57.7 l 3.6 3.6 M 110.7 62.3 l 3.6 -3.6" />
+    </g>
+
+    <!-- Center hex device -->
+    <use href={`#${fid}-hex`} transform="translate(60,58)" fill="none" stroke="#7A1F1F" stroke-width="1.3" />
+    <polygon points="-3.4,-5.9 3.4,-5.9 6.8,0 3.4,5.9 -3.4,5.9 -6.8,0" transform="translate(60,58)" fill="#7A1F1F" />
+    <circle cx="60" cy="58" r="1.9" fill="#F5F1E8" />
+    <!-- year, seated under the device -->
+    <text x="60" y="84" text-anchor="middle"
+          font-family="'JetBrains Mono', ui-monospace, monospace"
+          font-size="7" letter-spacing="2" fill="#7A1F1F">MMXXV</text>
+  </g>
+
+  <!-- Circular legend, crisp -->
+  <text font-family="'JetBrains Mono', ui-monospace, monospace"
+        font-size="7.8" letter-spacing="1.3" fill="#7A1F1F" font-weight="500">
+    <textPath href={`#${fid}-top`} startOffset="50%" text-anchor="middle">CONTINUOUS OPERATION</textPath>
+  </text>
+  <text font-family="'JetBrains Mono', ui-monospace, monospace"
+        font-size="7.8" letter-spacing="1.3" fill="#7A1F1F" font-weight="500">
+    <textPath href={`#${fid}-bot`} startOffset="50%" text-anchor="middle">SINCE NOVEMBER 2025</textPath>
+  </text>
+</svg>

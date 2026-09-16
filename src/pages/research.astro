@@ -2,90 +2,162 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import PageFooter from '../components/PageFooter.astro';
-import Medallion from '../components/Medallion.astro';
+import SectionRule from '../components/SectionRule.astro';
 import Ornament from '../components/Ornament.astro';
+import Medallion from '../components/Medallion.astro';
+import Tailpiece from '../components/Tailpiece.astro';
 ---
 <BaseLayout
-  title="Research and current understanding — CIRWEL Systems"
-  description="What CIRWEL is learning about continuity, evidence, runtime interpretation, and accountability across human and software agents."
+  title="Research program — CIRWEL Research"
+  description="The research program behind UNITARES: hypotheses under test, negative and inconclusive results, and the questions that remain open. Maintained as a record, not a pitch."
 >
   <PageHeader currentPath="/research" />
 
   <main class="px-6 lg:px-12 max-w-screen-xl mx-auto">
-    <section class="pt-14 pb-20 lg:pt-20 lg:pb-24 border-b border-sepia/50">
-      <p class="label text-oxblood mb-6">Research and understanding</p>
-      <h1 class="display text-5xl md:text-6xl lg:text-7xl !leading-[1.08] mb-8 max-w-4xl">Understanding before intervention.</h1>
-      <p class="text-xl leading-relaxed text-stone max-w-3xl">The research asks what information remains useful as work crosses people, processes, and systems—and how that information can support sound next actions.</p>
-      <Ornament size="floret" class="mt-10 opacity-80" />
-    </section>
 
-    <section class="py-16 lg:py-24 grid grid-cols-12 gap-6">
-      <div class="col-span-12 lg:col-span-4">
-        <p class="label text-oxblood mb-4">I · Current understanding</p>
-        <Medallion roman="I" class="hidden lg:block mt-7 mb-8" />
-        <h2 class="display text-3xl md:text-4xl leading-tight">What the work supports today.</h2>
-      </div>
-      <div class="col-span-12 lg:col-span-8 space-y-10">
-        <article class="border-t border-oxblood pt-5">
-          <h3 class="display text-2xl mb-3">Continuity must be declared.</h3>
-          <p class="text-stone leading-relaxed">A reused name is not identity. Explicit process identity and lineage make handoffs reconstructable without pretending two sessions are automatically the same actor.</p>
-        </article>
-        <article class="border-t border-sepia pt-5">
-          <h3 class="display text-2xl mb-3">Evidence matters more than activity.</h3>
-          <p class="text-stone leading-relaxed">A large event stream shows that mechanisms are exercised. Tests, reviews, and observed outcomes are what let later agents decide whether a claim deserves trust.</p>
-        </article>
-        <article class="border-t border-sepia pt-5">
-          <h3 class="display text-2xl mb-3">Runtime interpretation remains a research instrument.</h3>
-          <p class="text-stone leading-relaxed">Recorded behavioral and operational signals may add useful context, but their value must be established through discrimination, prediction, and intervention studies. Calibration is part of that method, not a product benefit.</p>
-        </article>
+    <section class="pt-16 pb-20 lg:pt-28 lg:pb-28 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-9">
+        <p class="label text-oxblood mb-8 reveal reveal-1">— The research program, including its failures</p>
+        <h1 class="display text-5xl md:text-7xl lg:text-8xl mb-10 reveal reveal-2">
+          What I am testing.<br/>
+          What already <span class="italic">failed.</span>
+        </h1>
+        <p class="text-lg md:text-xl leading-relaxed text-stone max-w-prose reveal reveal-3">
+          This page records the questions under test, the experiments that have closed, and the results that came back negative or inconclusive. An experiment that failed stays on the page with the number that failed it.
+        </p>
+        <p class="text-base md:text-lg leading-relaxed text-ink max-w-prose reveal reveal-3 mt-6">
+          I am one person. Everything below was set, run, and recorded by me against a fleet I operate myself.
+        </p>
+        <Ornament size="floret" class="mt-14 opacity-70 reveal reveal-3" />
       </div>
     </section>
 
-    <section class="py-16 lg:py-24 border-t border-sepia/50">
-      <div class="grid grid-cols-12 gap-6 mb-10">
-        <div class="col-span-12 lg:col-span-4"><p class="label text-oxblood">II · Research map</p><Medallion roman="II" class="hidden lg:block mt-7" /></div>
-        <div class="col-span-12 lg:col-span-8"><h2 class="display text-3xl md:text-5xl leading-tight">Questions, evidence, next work.</h2></div>
-      </div>
-      <div class="overflow-x-auto">
-        <table class="w-full min-w-[720px] border-collapse text-left">
-          <thead class="label text-stone">
-            <tr class="border-b border-oxblood"><th class="py-4 pr-8 font-normal">Area</th><th class="py-4 pr-8 font-normal">Question</th><th class="py-4 pr-8 font-normal">Where it stands</th><th class="py-4 font-normal">Next useful evidence</th></tr>
-          </thead>
-          <tbody class="align-top">
-            <tr class="border-b border-sepia/50"><th class="py-6 pr-8 display text-xl font-medium">Continuity</th><td class="py-6 pr-8 text-stone">Can identity, evidence, and decisions survive process changes?</td><td class="py-6 pr-8">Implemented and exercised in CIRWEL’s development environment.</td><td class="py-6 text-stone">Independent deployments and varied handoff conditions.</td></tr>
-            <tr class="border-b border-sepia/50"><th class="py-6 pr-8 display text-xl font-medium">Runtime interpretation</th><td class="py-6 pr-8 text-stone">Do recorded state patterns add useful information beyond logs and outputs?</td><td class="py-6 pr-8">Active measurement program; usefulness remains under evaluation.</td><td class="py-6 text-stone">Pre-registered outcome-grounded studies at greater scale.</td></tr>
-            <tr class="border-b border-sepia/50"><th class="py-6 pr-8 display text-xl font-medium">Federation</th><td class="py-6 pr-8 text-stone">Can accountability hold across principals without one trusted controller?</td><td class="py-6 pr-8">Protocol and evaluation design exist; multi-host evaluation is next.</td><td class="py-6 text-stone">Adversarial trials across independently controlled infrastructure.</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+    <hr class="hairline mb-2"/>
 
-    <section class="py-16 lg:py-24 border-t border-sepia/50 grid grid-cols-12 gap-6">
-      <div class="col-span-12 lg:col-span-4">
-        <p class="label text-oxblood mb-4">III · How the program learns</p>
-        <Medallion roman="III" class="hidden lg:block mt-7 mb-8" />
-        <h2 class="display text-3xl md:text-4xl leading-tight">Make the next result informative.</h2>
-      </div>
-      <dl class="col-span-12 lg:col-span-8 grid sm:grid-cols-2 gap-x-10 gap-y-10">
-        <div><dt class="display text-2xl mb-3">Ask a bounded question</dt><dd class="text-stone leading-relaxed">Define what would change the current understanding before collecting the decisive evidence.</dd></div>
-        <div><dt class="display text-2xl mb-3">Ground claims in outcomes</dt><dd class="text-stone leading-relaxed">Connect predictions to what actually happened so confidence can be learned rather than merely reported.</dd></div>
-        <div><dt class="display text-2xl mb-3">Keep scope visible</dt><dd class="text-stone leading-relaxed">Separate mechanism demonstrations, internal deployment observations, benchmarks, and independent evidence.</dd></div>
-        <div><dt class="display text-2xl mb-3">Carry understanding forward</dt><dd class="text-stone leading-relaxed">Preserve superseded interpretations in source history while keeping the current public explanation clear.</dd></div>
+    <section class="py-10 grid grid-cols-12 gap-6 reveal reveal-4">
+      <div class="col-span-12 lg:col-span-3 mb-4 lg:mb-0"><p class="label text-oxblood">— The receipts</p></div>
+      <dl class="col-span-12 lg:col-span-9 grid grid-cols-12 gap-y-5 gap-x-6">
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Program</dt>
+        <dd class="col-span-8 md:col-span-9">Longitudinal runtime-state measurement for AI agents <span class="text-stone">· begun September 2025</span></dd>
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Researcher</dt>
+        <dd class="col-span-8 md:col-span-9"><span class="smcp">Kenny Wang</span><span class="text-stone"> · ORCID </span><a href="https://orcid.org/0009-0006-7544-2374" class="font-mono text-sm">0009-0006-7544-2374</a></dd>
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Evidence base</dt>
+        <dd class="col-span-8 md:col-span-9">CIRWEL's own production fleet <span class="text-stone">· continuous operation since November 2025 · self-traffic, not adoption</span></dd>
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Papers &amp; data</dt>
+        <dd class="col-span-8 md:col-span-9 leading-relaxed"><a href="https://doi.org/10.5281/zenodo.19647159" class="font-mono text-sm">UNITARES</a><span class="text-stone"> · </span><a href="https://doi.org/10.5281/zenodo.20098168" class="font-mono text-sm">Trajectory Identity</a><span class="text-stone"> · </span><a href="https://doi.org/10.5281/zenodo.21930092" class="font-mono text-sm">Digital Proprioception</a><span class="text-stone"> · </span><a href="https://doi.org/10.5281/zenodo.21930161" class="font-mono text-sm">Accountability Without a Trusted Center</a><span class="text-stone"> · </span><a href="https://huggingface.co/hikewa" class="font-mono text-sm">datasets &amp; models</a></dd>
       </dl>
     </section>
 
-    <section class="py-16 lg:py-24 border-t border-sepia/50 grid grid-cols-12 gap-6">
-      <div class="col-span-12 lg:col-span-4"><p class="label text-oxblood">IV · Evidence and participation</p><Medallion roman="IV" class="hidden lg:block mt-7" /></div>
-      <div class="col-span-12 lg:col-span-8 max-w-3xl">
-        <p class="text-xl leading-relaxed mb-8">CIRWEL’s deployment is an instrumented development environment, not evidence of external adoption. The most useful contribution is independent evaluation on data and infrastructure CIRWEL does not control.</p>
-        <div class="flex flex-wrap gap-x-8 gap-y-4 text-stone">
-          <a href="https://doi.org/10.5281/zenodo.19647159">UNITARES paper</a>
-          <a href="https://doi.org/10.5281/zenodo.21930161">Federated accountability design</a>
-          <a href="https://huggingface.co/hikewa">Datasets and models</a>
-          <a href="mailto:founder@cirwel.org">Propose an evaluation</a>
+    <SectionRule class="mt-2 mb-20" />
+
+    <section id="question" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="label text-oxblood">§01 — The questions under test</p><Medallion roman="I" class="hidden lg:block mt-7" /></div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">Two questions, at two scales.</h2>
+        <p class="text-lg leading-relaxed text-stone max-w-prose mb-14">One asks what can be read from a single agent while it works. The other asks what can be held to account between principals who do not trust each other. They are separate questions with separate evidence, and only the first has results.</p>
+
+        <p class="label text-stone mb-3">Question I · one agent</p>
+        <h3 class="display text-2xl md:text-4xl mb-8 leading-tight max-w-prose">Does an agent's runtime state carry information its outputs do not?</h3>
+        <div class="space-y-6 max-w-prose">
+          <p class="text-lg leading-relaxed text-stone">
+            Here, <strong>state</strong> means an operational estimate built from recorded behavioral and system signals. It is not privileged access to a model's hidden internal state, thoughts, or chain of reasoning.
+          </p>
+          <p class="text-lg leading-relaxed text-stone">
+            UNITARES updates that estimate while an agent works and compares it with an operating reference. The research program asks whether the reading is worth taking at all.
+          </p>
+        </div>
+
+        <dl class="max-w-prose space-y-6 mt-10">
+          <div><dt class="display text-xl mb-2">1. Discrimination</dt><dd class="text-stone leading-relaxed">Do recorded state patterns distinguish agents or operating conditions, and do those differences persist over time?</dd></div>
+          <div><dt class="display text-xl mb-2">2. Prediction</dt><dd class="text-stone leading-relaxed">Does prior state anticipate a bad outcome better than simpler baselines? This is still open; an earlier negative-looking answer was withdrawn because the cohort and permutation structure did not support that inference.</dd></div>
+          <div><dt class="display text-xl mb-2">3. Intervention</dt><dd class="text-stone leading-relaxed">Does acting on the state estimate improve anything measurable? This remains untested at the required scale.</dd></div>
+        </dl>
+
+        <hr class="hairline my-14 max-w-prose" />
+
+        <p class="label text-stone mb-3">Question II · many principals</p>
+        <h3 class="display text-2xl md:text-4xl mb-8 leading-tight max-w-prose">Can accountability hold between principals who share no root of trust?</h3>
+        <div class="space-y-6 max-w-prose">
+          <p class="text-lg leading-relaxed text-stone">
+            Agents increasingly act across infrastructure built and operated by different principals who do not trust one another and share no central controller. The safety-relevant questions there are relational: which process acted, who authorized it, what delegation chain led to it, and which control boundary committed the external effect.
+          </p>
+          <p class="text-lg leading-relaxed text-stone">
+            The proposed answer is per-principal governance mediated by verifiable attestation rather than a trusted center, evaluated against four control regimes: prompt-only, log-only, federated per-principal runtime governance, and a centralized-governor reference. The point of the fourth is to measure the price of decentralization rather than assume it.
+          </p>
+        </div>
+
+        <dl class="max-w-prose space-y-6 mt-10">
+          <div><dt class="display text-xl mb-2">Status · designed and frozen, not run</dt><dd class="text-stone leading-relaxed">The evaluation plan was pre-registered and frozen on 2026-08-05, before any evaluated scenario set existed. No benchmark run has been executed against it, so nothing on this page reports a federated result.</dd></div>
+          <div><dt class="display text-xl mb-2">What exists today</dt><dd class="text-stone leading-relaxed">The federation primitives were exercised live against the deployed server on 2026-06-30: per-principal credential self-proof, cross-principal attestation, credential isolation, and lineage held as claimed rather than trusted. Both principals ran from a single host, and the server detected and labelled that co-location. That is mechanism validation, not two organizations with conflicting interests. The multi-host case is not built.</dd></div>
+          <div><dt class="display text-xl mb-2">Preprint</dt><dd class="text-stone leading-relaxed"><a href="https://doi.org/10.5281/zenodo.21930161" class="font-medium">Accountability Without a Trusted Center</a><span class="text-stone"> · design and pre-registered evaluation plan · DOI </span><span class="font-mono text-sm">10.5281/zenodo.21930161</span></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <SectionRule class="my-8" />
+
+    <section id="settled" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="label text-oxblood">§02 — Closed, including negatives</p><Medallion roman="II" class="hidden lg:block mt-7" /></div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">What the current record actually supports.</h2>
+        <p class="text-stone leading-relaxed max-w-prose mb-10">Everything in this section belongs to Question I. Question II has produced no results to record.</p>
+        <div class="max-w-prose space-y-10">
+          <article>
+            <p class="label text-oxblood mb-3">Negative result · reconstructed per-agent reference did not beat persistence</p>
+            <p class="text-lg leading-relaxed mb-4"><strong>Zero of seven streams beat last-value persistence</strong> in the registered read.</p>
+            <p class="text-stone leading-relaxed">The result applies to a cold-started reconstruction rather than the correctly warmed deployed reference; three nominal agents are one Raspberry Pi; and the pooled cross-dimension binomial is anti-conservative. The honest conclusion is that this reconstruction did not earn its description, not that every possible warmed reference is refuted.</p>
+          </article>
+
+          <article>
+            <p class="label text-stone mb-3">Method finding · organic traffic cannot answer every question</p>
+            <p class="text-stone leading-relaxed">For one prediction analysis, the population of tool failures and the population carrying suitable state readings were disjoint. The join was empty. That makes the intended inference structurally unavailable on that traffic, not merely underpowered.</p>
+          </article>
         </div>
       </div>
     </section>
+
+    <SectionRule class="my-8" />
+
+    <section id="open" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="label text-oxblood">§03 — Open</p><Medallion roman="III" class="hidden lg:block mt-7" /></div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">Unresolved is not the same as negative.</h2>
+        <div class="max-w-prose space-y-6">
+          <p class="text-lg leading-relaxed">The prediction question had an answer that read negative, and that answer was withdrawn because the analyzed cohort and permutation blocks did not support the claimed inference. The result remains provenance, not standing evidence for or against predictive lift.</p>
+          <p class="text-stone leading-relaxed">A pre-registered confirmatory read is scheduled for December 2026 with a kill criterion written before the data is seen. Until then the bounded question is closed to ad-hoc re-runs.</p>
+          <p class="text-stone leading-relaxed">The self-predictability work is also under-powered: roughly four effective agents is not a population on which to claim generality.</p>
+        </div>
+        <blockquote class="border-l-2 border-oxblood pl-6 my-10 max-w-prose"><p class="display text-xl md:text-2xl leading-snug italic">Some of what I set out to demonstrate, I cannot yet demonstrate.</p></blockquote>
+      </div>
+    </section>
+
+    <SectionRule class="my-8" />
+
+    <section id="method" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="label text-oxblood">§04 — How the program is run</p><Medallion roman="IV" class="hidden lg:block mt-7" /></div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">Commitments that can cost a result.</h2>
+        <dl class="max-w-prose space-y-8">
+          <div><dt class="display text-xl mb-2">Pre-registration with a kill criterion</dt><dd class="text-stone leading-relaxed">Bounded hypotheses get a fixed read and written stop condition before the data is seen.</dd></div>
+          <div><dt class="display text-xl mb-2">No convenient re-runs</dt><dd class="text-stone leading-relaxed">A bounded question does not get repeated until the answer improves.</dd></div>
+          <div><dt class="display text-xl mb-2">Claims carry scope</dt><dd class="text-stone leading-relaxed">Operational observations, benchmark results, non-detections, and untested questions are kept separate rather than flattened into one confidence label.</dd></div>
+          <div><dt class="display text-xl mb-2">Evidence scope</dt><dd class="text-stone leading-relaxed">Every deployment number here comes from CIRWEL's own fleet. Event volume is self-traffic, not adoption.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <SectionRule class="my-8" />
+
+    <section id="wanted" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="label text-oxblood">§05 — What the program needs</p><Medallion roman="V" class="hidden lg:block mt-7" /></div>
+      <div class="col-span-12 lg:col-span-9">
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">A skeptic, not an endorsement.</h2>
+        <p class="text-lg leading-relaxed text-stone max-w-prose mb-6">The main limitation is that the same researcher built the system, runs the fleet, and produced the current evidence. The most useful next test is independent or adversarial evaluation on data I did not generate.</p>
+        <p class="text-stone leading-relaxed max-w-prose">If you work on evaluations, multi-agent systems, or runtime oversight and want to test it, the code and data are open. <a href="/#contact" class="font-medium">Get in touch</a>.</p>
+      </div>
+    </section>
+
+    <div class="flex justify-center pt-10 pb-4"><Tailpiece class="opacity-80" /></div>
   </main>
 
   <PageFooter />

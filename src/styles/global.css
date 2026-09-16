@@ -277,6 +277,105 @@ body::before {
 /* Shoulder note — a citation set in the gutter beside its passage rather than
    as a parenthetical inside it. Below the gutter breakpoint there is no margin
    to sit in, so it falls back to a ruled note under the passage. */
+.shoulder-note {
+  display: block;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: rgb(var(--c-stone));
+  border-top: 1px solid rgb(var(--c-sepia));
+  padding-top: 0.5rem;
+  margin-top: 1.5rem;
+}
+.shoulder-note .label {
+  display: block;
+  font-size: 0.6rem;
+  margin-bottom: 0.35rem;
+}
+@media (min-width: 1024px) {
+  .shoulder-note {
+    float: right;
+    clear: right;
+    width: 11.5rem;
+    margin: 0.4rem -13.5rem 1.2rem 2rem;
+    border-top: 1px solid rgb(var(--c-sepia));
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   RUNNING HEAD
+   The folio line: volume on the left, current section on the right, a single
+   hairline under it. Sits above the paper grain, recedes to nothing when it has
+   no section to name. Hidden entirely without JS and under print, where page
+   position is carried by the paper itself.
+   --------------------------------------------------------------------------- */
+#running-head {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1100;
+  display: none;
+  align-items: baseline;
+  gap: 0.6em;
+  padding: 0.62rem 1.5rem 0.55rem;
+  background: var(--running-head-bg);
+  backdrop-filter: saturate(120%) blur(2px);
+  border-bottom: 1px solid rgb(var(--c-sepia));
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(var(--c-stone));
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.js #running-head { display: flex; }
+#running-head.is-shown { opacity: 1; transform: translateY(0); }
+#running-head .rh-mark {
+  font-family: "Bodoni Moda Variable", "Bodoni Fallback", Didot, Georgia, serif;
+  font-variation-settings: 'opsz' 16;
+  font-weight: 700;
+  font-size: 0.86rem;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  color: rgb(var(--c-ink));
+}
+#running-head .rh-sep { color: rgb(var(--c-sepia)); }
+#running-head .rh-section { color: rgb(var(--c-oxblood)); }
+@media (prefers-reduced-motion: reduce) {
+  #running-head { transition: opacity 0.28s ease; transform: none; }
+}
+@media print { #running-head { display: none !important; } }
+
+/* Force oldstyle figures inside serif text contexts */
+.fnums {
+  font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* Editorial drop cap — applied to first paragraph of §01 */
+.dropcap::first-letter {
+  float: left;
+  font-family: "Bodoni Moda Variable", "Bodoni Fallback", Didot, Georgia, serif;
+  font-variation-settings: 'opsz' 96;
+  font-size: 5.4em;
+  line-height: 0.86;
+  font-weight: 600;
+  color: rgb(var(--c-oxblood));
+  margin-right: 0.08em;
+  margin-top: 0.02em;
+  margin-bottom: -0.06em;
+  padding-top: 0.04em;
+}
+
+/* First-line small caps — the classic 18th-c book opening, paired with drop cap */
+.dropcap::first-line {
+  font-variant-caps: all-small-caps;
+  font-variant-numeric: oldstyle-nums;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+
 /* Hero run command — set as a typographic displayed element
    (hairline rules above + below, no background tint, no border-left).
    Reads as "publication displayed equation/quote", not "tech-demo code block". */
@@ -315,6 +414,9 @@ body::before {
 }
 .codeplate .dim { color: rgb(var(--c-stone)); }
 
+.plate-rule       { border: 1px solid var(--plate-outer); }
+.plate-rule-inner { border: 1px solid var(--plate-inner); }
+
 .hairline {
   height: 1px;
   background: rgb(var(--c-sepia));
@@ -352,6 +454,31 @@ a:focus-visible {
 }
 @keyframes fade-up {
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------------------------------------------------------------------------
+   PLATE INK-IN
+   Each figure plate "inks in" left-to-right as it scrolls into view, the way
+   a press lays an engraving onto the sheet. Progressive enhancement: the hide
+   is scoped to .js so a no-script reader sees every plate immediately, and the
+   whole effect is suppressed under reduced-motion. An IntersectionObserver in
+   BaseLayout adds .is-inked when each plate enters the viewport.
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  /* Clip the inner <svg>, not the <figure>: a fully-clipped element reports
+     zero intersection to IntersectionObserver, which would deadlock the
+     observer that's supposed to reveal it. The <figure> stays unclipped so
+     it's detectable; the wipe runs on its child. */
+  .js .figure-svg > svg {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0.001;
+    transition: clip-path 1.05s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.5s ease-out;
+    will-change: clip-path;
+  }
+  .js .figure-svg.is-inked > svg {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
 }
 
 /* ---------------------------------------------------------------------------
@@ -394,6 +521,7 @@ a:focus-visible {
   .reveal, .reveal-1,
   .reveal-2, .reveal-3,
   .reveal-4, .reveal-5  { opacity: 1 !important; transform: none !important; animation: none !important; }
+  .figure-svg > svg     { clip-path: none !important; opacity: 1 !important; }
 
   /* Hide interactive chrome */
   nav[aria-label="Primary"],
@@ -408,6 +536,12 @@ a:focus-visible {
   h1.display            { font-size: 28pt; line-height: 1.05; }
   h2.display            { font-size: 18pt; line-height: 1.15; }
   h3.display            { font-size: 13pt; line-height: 1.2; }
+
+  /* Drop cap proportional for print */
+  .dropcap::first-letter {
+    font-size: 4.4em;
+    color: #000;
+  }
 
   /* Section labels in oxblood read as colored gray on cheap printers; force black */
   .label, .text-oxblood, .text-stone, .text-ink { color: #000 !important; }
