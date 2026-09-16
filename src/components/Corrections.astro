@@ -1,0 +1,36 @@
+---
+/*
+  Corrections — the site's record of its own substantive corrections.
+
+  A publication that revises silently is asking to be taken on faith, which
+  is the one thing this site argues against. Entries live in
+  src/data/corrections.json and cover figures, statuses, and claims only;
+  copy edits, refactors, and stats refreshes do not belong here. Rendered on
+  the research page, beside the results it qualifies, rather than in the
+  colophon of every page.
+*/
+import corrections from '../data/corrections.json';
+
+interface Props {
+  /** How many of the most recent corrections to set. Default: all. */
+  limit?: number;
+}
+const { limit } = Astro.props;
+const shown = limit ? corrections.entries.slice(0, limit) : corrections.entries;
+---
+<ol class="max-w-prose">
+  {shown.map((r) => (
+    <li class="grid grid-cols-12 gap-x-6 gap-y-1 py-4 border-t border-sepia/40 last:border-b">
+      <div class="col-span-12 md:col-span-3">
+        <p class="font-mono text-xs text-stone">{r.date}</p>
+        <p class="label text-oxblood mt-1">{r.where}</p>
+      </div>
+      <p class="col-span-12 md:col-span-9 text-stone leading-relaxed">
+        {r.note}
+        {r.ref && (
+          <a href={r.ref} class="font-mono text-xs text-stone whitespace-nowrap ml-1">ref ↗</a>
+        )}
+      </p>
+    </li>
+  ))}
+</ol>

@@ -10,7 +10,7 @@ import fig4Svg from '../../public/sketches/fig-4-knowledge-graph.svg?raw';
 import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
 ---
 <BaseLayout
-  title="How UNITARES fits together — CIRWEL Systems"
+  title="How UNITARES fits together — CIRWEL Research"
   description="The UNITARES architecture: identity, evidence, memory, runtime state, review, policy, and coordination behind one shared contract for long-running AI-agent work."
 >
   <PageHeader currentPath="/ecosystem" />
@@ -25,10 +25,10 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
           fits <span class="italic">together.</span>
         </h1>
         <p class="text-lg md:text-xl leading-relaxed text-stone max-w-prose reveal reveal-3">
-          UNITARES puts identity, evidence, memory, runtime state, review, policy, and coordination behind one shared contract. Different models and agent harnesses can use the same accountable layer without becoming the same agent system.
+          UNITARES is the record that independent agent runtimes share. The repository calls this a federation kernel: many runtimes and harnesses, one operator-controlled server, one attributed record, while each runtime keeps its own model, tools, and loop.
         </p>
         <p class="text-base md:text-lg leading-relaxed text-ink max-w-prose reveal reveal-3 mt-6">
-          The home page explains the problem. This page shows the shape of the system, then goes deeper into identity, shared memory, verdicts, and the workloads CIRWEL runs on top of it.
+          This page shows the shape of the system, then goes deeper into identity, shared memory, policy and review, and the workloads CIRWEL runs on top of it.
         </p>
         <Ornament size="floret" class="mt-14 opacity-70 reveal reveal-3" />
       </div>
@@ -68,10 +68,10 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
         </p>
         <div class="space-y-5 text-lg leading-relaxed text-stone max-w-prose">
           <p class="dropcap">
-            The core owns identity, provenance, longitudinal state, policy and recovery, audit, shared knowledge, review, and coordination. The public SDK is the contract agents depend on. A first-party resident userland exists, but it is optional: Claude Code, Codex, Hermes, or a custom runtime can speak to the same contract directly.
+            The core owns identity, provenance, longitudinal state, policy and recovery, audit, shared knowledge, review, and coordination. The public SDK is the contract agents depend on. A first-party agent runtime exists, which the repository calls userland, but it is optional: Claude Code, Codex, Hermes, or a custom runtime can speak to the same contract directly.
           </p>
           <p>
-            Underneath, the deployed service uses PostgreSQL with AGE and pgvector, Redis for transient state, and MCP/REST interfaces. Those are implementation details of the shared layer, not requirements on the model or conversation loop above it.
+            Underneath, the deployed service uses PostgreSQL with AGE and pgvector, Redis for live session state, and MCP/REST interfaces. Those are implementation details of the shared layer, not requirements on the model or conversation loop above it.
           </p>
         </div>
 
@@ -117,9 +117,9 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="label text-oxblood">§03 — Shared memory</p><Medallion roman="III" class="hidden lg:block mt-7" /></div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">Findings survive the process that discovered them.</h2>
-        <p class="text-xl leading-snug text-ink max-w-prose mb-8 font-medium">Human and software agents share one provenance-tracked knowledge surface.</p>
+        <p class="text-xl leading-snug text-ink max-w-prose mb-8 font-medium">People and agents share one provenance-tracked knowledge surface.</p>
         <div class="space-y-5 text-lg leading-relaxed text-stone max-w-prose">
-          <p class="dropcap">Operators and users are agents too. Here, <em>agent</em> means any actor in the system: a person or software process that acts, directs, evaluates, or carries work forward. Discoveries, decisions, review outcomes, and findings are stored with source, status, and lifecycle rather than disappearing into one chat history.</p>
+          <p class="dropcap">Operators write to it as well as agents. Discoveries, decisions, review outcomes, and findings are stored with source, status, and lifecycle rather than disappearing into one chat history.</p>
           <p>The important property is not the graph technology. It is that later work can recover what was learned, who recorded it, and whether it was superseded or resolved.</p>
         </div>
         <figure class="mt-12 max-w-3xl figure-svg" role="img" aria-label="Shared provenance-tracked knowledge graph."><Fragment set:html={fig4Svg} /></figure>
@@ -155,7 +155,7 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="label text-oxblood">§06 — Public surfaces</p><Medallion roman="VI" class="hidden lg:block mt-7" /></div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">What you can use from outside.</h2>
-        <p class="text-lg leading-relaxed text-stone max-w-prose mb-10">Each of these is described here as a surface. <a href="/build" class="font-medium">The build page</a> is how you actually reach one.</p>
+        <p class="text-lg leading-relaxed text-stone max-w-prose mb-10"><a href="/build" class="font-medium">The build page</a> is how to reach each of them.</p>
         <div class="space-y-10 max-w-prose">
           <article><p class="label text-stone mb-3">Server</p><h3 class="display text-2xl mb-3 leading-tight">UNITARES Core</h3><p class="text-stone leading-relaxed"><a href="https://github.com/cirwel/unitares" class="font-mono text-base">CIRWEL/unitares</a> exposes MCP, REST, a dashboard, and the governance runtime.</p></article>
           <article><p class="label text-stone mb-3">Client contract</p><h3 class="display smcp text-2xl mb-3 leading-tight">unitares-sdk</h3><p class="text-stone leading-relaxed"><a href="https://pypi.org/project/unitares-sdk/" class="font-mono text-base">pip install unitares-sdk</a> gives custom agents the public identity, check-in, evidence, memory, and coordination interfaces.</p></article>

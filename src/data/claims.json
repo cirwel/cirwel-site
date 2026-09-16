@@ -1,5 +1,5 @@
 {
-  "_note": "Claims register — every load-bearing figure this site publishes, the source that carries it, and the exact string that must be present in that source. Checked daily by scripts/check-claims.py against the LIVE site and the LIVE sources, so it verifies what is published rather than what is in the tree. Not a changelog and not a style guide: an entry earns its place only if the site states something a reader could check. Written 2026-08-26 after a figure sat live for 14 days beside a citation that never contained it.",
+  "_note": "Claims register — every load-bearing figure this site publishes, the source that carries it, and the exact string that must be present in that source. Checked daily by scripts/check-claims.py against the LIVE site and the LIVE sources, so it verifies what is published rather than what is in the tree. Not a changelog and not a style guide: an entry earns its place only if the site states something a reader could check. Written 2026-08-26 after a figure sat live for 14 days beside a citation that never contained it. Re-pinned 2026-09-16 after the 2026-09-15 rewrite left eight entries pointing at copy that no longer existed; the canonical product sentence is now pinned here too, against the server README that owns it (see EDITORIAL.md).",
   "sources": {
     "contract": {
       "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/ontology/eisv-proprioception-contract.md",
@@ -19,12 +19,12 @@
     "readme": {
       "url": "https://raw.githubusercontent.com/cirwel/unitares/master/README.md",
       "human": "https://github.com/cirwel/unitares/blob/master/README.md",
-      "role": "The server's own front page. Authority for the install path and the loop."
+      "role": "The server's own front page. Authority for the one-sentence definition, the install path, and the loop."
     },
     "evidence-limits": {
       "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/EVIDENCE_AND_LIMITS.md",
       "human": "https://github.com/cirwel/unitares/blob/master/docs/EVIDENCE_AND_LIMITS.md",
-      "role": "The current evidence ledger. Authority for mechanism, outcome, and benefit scope."
+      "role": "The current evidence ledger. Authority for mechanism, outcome, benefit scope, the tool catalog, and the deployment start date."
     },
     "resident-readme": {
       "url": "https://raw.githubusercontent.com/cirwel/unitares-resident/master/README.md",
@@ -50,48 +50,57 @@
   },
   "claims": [
     {
-      "id": "leg-c-persistence",
+      "id": "home-sentence",
       "page": "home",
-      "site_says": "beat a last-value persistence baseline on none of seven streams",
-      "source": "contract",
+      "site_says": "Its federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP",
+      "source": "readme",
       "must_contain": [
-        "The per-agent reference does useful work",
-        "0/7 streams beat persistence",
-        "win rates 0.32–0.48"
+        "UNITARES is self-hosted accountability infrastructure for operators running",
+        "Its federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP",
+        "agent work should remain attributable, reviewable, and recoverable even when the process that started it is gone"
       ],
-      "why": "The claim NAME is asserted next to the figure, not just the document. Pinning the document alone is exactly what let this figure be borrowed from claim 3 and published as claim 4."
+      "why": "The one-sentence definition is owned by the server README and copied here verbatim. Ten different phrasings were live across the site, the repository, and the share cards on 2026-09-16; this pin is what keeps it at one."
     },
     {
-      "id": "leg-c-verdict-scope",
+      "id": "home-install",
       "page": "home",
-      "site_says": "benchmark failure for the reconstruction",
-      "source": "contract",
+      "site_says": "git clone --branch \"v$v\" --depth 1 https://github.com/cirwel/unitares.git",
+      "source": "readme",
       "must_contain": [
-        "BENCHMARK FAIL for the cold-start reconstruction; UNIDENTIFIED for the warmed deployed EMA"
+        "git clone --branch \"v$v\" --depth 1 https://github.com/cirwel/unitares.git && cd unitares && docker compose up -d --wait"
       ],
-      "why": "The page must not upgrade a reconstruction's benchmark failure into a verdict on the reference that actually runs."
+      "why": "The site prints the README's command, not one of its own. An install command that differs from the server's is the first thing an integrator notices and the last thing anyone re-checks."
     },
     {
-      "id": "outcome-unresolved",
+      "id": "home-since",
       "page": "home",
-      "site_says": "unresolved rather than negative",
-      "source": "contract",
+      "site_says": "since November 2025",
+      "source": "evidence-limits",
       "must_contain": [
-        "WITHDRAWN FOR TARGET INFERENCE",
-        "the question is unresolved, not negative"
+        "since 2025-11-28"
       ],
-      "why": "If the contract ever re-opens or re-closes this, the page is stating the wrong status the same day."
+      "why": "The deployment start date is engraved on the seal and stated in the receipts. If the evidence ledger ever re-dates the first identity record, the seal is wrong the same day."
     },
     {
-      "id": "december-read",
-      "page": "home",
-      "site_says": "pre-registered for December 2026",
-      "source": "stop-rule",
+      "id": "build-catalog",
+      "page": "build",
+      "site_says": "Every tool is advertised on every transport",
+      "source": "evidence-limits",
       "must_contain": [
-        "2026-12-01",
-        "kill criterion"
+        "every name advertised on every transport",
+        "legacy `GOVERNANCE_TOOL_MODE` settings are accepted and ignored"
       ],
-      "why": "Both the date and the existence of a written kill criterion are load-bearing; 'pre-registered' without one is just a plan."
+      "why": "Replaces a paragraph that described a tool-mode setting for eight days after unitares #2137 removed it. If modes ever return, this pin fails before a reader is told to configure something that does nothing."
+    },
+    {
+      "id": "build-install",
+      "page": "build",
+      "site_says": "git clone --branch \"v$v\" --depth 1 https://github.com/cirwel/unitares.git",
+      "source": "readme",
+      "must_contain": [
+        "git clone --branch \"v$v\" --depth 1 https://github.com/cirwel/unitares.git && cd unitares && docker compose up -d --wait"
+      ],
+      "why": "Same command as the home page, checked separately because it is stated on a second page."
     },
     {
       "id": "research-leg-c",
@@ -107,9 +116,19 @@
       "why": "The page states all three caveats the contract attaches, including the one about three of seven agents being the same Pi. If the contract ever drops a caveat, the page is carrying a claim its source no longer supports."
     },
     {
-      "id": "research-outcome-withdrawn",
+      "id": "research-leg-c-scope",
       "page": "research",
-      "site_says": "that answer has been withdrawn",
+      "site_says": "this reconstruction did not earn its description",
+      "source": "contract",
+      "must_contain": [
+        "BENCHMARK FAIL for the cold-start reconstruction; UNIDENTIFIED for the warmed deployed EMA"
+      ],
+      "why": "The page must not upgrade a reconstruction's benchmark failure into a verdict on the reference that actually runs."
+    },
+    {
+      "id": "research-outcome-unresolved",
+      "page": "research",
+      "site_says": "Unresolved is not the same as negative",
       "source": "contract",
       "must_contain": [
         "WITHDRAWN FOR TARGET INFERENCE",
@@ -118,15 +137,25 @@
       "why": "The page files this question under open rather than closed. If the contract re-closes it in either direction, the page's own section structure is wrong, not just its wording."
     },
     {
-      "id": "research-sensitivity-bound",
+      "id": "research-outcome-withdrawn",
       "page": "research",
-      "site_says": "At 101 independent bad clusters the minimum detectable lift",
+      "site_says": "that answer was withdrawn",
+      "source": "contract",
+      "must_contain": [
+        "WITHDRAWN FOR TARGET INFERENCE"
+      ],
+      "why": "The withdrawal is the reason the question is open. If the contract ever un-withdraws the read, the sentence is stating a status that no longer holds."
+    },
+    {
+      "id": "research-december-read",
+      "page": "research",
+      "site_says": "scheduled for December 2026 with a kill criterion",
       "source": "stop-rule",
       "must_contain": [
-        "101",
-        "0.05 AUC"
+        "2026-12-01",
+        "kill criterion"
       ],
-      "why": "The bound survives the cohort withdrawal because it is a power calculation, not a result. It is quoted as sensitivity evidence for an open question and must never drift back into standing for a verdict."
+      "why": "Both the date and the existence of a written kill criterion are load-bearing; 'pre-registered' without one is just a plan."
     },
     {
       "id": "research-federated-unrun",
@@ -151,8 +180,8 @@
       "why": "The four regimes are the whole measurement claim: without the centralized-governor arm the price of decentralization would be asserted rather than measured. Naming them on the page requires the frozen registration to still name them."
     },
     {
-      "id": "workloads-not-the-contract",
-      "page": "ecosystem",
+      "id": "build-workloads-not-the-contract",
+      "page": "build",
       "site_says": "built on it and are explicitly not part of it",
       "source": "agents-readme",
       "must_contain": [
@@ -160,17 +189,6 @@
         "examples of how to build a resident agent, not as load-bearing governance internals"
       ],
       "why": "The whole four-tier claim rests on the reference workloads being examples rather than contract. If that line ever softens, the page is describing a boundary the repo no longer draws."
-    },
-    {
-      "id": "workload-entry-point",
-      "page": "ecosystem",
-      "site_says": "with no change to the server's repository at all",
-      "source": "agents-readme",
-      "must_contain": [
-        "unitares.resident_progress_sources",
-        "no change to this repo is required"
-      ],
-      "why": "This is the strongest plug-and-play claim on the site and the only one that says an adopter never has to touch our repo. It is quoted from agents/README.md and must not outlive it."
     },
     {
       "id": "build-endpoint",
@@ -203,7 +221,7 @@
         "unitares.resident_progress_sources",
         "no change to this repo is required"
       ],
-      "why": "Same assertion as the ecosystem entry, checked separately because it is stated on a second page. A claim is only covered on the page it appears on."
+      "why": "The strongest plug-and-play claim on the site and the only one that says an adopter never has to touch the server repository. It is quoted from agents/README.md and must not outlive it."
     },
     {
       "id": "build-resident-skeleton",
@@ -218,6 +236,12 @@
     }
   ],
   "retired_phrasings": [
+    {
+      "text": "GOVERNANCE_TOOL_MODE",
+      "retired": "2026-09-16",
+      "commit": "(this branch)",
+      "why": "Tool modes were removed by unitares #2137 on 2026-09-08; the build page kept describing them for eight days. The setting is accepted and ignored by the server, so any sentence telling a reader to configure it is wrong."
+    },
     {
       "text": "at predicting negative task outcomes",
       "retired": "2026-08-26",

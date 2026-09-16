@@ -1,5 +1,5 @@
 <!--
-  FRONTISPIECE — Runtime governance of a heterogeneous fleet.
+  FRONTISPIECE — Many agents, one record.
 
   A title-page vignette in the same copperplate-engraving register as the
   five figure plates and the publisher's mark. The composition is an emblem:
@@ -8,7 +8,7 @@
       on its right faces for engraved depth, the way logo-engraved.svg is;
     • the five agent classes from FIG. II as small specimen hexes orbiting
       it on a dashed ring, each joined to the core by a hairline spoke —
-      the heterogeneous fleet under one calibration;
+      independent runtimes sharing one operator-controlled record;
     • a banderole carrying the site's one principle, NOTHING SILENTLY ASSUMED.
 
   Drawn so the landing page opens with an image, not a wall of type. The
@@ -154,8 +154,8 @@
 
   <text x="340" y="476" text-anchor="middle"
         font-family="'JetBrains Mono', ui-monospace, monospace"
-        font-size="11" letter-spacing="3" fill="#7A1F1F">RUNTIME GOVERNANCE OF A HETEROGENEOUS FLEET</text>
+        font-size="11" letter-spacing="3" fill="#7A1F1F">MANY AGENTS, ONE RECORD</text>
   <text x="340" y="496" text-anchor="middle"
         font-family="'EB Garamond Variable', Georgia, serif"
-        font-size="12" font-style="italic" fill="#5C544A">State estimated, identity bound, every verdict sourced.</text>
+        font-size="12" font-style="italic" fill="#5C544A">Independent runtimes, one operator-controlled record.</text>
 </svg>

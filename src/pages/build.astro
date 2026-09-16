@@ -9,6 +9,9 @@ import Tailpiece from '../components/Tailpiece.astro';
 
 // Code plates are held here rather than inline so the braces never collide
 // with Astro's expression syntax, and so the exact strings are diffable.
+// The server README's install command, verbatim; pinned against the README by src/data/claims.json.
+const install = 'v=$(curl -fsSL https://raw.githubusercontent.com/cirwel/unitares/master/PUBLISHED_VERSION) && git clone --branch "v$v" --depth 1 https://github.com/cirwel/unitares.git && cd unitares && docker compose up -d --wait';
+
 const mcpHttp = `{
   "mcpServers": {
     "unitares": {
@@ -47,7 +50,7 @@ record_result(
 state = check_working_state(client_session_id=sid)`;
 ---
 <BaseLayout
-  title="Build on UNITARES — CIRWEL Systems"
+  title="Build on UNITARES — CIRWEL Research"
   description="The working path into UNITARES: run the server with Docker Compose, connect any MCP client, run the check-in loop, and build a resident on the public SDK contract."
 >
   <PageHeader currentPath="/build" />
@@ -65,7 +68,7 @@ state = check_working_state(client_session_id=sid)`;
           <span class="font-medium text-ink">There is no account, no hosted tier, and no outbound call. The install is a Compose file on hardware you control.</span>
         </p>
         <p class="text-base md:text-lg leading-relaxed text-ink max-w-prose reveal reveal-3 mt-6">
-          The <a href="/">home page</a> states the problem and <a href="/ecosystem">the ecosystem page</a> describes the architecture.
+          The <a href="/">home page</a> says what UNITARES is and <a href="/ecosystem">the ecosystem page</a> how it is put together.
           This page is the part you type. What the instrument has and has not been shown to do is in <a href="#limits">§05</a>, and in full on the <a href="/research">research page</a>.
         </p>
         <Ornament size="floret" class="mt-14 opacity-70 reveal reveal-3" />
@@ -88,7 +91,7 @@ state = check_working_state(client_session_id=sid)`;
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Runtime</dt>
         <dd class="col-span-8 md:col-span-9 text-stone">Python 3.12+ · PostgreSQL with AGE and pgvector · Redis · optional Elixir/OTP coordination</dd>
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Suited to</dt>
-        <dd class="col-span-8 md:col-span-9 text-stone">human and software agents coordinating long-lived work on shared infrastructure. Usually not worth the overhead for short-lived chat turns.</dd>
+        <dd class="col-span-8 md:col-span-9 text-stone">operators running several long-lived agents on infrastructure they control. Usually not worth the overhead for short-lived chat turns.</dd>
       </dl>
     </section>
 
@@ -107,14 +110,14 @@ state = check_working_state(client_session_id=sid)`;
         <div class="max-w-prose">
           <div class="runcmd">
             <span class="prompt">$</span>
-            <span class="cmd">gh repo clone CIRWEL/unitares &amp;&amp; cd unitares &amp;&amp; docker compose up -d --wait</span>
+            <span class="cmd">{install}</span>
           </div>
           <div class="space-y-5 text-lg leading-relaxed text-stone mt-8">
             <p class="dropcap">
               That brings up PostgreSQL with AGE and pgvector, Redis, the lease plane, and the server on loopback. MCP clients connect at <span class="font-mono text-base text-ink">localhost:8767/mcp/</span>, the self-hosted dashboard is at <span class="font-mono text-base text-ink">/dashboard</span>, and <span class="font-mono text-base text-ink">/health</span> answers for readiness checks.
             </p>
             <p>
-              The repository README pins the latest verified release tag. Clone that tag instead of the default branch if you want a fixed checkout; the source version can run ahead of it.
+              That is the server README's own command: it clones the latest verified release tag rather than the default branch, which can run ahead of it.
             </p>
           </div>
 
@@ -209,10 +212,10 @@ state = check_working_state(client_session_id=sid)`;
 
         <div class="max-w-prose space-y-5 text-lg leading-relaxed text-stone">
           <p>
-            Treat the action, the reason, and the next step as the stable contract; the enforcement record rides alongside them. A pause on a governed write surface refuses that agent's later check-ins until recovery succeeds. Everything your agent does outside those surfaces is a boundary you honor, not one the server can close for you, and the page that says otherwise is selling something.
+            Treat the action, the reason, and the next step as the stable contract; the enforcement record rides alongside them. A pause on a governed write surface refuses that agent's later check-ins until recovery succeeds. Everything an agent does outside those surfaces is a boundary the host honors, not one the server can close.
           </p>
           <p>
-            A default profile advertises the checkpoint loop, shared memory, structured review, advisory consultation, and recovery. <span class="font-mono text-base text-ink">GOVERNANCE_TOOL_MODE</span> narrows that to the loop alone or widens it to the full surface. The profile decides what discovery advertises, never what dispatches, but schema-driven clients only offer a model what discovery returned, so an unadvertised tool is unreachable in practice.
+            Every tool is advertised on every transport; there is no mode to configure. The checkpoint loop, shared memory, structured review, advisory consultation, and recovery are reachable from the same catalog.
           </p>
         </div>
       </div>
@@ -227,7 +230,7 @@ state = check_working_state(client_session_id=sid)`;
         <Medallion roman="IV" class="hidden lg:block mt-7" />
       </div>
       <div class="col-span-12 lg:col-span-9">
-        <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">The contract is a package, not our repository.</h2>
+        <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">The contract is a package, not the server repository.</h2>
 
         <div class="max-w-prose">
           <div class="runcmd">
@@ -239,7 +242,7 @@ state = check_working_state(client_session_id=sid)`;
               For an agent that runs for weeks rather than minutes, the SDK handles connection, identity, check-ins, heartbeats, and knowledge participation. Preserve its identity anchor across restarts with <span class="font-mono text-base text-ink">identity(agent_uuid=...)</span> rather than minting a new one each run, or its history restarts with it.
             </p>
             <p>
-              A workload registers its own progress source through the <span class="font-mono text-base text-ink">unitares.resident_progress_sources</span> entry-point group, with no change to the server's repository at all. That is the whole plug-and-play claim, and it is the strongest one on this site because it is the only one that says you never have to touch our code.
+              A workload registers its own progress source through the <span class="font-mono text-base text-ink">unitares.resident_progress_sources</span> entry-point group, with no change to the server's repository at all. That is the whole plug-and-play claim: an adopter never has to touch the server's code.
             </p>
             <p>
               The lowercase agents in the server repository are reference clients and operational examples. They are built on it and are explicitly not part of it, so read them as worked examples rather than a framework to subclass. <a href="https://github.com/cirwel/unitares-resident" class="font-mono text-base">CIRWEL/unitares-resident</a> is the first-party userland on the same public contract; it is an early skeleton, not yet a usable general-purpose agent.
@@ -265,7 +268,7 @@ state = check_working_state(client_session_id=sid)`;
             UNITARES does not decide whether an output is correct or ethical, and it cannot detect deliberate concealment without independent evidence. A process capable enough to optimize against a monitored proxy can do so.
           </p>
           <p class="text-ink">
-            No governed-versus-ungoverned comparison has yet shown an incident prevented or an outcome improved. The circuit breaker demonstrably actuates. That it protects anything is untested, and adopting this software on the strength of a benefit claim would mean adopting it on a claim nobody has established.
+            No governed-versus-ungoverned comparison has yet shown an incident prevented or an outcome improved. The circuit breaker demonstrably actuates; that it protects anything is untested.
           </p>
           <p>
             It also replaces nothing you already run:
@@ -289,7 +292,7 @@ state = check_working_state(client_session_id=sid)`;
 
         <div class="max-w-prose space-y-5 text-lg leading-relaxed text-stone">
           <p>
-            Every deployment number this site publishes comes from CIRWEL's own fleet, where most of the governed agents are also the ones building the system. The <a href="/research">research page</a> keeps the open questions, the withdrawn results, and the pre-registered read that will settle one of them.
+            Every deployment number published here comes from CIRWEL's own fleet, where most of the governed agents are also the ones building the system. The <a href="/research">research page</a> keeps the open questions, the withdrawn results, and the pre-registered read that will settle one of them.
           </p>
         </div>
 
