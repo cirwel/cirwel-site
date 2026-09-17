@@ -2,6 +2,12 @@
   "_note": "Corrections to what this site has said: figures, statuses, and claims only. Not a changelog, and not a place for copy edits. Newest first. `ref` is the commit or pull request that made the correction, or the upstream change that made it necessary.",
   "entries": [
     {
+      "date": "2026-09-17",
+      "where": "Home receipts",
+      "note": "Labelled the maintainer's own development environment \"Production\". It is where the system is used every day, not a production deployment for anyone else; the label now says \"In use\".",
+      "ref": "https://github.com/cirwel/cirwel-site/commits/master"
+    },
+    {
       "date": "2026-09-16",
       "where": "Build page",
       "note": "Described a tool-mode setting that the server removed on 2026-09-08. Every tool is advertised on every transport; the paragraph now says so.",

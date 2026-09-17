@@ -17,7 +17,8 @@ Tagline (the README's own heading):
 
 > Accountability infrastructure for long-running AI agents.
 
-Definition (the README's first three sentences):
+Definition (the three sentences of the README's definition paragraph; the
+README opens with a short problem paragraph above it, which is README-only):
 
 > UNITARES is self-hosted accountability infrastructure for operators running
 > multiple AI agents. Its federation kernel connects independent runtimes to
@@ -32,9 +33,18 @@ Headline (display only; the site's, not the README's):
 
 Where each goes: the headline is the home hero and the share card; the
 tagline is the page title, the JSON-LD description, the share card subline,
-and the `og:image:alt`; the definition is the hero paragraph. To change any of
+and the `og:image:alt`; the definition's first sentence is the hero subhead,
+its third follows it, and its second (the one that names the federation
+kernel) sits under the hero figure beside the sentence that says what
+federation means, so no undefined term reaches the first screen. To change any of
 them, change the README first, then this file, then the pages, then
 `claims.json`, then re-render the card with `node scripts/render-og.mjs`.
+
+Brand order: the product leads and CIRWEL Research endorses it. UNITARES is
+the subject of the home title, the hero eyebrow, and the navigation; CIRWEL
+Research is the masthead and the publisher. The navigation lists product pages
+first (How it works, Run it), then Research, Paper, Source, Contact. The legal
+entity, CIRWEL Systems, stays in the colophon and the JSON-LD.
 
 "Federation" is used in one plain sense on the product pages: independent
 runtimes sharing one operator's server. Accountability between operators who

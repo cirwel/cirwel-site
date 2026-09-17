@@ -28,7 +28,7 @@ const isBuild     = currentPath === '/build';
 <!--
   Header: row layout at sm+ (wordmark left, nav right).
   At <sm: column layout — wordmark centered on its own line, nav wrapping
-  below. Paper and Server are hidden there: both are one tap away in the
+  below. Paper and Source are hidden there: both are one tap away in the
   receipts and the colophon, and eight items in three rows was the whole
   first screen on a phone.
 -->
@@ -42,6 +42,20 @@ const isBuild     = currentPath === '/build';
   </a>
   <nav aria-label="Primary"
        class="flex flex-wrap items-center justify-center sm:justify-end gap-x-5 gap-y-2 sm:gap-5 md:gap-7 label text-stone">
+    <a href="/ecosystem"
+       class:list={[
+         "no-underline transition-colors",
+         isEcosystem ? "text-oxblood" : "hover:text-oxblood",
+       ]}>
+      How it works
+    </a>
+    <a href="/build"
+       class:list={[
+         "no-underline transition-colors",
+         isBuild ? "text-oxblood" : "hover:text-oxblood",
+       ]}>
+      Run it
+    </a>
     <a href="/research"
        class:list={[
          "no-underline transition-colors",
@@ -49,27 +63,13 @@ const isBuild     = currentPath === '/build';
        ]}>
       Research
     </a>
-    <a href="/ecosystem"
-       class:list={[
-         "no-underline transition-colors",
-         isEcosystem ? "text-oxblood" : "hover:text-oxblood",
-       ]}>
-      Ecosystem
-    </a>
-    <a href="/build"
-       class:list={[
-         "no-underline transition-colors",
-         isBuild ? "text-oxblood" : "hover:text-oxblood",
-       ]}>
-      Build
-    </a>
     <a href="https://doi.org/10.5281/zenodo.19647159"
        class="hidden sm:inline no-underline hover:text-oxblood transition-colors">
       Paper
     </a>
     <a href="https://github.com/cirwel/unitares"
        class="hidden sm:inline no-underline hover:text-oxblood transition-colors">
-      Server
+      Source
     </a>
     <a href={contactHref}
        class="no-underline hover:text-oxblood transition-colors">
