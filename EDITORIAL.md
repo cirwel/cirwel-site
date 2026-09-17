@@ -17,8 +17,9 @@ Tagline (the README's own heading):
 
 > Accountability infrastructure for long-running AI agents.
 
-Definition (the three sentences of the README's definition paragraph; the
-README opens with a short problem paragraph above it, which is README-only):
+Definition (the README's three definition sentences, in two short paragraphs
+beginning "UNITARES is self-hosted"; the problem paragraph above them is
+README-only):
 
 > UNITARES is self-hosted accountability infrastructure for operators running
 > multiple AI agents. Its federation kernel connects independent runtimes to
@@ -35,15 +36,18 @@ Where each goes: the headline is the home hero and the share card; the
 tagline is the page title, the JSON-LD description, the share card subline,
 and the `og:image:alt`; the definition's first sentence is the hero subhead,
 its third follows it, and its second (the one that names the federation
-kernel) sits under the hero figure beside the sentence that says what
-federation means, so no undefined term reaches the first screen. To change any of
+kernel) sits under the hero figure, where "federation" and "kernel" are both
+defined. Placed apart from the sentence before it, its opening "Its" becomes
+"The UNITARES"; no other word changes. To change any of
 them, change the README first, then this file, then the pages, then
 `claims.json`, then re-render the card with `node scripts/render-og.mjs`.
 
 Brand order: the product leads and CIRWEL Research endorses it. UNITARES is
-the subject of the home title, the hero eyebrow, and the navigation; CIRWEL
-Research is the masthead and the publisher. The navigation lists product pages
-first (How it works, Run it), then Research, Paper, Source, Contact. The legal
+the subject of the home title and the hero eyebrow; CIRWEL Research is the
+masthead and the publisher. The navigation lists the product pages first
+(Architecture, whose page describes itself as the UNITARES architecture, and
+Build, for "Build on UNITARES"), then Research, Paper, Source, Contact. Keep
+labels short enough that the phone header stays at two rows. The legal
 entity, CIRWEL Systems, stays in the colophon and the JSON-LD.
 
 "Federation" is used in one plain sense on the product pages: independent

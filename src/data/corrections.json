@@ -3,8 +3,8 @@
   "entries": [
     {
       "date": "2026-09-17",
-      "where": "Home receipts",
-      "note": "Labelled the maintainer's own development environment \"Production\". It is where the system is used every day, not a production deployment for anyone else; the label now says \"In use\".",
+      "where": "Home and ecosystem receipts",
+      "note": "Labelled the maintainer's own development environment \"Production\". It is where the system is used every day, not a deployment for anyone else, so both receipts now say \"In use\".",
       "ref": "https://github.com/cirwel/cirwel-site/pull/50"
     },
     {
