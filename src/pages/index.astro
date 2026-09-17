@@ -18,7 +18,7 @@ const fmtStat = (v: string) => (/^\d+$/.test(v) ? Number(v).toLocaleString('en-U
 const install = 'v=$(curl -fsSL https://raw.githubusercontent.com/cirwel/unitares/master/PUBLISHED_VERSION) && git clone --branch "v$v" --depth 1 https://github.com/cirwel/unitares.git && cd unitares && docker compose up -d --wait';
 ---
 <BaseLayout
-  title="CIRWEL Research — Accountability infrastructure for long-running AI agents"
+  title="UNITARES: Accountability infrastructure for long-running AI agents — CIRWEL Research"
   description="Many agents, one record. UNITARES is self-hosted accountability infrastructure for operators running multiple AI agents: independent runtimes share one operator-controlled record of who did what, what evidence backed it, who reviewed it, and what happened next."
 >
   <PageHeader currentPath="/" />
@@ -28,14 +28,17 @@ const install = 'v=$(curl -fsSL https://raw.githubusercontent.com/cirwel/unitare
     <!-- HERO -->
     <section class="pt-16 pb-16 lg:pt-28 lg:pb-20 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-9">
-        <p class="label text-oxblood mb-8 reveal reveal-1">— Independent research, with running code</p>
+        <p class="label text-oxblood mb-8 reveal reveal-1">— UNITARES, from CIRWEL Research</p>
         <h1 class="display text-5xl md:text-7xl lg:text-8xl !leading-[1.14] mb-10 reveal reveal-2">
           Many agents,<br/>
           <span class="italic">one record.</span>
         </h1>
+        <!-- The three definition sentences are the README's, verbatim (EDITORIAL.md §1).
+             The first is the subhead and the third follows it. The second, which names
+             the federation kernel, sits under the figure beside the definitions of
+             federation and kernel, with its opening pronoun resolved to the product name. -->
         <p class="text-lg md:text-xl leading-relaxed text-ink max-w-prose reveal reveal-3">
           <span class="font-medium">UNITARES is self-hosted accountability infrastructure for operators running multiple AI agents.</span>
-          Its federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP, where they share a durable record while keeping their own models, tools, and runtimes.
         </p>
         <p class="text-base md:text-lg leading-relaxed text-stone max-w-prose reveal reveal-3 mt-6">
           The goal is simple: agent work should remain attributable, reviewable, and recoverable even when the process that started it is gone.
@@ -52,7 +55,7 @@ const install = 'v=$(curl -fsSL https://raw.githubusercontent.com/cirwel/unitare
           <Fragment set:html={frontispieceSvg} />
         </figure>
         <p class="text-base leading-relaxed text-stone max-w-prose mt-6 reveal reveal-5">
-          Federation here means independent runtimes sharing one operator's server. Whether accountability can hold between operators who share no root of trust is a separate question, kept on the <a href="/research#question">research page</a>.
+          The UNITARES federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP, where they share a durable record while keeping their own models, tools, and runtimes. Federation here means exactly that sharing, and the kernel is the boundary where each runtime's writes are attributed and recorded, and where some can be refused. Whether accountability can hold between operators who share no root of trust is a separate question, kept on the <a href="/research#question">research page</a>.
         </p>
       </div>
     </section>
@@ -77,7 +80,7 @@ const install = 'v=$(curl -fsSL https://raw.githubusercontent.com/cirwel/unitare
           <span class="text-stone"> · Wang, 2026 · CC-BY 4.0</span>
         </dd>
 
-        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Production</dt>
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">In use</dt>
         <dd class="col-span-8 md:col-span-9">
           Running continuously <span class="font-medium">since November 2025</span>
           <span class="text-stone"> · CIRWEL's long-running development environment</span>

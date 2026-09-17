@@ -52,7 +52,7 @@
     {
       "id": "home-sentence",
       "page": "home",
-      "site_says": "Its federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP",
+      "site_says": "federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP",
       "source": "readme",
       "must_contain": [
         "UNITARES is self-hosted accountability infrastructure for operators running",
@@ -236,6 +236,18 @@
     }
   ],
   "retired_phrasings": [
+    {
+      "text": "Production In continuous operation",
+      "retired": "2026-09-17",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/50",
+      "why": "Labelled the maintainer's own development environment as production. It is where the system is used every day, not a production deployment for anyone else."
+    },
+    {
+      "text": "Production Running continuously",
+      "retired": "2026-09-17",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/50",
+      "why": "Labelled the maintainer's own development environment as production. It is where the system is used every day, not a production deployment for anyone else."
+    },
     {
       "text": "GOVERNANCE_TOOL_MODE",
       "retired": "2026-09-16",
