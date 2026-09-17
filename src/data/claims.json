@@ -233,6 +233,16 @@
         "not a usable general-purpose agent"
       ],
       "why": "An UNDERclaim, pinned for the same reason as the overclaims. If unitares-resident matures and the README drops this line, the build page will be talking a reader out of the very thing it should be pointing them at."
+    },
+    {
+      "id": "ecosystem-delegated-pieces",
+      "page": "ecosystem",
+      "site_says": "UNITARES is the record behind them, not the transport between them",
+      "source": "readme",
+      "must_contain": [
+        "UNITARES is the record behind them, not the transport between them"
+      ],
+      "why": "A boundary, and the kind that decays quietly: it disclaims cross-runtime interoperability, which A2A owns. The 2026-09 claims audit graded 'federation' unsupported as read for exactly this reason. If the README ever drops the disclaimer, the site must stop implying it too, so the two move together or the check goes red."
     }
   ],
   "retired_phrasings": [
