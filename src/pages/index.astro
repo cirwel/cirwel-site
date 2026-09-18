@@ -160,26 +160,29 @@ const install = 'v=$(curl -fsSL https://raw.githubusercontent.com/cirwel/unitare
         <Seal class="hidden lg:block mt-10" />
       </div>
       <div class="col-span-12 lg:col-span-9">
-        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">UNITARES helps build UNITARES.</h2>
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">UNITARES keeps its own development record.</h2>
         <div class="space-y-6 text-lg leading-relaxed text-stone max-w-prose mb-10">
           <p class="dropcap">
-            CIRWEL's development agents use the surfaces described here: attributed memory, advisory consultation, structured review, evidence-linked check-ins, and coordinated handoffs. Advice stays advice; it does not become decision authority because another model produced it. The system has run in CIRWEL's development environment since November 2025.
+            The agents building UNITARES check in to it, write what they learn to its shared memory, and send their changes through its structured review. One case from that record:
           </p>
         </div>
 
+        <!-- One real, verified episode rather than a description of the loop.
+             Every statement is checkable against the public PR's own "Review
+             provenance" section and commit list; claims.json pins it. -->
+        <dl class="case-record max-w-prose mb-12" aria-label="A reviewed change, 22 August 2026">
+          <div><dt>Proposed</dt><dd>An agent's patch let an automatic pause on a newly started agent relax to guidance whenever the pause was labelled a risk stop.</dd></div>
+          <div><dt>Challenged</dt><dd>A structured review rejected it. The label names only the first stop the code reached, so it cannot show that no other hard stop fired at the same moment.</dd></div>
+          <div><dt>Changed</dt><dd>The fix was rebuilt to relax a pause only when the complete decision-time record proves risk was the sole stop, and to keep the pause for anything missing or contradictory. A second review accepted it with five conditions, and it merged the same day.</dd></div>
+          <p class="case-source">22 August 2026 · the first patch, both reviews, and the rebuild are recorded in <a href="https://github.com/cirwel/unitares/pull/1819">cirwel/unitares#1819</a></p>
+        </dl>
+
+        <div class="max-w-prose">
         <Plate>
-          <dl class="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-8">
+          <dl class="grid grid-cols-2 gap-y-8 gap-x-8">
             <div>
               <dt class="label text-stone mb-2">Recorded events</dt>
               <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.events_total)}</dd>
-            </div>
-            <div>
-              <dt class="label text-stone mb-2">Last 7 days</dt>
-              <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.events_7d)}</dd>
-            </div>
-            <div>
-              <dt class="label text-stone mb-2">Process identities <span class="text-stone">(7d)</span></dt>
-              <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.active_agents_7d)}</dd>
             </div>
             <div>
               <dt class="label text-stone mb-2">Shared findings</dt>
@@ -187,15 +190,11 @@ const install = 'v=$(curl -fsSL https://raw.githubusercontent.com/cirwel/unitare
             </div>
           </dl>
         </Plate>
+        </div>
         <p class="text-sm text-stone mt-6 max-w-prose">
           Measured {liveStats.refreshed_at}. These are records from CIRWEL's own development environment. They show the mechanisms exercised under real use, not external adoption or improved outcomes.
         </p>
 
-        <div class="space-y-6 text-lg leading-relaxed text-stone max-w-prose mt-12">
-          <p>
-            UNITARES also estimates how an agent is operating over time from recorded behavioral and operational signals. Whether that estimate predicts anything is still open, and the negative and inconclusive results so far are kept on the <a href="/research">research page</a>.
-          </p>
-        </div>
       </div>
     </section>
 
