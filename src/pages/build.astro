@@ -4,7 +4,6 @@ import PageHeader from '../components/PageHeader.astro';
 import PageFooter from '../components/PageFooter.astro';
 import SectionRule from '../components/SectionRule.astro';
 import Ornament from '../components/Ornament.astro';
-import Medallion from '../components/Medallion.astro';
 import Tailpiece from '../components/Tailpiece.astro';
 
 // Code plates are held here rather than inline so the braces never collide
@@ -59,9 +58,9 @@ state = check_working_state(client_session_id=sid)`;
 
     <section class="pt-16 pb-20 lg:pt-28 lg:pb-28 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-9">
-        <p class="label text-oxblood mb-8 reveal reveal-1">— The working path</p>
+        <p class="label text-oxblood mb-8 reveal reveal-1">The working path</p>
         <h1 class="display text-5xl md:text-7xl lg:text-8xl !leading-[1.14] mb-10 reveal reveal-2">
-          Build on <span class="italic">it.</span>
+          Build on it.
         </h1>
         <p class="text-lg md:text-xl leading-relaxed text-stone max-w-prose reveal reveal-3">
           Four steps: run the server, point a client at it, run the check-in loop, and decide what to do with what comes back.
@@ -79,7 +78,7 @@ state = check_working_state(client_session_id=sid)`;
 
     <section class="py-10 grid grid-cols-12 gap-6 reveal reveal-4">
       <div class="col-span-12 lg:col-span-3 mb-4 lg:mb-0">
-        <p class="label text-oxblood">— What you need</p>
+        <p class="label text-oxblood">What you need</p>
       </div>
       <dl class="col-span-12 lg:col-span-9 grid grid-cols-12 gap-y-5 gap-x-6">
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Server</dt>
@@ -100,8 +99,7 @@ state = check_working_state(client_session_id=sid)`;
     <!-- §01 RUN IT -->
     <section id="run" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
-        <p class="label text-oxblood">§01 — Run the server</p>
-        <Medallion roman="I" class="hidden lg:block mt-7" />
+        <p class="section-mark"><span class="sm-num">§&#8201;I</span><span class="sm-name">Run the server</span></p>
       </div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">One compose file, on your own machine.</h2>
@@ -144,8 +142,7 @@ state = check_working_state(client_session_id=sid)`;
     <!-- §02 CONNECT -->
     <section id="connect" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
-        <p class="label text-oxblood">§02 — Connect a client</p>
-        <Medallion roman="II" class="hidden lg:block mt-7" />
+        <p class="section-mark"><span class="sm-num">§&#8201;II</span><span class="sm-name">Connect a client</span></p>
       </div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">Client-neutral at the boundary.</h2>
@@ -183,8 +180,7 @@ state = check_working_state(client_session_id=sid)`;
     <!-- §03 THE LOOP -->
     <section id="loop" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
-        <p class="label text-oxblood">§03 — Run the loop</p>
-        <Medallion roman="III" class="hidden lg:block mt-7" />
+        <p class="section-mark"><span class="sm-num">§&#8201;III</span><span class="sm-name">Run the loop</span></p>
       </div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">Four calls, and a decision that stays yours.</h2>
@@ -226,8 +222,7 @@ state = check_working_state(client_session_id=sid)`;
     <!-- §04 RESIDENT -->
     <section id="resident" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
-        <p class="label text-oxblood">§04 — Build a resident</p>
-        <Medallion roman="IV" class="hidden lg:block mt-7" />
+        <p class="section-mark"><span class="sm-num">§&#8201;IV</span><span class="sm-name">Build a resident</span></p>
       </div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">The contract is a package, not the server repository.</h2>
@@ -257,8 +252,7 @@ state = check_working_state(client_session_id=sid)`;
     <!-- §05 LIMITS -->
     <section id="limits" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
-        <p class="label text-oxblood">§05 — What it does not do</p>
-        <Medallion roman="V" class="hidden lg:block mt-7" />
+        <p class="section-mark"><span class="sm-num">§&#8201;V</span><span class="sm-name">What it does not do</span></p>
       </div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">A state instrument, not an outcome oracle.</h2>

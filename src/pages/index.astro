@@ -3,7 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import PageFooter from '../components/PageFooter.astro';
 import SectionRule from '../components/SectionRule.astro';
-import Medallion from '../components/Medallion.astro';
 import Seal from '../components/Seal.astro';
 import Plate from '../components/Plate.astro';
 import Tailpiece from '../components/Tailpiece.astro';
@@ -28,10 +27,10 @@ const install = 'v=$(curl -fsSL https://raw.githubusercontent.com/cirwel/unitare
     <!-- HERO -->
     <section class="pt-16 pb-16 lg:pt-28 lg:pb-20 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-9">
-        <p class="label text-oxblood mb-8 reveal reveal-1">— UNITARES, from CIRWEL Research</p>
+        <p class="label text-oxblood mb-8 reveal reveal-1">UNITARES, from CIRWEL Research</p>
         <h1 class="display text-5xl md:text-7xl lg:text-8xl !leading-[1.14] mb-10 reveal reveal-2">
           Many agents,<br/>
-          <span class="italic">one record.</span>
+          one record.
         </h1>
         <!-- The three definition sentences are the README's, verbatim (EDITORIAL.md §1).
              The first is the subhead and the third follows it. The second, which names
@@ -45,7 +44,7 @@ const install = 'v=$(curl -fsSL https://raw.githubusercontent.com/cirwel/unitare
         </p>
         <nav aria-label="Ways into UNITARES"
              class="mt-10 pt-6 border-t border-sepia flex flex-wrap items-baseline gap-x-8 gap-y-4 reveal reveal-4">
-          <a href="/build" class="cta">Run UNITARES →</a>
+          <a href="/build" class="cta">Run UNITARES</a>
           <a href="/ecosystem" class="label text-oxblood no-underline hover:underline">How it fits together</a>
           <a href="/research" class="label text-oxblood no-underline hover:underline">The research record</a>
         </nav>
@@ -65,7 +64,7 @@ const install = 'v=$(curl -fsSL https://raw.githubusercontent.com/cirwel/unitare
     <!-- RECEIPTS -->
     <section class="py-10 grid grid-cols-12 gap-6 reveal reveal-5">
       <div class="col-span-12 lg:col-span-3 mb-4 lg:mb-0">
-        <p class="label text-oxblood">— The receipts</p>
+        <p class="label text-oxblood">The receipts</p>
       </div>
       <dl class="col-span-12 lg:col-span-9 grid grid-cols-12 gap-y-5 gap-x-6">
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Software</dt>
@@ -104,8 +103,7 @@ const install = 'v=$(curl -fsSL https://raw.githubusercontent.com/cirwel/unitare
     <!-- §01 WHAT IT KEEPS -->
     <section id="what" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
-        <p class="label text-oxblood">§01 — What the record answers</p>
-        <Medallion roman="I" class="hidden lg:block mt-7" />
+        <p class="section-mark"><span class="sm-num">§&#8201;I</span><span class="sm-name">What the record answers</span></p>
       </div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
@@ -115,30 +113,39 @@ const install = 'v=$(curl -fsSL https://raw.githubusercontent.com/cirwel/unitare
           A coding session restarts. A research agent loses its context. A task moves to another process, and the evidence arrives after the process that made the claim is gone. Logs show each run; they do not keep these five answers connected across the boundary.
         </p>
 
-        <dl class="max-w-prose">
-          <div class="grid grid-cols-12 gap-x-6 gap-y-1 py-5 border-t border-sepia/40">
-            <dt class="col-span-12 md:col-span-4 mb-2 md:mb-0"><p class="display text-xl leading-snug">Who said it?</p></dt>
-            <dd class="col-span-12 md:col-span-8 text-stone leading-relaxed">Every write is bound to a fresh process identity. Lineage records which earlier process this one inherited work from; it does not make two processes one identity. <a href="/ecosystem#identity" class="label text-oxblood no-underline hover:underline whitespace-nowrap">Identity &amp; lineage →</a></dd>
-          </div>
-          <div class="grid grid-cols-12 gap-x-6 gap-y-1 py-5 border-t border-sepia/40">
-            <dt class="col-span-12 md:col-span-4 mb-2 md:mb-0"><p class="display text-xl leading-snug">What supports it?</p></dt>
-            <dd class="col-span-12 md:col-span-8 text-stone leading-relaxed">Check-ins carry the state the server derived from them, and findings, corrections, and their provenance are kept as durable records that outlive the process that wrote them. <a href="/ecosystem#knowledge" class="label text-oxblood no-underline hover:underline whitespace-nowrap">Shared memory →</a></dd>
-          </div>
-          <div class="grid grid-cols-12 gap-x-6 gap-y-1 py-5 border-t border-sepia/40">
-            <dt class="col-span-12 md:col-span-4 mb-2 md:mb-0"><p class="display text-xl leading-snug">Who challenged it?</p></dt>
-            <dd class="col-span-12 md:col-span-8 text-stone leading-relaxed">Structured review keeps the disagreement, the conditions, and the resolution as part of the record, and a reviewer's objection binds on the agent it was raised against. <a href="/ecosystem#verdicts" class="label text-oxblood no-underline hover:underline whitespace-nowrap">Policy &amp; review →</a></dd>
-          </div>
-          <div class="grid grid-cols-12 gap-x-6 gap-y-1 py-5 border-t border-sepia/40">
-            <dt class="col-span-12 md:col-span-4 mb-2 md:mb-0"><p class="display text-xl leading-snug">What happened?</p></dt>
-            <dd class="col-span-12 md:col-span-8 text-stone leading-relaxed">Outcomes such as test results and exit codes are recorded against the check-in that predicted them. The gap between the claim and the outcome is the calibration signal. <a href="/build#loop" class="label text-oxblood no-underline hover:underline whitespace-nowrap">The loop →</a></dd>
-          </div>
-          <div class="grid grid-cols-12 gap-x-6 gap-y-1 py-5 border-t border-b border-sepia/40">
-            <dt class="col-span-12 md:col-span-4 mb-2 md:mb-0"><p class="display text-xl leading-snug">What can a successor recover?</p></dt>
-            <dd class="col-span-12 md:col-span-8 text-stone leading-relaxed">Shared-memory search, review records, and history export give a later process what it needs to understand the work and continue it. <a href="/ecosystem#layers" class="label text-oxblood no-underline hover:underline whitespace-nowrap">Architecture →</a></dd>
-          </div>
-        </dl>
 
-        <p class="text-lg leading-relaxed text-stone max-w-prose mt-10">
+      </div>
+      <!-- The five questions as a ruled register: one column per question the
+           record answers, read across like the head of a ledger page. -->
+      <div class="col-span-12 register mt-4" role="list" aria-label="What the record answers">
+          <div class="reg-col" role="listitem">
+            <h3 class="reg-q">Who said it?</h3>
+            <p class="reg-body">Every write is bound to a fresh process identity. Lineage records which earlier process this one inherited work from; it does not make two processes one identity.</p>
+            <a href="/ecosystem#identity" class="reg-link">Identity &amp; lineage</a>
+          </div>
+          <div class="reg-col" role="listitem">
+            <h3 class="reg-q">What supports it?</h3>
+            <p class="reg-body">Check-ins carry the state the server derived from them, and findings, corrections, and their provenance are kept as durable records that outlive the process that wrote them.</p>
+            <a href="/ecosystem#knowledge" class="reg-link">Shared memory</a>
+          </div>
+          <div class="reg-col" role="listitem">
+            <h3 class="reg-q">Who challenged it?</h3>
+            <p class="reg-body">Structured review keeps the disagreement, the conditions, and the resolution as part of the record, and a reviewer's objection binds on the agent it was raised against.</p>
+            <a href="/ecosystem#verdicts" class="reg-link">Policy &amp; review</a>
+          </div>
+          <div class="reg-col" role="listitem">
+            <h3 class="reg-q">What happened?</h3>
+            <p class="reg-body">Outcomes such as test results and exit codes are recorded against the check-in that predicted them. The gap between the claim and the outcome is the calibration signal.</p>
+            <a href="/build#loop" class="reg-link">The loop</a>
+          </div>
+          <div class="reg-col" role="listitem">
+            <h3 class="reg-q">What can a successor recover?</h3>
+            <p class="reg-body">Shared-memory search, review records, and history export give a later process what it needs to understand the work and continue it.</p>
+            <a href="/ecosystem#layers" class="reg-link">Architecture</a>
+          </div>
+      </div>
+      <div class="col-span-12 lg:col-start-4 lg:col-span-9">
+        <p class="text-lg leading-relaxed text-stone max-w-prose mt-4">
           Claude Code, Codex, and custom runtimes keep their own models and tools. UNITARES keeps the record. It runs beside evals, guardrails, and sandboxes and replaces none of them.
         </p>
       </div>
@@ -149,8 +156,7 @@ const install = 'v=$(curl -fsSL https://raw.githubusercontent.com/cirwel/unitare
     <!-- §02 IN USE -->
     <section id="production" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
-        <p class="label text-oxblood">§02 — In use</p>
-        <Medallion roman="II" class="hidden lg:block mt-7" />
+        <p class="section-mark"><span class="sm-num">§&#8201;II</span><span class="sm-name">In use</span></p>
         <Seal class="hidden lg:block mt-10" />
       </div>
       <div class="col-span-12 lg:col-span-9">
@@ -198,8 +204,7 @@ const install = 'v=$(curl -fsSL https://raw.githubusercontent.com/cirwel/unitare
     <!-- §03 START HERE -->
     <section id="contact" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
-        <p class="label text-oxblood">§03 — Start here</p>
-        <Medallion roman="III" class="hidden lg:block mt-7" />
+        <p class="section-mark"><span class="sm-num">§&#8201;III</span><span class="sm-name">Start here</span></p>
       </div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-10 leading-tight">Run it, read it, or inspect the evidence.</h2>
