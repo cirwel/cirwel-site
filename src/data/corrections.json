@@ -2,6 +2,18 @@
   "_note": "Corrections to what this site has said: figures, statuses, and claims only. Not a changelog, and not a place for copy edits. Newest first. `ref` is the commit or pull request that made the correction, or the upstream change that made it necessary.",
   "entries": [
     {
+      "date": "2026-09-18",
+      "where": "Home, In use",
+      "note": "The section was headed \"UNITARES helps build UNITARES\", an effect claim its own caption disclaimed (\"not … improved outcomes\"). It now says the system keeps its own development record and shows one reviewed change from that record, linked to the pull request that carries it.",
+      "ref": "https://github.com/cirwel/cirwel-site/pull/55"
+    },
+    {
+      "date": "2026-09-18",
+      "where": "Home, In use",
+      "note": "A figure labelled \"Agent identities (7d)\" counted distinct identities that checked in that week. Every new process mints a fresh identity, so the number read as fleet size and overstated it. The figure is no longer shown.",
+      "ref": "https://github.com/cirwel/cirwel-site/pull/53"
+    },
+    {
       "date": "2026-09-17",
       "where": "Home and ecosystem receipts",
       "note": "Labelled the maintainer's own development environment \"Production\". It is where the system is used every day, not a deployment for anyone else, so both receipts now say \"In use\".",
