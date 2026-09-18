@@ -368,10 +368,10 @@ body::before {
   background: var(--running-head-bg);
   backdrop-filter: saturate(120%) blur(2px);
   border-bottom: 1px solid rgb(var(--c-sepia));
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 0.62rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  font-family: "EB Garamond Variable", "Garamond Fallback", Garamond, Georgia, serif;
+  font-size: 0.92rem;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.045em;
   color: rgb(var(--c-stone));
   opacity: 0;
   transform: translateY(-100%);
@@ -676,3 +676,35 @@ a:focus-visible {
 /* A command is one long unbroken token (a raw.githubusercontent URL); without
    this it set the phone layout viewport to ~750px and zoomed the page out. */
 .runcmd .cmd { overflow-wrap: anywhere; }
+
+/* CASE RECORD — one real episode from the development record, set as a short
+   ruled docket: the step on the left in small capitals, what happened on the
+   right. Same frame as the register (double rule above and below). */
+.case-record {
+  border-top: 3px double rgb(var(--c-ink) / 0.55);
+  border-bottom: 3px double rgb(var(--c-ink) / 0.55);
+}
+.case-record > div {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: 1.25rem;
+  padding: 1.1rem 0;
+  border-top: 1px solid rgb(var(--c-sepia) / 0.6);
+}
+.case-record > div:first-child { border-top: 0; }
+.case-record dt {
+  font-variant-caps: small-caps;
+  letter-spacing: 0.045em;
+  color: rgb(var(--c-oxblood));
+  padding-top: 0.1rem;
+}
+.case-record dd { color: rgb(var(--c-ink)); line-height: 1.55; }
+.case-source {
+  padding: 0.9rem 0 1rem;
+  border-top: 1px solid rgb(var(--c-sepia) / 0.6);
+  font-size: 0.9rem;
+  color: rgb(var(--c-stone));
+}
+@media (max-width: 639px) {
+  .case-record > div { grid-template-columns: 1fr; gap: 0.3rem; }
+}
