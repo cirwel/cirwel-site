@@ -83,7 +83,7 @@ state = check_working_state(client_session_id=sid)`;
       </div>
       <dl class="col-span-12 lg:col-span-9 grid grid-cols-12 gap-y-5 gap-x-6">
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Server</dt>
-        <dd class="col-span-8 md:col-span-9"><a href="https://github.com/cirwel/unitares" class="font-medium">CIRWEL/unitares</a><span class="text-stone"> · Apache 2.0 · Docker Compose</span></dd>
+        <dd class="col-span-8 md:col-span-9"><a href="https://github.com/cirwel/unitares" class="font-medium">cirwel/unitares</a><span class="text-stone"> · Apache 2.0 · Docker Compose</span></dd>
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Endpoint</dt>
         <dd class="col-span-8 md:col-span-9"><span class="font-mono text-sm">http://localhost:8767/mcp/</span><span class="text-stone"> · Streamable HTTP · REST at <span class="font-mono text-sm">/v1/tools/call</span></span></dd>
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Contract</dt>
@@ -114,7 +114,7 @@ state = check_working_state(client_session_id=sid)`;
           </div>
           <div class="space-y-5 text-lg leading-relaxed text-stone mt-8">
             <p class="dropcap">
-              That brings up PostgreSQL with AGE and pgvector, Redis, the lease plane, and the server on loopback. MCP clients connect at <span class="font-mono text-base text-ink">localhost:8767/mcp/</span>, the self-hosted dashboard is at <span class="font-mono text-base text-ink">/dashboard</span>, and <span class="font-mono text-base text-ink">/health</span> answers for readiness checks.
+              That brings up PostgreSQL with AGE and pgvector, Redis, the lease plane that decides which agent holds a shared surface, and the server on loopback. MCP clients connect at <span class="font-mono text-base text-ink">localhost:8767/mcp/</span>, the self-hosted dashboard is at <span class="font-mono text-base text-ink">/dashboard</span>, and <span class="font-mono text-base text-ink">/health</span> answers for readiness checks.
             </p>
             <p>
               That is the server README's own command: it clones the latest verified release tag rather than the default branch, which can run ahead of it.
@@ -245,7 +245,7 @@ state = check_working_state(client_session_id=sid)`;
               A workload registers its own progress source through the <span class="font-mono text-base text-ink">unitares.resident_progress_sources</span> entry-point group, with no change to the server's repository at all. That is the whole plug-and-play claim: an adopter never has to touch the server's code.
             </p>
             <p>
-              The lowercase agents in the server repository are reference clients and operational examples. They are built on it and are explicitly not part of it, so read them as worked examples rather than a framework to subclass. <a href="https://github.com/cirwel/unitares-resident" class="font-mono text-base">CIRWEL/unitares-resident</a> is the first-party userland on the same public contract; it is an early skeleton, not yet a usable general-purpose agent.
+              The lowercase agents in the server repository are reference clients and operational examples. They are built on it and are explicitly not part of it, so read them as worked examples rather than a framework to subclass. <a href="https://github.com/cirwel/unitares-resident" class="font-mono text-base">cirwel/unitares-resident</a> is the first-party userland on the same public contract; it is an early skeleton, not yet a usable general-purpose agent.
             </p>
           </div>
         </div>
@@ -292,7 +292,7 @@ state = check_working_state(client_session_id=sid)`;
 
         <div class="max-w-prose space-y-5 text-lg leading-relaxed text-stone">
           <p>
-            Every deployment number published here comes from CIRWEL's own fleet, where most of the governed agents are also the ones building the system. The <a href="/research">research page</a> keeps the open questions, the withdrawn results, and the pre-registered read that will settle one of them.
+            The <a href="/research">research page</a> keeps the open questions, the withdrawn results, and the pre-registered read that will settle one of them.
           </p>
         </div>
 

@@ -35,8 +35,8 @@ const install = 'v=$(curl -fsSL https://raw.githubusercontent.com/cirwel/unitare
         </h1>
         <!-- The three definition sentences are the README's, verbatim (EDITORIAL.md §1).
              The first is the subhead and the third follows it. The second, which names
-             the federation kernel, sits under the figure beside the definitions of
-             federation and kernel, with its opening pronoun resolved to the product name. -->
+             the federation kernel, sits under the figure on its own, with its opening
+             pronoun resolved to the product name. -->
         <p class="text-lg md:text-xl leading-relaxed text-ink max-w-prose reveal reveal-3">
           <span class="font-medium">UNITARES is self-hosted accountability infrastructure for operators running multiple AI agents.</span>
         </p>
@@ -55,7 +55,7 @@ const install = 'v=$(curl -fsSL https://raw.githubusercontent.com/cirwel/unitare
           <Fragment set:html={frontispieceSvg} />
         </figure>
         <p class="text-base leading-relaxed text-stone max-w-prose mt-6 reveal reveal-5">
-          The UNITARES federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP, where they share a durable record while keeping their own models, tools, and runtimes. Federation here means exactly that sharing, and the kernel is the boundary where each runtime's writes are attributed and recorded, and where some can be refused. Whether accountability can hold between operators who share no root of trust is a separate question, kept on the <a href="/research#question">research page</a>.
+          The UNITARES federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP, where they share a durable record while keeping their own models, tools, and runtimes.
         </p>
       </div>
     </section>
@@ -172,7 +172,7 @@ const install = 'v=$(curl -fsSL https://raw.githubusercontent.com/cirwel/unitare
               <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.events_7d)}</dd>
             </div>
             <div>
-              <dt class="label text-stone mb-2">Agent identities <span class="text-stone">(7d)</span></dt>
+              <dt class="label text-stone mb-2">Process identities <span class="text-stone">(7d)</span></dt>
               <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.active_agents_7d)}</dd>
             </div>
             <div>
