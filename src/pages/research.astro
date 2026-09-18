@@ -4,7 +4,6 @@ import PageHeader from '../components/PageHeader.astro';
 import PageFooter from '../components/PageFooter.astro';
 import SectionRule from '../components/SectionRule.astro';
 import Ornament from '../components/Ornament.astro';
-import Medallion from '../components/Medallion.astro';
 import Tailpiece from '../components/Tailpiece.astro';
 import Corrections from '../components/Corrections.astro';
 ---
@@ -18,10 +17,10 @@ import Corrections from '../components/Corrections.astro';
 
     <section class="pt-16 pb-20 lg:pt-28 lg:pb-28 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-9">
-        <p class="label text-oxblood mb-8 reveal reveal-1">— The research program, including its failures</p>
+        <p class="label text-oxblood mb-8 reveal reveal-1">The research program, including its failures</p>
         <h1 class="display text-5xl md:text-7xl lg:text-8xl mb-10 reveal reveal-2">
           What I am testing.<br/>
-          What already <span class="italic">failed.</span>
+          What already failed.
         </h1>
         <p class="text-lg md:text-xl leading-relaxed text-stone max-w-prose reveal reveal-3">
           This page records the questions under test, the experiments that have closed, and the results that came back negative or inconclusive. An experiment that failed stays on the page with the number that failed it.
@@ -33,7 +32,7 @@ import Corrections from '../components/Corrections.astro';
     <hr class="hairline mb-2"/>
 
     <section class="py-10 grid grid-cols-12 gap-6 reveal reveal-4">
-      <div class="col-span-12 lg:col-span-3 mb-4 lg:mb-0"><p class="label text-oxblood">— The receipts</p></div>
+      <div class="col-span-12 lg:col-span-3 mb-4 lg:mb-0"><p class="label text-oxblood">The receipts</p></div>
       <dl class="col-span-12 lg:col-span-9 grid grid-cols-12 gap-y-5 gap-x-6">
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Program</dt>
         <dd class="col-span-8 md:col-span-9">Longitudinal runtime-state measurement for AI agents <span class="text-stone">· begun September 2025</span></dd>
@@ -49,7 +48,7 @@ import Corrections from '../components/Corrections.astro';
     <SectionRule class="mt-2 mb-20" />
 
     <section id="question" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
-      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="label text-oxblood">§01 — The questions under test</p><Medallion roman="I" class="hidden lg:block mt-7" /></div>
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="section-mark"><span class="sm-num">§&#8201;I</span><span class="sm-name">The questions under test</span></p></div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">Two questions, at two scales.</h2>
         <p class="text-lg leading-relaxed text-stone max-w-prose mb-14">One asks what can be read from a single agent while it works. The other asks what can be held to account between principals who do not trust each other. They are separate questions with separate evidence, and only the first has results.</p>
@@ -95,7 +94,7 @@ import Corrections from '../components/Corrections.astro';
     <SectionRule class="my-8" />
 
     <section id="settled" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
-      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="label text-oxblood">§02 — Closed, including negatives</p><Medallion roman="II" class="hidden lg:block mt-7" /></div>
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="section-mark"><span class="sm-num">§&#8201;II</span><span class="sm-name">Closed, including negatives</span></p></div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">What the current record actually supports.</h2>
         <p class="text-stone leading-relaxed max-w-prose mb-10">Everything in this section belongs to Question I. Question II has produced no results to record.</p>
@@ -117,7 +116,7 @@ import Corrections from '../components/Corrections.astro';
     <SectionRule class="my-8" />
 
     <section id="open" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
-      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="label text-oxblood">§03 — Open</p><Medallion roman="III" class="hidden lg:block mt-7" /></div>
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="section-mark"><span class="sm-num">§&#8201;III</span><span class="sm-name">Open</span></p></div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">Unresolved is not the same as negative.</h2>
         <div class="max-w-prose space-y-6">
@@ -131,7 +130,7 @@ import Corrections from '../components/Corrections.astro';
     <SectionRule class="my-8" />
 
     <section id="method" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
-      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="label text-oxblood">§04 — How the program is run</p><Medallion roman="IV" class="hidden lg:block mt-7" /></div>
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="section-mark"><span class="sm-num">§&#8201;IV</span><span class="sm-name">How the program is run</span></p></div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">Commitments that can cost a result.</h2>
         <dl class="max-w-prose space-y-8">
@@ -145,7 +144,7 @@ import Corrections from '../components/Corrections.astro';
     <SectionRule class="my-8" />
 
     <section id="wanted" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
-      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="label text-oxblood">§05 — What the program needs</p><Medallion roman="V" class="hidden lg:block mt-7" /></div>
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="section-mark"><span class="sm-num">§&#8201;V</span><span class="sm-name">What the program needs</span></p></div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">A skeptic, not an endorsement.</h2>
         <p class="text-lg leading-relaxed text-stone max-w-prose mb-6">The main limitation is that the same researcher built the system, runs the fleet, and produced the current evidence. The most useful next test is independent or adversarial evaluation on data I did not generate.</p>
@@ -156,7 +155,7 @@ import Corrections from '../components/Corrections.astro';
     <SectionRule class="my-8" />
 
     <section id="corrections" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
-      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="label text-oxblood">§06 — Corrections</p><Medallion roman="VI" class="hidden lg:block mt-7" /></div>
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="section-mark"><span class="sm-num">§&#8201;VI</span><span class="sm-name">Corrections</span></p></div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">What this record got wrong, and when.</h2>
         <p class="text-stone leading-relaxed max-w-prose mb-8">Substantive corrections to figures, statuses, and claims published on this site, newest first. Copy edits are not listed. A site that argues for records that show their own corrections should keep one.</p>
