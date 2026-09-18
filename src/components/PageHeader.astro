@@ -16,15 +16,6 @@ const isEcosystem = currentPath === '/ecosystem';
 const isResearch  = currentPath === '/research';
 const isBuild     = currentPath === '/build';
 ---
-<!-- Masthead — journal-cover register. -->
-<div class="max-w-screen-xl mx-auto px-6 lg:px-12 pt-6 hidden sm:flex items-center justify-center gap-4">
-  <hr class="hairline flex-1 max-w-[140px]" />
-  <p class="label text-stone text-[0.62rem] tracking-[0.28em] whitespace-nowrap">
-    Agent systems &middot; Est. 2025
-  </p>
-  <hr class="hairline flex-1 max-w-[140px]" />
-</div>
-
 <!--
   Header: row layout at sm+ (wordmark left, nav right).
   At <sm: column layout — wordmark centered on its own line, nav wrapping
@@ -45,42 +36,48 @@ const isBuild     = currentPath === '/build';
     <a href="/ecosystem"
        class:list={[
          "no-underline transition-colors",
-         isEcosystem ? "text-oxblood" : "hover:text-oxblood",
-       ]}>
+         isEcosystem ? "text-oxblood nav-current" : "hover:text-oxblood",
+       ]}
+       aria-current={isEcosystem ? "page" : undefined}>
       Architecture
     </a>
     <a href="/build"
        class:list={[
          "no-underline transition-colors",
-         isBuild ? "text-oxblood" : "hover:text-oxblood",
-       ]}>
+         isBuild ? "text-oxblood nav-current" : "hover:text-oxblood",
+       ]}
+       aria-current={isBuild ? "page" : undefined}>
       Build
     </a>
     <a href="/research"
        class:list={[
          "no-underline transition-colors",
-         isResearch ? "text-oxblood" : "hover:text-oxblood",
-       ]}>
+         isResearch ? "text-oxblood nav-current" : "hover:text-oxblood",
+       ]}
+       aria-current={isResearch ? "page" : undefined}>
       Research
-    </a>
-    <a href="https://doi.org/10.5281/zenodo.19647159"
-       class="hidden sm:inline no-underline hover:text-oxblood transition-colors">
-      Paper
-    </a>
-    <a href="https://github.com/cirwel/unitares"
-       class="hidden sm:inline no-underline hover:text-oxblood transition-colors">
-      Source
     </a>
     <a href={contactHref}
        class="no-underline hover:text-oxblood transition-colors">
       Contact
+    </a>
+    <!-- Paper and Source leave the site; the separator and ↗ say so, in the
+         same mark the corrections log already uses for an outside reference. -->
+    <span class="nav-sep hidden sm:inline-block" aria-hidden="true"></span>
+    <a href="https://doi.org/10.5281/zenodo.19647159"
+       class="hidden sm:inline no-underline hover:text-oxblood transition-colors">
+      Paper<span class="ext" aria-hidden="true">↗</span>
+    </a>
+    <a href="https://github.com/cirwel/unitares"
+       class="hidden sm:inline no-underline hover:text-oxblood transition-colors">
+      Source<span class="ext" aria-hidden="true">↗</span>
     </a>
 
     <!--
       Theme control. The house register is a line engraving pulled on cream;
       the dark register is the same plate pulled as a mezzotint. Which one a
       reader gets is theirs to say, so the control is stated rather than
-      inferred. Its label is literal (AUTO / LIGHT / DARK) because a visitor
+      inferred. Its label is literal (Auto / Light / Dark) because a visitor
       does not know the print trade's word for it. Hidden without JS, where
       it could not do anything.
     -->
@@ -96,7 +93,7 @@ const isBuild     = currentPath === '/build';
           <line x1="3.2" y1="10.6" x2="6.4" y2="10.6"/>
         </g>
       </svg>
-      <span data-impression-state>AUTO</span>
+      <span data-impression-state>Auto</span>
     </button>
   </nav>
 </header>
@@ -113,6 +110,9 @@ const isBuild     = currentPath === '/build';
   .js .impression { display: inline-flex; }
   .impression [data-impression-state] { font-variant-numeric: tabular-nums; min-width: 3.1em; text-align: left; }
   .impression:focus-visible { outline: 2px solid rgb(var(--c-oxblood)); outline-offset: 3px; border-radius: 1px; }
+  .nav-sep { width: 1px; height: 0.9em; background: rgb(var(--c-sepia)); }
+  .ext { font-size: 0.8em; margin-left: 0.15em; opacity: 0.7; }
+  .nav-current { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.35em; }
   .impression-sep { display: none; width: 1px; height: 0.9em; background: rgb(var(--c-sepia)); }
   .js .impression-sep { display: inline-block; }
   @media print { .impression, .impression-sep { display: none !important; } }

@@ -59,10 +59,6 @@
     <line x1="356" y1="30" x2="364" y2="20"/>
   </g>
 
-  <!-- Frontispiece label -->
-  <text x="340" y="58" text-anchor="middle"
-        font-family="'JetBrains Mono', ui-monospace, monospace"
-        font-size="10.5" letter-spacing="5" fill="#7A1F1F" font-weight="500">FRONTISPIECE</text>
 
   <!-- ===================== EMBLEM (engraved line-art) ===================== -->
   <g filter="url(#fpRough)">
@@ -152,10 +148,10 @@
   <circle cx="340" cy="452" r="1.8" fill="#7A1F1F"/>
   <line x1="356" y1="452" x2="530" y2="452" stroke="#C9C0AE" stroke-width="0.6"/>
 
-  <text x="340" y="476" text-anchor="middle"
-        font-family="'JetBrains Mono', ui-monospace, monospace"
-        font-size="11" letter-spacing="3" fill="#7A1F1F">MANY AGENTS, ONE RECORD</text>
-  <text x="340" y="496" text-anchor="middle"
+  <!-- The caption names what the figure shows. It does not repeat the page
+       headline directly above it, and the plate carries no label naming its
+       own genre: a mark that carries no information does not ship. -->
+  <text x="340" y="482" text-anchor="middle"
         font-family="'EB Garamond Variable', Georgia, serif"
-        font-size="12" font-style="italic" fill="#5C544A">Independent runtimes, one operator-controlled record.</text>
+        font-size="13" font-style="italic" fill="#5C544A">Independent runtimes, one operator-controlled record.</text>
 </svg>

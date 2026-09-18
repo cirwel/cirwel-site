@@ -149,7 +149,7 @@ const ogImageUrl = new URL(ogImage, site).toString();
           const v = attr[state];
           if (v) document.documentElement.setAttribute('data-theme', v);
           else document.documentElement.removeAttribute('data-theme');
-          if (text) text.textContent = state.toUpperCase();
+          if (text) text.textContent = state.charAt(0).toUpperCase() + state.slice(1);
           btn.setAttribute('aria-label', says[state]);
           btn.setAttribute('title', says[state]);
           try {
