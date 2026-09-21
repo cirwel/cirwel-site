@@ -3,7 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import PageFooter from '../components/PageFooter.astro';
 import SectionRule from '../components/SectionRule.astro';
-import Seal from '../components/Seal.astro';
 import Plate from '../components/Plate.astro';
 import Tailpiece from '../components/Tailpiece.astro';
 import liveStats from '../data/live-stats.json';
@@ -148,65 +147,46 @@ const install = 'v=$(curl -fsSL https://raw.githubusercontent.com/cirwel/unitare
         <p class="text-lg leading-relaxed text-stone max-w-prose mt-4">
           Claude Code, Codex, and custom runtimes keep their own models and tools. UNITARES keeps the record. It runs beside evals, guardrails, and sandboxes and replaces none of them.
         </p>
-      </div>
-    </section>
-
-    <SectionRule />
-
-    <!-- §02 IN USE -->
-    <section id="production" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
-      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
-        <p class="section-mark"><span class="sm-num">§&#8201;II</span><span class="sm-name">In use</span></p>
-        <Seal class="hidden lg:block mt-10" />
-      </div>
-      <div class="col-span-12 lg:col-span-9">
-        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">UNITARES keeps its own development record.</h2>
-        <div class="space-y-6 text-lg leading-relaxed text-stone max-w-prose mb-10">
-          <p class="dropcap">
-            The agents building UNITARES check in to it, write what they learn to its shared memory, and send their changes through its structured review. One case from that record:
-          </p>
-        </div>
-
-        <!-- One real, verified episode rather than a description of the loop.
-             Every statement is checkable against the public PR's own "Review
-             provenance" section and commit list; claims.json pins it. -->
-        <dl class="case-record max-w-prose mb-12" aria-label="A reviewed change, 22 August 2026">
-          <div><dt>Proposed</dt><dd>An agent's patch let an automatic pause on a newly started agent relax to guidance whenever the pause was labelled a risk stop.</dd></div>
-          <div><dt>Challenged</dt><dd>A structured review rejected it. The label names only the first stop the code reached, so it cannot show that no other hard stop fired at the same moment.</dd></div>
-          <div><dt>Changed</dt><dd>The fix was rebuilt to relax a pause only when the complete decision-time record proves risk was the sole stop, and to keep the pause for anything missing or contradictory. A second review accepted it with five conditions, and it merged the same day.</dd></div>
-          <p class="case-source">22 August 2026 · the first patch, both reviews, and the rebuild are recorded in <a href="https://github.com/cirwel/unitares/pull/1819">cirwel/unitares#1819</a></p>
-        </dl>
-
-        <div class="max-w-prose">
-        <Plate>
-          <dl class="grid grid-cols-2 gap-y-8 gap-x-8">
-            <div>
-              <dt class="label text-stone mb-2">Recorded events</dt>
-              <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.events_total)}</dd>
-            </div>
-            <div>
-              <dt class="label text-stone mb-2">Shared findings</dt>
-              <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.kg_discoveries)}</dd>
-            </div>
-          </dl>
-        </Plate>
+        <div class="max-w-prose mt-10">
+          <Plate>
+            <dl class="grid grid-cols-2 gap-x-8 gap-y-8">
+              <div>
+                <dt class="label text-stone mb-2">Governance events</dt>
+                <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.events_total)}</dd>
+              </div>
+              <div>
+                <dt class="label text-stone mb-2">Events · last 7 days</dt>
+                <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.events_7d)}</dd>
+              </div>
+              <div>
+                <dt class="label text-stone mb-2">Active agents · last 7 days</dt>
+                <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.active_agents_7d)}</dd>
+              </div>
+              <div>
+                <dt class="label text-stone mb-2">Shared findings</dt>
+                <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.kg_discoveries)}</dd>
+              </div>
+            </dl>
+          </Plate>
         </div>
         <p class="text-sm text-stone mt-6 max-w-prose">
-          Measured {liveStats.refreshed_at}. These are records from CIRWEL's own development environment. They show the mechanisms exercised under real use, not external adoption or improved outcomes.
+          Measured {liveStats.refreshed_at}. These are records from CIRWEL's own deployment: system activity, not external adoption or outcome evidence.
         </p>
-
       </div>
     </section>
 
     <SectionRule />
 
-    <!-- §03 START HERE -->
+    <!-- §02 START HERE -->
     <section id="contact" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
-        <p class="section-mark"><span class="sm-num">§&#8201;III</span><span class="sm-name">Start here</span></p>
+        <p class="section-mark"><span class="sm-num">§&#8201;II</span><span class="sm-name">Start here</span></p>
       </div>
       <div class="col-span-12 lg:col-span-9">
-        <h2 class="display text-3xl md:text-5xl mb-10 leading-tight">Run it, read it, or inspect the evidence.</h2>
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">A shared record for the agent work you run.</h2>
+        <p class="text-lg leading-relaxed text-stone max-w-prose mb-10">
+          UNITARES gives the people responsible for multiple AI agents a shared account of their work: who did what, what supports it, who challenged it, and what happened next. It keeps that work attributable, reviewable, and recoverable across handoffs and restarts.
+        </p>
         <ul class="space-y-7 text-lg max-w-prose">
           <li class="grid grid-cols-12 gap-4 items-start">
             <span class="col-span-12 md:col-span-2 label text-stone pt-1">Run</span>
