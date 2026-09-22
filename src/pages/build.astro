@@ -211,7 +211,7 @@ state = check_working_state(client_session_id=sid)`;
             Treat the action, the reason, and the next step as the stable contract; the enforcement record rides alongside them. A pause on a governed write surface refuses that agent's later check-ins until recovery succeeds. Everything an agent does outside those surfaces is a boundary the host honors, not one the server can close.
           </p>
           <p>
-            Every tool is advertised on every transport; there is no mode to configure. The checkpoint loop, shared memory, structured review, advisory consultation, and recovery are reachable from the same catalog.
+            The complete tool catalog is callable on every transport. The initial listing is deliberately small: use <code>list_tools</code> to discover names, <code>describe_tool</code> to inspect parameters, and <code>use_tool</code> to call a tool omitted from the initial listing. The checkpoint loop, shared memory, structured review, advisory consultation, and recovery are reachable from the same catalog.
           </p>
         </div>
       </div>

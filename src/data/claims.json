@@ -40,11 +40,6 @@
       "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/proposals/accountable-testbed-metrics-preregistration-v1.md",
       "human": "https://github.com/cirwel/unitares/blob/master/docs/proposals/accountable-testbed-metrics-preregistration-v1.md",
       "role": "The frozen evaluation plan for the federated multi-principal testbed. Authority for what that benchmark measures and for whether it has been run."
-    },
-    "pr-1819": {
-      "url": "https://api.github.com/repos/cirwel/unitares/pulls/1819",
-      "human": "https://github.com/cirwel/unitares/pull/1819",
-      "role": "The public record of the review episode on the home page: the rejected first patch, both reviews, and the merge date."
     }
   },
   "pages": {
@@ -62,7 +57,7 @@
       "must_contain": [
         "UNITARES is self-hosted accountability infrastructure for operators running",
         "Its federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP",
-        "agent work should remain attributable, reviewable, and recoverable even when the process that started it is gone"
+        "Agent work should remain attributable, reviewable, and recoverable even when the process that started it is gone"
       ],
       "why": "The one-sentence definition is owned by the server README and copied here verbatim. Ten different phrasings were live across the site, the repository, and the share cards on 2026-09-16; this pin is what keeps it at one."
     },
@@ -89,13 +84,13 @@
     {
       "id": "build-catalog",
       "page": "build",
-      "site_says": "Every tool is advertised on every transport",
+      "site_says": "The complete tool catalog is callable on every transport",
       "source": "evidence-limits",
       "must_contain": [
-        "every name advertised on every transport",
-        "legacy `GOVERNANCE_TOOL_MODE` settings are accepted and ignored"
+        "one complete catalog remains negotiable and callable on every transport",
+        "the default initial listing is progressive and omitted names run through `use_tool` after discovery"
       ],
-      "why": "Replaces a paragraph that described a tool-mode setting for eight days after unitares #2137 removed it. If modes ever return, this pin fails before a reader is told to configure something that does nothing."
+      "why": "The initial listing is progressive after unitares #2328. Every capability remains discoverable and callable; the site must not promise every schema in the initial listing."
     },
     {
       "id": "build-install",
@@ -248,17 +243,6 @@
         "UNITARES is the record behind them, not the transport between them"
       ],
       "why": "A boundary, and the kind that decays quietly: it disclaims cross-runtime interoperability, which A2A owns. The 2026-09 claims audit graded 'federation' unsupported as read for exactly this reason. If the README ever drops the disclaimer, the site must stop implying it too, so the two move together or the check goes red."
-    },
-    {
-      "id": "home-case-record",
-      "page": "home",
-      "site_says": "A structured review rejected it. The label names only the first stop the code reached",
-      "source": "pr-1819",
-      "must_contain": [
-        "rejected the nearest-edge-only predicate",
-        "\"merged_at\": \"2026-08-22"
-      ],
-      "why": "The home page's one worked example of the review loop. It names a real rejection and a same-day merge; if the PR record ever stops carrying either, the example is no longer backed."
     }
   ],
   "retired_phrasings": [
