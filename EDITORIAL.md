@@ -25,7 +25,7 @@ README-only):
 > multiple AI agents. Its federation kernel connects independent runtimes to
 > one operator-controlled server over MCP or HTTP, where they share a durable
 > record while keeping their own models, tools, and runtimes. Agent work
-> should remain attributable, reviewable, and recoverable even when the
+> remains attributable, reviewable, and recoverable even when the
 > process that started it is gone.
 
 Headline (display only; the site's, not the README's):

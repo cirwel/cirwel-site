@@ -1,5 +1,5 @@
 {
-  "_note": "Claims register — every load-bearing figure this site publishes, the source that carries it, and the exact string that must be present in that source. Checked daily by scripts/check-claims.py against the LIVE site and the LIVE sources, so it verifies what is published rather than what is in the tree. Not a changelog and not a style guide: an entry earns its place only if the site states something a reader could check. Written 2026-08-26 after a figure sat live for 14 days beside a citation that never contained it. Re-pinned 2026-09-16 after the 2026-09-15 rewrite left eight entries pointing at copy that no longer existed; the canonical product sentence is now pinned here too, against the server README that owns it (see EDITORIAL.md).",
+  "_note": "Claims register — every load-bearing figure this site publishes, the source that carries it, and the exact string that must be present in that source. Checked daily by scripts/check-claims.py against the LIVE site and the LIVE sources, so it verifies what is published rather than what is in the tree. Not a changelog and not a style guide: an entry earns its place only if the site states something a reader could check. Written 2026-08-26 after a figure sat live for 14 days beside a citation that never contained it. Re-pinned 2026-09-16 after the 2026-09-15 rewrite left eight entries pointing at copy that no longer existed; the canonical product sentence is now pinned here too, against the server README that owns it (see EDITORIAL.md). Re-pointed 2026-09-23 after unitares #2350 moved the registered protocols under docs/proposals/registered/ and #2339 reworded the third definition sentence; the old proposal paths remain as locator stubs, which is why the check read DRIFT rather than a missing source.",
   "sources": {
     "contract": {
       "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/ontology/eisv-proprioception-contract.md",
@@ -7,8 +7,8 @@
       "role": "Authority for what may be claimed about EISV and in what words."
     },
     "stop-rule": {
-      "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/proposals/eisv-outcome-grounding-stop-rule-v0.md",
-      "human": "https://github.com/cirwel/unitares/blob/master/docs/proposals/eisv-outcome-grounding-stop-rule-v0.md",
+      "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/proposals/registered/eisv-outcome-grounding-stop-rule-v0.md",
+      "human": "https://github.com/cirwel/unitares/blob/master/docs/proposals/registered/eisv-outcome-grounding-stop-rule-v0.md",
       "role": "Defines the single pre-registered outcome read and its kill criterion."
     },
     "agents-readme": {
@@ -37,8 +37,8 @@
       "role": "Authority for the client-facing endpoint and the client-neutrality claim."
     },
     "testbed-prereg": {
-      "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/proposals/accountable-testbed-metrics-preregistration-v1.md",
-      "human": "https://github.com/cirwel/unitares/blob/master/docs/proposals/accountable-testbed-metrics-preregistration-v1.md",
+      "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/proposals/registered/accountable-testbed-metrics-preregistration-v1.md",
+      "human": "https://github.com/cirwel/unitares/blob/master/docs/proposals/registered/accountable-testbed-metrics-preregistration-v1.md",
       "role": "The frozen evaluation plan for the federated multi-principal testbed. Authority for what that benchmark measures and for whether it has been run."
     }
   },
@@ -57,7 +57,7 @@
       "must_contain": [
         "UNITARES is self-hosted accountability infrastructure for operators running",
         "Its federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP",
-        "Agent work should remain attributable, reviewable, and recoverable even when the process that started it is gone"
+        "Agent work remains attributable, reviewable, and recoverable even when the process that started it is gone"
       ],
       "why": "The one-sentence definition is owned by the server README and copied here verbatim. Ten different phrasings were live across the site, the repository, and the share cards on 2026-09-16; this pin is what keeps it at one."
     },
