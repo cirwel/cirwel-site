@@ -52,11 +52,11 @@
     {
       "id": "home-sentence",
       "page": "home",
-      "site_says": "federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP",
+      "site_says": "single-operator federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP",
       "source": "readme",
       "must_contain": [
         "UNITARES is self-hosted accountability infrastructure for operators running",
-        "Its federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP",
+        "Its single-operator federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP",
         "Agent work remains attributable, reviewable, and recoverable even when the process that started it is gone"
       ],
       "why": "The one-sentence definition is owned by the server README and copied here verbatim. Ten different phrasings were live across the site, the repository, and the share cards on 2026-09-16; this pin is what keeps it at one."
