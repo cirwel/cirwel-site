@@ -37,9 +37,9 @@ Where each goes: the headline is the home hero and the share card; the
 tagline is the page title, the JSON-LD description, the share card subline,
 and the `og:image:alt`; the definition's first sentence is the hero subhead,
 its third follows it, and its second (the one that names the single-operator
-federation kernel) sits under the hero figure, where "federation" and "kernel" are both
-defined. Placed apart from the sentence before it, its opening "Its" becomes
-"The UNITARES"; no other word changes. To change any of
+federation kernel) sits under the hero figure, where "federation" and "kernel"
+are both defined. Placed apart from the sentence before it, its opening "Its"
+becomes "The UNITARES"; no other word changes. To change any of
 them, change the README first, then this file, then the pages, then
 `claims.json`, then re-render the card with `node scripts/render-og.mjs`.
 
@@ -57,7 +57,7 @@ runtimes sharing one operator's server. That is why the definition says
 product pages name the kernel. Accountability between operators who share no
 root of trust is the other sense. When a product page mentions it, the page
 says "cross-operator" or "multi-principal", as the server repository does. It
-is a research question and lives on the research page, which keeps its own
+is a research question and lives on the research page, which may use its own
 terms (§3). Do not let the two senses blur.
 
 ## 2. The spine
