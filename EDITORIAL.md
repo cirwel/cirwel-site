@@ -22,9 +22,10 @@ beginning "UNITARES is self-hosted"; the problem paragraph above them is
 README-only):
 
 > UNITARES is self-hosted accountability infrastructure for operators running
-> multiple AI agents. Its federation kernel connects independent runtimes to
-> one operator-controlled server over MCP or HTTP, where they share a durable
-> record while keeping their own models, tools, and runtimes. Agent work
+> multiple AI agents. Its single-operator federation kernel connects
+> independent runtimes to one operator-controlled server over MCP or HTTP,
+> where they share a durable record while keeping their own models, tools, and
+> runtimes. Agent work
 > remains attributable, reviewable, and recoverable even when the
 > process that started it is gone.
 
@@ -35,8 +36,8 @@ Headline (display only; the site's, not the README's):
 Where each goes: the headline is the home hero and the share card; the
 tagline is the page title, the JSON-LD description, the share card subline,
 and the `og:image:alt`; the definition's first sentence is the hero subhead,
-its third follows it, and its second (the one that names the federation
-kernel) sits under the hero figure, where "federation" and "kernel" are both
+its third follows it, and its second (the one that names the single-operator
+federation kernel) sits under the hero figure, where "federation" and "kernel" are both
 defined. Placed apart from the sentence before it, its opening "Its" becomes
 "The UNITARES"; no other word changes. To change any of
 them, change the README first, then this file, then the pages, then
@@ -51,9 +52,13 @@ labels short enough that the phone header stays at two rows. The legal
 entity, CIRWEL Systems, stays in the colophon and the JSON-LD.
 
 "Federation" is used in one plain sense on the product pages: independent
-runtimes sharing one operator's server. Accountability between operators who
-share no root of trust is a research question and lives on the research page
-under that name. Do not let the two senses blur.
+runtimes sharing one operator's server. That is why the definition says
+"single-operator federation kernel", and the qualifier stays wherever the
+product pages name the kernel. Accountability between operators who share no
+root of trust is the other sense. When a product page mentions it, the page
+says "cross-operator" or "multi-principal", as the server repository does. It
+is a research question and lives on the research page, which keeps its own
+terms (§3). Do not let the two senses blur.
 
 ## 2. The spine
 
