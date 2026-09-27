@@ -10,6 +10,31 @@ import Tailpiece from '../components/Tailpiece.astro';
 // they live in the papers and in the server's evidence ledger, which is
 // versioned with the code. See EDITORIAL.md §4 before adding one here.
 const ledger = 'https://github.com/cirwel/unitares/blob/master/docs/EVIDENCE_AND_LIMITS.md';
+
+// One plain sentence per paper, taken from its published abstract. A paper
+// does not change once deposited, so these do not drift the way results do.
+const papers = [
+  {
+    doi: '10.5281/zenodo.19647159',
+    title: 'UNITARES: Information-Theoretic Governance of Heterogeneous Agent Fleets',
+    summary: 'The system itself: how UNITARES tracks the working state of very different kinds of agents, judging each against its own kind rather than one standard for the whole fleet.',
+  },
+  {
+    doi: '10.5281/zenodo.20098168',
+    title: 'Trajectory Identity: A Mathematical Framework for Enactive AI Self-Hood',
+    summary: 'Proposes that an agent\'s identity is the pattern its behavior keeps over time, where it tends to settle and how it recovers, rather than an ID or a store of memories.',
+  },
+  {
+    doi: '10.5281/zenodo.21930092',
+    title: 'Digital Proprioception and Allostatic Load',
+    summary: 'Borrows allostatic load, the physiological idea of the accumulated cost of being held off balance, and uses a running agent system to measure it continuously.',
+  },
+  {
+    doi: '10.5281/zenodo.21930161',
+    title: 'Accountability Without a Trusted Center',
+    summary: 'Designs an open testbed for holding agents accountable across organizations that do not trust each other, and pre-registers how it will be evaluated.',
+  },
+];
 ---
 <BaseLayout
   title="Research — CIRWEL Research"
@@ -41,8 +66,6 @@ const ledger = 'https://github.com/cirwel/unitares/blob/master/docs/EVIDENCE_AND
         <dd class="col-span-8 md:col-span-9">Longitudinal runtime-state measurement for AI agents <span class="text-stone">· begun September 2025</span></dd>
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Researcher</dt>
         <dd class="col-span-8 md:col-span-9"><span class="smcp">Kenny Wang</span><span class="text-stone"> · ORCID </span><a href="https://orcid.org/0009-0006-7544-2374" class="font-mono text-sm">0009-0006-7544-2374</a></dd>
-        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Papers</dt>
-        <dd class="col-span-8 md:col-span-9 leading-relaxed"><a href="https://doi.org/10.5281/zenodo.19647159" class="font-mono text-sm">UNITARES</a><span class="text-stone"> · </span><a href="https://doi.org/10.5281/zenodo.20098168" class="font-mono text-sm">Trajectory Identity</a><span class="text-stone"> · </span><a href="https://doi.org/10.5281/zenodo.21930092" class="font-mono text-sm">Digital Proprioception</a><span class="text-stone"> · </span><a href="https://doi.org/10.5281/zenodo.21930161" class="font-mono text-sm">Accountability Without a Trusted Center</a></dd>
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Data</dt>
         <dd class="col-span-8 md:col-span-9"><a href="https://huggingface.co/hikewa" class="font-mono text-sm">datasets &amp; models</a></dd>
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Current status</dt>
@@ -52,8 +75,24 @@ const ledger = 'https://github.com/cirwel/unitares/blob/master/docs/EVIDENCE_AND
 
     <SectionRule class="mt-2 mb-20" />
 
+    <section id="papers" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="section-mark"><span class="sm-num">§&#8201;I</span><span class="sm-name">The papers</span></p></div>
+      <div class="col-span-12 lg:col-span-9">
+        <dl class="max-w-prose space-y-8">
+          {papers.map((p) => (
+            <div>
+              <dt class="display text-xl mb-2 leading-snug"><a href={`https://doi.org/${p.doi}`}>{p.title}</a></dt>
+              <dd class="text-stone leading-relaxed">{p.summary}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <SectionRule class="my-8" />
+
     <section id="contact" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
-      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="section-mark"><span class="sm-num">§&#8201;I</span><span class="sm-name">Working together</span></p></div>
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="section-mark"><span class="sm-num">§&#8201;II</span><span class="sm-name">Working together</span></p></div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">The code and data are open.</h2>
         <p class="text-lg leading-relaxed text-stone max-w-prose">If you work on evaluations, multi-agent systems, or runtime oversight and want to run it on your own agents, I would like to hear from you. <a href="/#contact" class="font-medium">Get in touch</a>.</p>
