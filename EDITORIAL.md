@@ -98,11 +98,16 @@ facts.
 
 Research results and their status are not restated anywhere on the site. They
 move with the data, and a hand-kept copy drifts faster than any check can
-follow. The research page lists the papers, the data, and the method
-commitments, and links to the server's evidence ledger
+follow. The research page lists the papers and the data, and links to the server's evidence ledger
 (`cirwel/unitares`, `docs/EVIDENCE_AND_LIMITS.md`), which is versioned with the
 code and is the one place current status lives. Do not copy a figure or a
-status from the ledger or a paper onto a page; link to it. Do not attach a disclaimer
+status from the ledger or a paper onto a page; link to it.
+
+Process rules (pre-registration, no re-runs, keeping withdrawn results, the
+claims check) are how the repositories and the agents that edit them are kept
+honest. They live in the repositories, not on the public pages: listed on a
+page, they read as the researcher's confession rather than the system's
+discipline. Do not attach a disclaimer
 to a sentence that states a mechanism; "X, not Y" and "X rather than Y" at
 most once per section. The honesty stays; the tic goes.
 
