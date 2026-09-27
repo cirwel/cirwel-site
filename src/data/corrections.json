@@ -2,6 +2,12 @@
   "_note": "Corrections to what this site has said: figures, statuses, and claims only. Not a changelog, and not a place for copy edits. Newest first. `ref` is the commit or pull request that made the correction, or the upstream change that made it necessary.",
   "entries": [
     {
+      "date": "2026-09-27",
+      "where": "Home, In use",
+      "note": "A figure labelled \"Active agents · last 7 days\" counted distinct identities that checked in that week, the same count retired on 2026-09-18 as \"Agent identities (7d)\" and restored three days later under a new label. Every new process mints a fresh identity, so it counts sessions, not agents. The figure now says \"Agent sessions\".",
+      "ref": "https://github.com/cirwel/cirwel-site/pull/65"
+    },
+    {
       "date": "2026-09-18",
       "where": "Home, In use",
       "note": "The section was headed \"UNITARES helps build UNITARES\", an effect claim its own caption disclaimed (\"not … improved outcomes\"). It now says the system keeps its own development record and shows one reviewed change from that record, linked to the pull request that carries it.",
