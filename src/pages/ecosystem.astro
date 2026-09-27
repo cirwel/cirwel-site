@@ -24,10 +24,7 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
           fits together.
         </h1>
         <p class="text-lg md:text-xl leading-relaxed text-stone max-w-prose reveal reveal-3">
-          UNITARES is the record that independent agent runtimes share. The repository calls this a single-operator federation kernel: many runtimes and harnesses, one operator-controlled server, one attributed record, while each runtime keeps its own model, tools, and loop.
-        </p>
-        <p class="text-base md:text-lg leading-relaxed text-ink max-w-prose reveal reveal-3 mt-6">
-          This page shows the shape of the system, then goes deeper into identity, shared memory, policy and review, and the workloads CIRWEL runs on top of it.
+          UNITARES is the record that independent agent runtimes share. The repository calls this a single-operator federation kernel: many agent runtimes, one operator-controlled server, one attributed record, while each runtime keeps its own model, tools, and loop.
         </p>
         <Ornament size="floret" class="mt-14 opacity-70 reveal reveal-3" />
       </div>
@@ -62,14 +59,11 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">Core, contract, userland, workloads.</h2>
         <p class="text-xl leading-snug text-ink max-w-prose mb-8 font-medium">
-          UNITARES is the layer around agent work, not the agent loop itself.
+          UNITARES is the layer around agent work; the agent loop stays yours.
         </p>
         <div class="space-y-5 text-lg leading-relaxed text-stone max-w-prose">
           <p class="dropcap">
             The core owns identity, provenance, longitudinal state, policy and recovery, audit, shared knowledge, review, and coordination. The public SDK is the contract agents depend on. A first-party agent runtime exists, which the repository calls userland, but it is optional: Claude Code, Codex, Hermes, or a custom runtime can speak to the same contract directly.
-          </p>
-          <p>
-            Underneath, the deployed service uses PostgreSQL with AGE and pgvector, Redis for live session state, and MCP/REST interfaces. Those are implementation details of the shared layer, not requirements on the model or conversation loop above it.
           </p>
         </div>
 
@@ -88,7 +82,7 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
           </li>
           <li class="grid grid-cols-12 gap-x-6 gap-y-1 py-5 border-t border-b border-sepia/40">
             <div class="col-span-12 md:col-span-3 mb-2 md:mb-0"><p class="label text-oxblood">Workloads</p><p class="font-mono text-xs text-stone mt-1">yours</p></div>
-            <p class="col-span-12 md:col-span-9 text-stone leading-relaxed">Coding sessions, research agents, residents, services, or whatever else you run. A fresh install starts without CIRWEL's roster.</p>
+            <p class="col-span-12 md:col-span-9 text-stone leading-relaxed">Coding sessions, research agents, long-running agents, services, or whatever else you run. A fresh install starts without CIRWEL's roster.</p>
           </li>
         </ol>
 
@@ -122,7 +116,7 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
         <p class="text-xl leading-snug text-ink max-w-prose mb-8 font-medium">People and agents share one provenance-tracked knowledge surface.</p>
         <div class="space-y-5 text-lg leading-relaxed text-stone max-w-prose">
           <p class="dropcap">Operators write to it as well as agents. Discoveries, decisions, review outcomes, and findings are stored with source, status, and lifecycle rather than disappearing into one chat history.</p>
-          <p>The important property is not the graph technology. It is that later work can recover what was learned, who recorded it, and whether it was superseded or resolved.</p>
+          <p>What matters is that later work can recover what was learned, who recorded it, and whether it was superseded or resolved.</p>
         </div>
         <figure class="mt-12 max-w-3xl figure-svg" role="img" aria-label="Shared provenance-tracked knowledge graph."><Fragment set:html={fig4Svg} /></figure>
       </div>
@@ -136,7 +130,7 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
         <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">Advice, evidence, and authority stay separate.</h2>
         <div class="space-y-5 text-lg leading-relaxed text-stone max-w-prose">
           <p class="dropcap">A check-in can return a proceed or pause policy action with a named reason. Advisory consultation can add model evidence without becoming a decision. Structured review records disagreement and conditions rather than silently replacing the original author or directing agent.</p>
-          <p>When a governed surface is paused, recovery is recorded as a separate event. Actions outside UNITARES-owned surfaces remain the host's responsibility.</p>
+          <p>When the server pauses an agent, the recovery is recorded as its own event. What an agent does outside the server stays the host's responsibility.</p>
         </div>
       </div>
     </section>
@@ -147,7 +141,7 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="section-mark"><span class="sm-num">§&#8201;V</span><span class="sm-name">CIRWEL's workloads</span></p></div>
       <div class="col-span-12 lg:col-span-9">
         <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">The deployment is evidence, not the architecture.</h2>
-        <p class="text-lg leading-relaxed text-stone max-w-prose mb-10">CIRWEL uses UNITARES across long-running resident agents, short-lived coding sessions, operational monitors, and an embedded Raspberry Pi testbed. Those processes are deployment configuration. They demonstrate that the same contract can span different lifetimes and runtimes; a fresh installation does not inherit them.</p>
+        <p class="text-lg leading-relaxed text-stone max-w-prose mb-10">CIRWEL uses UNITARES across long-running agents, short-lived coding sessions, operational monitors, and an embedded Raspberry Pi testbed. Those processes are deployment configuration. They demonstrate that the same contract can span different lifetimes and runtimes; a fresh installation does not inherit them.</p>
       </div>
     </section>
 
@@ -161,7 +155,7 @@ import fig5Svg from '../../public/sketches/fig-5-identity-lineage.svg?raw';
         <div class="space-y-10 max-w-prose">
           <article><p class="label text-stone mb-3">Server</p><h3 class="display text-2xl mb-3 leading-tight">UNITARES Core</h3><p class="text-stone leading-relaxed"><a href="https://github.com/cirwel/unitares" class="font-mono text-base">cirwel/unitares</a> exposes MCP, REST, a dashboard, and the governance runtime.</p></article>
           <article><p class="label text-stone mb-3">Client contract</p><h3 class="display smcp text-2xl mb-3 leading-tight">unitares-sdk</h3><p class="text-stone leading-relaxed"><a href="https://pypi.org/project/unitares-sdk/" class="font-mono text-base">pip install unitares-sdk</a> gives custom agents the public identity, check-in, evidence, memory, and coordination interfaces.</p></article>
-          <article><p class="label text-stone mb-3">Optional userland</p><h3 class="display text-2xl mb-3 leading-tight">UNITARES Resident</h3><p class="text-stone leading-relaxed"><a href="https://github.com/cirwel/unitares-resident" class="font-mono text-base">cirwel/unitares-resident</a> is the first-party agent userland built on the same public contract. It is not part of Core, and it is an early skeleton rather than a usable general-purpose agent.</p></article>
+          <article><p class="label text-stone mb-3">Optional userland</p><h3 class="display text-2xl mb-3 leading-tight">UNITARES Resident</h3><p class="text-stone leading-relaxed"><a href="https://github.com/cirwel/unitares-resident" class="font-mono text-base">cirwel/unitares-resident</a> is the first-party agent userland built on the same public contract. It is optional and still early.</p></article>
         </div>
       </div>
     </section>

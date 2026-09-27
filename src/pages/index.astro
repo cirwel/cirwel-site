@@ -109,7 +109,7 @@ const install = 'v=$(curl -fsSL https://raw.githubusercontent.com/cirwel/unitare
           Five questions, one mechanism each.
         </h2>
         <p class="text-lg leading-relaxed text-stone max-w-prose mb-10">
-          A coding session restarts. A research agent loses its context. A task moves to another process, and the evidence arrives after the process that made the claim is gone. Logs show each run; they do not keep these five answers connected across the boundary.
+          Agent work keeps changing hands. A coding session restarts. A research agent loses its context. A task moves to another process, and the evidence arrives after the process that made the claim is gone. Logs show each run, but not the thread that connects them.
         </p>
 
 
@@ -151,7 +151,7 @@ const install = 'v=$(curl -fsSL https://raw.githubusercontent.com/cirwel/unitare
           <Plate>
             <dl class="grid grid-cols-2 gap-x-8 gap-y-8">
               <div>
-                <dt class="label text-stone mb-2">Governance events</dt>
+                <dt class="label text-stone mb-2">Events recorded</dt>
                 <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.events_total)}</dd>
               </div>
               <div>
@@ -170,7 +170,7 @@ const install = 'v=$(curl -fsSL https://raw.githubusercontent.com/cirwel/unitare
           </Plate>
         </div>
         <p class="text-sm text-stone mt-6 max-w-prose">
-          Measured {liveStats.refreshed_at}. These are records from CIRWEL's own deployment: system activity, not external adoption or outcome evidence.
+          Measured {liveStats.refreshed_at} on CIRWEL's own deployment.
         </p>
       </div>
     </section>
