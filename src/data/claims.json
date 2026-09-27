@@ -155,6 +155,12 @@
   ],
   "retired_phrasings": [
     {
+      "text": "Active agents · last 7 days",
+      "retired": "2026-09-27",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/65",
+      "why": "Labelled a count of distinct process identities as agents. Every new process mints a fresh identity, so a visitor reads it as fleet size and it overstates it. Retired once already on 2026-09-18 as 'Agent identities (7d)' and restored under this label on 2026-09-21; this entry makes a second restoration loud."
+    },
+    {
       "text": "Production In continuous operation",
       "retired": "2026-09-17",
       "commit": "https://github.com/cirwel/cirwel-site/pull/50",
