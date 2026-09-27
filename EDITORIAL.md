@@ -57,8 +57,8 @@ runtimes sharing one operator's server. That is why the definition says
 product pages name the kernel. Accountability between operators who share no
 root of trust is the other sense. When a product page mentions it, the page
 says "cross-operator" or "multi-principal", as the server repository does. It
-is a research question and lives on the research page, which may use its own
-terms (§3). Do not let the two senses blur.
+is a research question, answered in the papers the research page lists. Do
+not let the two senses blur.
 
 ## 2. The spine
 
@@ -85,8 +85,7 @@ attestation, lease, harness, kernel, userland.
 
 Kept off the product pages (home, ecosystem, build): resident (say
 "long-running agent"), governed surface (say "a write the server can
-refuse"), verdict (say "policy action"), proprioception, EISV. The research
-page may use its own terms because it names what it measures.
+refuse"), verdict (say "policy action"), proprioception, EISV.
 
 "Agent" means software on the product pages. Where people are meant too, say
 "people and agents". The research page uses "principals" for the human-or-
@@ -94,8 +93,16 @@ software case.
 
 ## 4. The hedge budget
 
-Every limit is stated once, on the page that owns it: the build page's §05
-and the research page. Product pages state facts. Do not attach a disclaimer
+Every limit is stated once, in the build page's §05. Product pages state
+facts.
+
+Research results and their status are not restated anywhere on the site. They
+move with the data, and a hand-kept copy drifts faster than any check can
+follow. The research page lists the papers, the data, and the method
+commitments, and links to the server's evidence ledger
+(`cirwel/unitares`, `docs/EVIDENCE_AND_LIMITS.md`), which is versioned with the
+code and is the one place current status lives. Do not copy a figure or a
+status from the ledger or a paper onto a page; link to it. Do not attach a disclaimer
 to a sentence that states a mechanism; "X, not Y" and "X rather than Y" at
 most once per section. The honesty stays; the tic goes.
 
@@ -126,7 +133,8 @@ not a 13 px tracked label.
 
 A change to a figure, a status, or a claim gets an entry in
 `src/data/corrections.json` and a `claims.json` update in the same pull
-request. Copy edits do not. The corrections list renders on the research page.
+request. Copy edits do not. The list lives in the repository; no page
+renders it.
 
 ## 8. Before you push
 
