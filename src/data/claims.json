@@ -1,16 +1,6 @@
 {
-  "_note": "Claims register — every load-bearing figure this site publishes, the source that carries it, and the exact string that must be present in that source. Checked daily by scripts/check-claims.py against the LIVE site and the LIVE sources, so it verifies what is published rather than what is in the tree. Not a changelog and not a style guide: an entry earns its place only if the site states something a reader could check. Written 2026-08-26 after a figure sat live for 14 days beside a citation that never contained it. Re-pinned 2026-09-16 after the 2026-09-15 rewrite left eight entries pointing at copy that no longer existed; the canonical product sentence is now pinned here too, against the server README that owns it (see EDITORIAL.md). Re-pointed 2026-09-23 after unitares #2350 moved the registered protocols under docs/proposals/registered/ and #2339 reworded the third definition sentence; the old proposal paths remain as locator stubs, which is why the check read DRIFT rather than a missing source.",
+  "_note": "Claims register — every load-bearing figure this site publishes, the source that carries it, and the exact string that must be present in that source. Checked daily by scripts/check-claims.py against the LIVE site and the LIVE sources, so it verifies what is published rather than what is in the tree. Not a changelog and not a style guide: an entry earns its place only if the site states something a reader could check. Written 2026-08-26 after a figure sat live for 14 days beside a citation that never contained it. Re-pinned 2026-09-16 after the 2026-09-15 rewrite left eight entries pointing at copy that no longer existed; the canonical product sentence is now pinned here too, against the server README that owns it (see EDITORIAL.md). Re-pointed 2026-09-23 after unitares #2350 moved the registered protocols under docs/proposals/registered/ and #2339 reworded the third definition sentence; the old proposal paths remain as locator stubs, which is why the check read DRIFT rather than a missing source. Seven research-page claims retired 2026-09-27 when that page stopped restating results: the research moves faster than a hand-kept copy can, so current status now lives only in the server's evidence ledger. The research URL stays in `pages` so the retired phrasings are still checked there.",
   "sources": {
-    "contract": {
-      "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/ontology/eisv-proprioception-contract.md",
-      "human": "https://github.com/cirwel/unitares/blob/master/docs/ontology/eisv-proprioception-contract.md",
-      "role": "Authority for what may be claimed about EISV and in what words."
-    },
-    "stop-rule": {
-      "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/proposals/registered/eisv-outcome-grounding-stop-rule-v0.md",
-      "human": "https://github.com/cirwel/unitares/blob/master/docs/proposals/registered/eisv-outcome-grounding-stop-rule-v0.md",
-      "role": "Defines the single pre-registered outcome read and its kill criterion."
-    },
     "agents-readme": {
       "url": "https://raw.githubusercontent.com/cirwel/unitares/master/agents/README.md",
       "human": "https://github.com/cirwel/unitares/blob/master/agents/README.md",
@@ -35,11 +25,6 @@
       "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/integration/MCP_CLIENTS.md",
       "human": "https://github.com/cirwel/unitares/blob/master/docs/integration/MCP_CLIENTS.md",
       "role": "Authority for the client-facing endpoint and the client-neutrality claim."
-    },
-    "testbed-prereg": {
-      "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/proposals/registered/accountable-testbed-metrics-preregistration-v1.md",
-      "human": "https://github.com/cirwel/unitares/blob/master/docs/proposals/registered/accountable-testbed-metrics-preregistration-v1.md",
-      "role": "The frozen evaluation plan for the federated multi-principal testbed. Authority for what that benchmark measures and for whether it has been run."
     }
   },
   "pages": {
@@ -101,83 +86,6 @@
         "git clone --branch \"v$v\" --depth 1 https://github.com/cirwel/unitares.git && cd unitares && docker compose up -d --wait"
       ],
       "why": "Same command as the home page, checked separately because it is stated on a second page."
-    },
-    {
-      "id": "research-leg-c",
-      "page": "research",
-      "site_says": "Zero of seven streams beat last-value persistence",
-      "source": "contract",
-      "must_contain": [
-        "The per-agent reference does useful work",
-        "0/7 streams beat persistence",
-        "win rates 0.32–0.48",
-        "Three of the seven nominal"
-      ],
-      "why": "The page states all three caveats the contract attaches, including the one about three of seven agents being the same Pi. If the contract ever drops a caveat, the page is carrying a claim its source no longer supports."
-    },
-    {
-      "id": "research-leg-c-scope",
-      "page": "research",
-      "site_says": "this reconstruction did not earn its description",
-      "source": "contract",
-      "must_contain": [
-        "BENCHMARK FAIL for the cold-start reconstruction; UNIDENTIFIED for the warmed deployed EMA"
-      ],
-      "why": "The page must not upgrade a reconstruction's benchmark failure into a verdict on the reference that actually runs."
-    },
-    {
-      "id": "research-outcome-unresolved",
-      "page": "research",
-      "site_says": "Unresolved is not the same as negative",
-      "source": "contract",
-      "must_contain": [
-        "WITHDRAWN FOR TARGET INFERENCE",
-        "the question is unresolved, not negative"
-      ],
-      "why": "The page files this question under open rather than closed. If the contract re-closes it in either direction, the page's own section structure is wrong, not just its wording."
-    },
-    {
-      "id": "research-outcome-withdrawn",
-      "page": "research",
-      "site_says": "that answer was withdrawn",
-      "source": "contract",
-      "must_contain": [
-        "WITHDRAWN FOR TARGET INFERENCE"
-      ],
-      "why": "The withdrawal is the reason the question is open. If the contract ever un-withdraws the read, the sentence is stating a status that no longer holds."
-    },
-    {
-      "id": "research-december-read",
-      "page": "research",
-      "site_says": "scheduled for December 2026 with a kill criterion",
-      "source": "stop-rule",
-      "must_contain": [
-        "2026-12-01",
-        "kill criterion"
-      ],
-      "why": "Both the date and the existence of a written kill criterion are load-bearing; 'pre-registered' without one is just a plan."
-    },
-    {
-      "id": "research-federated-unrun",
-      "page": "research",
-      "site_says": "No benchmark run has been executed",
-      "source": "testbed-prereg",
-      "must_contain": [
-        "FROZEN 2026-08-05",
-        "No headline, ablation, or scale-sweep runs had been"
-      ],
-      "why": "The page files Question II as designed and frozen but not run. Every drift here runs in the direction that flatters the page, so if the registration ever records completed headline runs the status line must change with it."
-    },
-    {
-      "id": "research-federated-regimes",
-      "page": "research",
-      "site_says": "prompt-only, log-only, federated per-principal runtime governance, and a centralized-governor reference",
-      "source": "testbed-prereg",
-      "must_contain": [
-        "prompt-only, log-only, federated per-principal",
-        "centralized-governor reference"
-      ],
-      "why": "The four regimes are the whole measurement claim: without the centralized-governor arm the price of decentralization would be asserted rather than measured. Naming them on the page requires the frozen registration to still name them."
     },
     {
       "id": "build-workloads-not-the-contract",
