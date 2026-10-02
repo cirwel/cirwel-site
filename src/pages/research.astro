@@ -12,7 +12,9 @@ import Tailpiece from '../components/Tailpiece.astro';
 const ledger = 'https://github.com/cirwel/unitares/blob/master/docs/EVIDENCE_AND_LIMITS.md';
 
 // One plain sentence per paper, taken from its published abstract. A paper
-// does not change once deposited, so these do not drift the way results do.
+// changes only by a new version; when one is released, re-read its abstract
+// and update the title and sentence here. The DOIs are concept DOIs and always
+// resolve to the latest version.
 const papers = [
   {
     doi: '10.5281/zenodo.19647159',
@@ -26,13 +28,13 @@ const papers = [
   },
   {
     doi: '10.5281/zenodo.21930092',
-    title: 'Digital Proprioception and Allostatic Load',
-    summary: 'Borrows allostatic load, the physiological idea of the accumulated cost of being held off balance, and uses a running agent system to measure it continuously.',
+    title: 'A Flat Coherence Score: What a Production-Data Replay Does and Does Not Show About Agent Self-State Gating',
+    summary: 'Examines whether the deployed coherence score could actually decide anything at its own thresholds, and what replacing it with a score measured against each class of agent does and does not show.',
   },
   {
     doi: '10.5281/zenodo.21930161',
     title: 'Accountability Without a Trusted Center',
-    summary: 'Designs an open testbed for holding agents accountable across organizations that do not trust each other, and pre-registers how it will be evaluated.',
+    summary: 'Designs an open testbed for holding agents accountable across organizations that do not trust each other, pre-registers how it will be evaluated, and runs its attestation mechanism between two machines.',
   },
 ];
 ---
