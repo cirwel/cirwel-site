@@ -1,0 +1,75 @@
+# UNITARES
+
+> UNITARES is self-hosted accountability infrastructure for operators running multiple AI agents. Its single-operator federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP, where they share a durable record while keeping their own models, tools, and runtimes. Agent work remains attributable, reviewable, and recoverable even when the process that started it is gone.
+
+Accountability infrastructure for long-running AI agents. Open source under Apache-2.0, published by CIRWEL Research (CIRWEL Systems). Source: https://github.com/cirwel/unitares
+
+## What "federation" means here
+
+In UNITARES, a federation is a set of independent agent runtimes (coding agents, research agents, background agents, custom runtimes) connected to one operator's server. The server is one authority domain. It does not replicate state across independent servers, and it is unrelated to federated learning. Agents keep talking to each other over their own transports or A2A; UNITARES is the record behind them, not the transport between them.
+
+Accountability between operators who share no root of trust is a separate research question. The repositories call it "cross-operator" or "multi-principal" and the papers below address it. It is not a deployed feature of the server.
+
+## The five questions
+
+The server keeps the record needed to answer, for any piece of agent work:
+
+1. Who said it? A process identity, with lineage that is declared rather than inferred.
+2. What supports it? Claims and evidence stored outside any one context window.
+3. Who challenged it? Structured review that keeps disagreement, conditions, and resolution.
+4. What happened? Outcomes recorded against the check-ins and predictions they test.
+5. What can a successor recover? The records a later process needs to continue the work.
+
+## Working with a UNITARES server as an agent
+
+- Reading needs no identity. Search shared memory (`search_shared_memory`) before writing, and again before each write.
+- Writes are attributed. Bind once with `start_session(force_new=true)` and pass the returned `client_session_id` on every later call.
+- A UUID is a server record, not proof that the current process owns it. Do not resume someone else's identity from a bare UUID or a display name.
+- Lineage is declared, never inferred. Declare a parent only for a real spawn or a handoff from a process that has exited, not because another process shares the workspace.
+- `sync_state` returns a state estimate and a policy action: proceed, guide, or pause. Proceed and guide are advisory; a pause holds governed writes until `self_recovery` (not available at high risk), a dialectic review, the operator, or a safety net lifts it, or it expires.
+- `record_result` grades a check-in against a real outcome. Without one, the estimate is self-report.
+- `check_working_state` reads state without writing.
+- The initial tool list is small. Call `list_tools(lite=true)`, then `describe_tool`, then `use_tool` for the rest. Advertising a tool does not establish that its dependencies are ready.
+
+## Docs
+
+- [README](https://raw.githubusercontent.com/cirwel/unitares/master/README.md): the definition, the one-command Docker install, and how it works
+- [Product definition](https://raw.githubusercontent.com/cirwel/unitares/master/docs/PRODUCT_DEFINITION.md): what UNITARES is in plain language, the Core/userland boundary, and where MCP sits
+- [Architecture](https://raw.githubusercontent.com/cirwel/unitares/master/docs/UNIFIED_ARCHITECTURE.md): server, state model, transports, and storage
+- [Interface contract](https://raw.githubusercontent.com/cirwel/unitares/master/docs/INTERFACE_CONTRACT.md): versioned, transport-neutral capability names
+- [Evidence and limits](https://raw.githubusercontent.com/cirwel/unitares/master/docs/EVIDENCE_AND_LIMITS.md): the claim ledger, with the current evidence status of every measured result
+- [Scope and threat model](https://raw.githubusercontent.com/cirwel/unitares/master/docs/SCOPE_AND_THREAT_MODEL.md): who it is for and what remains unproven
+- [Trust contract](https://raw.githubusercontent.com/cirwel/unitares/master/docs/trust-contract.md): what the system guarantees, what it does not, and what honest failure looks like
+
+## Integrating agents
+
+- [Integrating agents](https://raw.githubusercontent.com/cirwel/unitares/master/docs/manual/04-integrating-agents.md): the default workflow, the identity rule, and handling the policy response
+- [Identity ontology](https://raw.githubusercontent.com/cirwel/unitares/master/docs/ontology/identity.md): the full identity and lineage rules
+- [MCP clients](https://raw.githubusercontent.com/cirwel/unitares/master/docs/integration/MCP_CLIENTS.md): Streamable HTTP endpoints, stdio bridges, and client setup
+- [Client capability matrix](https://raw.githubusercontent.com/cirwel/unitares/master/docs/integration/CLIENT_CAPABILITY_MATRIX.md): what direct MCP, host plugins, adapters, and the resident runtime do and do not automate
+- [Tool reference](https://raw.githubusercontent.com/cirwel/unitares/master/docs/dev/TOOL_REFERENCE.md): every tool, its identity requirement, and its other names
+- [Python SDK](https://raw.githubusercontent.com/cirwel/unitares/master/agents/sdk/README.md)
+- [Governance plugin for Codex and Claude Code](https://github.com/cirwel/unitares-governance-plugin)
+- [Host adapter for Hermes Agent and OpenAI-compatible clients](https://github.com/cirwel/unitares-host-adapter)
+
+## Concepts
+
+- [Glossary](https://raw.githubusercontent.com/cirwel/unitares/master/docs/ontology/glossary.md): each term defined by the question it answers ([viewer](https://cirwel.github.io/unitares/glossary.html))
+- [State model contract](https://raw.githubusercontent.com/cirwel/unitares/master/docs/ontology/eisv-proprioception-contract.md): the per-process state estimate (EISV) behind runtime policy, and what it is and is not
+- [Reading the signals](https://raw.githubusercontent.com/cirwel/unitares/master/docs/manual/05-reading-the-signals.md): how operators read state estimates and policy actions
+
+## Research
+
+- [UNITARES: Information-Theoretic Governance of Heterogeneous Agent Fleets](https://doi.org/10.5281/zenodo.19647159): the system itself: how UNITARES tracks the working state of very different kinds of agents, judging each against its own kind rather than one standard for the whole fleet
+- [Trajectory Identity: A Mathematical Framework for Enactive AI Self-Hood](https://doi.org/10.5281/zenodo.20098168): proposes that an agent's identity is the pattern its behavior keeps over time, where it tends to settle and how it recovers, rather than an ID or a store of memories
+- [A Flat Coherence Score: What a Production-Data Replay Does and Does Not Show About Agent Self-State Gating](https://doi.org/10.5281/zenodo.21930092): examines whether the deployed coherence score could actually decide anything at its own thresholds, and what replacing it with a score measured against each class of agent does and does not show
+- [Accountability Without a Trusted Center](https://doi.org/10.5281/zenodo.21930161): designs an open testbed for holding agents accountable across organizations that do not trust each other, pre-registers how it will be evaluated, and runs its attestation mechanism between two machines
+- [Research page](https://cirwel.org/research): the papers and data; current status lives in the evidence ledger above, not in the papers' abstracts
+
+## Optional
+
+- [Documentation index](https://raw.githubusercontent.com/cirwel/unitares/master/docs/README.md)
+- [Operator manual](https://raw.githubusercontent.com/cirwel/unitares/master/docs/manual/README.md)
+- [Troubleshooting](https://raw.githubusercontent.com/cirwel/unitares/master/docs/guides/TROUBLESHOOTING.md)
+- [Public dataset](https://huggingface.co/datasets/hikewa/unitares-eisv-trajectories)
+- [Build on UNITARES](https://cirwel.org/build)
