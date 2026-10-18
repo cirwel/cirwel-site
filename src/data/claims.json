@@ -14,7 +14,12 @@
     "evidence-limits": {
       "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/EVIDENCE_AND_LIMITS.md",
       "human": "https://github.com/cirwel/unitares/blob/master/docs/EVIDENCE_AND_LIMITS.md",
-      "role": "The current evidence ledger. Authority for mechanism, outcome, benefit scope, the tool catalog, and the deployment start date."
+      "role": "The current evidence ledger. Authority for mechanism, outcome, benefit scope, and the tool catalog."
+    },
+    "production-snapshot": {
+      "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/PRODUCTION_SNAPSHOT.md",
+      "human": "https://github.com/cirwel/unitares/blob/master/docs/PRODUCTION_SNAPSHOT.md",
+      "role": "The operational snapshot of the maintainer's deployment. Authority for the deployment start date."
     },
     "resident-readme": {
       "url": "https://raw.githubusercontent.com/cirwel/unitares-resident/master/README.md",
@@ -73,11 +78,11 @@
       "id": "home-since",
       "page": "home",
       "site_says": "since November 2025",
-      "source": "evidence-limits",
+      "source": "production-snapshot",
       "must_contain": [
-        "since 2025-11-28"
+        "The service has run since November 2025"
       ],
-      "why": "The deployment start date is engraved on the seal and stated in the receipts. If the evidence ledger ever re-dates the first identity record, the seal is wrong the same day."
+      "why": "The deployment start date is engraved on the seal and stated in the receipts. The evidence ledger dropped its start-date row in unitares #2896, so the claim is pinned to the operational snapshot, which states it. If the snapshot ever re-dates the start of the service, the seal is wrong the same day."
     },
     {
       "id": "build-catalog",
@@ -85,8 +90,8 @@
       "site_says": "The complete tool catalog is callable on every transport",
       "source": "evidence-limits",
       "must_contain": [
-        "one complete catalog remains negotiable and callable on every transport",
-        "the default initial listing is progressive and omitted names run through `use_tool` after discovery"
+        "The complete catalog is callable on every transport",
+        "the default initial listing is progressive, with omitted names accessible through `use_tool` after discovery"
       ],
       "why": "The initial listing is progressive after unitares #2328. Every capability remains discoverable and callable; the site must not promise every schema in the initial listing."
     },
@@ -128,8 +133,8 @@
       "site_says": "No governed-versus-ungoverned comparison has yet shown an incident prevented or an outcome improved",
       "source": "evidence-limits",
       "must_contain": [
-        "No governed-versus-ungoverned comparison has shown an incident prevented or an outcome improved by pausing",
-        "Incident prevention or benefit from pausing"
+        "no governed-versus-ungoverned comparison has shown an incident prevented or an outcome improved by pausing",
+        "Incident prevention and benefit from pausing remain untested"
       ],
       "why": "The one guard that matters on a page written to get people to install something. A build page is where an unearned benefit claim would be most useful and least honest, so the disclaimer is pinned to the server's own words rather than to this page's restraint."
     },
