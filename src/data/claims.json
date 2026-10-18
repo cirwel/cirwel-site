@@ -81,9 +81,10 @@
       "source": "production-snapshot",
       "must_contain": [
         "The service has run since November 2025",
-        "Earliest retained agent-registry record | **2025-11-"
+        "Earliest retained agent-registry record | **2025-11-",
+        "October 18, 2026 inventory"
       ],
-      "why": "The home page dates the deployment. The evidence ledger dropped its start-date row in unitares #2896, so the claim is pinned to the operational snapshot: its statement that the service has run since November 2025, and the month of the earliest retained agent-registry record in its current table. The statement sits in a block that is not edited retroactively, so the table row is what catches a re-dating."
+      "why": "The home page dates the deployment. The evidence ledger dropped its start-date row in unitares #2896, so the claim is pinned to the operational snapshot: its statement that the service has run since November 2025, and the month of the earliest retained agent-registry record in its current table. The statement sits in a block that is not edited retroactively, so the table row is what catches a re-dating, and the inventory heading makes the next snapshot refresh force a re-pin, so the row pin always reads the current table."
     },
     {
       "id": "build-catalog",
@@ -178,7 +179,8 @@
       "source": "production-snapshot",
       "must_contain": [
         "The service has run since November 2025",
-        "Earliest retained agent-registry record | **2025-11-"
+        "Earliest retained agent-registry record | **2025-11-",
+        "October 18, 2026 inventory"
       ],
       "why": "Same date as the home page, checked separately because it is stated on a second page."
     }
@@ -195,6 +197,24 @@
       "retired": "2026-10-18",
       "commit": "https://github.com/cirwel/cirwel-site/pull/70",
       "why": "Same claim as 'Running continuously', in the ecosystem page's wording."
+    },
+    {
+      "text": "CONTINUOUS OPERATION",
+      "retired": "2026-10-18",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/70",
+      "why": "The same claim as the unused Seal component's legend read until 2026-10-18; it now reads IN OPERATION. Restoring the old legend with the component would put the claim back in capitals, which the two entries above do not match."
+    },
+    {
+      "text": "running continuously",
+      "retired": "2026-10-18",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/70",
+      "why": "Lower-case form of the same claim, as it would appear mid-sentence."
+    },
+    {
+      "text": "in continuous operation",
+      "retired": "2026-10-18",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/70",
+      "why": "Lower-case form of the same claim, as it would appear mid-sentence."
     },
     {
       "text": "Active agents · last 7 days",

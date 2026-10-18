@@ -126,7 +126,7 @@ hairlines and no cards. Tokens live in `tailwind.config.mjs` and
 
 Ornament must be load-bearing. Per page: one figure plate at most on the home
 page, one section rule per seam, no fact rendered twice (the deployment start
-date lives in the receipts and on the seal; nowhere else). Labels are literal:
+date lives in the receipts; nowhere else). Labels are literal:
 the theme control says AUTO / LIGHT / DARK, the 404 says "Not found", the
 navigation names pages. The print metaphor lives in the drawing, not in the
 controls.
