@@ -2,6 +2,12 @@
   "_note": "Corrections to what this site has said: figures, statuses, and claims only. Not a changelog, and not a place for copy edits. Newest first. `ref` is the commit or pull request that made the correction, or the upstream change that made it necessary.",
   "entries": [
     {
+      "date": "2026-10-18",
+      "where": "Home and Ecosystem, In use",
+      "note": "Said the deployment had run continuously since November 2025. The server's evidence ledger no longer claims continuous operation and says its counts are not an uptime measurement, so the pages now say it has run since November 2025.",
+      "ref": "https://github.com/cirwel/cirwel-site/pull/70"
+    },
+    {
       "date": "2026-09-27",
       "where": "Home, In use",
       "note": "A figure labelled \"Active agents · last 7 days\" counted distinct identities that checked in that week, the same count retired on 2026-09-18 as \"Agent identities (7d)\" and restored three days later under a new label. Every new process mints a fresh identity, so it counts sessions, not agents. The figure now says \"Agent sessions\".",
