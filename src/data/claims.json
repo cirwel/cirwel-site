@@ -1,5 +1,5 @@
 {
-  "_note": "Claims register — every load-bearing figure this site publishes, the source that carries it, and the exact string that must be present in that source. Checked daily by scripts/check-claims.py against the LIVE site and the LIVE sources, so it verifies what is published rather than what is in the tree. Not a changelog and not a style guide: an entry earns its place only if the site states something a reader could check. Written 2026-08-26 after a figure sat live for 14 days beside a citation that never contained it. Re-pinned 2026-09-16 after the 2026-09-15 rewrite left eight entries pointing at copy that no longer existed; the canonical product sentence is now pinned here too, against the server README that owns it (see EDITORIAL.md). Re-pointed 2026-09-23 after unitares #2350 moved the registered protocols under docs/proposals/registered/ and #2339 reworded the third definition sentence; the old proposal paths remain as locator stubs, which is why the check read DRIFT rather than a missing source. Seven research-page claims retired 2026-09-27 when that page stopped restating results: the research moves faster than a hand-kept copy can, so current status now lives only in the server's evidence ledger. The research URL stays in `pages` so the retired phrasings are still checked there.",
+  "_note": "Claims register — every load-bearing figure this site publishes, the source that carries it, and the exact string that must be present in that source. Checked daily by scripts/check-claims.py against the LIVE site and the LIVE sources, so it verifies what is published rather than what is in the tree. Not a changelog and not a style guide: an entry earns its place only if the site states something a reader could check. Written 2026-08-26 after a figure sat live for 14 days beside a citation that never contained it. Re-pinned 2026-09-16 after the 2026-09-15 rewrite left eight entries pointing at copy that no longer existed; the canonical product sentence is now pinned here too, against the server README that owns it (see EDITORIAL.md). Re-pointed 2026-09-23 after unitares #2350 moved the registered protocols under docs/proposals/registered/ and #2339 reworded the third definition sentence; the old proposal paths remain as locator stubs, which is why the check read DRIFT rather than a missing source. Seven research-page claims retired 2026-09-27 when that page stopped restating results: the research moves faster than a hand-kept copy can, so current status now lives only in the server's evidence ledger. The research URL stays in `pages` so the retired phrasings are still checked there. Re-pinned 2026-10-18 after unitares #2896 rewrote the evidence ledger: the start date now pins the operational snapshot, the catalog and benefit pins follow the ledger's new sentences, and 'continuous operation' was retired because no cited source supports it any more.",
   "sources": {
     "agents-readme": {
       "url": "https://raw.githubusercontent.com/cirwel/unitares/master/agents/README.md",
@@ -14,7 +14,12 @@
     "evidence-limits": {
       "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/EVIDENCE_AND_LIMITS.md",
       "human": "https://github.com/cirwel/unitares/blob/master/docs/EVIDENCE_AND_LIMITS.md",
-      "role": "The current evidence ledger. Authority for mechanism, outcome, benefit scope, the tool catalog, and the deployment start date."
+      "role": "The current evidence ledger. Authority for mechanism, outcome, benefit scope, and the tool catalog."
+    },
+    "production-snapshot": {
+      "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/PRODUCTION_SNAPSHOT.md",
+      "human": "https://github.com/cirwel/unitares/blob/master/docs/PRODUCTION_SNAPSHOT.md",
+      "role": "The operational snapshot of the maintainer's deployment. Authority for the deployment start date."
     },
     "resident-readme": {
       "url": "https://raw.githubusercontent.com/cirwel/unitares-resident/master/README.md",
@@ -73,11 +78,13 @@
       "id": "home-since",
       "page": "home",
       "site_says": "since November 2025",
-      "source": "evidence-limits",
+      "source": "production-snapshot",
       "must_contain": [
-        "since 2025-11-28"
+        "The service has run since November 2025",
+        "Earliest retained agent-registry record | **2025-11-",
+        "# Production snapshot ## October 18, 2026 inventory"
       ],
-      "why": "The deployment start date is engraved on the seal and stated in the receipts. If the evidence ledger ever re-dates the first identity record, the seal is wrong the same day."
+      "why": "The home page dates the deployment. The evidence ledger dropped its start-date row in unitares #2896, so the claim is pinned to the operational snapshot: its statement that the service has run since November 2025, and the month of the earliest retained agent-registry record in its current table. The statement sits in a block that is not edited retroactively, so the table row is what catches a re-dating, and pinning the document title directly above the October heading breaks once a newer inventory is added above it, so the next refresh forces a re-pin."
     },
     {
       "id": "build-catalog",
@@ -85,8 +92,8 @@
       "site_says": "The complete tool catalog is callable on every transport",
       "source": "evidence-limits",
       "must_contain": [
-        "one complete catalog remains negotiable and callable on every transport",
-        "the default initial listing is progressive and omitted names run through `use_tool` after discovery"
+        "The complete catalog is callable on every transport",
+        "the default initial listing is progressive, with omitted names accessible through `use_tool` after discovery"
       ],
       "why": "The initial listing is progressive after unitares #2328. Every capability remains discoverable and callable; the site must not promise every schema in the initial listing."
     },
@@ -128,8 +135,8 @@
       "site_says": "No governed-versus-ungoverned comparison has yet shown an incident prevented or an outcome improved",
       "source": "evidence-limits",
       "must_contain": [
-        "No governed-versus-ungoverned comparison has shown an incident prevented or an outcome improved by pausing",
-        "Incident prevention or benefit from pausing"
+        "no governed-versus-ungoverned comparison has shown an incident prevented or an outcome improved by pausing",
+        "Incident prevention and benefit from pausing remain untested"
       ],
       "why": "The one guard that matters on a page written to get people to install something. A build page is where an unearned benefit claim would be most useful and least honest, so the disclaimer is pinned to the server's own words rather than to this page's restraint."
     },
@@ -164,9 +171,57 @@
         "UNITARES is the record behind them, not the transport between them"
       ],
       "why": "A boundary, and the kind that decays quietly: it disclaims cross-runtime interoperability, which A2A owns. The 2026-09 claims audit graded 'federation' unsupported as read for exactly this reason. If the README ever drops the disclaimer, the site must stop implying it too, so the two move together or the check goes red."
+    },
+    {
+      "id": "ecosystem-since",
+      "page": "ecosystem",
+      "site_says": "since November 2025",
+      "source": "production-snapshot",
+      "must_contain": [
+        "The service has run since November 2025",
+        "Earliest retained agent-registry record | **2025-11-",
+        "# Production snapshot ## October 18, 2026 inventory"
+      ],
+      "why": "Same date as the home page, checked separately because it is stated on a second page."
     }
   ],
   "retired_phrasings": [
+    {
+      "text": "Running continuously",
+      "retired": "2026-10-18",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/70",
+      "why": "Claimed continuous operation. The server's evidence ledger dropped that claim in unitares #2896 and now says its counts are not an uptime measurement, so no source the site cites supports it. The pages say the deployment has run since November 2025, which the operational snapshot does state."
+    },
+    {
+      "text": "In continuous operation",
+      "retired": "2026-10-18",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/70",
+      "why": "Same claim as 'Running continuously', in the ecosystem page's wording."
+    },
+    {
+      "text": "CONTINUOUS OPERATION",
+      "retired": "2026-10-18",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/70",
+      "why": "The same claim as the unused Seal component's legend read until 2026-10-18; it now reads IN OPERATION. Restoring the old legend with the component would put the claim back in capitals, which the two entries above do not match."
+    },
+    {
+      "text": "running continuously",
+      "retired": "2026-10-18",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/70",
+      "why": "Lower-case form of the same claim, as it would appear mid-sentence."
+    },
+    {
+      "text": "continuous operation",
+      "retired": "2026-10-18",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/70",
+      "why": "Lower-case form of the same claim, as it would appear mid-sentence or after a duration, as in 'months of continuous operation'."
+    },
+    {
+      "text": "Continuous operation",
+      "retired": "2026-10-18",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/70",
+      "why": "Capitalised form of the same claim, as it would open a sentence or a label."
+    },
     {
       "text": "Active agents · last 7 days",
       "retired": "2026-09-27",
