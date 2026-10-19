@@ -48,8 +48,8 @@ the subject of the home title and the hero eyebrow; CIRWEL Research is the
 masthead and the publisher. The navigation lists the product pages first
 (Architecture, whose page describes itself as the UNITARES architecture, and
 Build, for "Build on UNITARES"), then Research, Paper, Source, Contact. Keep
-labels short enough that the phone header stays at two rows. The legal
-entity, CIRWEL Systems, stays in the colophon and the JSON-LD.
+labels short enough that the phone header stays at two rows. The trade
+name, CIRWEL Systems, stays in the colophon and the JSON-LD.
 
 "Federation" is used in one plain sense on the product pages: independent
 runtimes sharing one operator's server. That is why the definition says
