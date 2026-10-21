@@ -68,7 +68,7 @@ state = check_working_state(client_session_id=sid)`;
         </p>
         <p class="text-base md:text-lg leading-relaxed text-ink max-w-prose reveal reveal-3 mt-6">
           The <a href="/">home page</a> says what UNITARES is and <a href="/ecosystem">How UNITARES fits together</a> shows how it is put together.
-          Here is the part you type. What the instrument has and has not been shown to do is in <a href="#limits">§05</a>, and in full in the server's <a href="https://github.com/cirwel/unitares/blob/master/docs/EVIDENCE_AND_LIMITS.md">evidence ledger</a>.
+          Here is the part you type. Every measured result's status is in the server's <a href="https://github.com/cirwel/unitares/blob/master/docs/EVIDENCE_AND_LIMITS.md">evidence ledger</a>.
         </p>
         <Ornament size="floret" class="mt-14 opacity-70 reveal reveal-3" />
       </div>
@@ -88,9 +88,9 @@ state = check_working_state(client_session_id=sid)`;
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Contract</dt>
         <dd class="col-span-8 md:col-span-9"><a href="https://pypi.org/project/unitares-sdk/" class="font-mono text-sm">unitares-sdk</a><span class="text-stone"> · for agents you write yourself</span></dd>
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Runtime</dt>
-        <dd class="col-span-8 md:col-span-9 text-stone">Python 3.12+ · PostgreSQL with AGE and pgvector · Redis · optional Elixir/OTP coordination</dd>
+        <dd class="col-span-8 md:col-span-9 text-stone">Python 3.14+ (SDK 3.12+) · PostgreSQL with AGE and pgvector · Redis · optional Elixir/OTP coordination</dd>
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Suited to</dt>
-        <dd class="col-span-8 md:col-span-9 text-stone">operators running several long-lived agents on infrastructure they control. Usually not worth the overhead for short-lived chat turns.</dd>
+        <dd class="col-span-8 md:col-span-9 text-stone">operators running several long-lived agents on infrastructure they control</dd>
       </dl>
     </section>
 
@@ -194,7 +194,7 @@ state = check_working_state(client_session_id=sid)`;
           </li>
           <li class="grid grid-cols-12 gap-x-6 gap-y-1 py-5 border-t border-sepia/40">
             <div class="col-span-12 md:col-span-3 mb-2 md:mb-0"><p class="label text-oxblood">Claim</p><p class="font-mono text-xs text-stone mt-1">sync_state</p></div>
-            <p class="col-span-12 md:col-span-9 text-stone leading-relaxed">Records what the process says it did, and how confident it is. Returns a policy action of proceed, guide, or pause, always with a named reason and a next step.</p>
+            <p class="col-span-12 md:col-span-9 text-stone leading-relaxed">Records what the process says it did, and how confident it is. Returns a policy action, proceed or pause, with a named reason and a next step.</p>
           </li>
           <li class="grid grid-cols-12 gap-x-6 gap-y-1 py-5 border-t border-sepia/40">
             <div class="col-span-12 md:col-span-3 mb-2 md:mb-0"><p class="label text-oxblood">Ground</p><p class="font-mono text-xs text-stone mt-1">record_result</p></div>
@@ -208,7 +208,7 @@ state = check_working_state(client_session_id=sid)`;
 
         <div class="max-w-prose space-y-5 text-lg leading-relaxed text-stone">
           <p>
-            Treat the action, the reason, and the next step as the stable contract; the enforcement record rides alongside them. When the server pauses an agent, it refuses that agent's later check-ins until recovery succeeds. Anything the agent does outside the server is the host's to enforce.
+            Treat the action, the reason, and the next step as the stable contract; the enforcement record rides alongside them. When the server pauses an agent, it holds that agent's governed writes until recovery, review, the operator, or expiry lifts the pause. Anything the agent does outside the server is the host's to enforce.
           </p>
           <p>
             The complete tool catalog is callable on every transport. The initial listing is deliberately small: use <code>list_tools</code> to discover names, <code>describe_tool</code> to inspect parameters, and <code>use_tool</code> to call a tool omitted from the initial listing. The checkpoint loop, shared memory, structured review, advisory consultation, and recovery are reachable from the same catalog.
@@ -237,10 +237,10 @@ state = check_working_state(client_session_id=sid)`;
               For an agent that runs for weeks rather than minutes, the SDK handles connection, identity, check-ins, heartbeats, and knowledge participation. Preserve its identity anchor across restarts with <span class="font-mono text-base text-ink">identity(agent_uuid=...)</span> rather than minting a new one each run, or its history restarts with it.
             </p>
             <p>
-              A workload registers its own progress source through the <span class="font-mono text-base text-ink">unitares.resident_progress_sources</span> entry-point group, with no change to the server's repository at all. That is the whole plug-and-play claim: an adopter never has to touch the server's code.
+              A workload registers its own progress source through the <span class="font-mono text-base text-ink">unitares.resident_progress_sources</span> entry-point group, with no change to the server's repository at all. A workload never touches the server's code.
             </p>
             <p>
-              The lowercase agents in the server repository are reference clients and operational examples. They are built on it and are explicitly not part of it, so read them as worked examples rather than a framework to subclass. <a href="https://github.com/cirwel/unitares-resident" class="font-mono text-base">cirwel/unitares-resident</a> is the first-party userland on the same public contract; it is an early skeleton, not yet a usable general-purpose agent.
+              The lowercase agents in the server repository are reference clients and operational examples. They are built on it and are explicitly not part of it, so read them as worked examples rather than a framework to subclass. <a href="https://github.com/cirwel/unitares-resident" class="font-mono text-base">cirwel/unitares-resident</a> is the first-party userland skeleton on the same public contract.
             </p>
           </div>
         </div>
@@ -252,20 +252,17 @@ state = check_working_state(client_session_id=sid)`;
     <!-- §05 LIMITS -->
     <section id="limits" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
-        <p class="section-mark"><span class="sm-num">§&#8201;V</span><span class="sm-name">What it does not do</span></p>
+        <p class="section-mark"><span class="sm-num">§&#8201;V</span><span class="sm-name">Where it fits</span></p>
       </div>
       <div class="col-span-12 lg:col-span-9">
-        <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">A state instrument, not an outcome oracle.</h2>
+        <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">Where it sits beside evals and guardrails.</h2>
 
         <div class="max-w-prose space-y-5 text-lg leading-relaxed text-stone">
           <p class="dropcap">
-            UNITARES does not decide whether an output is correct or ethical, and it cannot detect deliberate concealment without independent evidence. A process capable enough to optimize against a monitored proxy can do so.
-          </p>
-          <p class="text-ink">
-            No governed-versus-ungoverned comparison has yet shown an incident prevented or an outcome improved. The circuit breaker demonstrably actuates; that it protects anything is untested.
+            UNITARES keeps the record. Judgments of correctness and ethics stay with evals, reviewers, and independent evidence. The <a href="https://github.com/cirwel/unitares/blob/master/docs/SCOPE_AND_THREAT_MODEL.md">scope and threat model</a> covers agents that conceal or game signals.
           </p>
           <p>
-            It also replaces nothing you already run:
+            It runs beside what you already have:
           </p>
         </div>
 
@@ -280,7 +277,7 @@ state = check_working_state(client_session_id=sid)`;
           </div>
           <div class="grid grid-cols-12 gap-x-6 gap-y-1 py-5 border-t border-b border-sepia/40">
             <dt class="col-span-12 md:col-span-3 mb-2 md:mb-0"><p class="label text-oxblood">UNITARES</p><p class="font-mono text-xs text-stone mt-1">continuously</p></dt>
-            <dd class="col-span-12 md:col-span-9 text-stone leading-relaxed">What has this running process been doing, what evidence supports its claims, and what state is it in now?</dd>
+            <dd class="col-span-12 md:col-span-9 text-stone leading-relaxed">What has this running process been doing, what evidence supports its claims, who challenged them, and what happened?</dd>
           </div>
         </dl>
 

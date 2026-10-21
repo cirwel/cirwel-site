@@ -2,6 +2,12 @@
   "_note": "Corrections to what this site has said: figures, statuses, and claims only. Not a changelog, and not a place for copy edits. Newest first. `ref` is the commit or pull request that made the correction, or the upstream change that made it necessary.",
   "entries": [
     {
+      "date": "2026-10-21",
+      "where": "Build, What you need and Run the loop",
+      "note": "The runtime row said Python 3.12+; the server requires Python 3.14 and only the SDK accepts 3.12. The loop said a pause refuses later check-ins; it holds the agent's governed writes until recovery, review, the operator, or expiry lifts it. The benefit disclaimer and resident status moved off the page to the server's evidence ledger and threat model, which the page links to.",
+      "ref": "(this branch)"
+    },
+    {
       "date": "2026-10-18",
       "where": "Home and Ecosystem, In use",
       "note": "Said the deployment had run continuously since November 2025. The server's evidence ledger no longer claims continuous operation and says its counts are not an uptime measurement, so the pages now say it has run since November 2025.",
