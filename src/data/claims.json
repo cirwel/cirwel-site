@@ -1,5 +1,5 @@
 {
-  "_note": "Claims register — every load-bearing figure this site publishes, the source that carries it, and the exact string that must be present in that source. Checked daily by scripts/check-claims.py against the LIVE site and the LIVE sources, so it verifies what is published rather than what is in the tree. Not a changelog and not a style guide: an entry earns its place only if the site states something a reader could check. Written 2026-08-26 after a figure sat live for 14 days beside a citation that never contained it. Re-pinned 2026-09-16 after the 2026-09-15 rewrite left eight entries pointing at copy that no longer existed; the canonical product sentence is now pinned here too, against the server README that owns it (see EDITORIAL.md). Re-pointed 2026-09-23 after unitares #2350 moved the registered protocols under docs/proposals/registered/ and #2339 reworded the third definition sentence; the old proposal paths remain as locator stubs, which is why the check read DRIFT rather than a missing source. Seven research-page claims retired 2026-09-27 when that page stopped restating results: the research moves faster than a hand-kept copy can, so current status now lives only in the server's evidence ledger. The research URL stays in `pages` so the retired phrasings are still checked there. Re-pinned 2026-10-18 after unitares #2896 rewrote the evidence ledger: the start date now pins the operational snapshot, the catalog and benefit pins follow the ledger's new sentences, and 'continuous operation' was retired because no cited source supports it any more.",
+  "_note": "Claims register — every load-bearing figure this site publishes, the source that carries it, and the exact string that must be present in that source. Checked daily by scripts/check-claims.py against the LIVE site and the LIVE sources, so it verifies what is published rather than what is in the tree. Not a changelog and not a style guide: an entry earns its place only if the site states something a reader could check. Written 2026-08-26 after a figure sat live for 14 days beside a citation that never contained it. Re-pinned 2026-09-16 after the 2026-09-15 rewrite left eight entries pointing at copy that no longer existed; the canonical product sentence is now pinned here too, against the server README that owns it (see EDITORIAL.md). Re-pointed 2026-09-23 after unitares #2350 moved the registered protocols under docs/proposals/registered/ and #2339 reworded the third definition sentence; the old proposal paths remain as locator stubs, which is why the check read DRIFT rather than a missing source. Seven research-page claims retired 2026-09-27 when that page stopped restating results: the research moves faster than a hand-kept copy can, so current status now lives only in the server's evidence ledger. The research URL stays in `pages` so the retired phrasings are still checked there. Re-pinned 2026-10-18 after unitares #2896 rewrote the evidence ledger: the start date now pins the operational snapshot, the catalog and benefit pins follow the ledger's new sentences, and 'continuous operation' was retired because no cited source supports it any more. Two build-page claims retired 2026-10-21 under the operator's no-apologizing rule (2026-09-19, reaffirmed 2026-10-21): the benefit disclaimer and the resident underclaim. Their scoping now lives only in the server's evidence ledger and threat model, which the build page links to; the replaced phrasings are listed under retired_phrasings so a later session cannot restore them quietly.",
   "sources": {
     "agents-readme": {
       "url": "https://raw.githubusercontent.com/cirwel/unitares/master/agents/README.md",
@@ -130,17 +130,6 @@
       "why": "This page hands a reader a port and a path to paste into a config file. A wrong one costs them an afternoon, and the client-neutrality sentence is what licenses printing the config without naming a vendor."
     },
     {
-      "id": "build-benefit-untested",
-      "page": "build",
-      "site_says": "No governed-versus-ungoverned comparison has yet shown an incident prevented or an outcome improved",
-      "source": "evidence-limits",
-      "must_contain": [
-        "no governed-versus-ungoverned comparison has shown an incident prevented or an outcome improved by pausing",
-        "Incident prevention and benefit from pausing remain untested"
-      ],
-      "why": "The one guard that matters on a page written to get people to install something. A build page is where an unearned benefit claim would be most useful and least honest, so the disclaimer is pinned to the server's own words rather than to this page's restraint."
-    },
-    {
       "id": "build-entry-point",
       "page": "build",
       "site_says": "with no change to the server's repository at all",
@@ -150,17 +139,6 @@
         "no change to this repo is required"
       ],
       "why": "The strongest plug-and-play claim on the site and the only one that says an adopter never has to touch the server repository. It is quoted from agents/README.md and must not outlive it."
-    },
-    {
-      "id": "build-resident-skeleton",
-      "page": "build",
-      "site_says": "early skeleton, not yet a usable general-purpose agent",
-      "source": "resident-readme",
-      "must_contain": [
-        "early skeleton",
-        "not a usable general-purpose agent"
-      ],
-      "why": "An UNDERclaim, pinned for the same reason as the overclaims. If unitares-resident matures and the README drops this line, the build page will be talking a reader out of the very thing it should be pointing them at."
     },
     {
       "id": "ecosystem-delegated-pieces",
@@ -186,6 +164,48 @@
     }
   ],
   "retired_phrasings": [
+    {
+      "text": "has and has not been shown to do",
+      "retired": "2026-10-21",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/73",
+      "why": "Build-page hero prefaced the install path with what had not been shown. Status lives in the evidence ledger, which the page links to."
+    },
+    {
+      "text": "No governed-versus-ungoverned comparison has yet shown",
+      "retired": "2026-10-21",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/73",
+      "why": "Benefit disclaimer restated on the build page. It belongs to the server's evidence ledger, which carries it with its denominator."
+    },
+    {
+      "text": "not yet a usable general-purpose agent",
+      "retired": "2026-10-21",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/73",
+      "why": "Resident underclaim on the build page. The page now names unitares-resident as the first-party userland skeleton."
+    },
+    {
+      "text": "Usually not worth the overhead",
+      "retired": "2026-10-21",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/73",
+      "why": "Talked the reader out of the product before the install command."
+    },
+    {
+      "text": "The deployment is evidence, not the architecture",
+      "retired": "2026-10-21",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/73",
+      "why": "Ecosystem heading that apologized for CIRWEL's own deployment; the single-operator disclosure lives in the home and architecture receipts rows."
+    },
+    {
+      "text": "The gap between the claim and the outcome is the calibration signal",
+      "retired": "2026-10-21",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/73",
+      "why": "Led the outcome question with calibration rather than the record. Outcomes are typed events that keep their evidence grade."
+    },
+    {
+      "text": "refuses that agent's later check-ins",
+      "retired": "2026-10-21",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/73",
+      "why": "Misstated the pause: it holds governed writes until recovery, review, the operator, or expiry lifts it (docs/PRODUCT_DEFINITION.md)."
+    },
     {
       "text": "Running continuously",
       "retired": "2026-10-18",

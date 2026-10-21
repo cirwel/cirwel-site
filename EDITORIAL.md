@@ -91,10 +91,25 @@ refuse"), verdict (say "policy action"), proprioception, EISV.
 "people and agents". The research page uses "principals" for the human-or-
 software case.
 
-## 4. The hedge budget
+## 4. No hedge budget
 
-Every limit is stated once, in the build page's §05. Product pages state
-facts.
+The storefront states what is true, confidently, and lets the reader judge
+(operator rule, 2026-09-19, reaffirmed 2026-10-21). No page prefaces a claim
+with what has not been tested, who has not adopted it, or which single
+deployment it came from, and no page implies adoption. Honest scoping lives in
+the server repository: the evidence ledger (`docs/EVIDENCE_AND_LIMITS.md`) and
+the scope and threat model (`docs/SCOPE_AND_THREAT_MODEL.md`). The build page
+links to both; no page restates them, and the build page's §05 says where
+UNITARES sits beside evals and guardrails rather than listing limits.
+
+Three kinds of qualifier stay, because they are facts rather than apologies:
+
+- a caveat that defines a number: its n, its slice, that it is
+  observational, or the deployment it was measured on;
+- a denominator;
+- the single-operator disclosure, which the operator chose to promote: the
+  "In use" receipts row on the home and architecture pages. It is stated in
+  those rows and nowhere else.
 
 Research results and their status are not restated anywhere on the site. They
 move with the data, and a hand-kept copy drifts faster than any check can

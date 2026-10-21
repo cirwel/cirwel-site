@@ -8,7 +8,7 @@ Accountability infrastructure for long-running AI agents. Open source under Apac
 
 In UNITARES, a federation is a set of independent agent runtimes (coding agents, research agents, background agents, custom runtimes) connected to one operator's server. The server is one authority domain. It does not replicate state across independent servers, and it is unrelated to federated learning. Agents keep talking to each other over their own transports or A2A; UNITARES is the record behind them, not the transport between them.
 
-Accountability between operators who share no root of trust is a separate research question. The repositories call it "cross-operator" or "multi-principal" and the papers below address it. It is not a deployed feature of the server.
+Accountability between operators who share no root of trust is a separate research question. The repositories call it "cross-operator" or "multi-principal" and the papers below address it.
 
 ## The five questions
 
@@ -38,8 +38,8 @@ The server keeps the record needed to answer, for any piece of agent work:
 - [Architecture](https://raw.githubusercontent.com/cirwel/unitares/master/docs/UNIFIED_ARCHITECTURE.md): server, state model, transports, and storage
 - [Interface contract](https://raw.githubusercontent.com/cirwel/unitares/master/docs/INTERFACE_CONTRACT.md): versioned, transport-neutral capability names
 - [Evidence and limits](https://raw.githubusercontent.com/cirwel/unitares/master/docs/EVIDENCE_AND_LIMITS.md): the claim ledger, with the current evidence status of every measured result
-- [Scope and threat model](https://raw.githubusercontent.com/cirwel/unitares/master/docs/SCOPE_AND_THREAT_MODEL.md): who it is for and what remains unproven
-- [Trust contract](https://raw.githubusercontent.com/cirwel/unitares/master/docs/trust-contract.md): what the system guarantees, what it does not, and what honest failure looks like
+- [Scope and threat model](https://raw.githubusercontent.com/cirwel/unitares/master/docs/SCOPE_AND_THREAT_MODEL.md): who it is for and the threats it models
+- [Trust contract](https://raw.githubusercontent.com/cirwel/unitares/master/docs/trust-contract.md): what the system guarantees, and how measured, derived, prior, and unknown values are labeled
 
 ## Integrating agents
 
