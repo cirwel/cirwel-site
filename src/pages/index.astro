@@ -2,11 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import PageFooter from '../components/PageFooter.astro';
-import SectionRule from '../components/SectionRule.astro';
 import Plate from '../components/Plate.astro';
 import Tailpiece from '../components/Tailpiece.astro';
 import liveStats from '../data/live-stats.json';
-import frontispieceSvg from '../../public/sketches/frontispiece.svg?raw';
 
 const fmtStat = (v: string) => (/^\d+$/.test(v) ? Number(v).toLocaleString('en-US') : v);
 
@@ -14,6 +12,16 @@ const fmtStat = (v: string) => (/^\d+$/.test(v) ? Number(v).toLocaleString('en-U
 // verified release tag. Held as a string so it is diffable and so
 // src/data/claims.json can pin it against the README.
 const install = 'v=$(curl -fsSL https://raw.githubusercontent.com/cirwel/unitares/master/PUBLISHED_VERSION) && git clone --branch "v$v" --depth 1 https://github.com/cirwel/unitares.git && cd unitares && docker compose up -d --wait';
+
+// One real record from the deployment, shown as the home page's figure plate
+// (EDITORIAL.md §6). The section renders only when src/data/example-record.json
+// exists, so the page never shows an invented example. Shape:
+// { "caption": "...", "source_url": "https://...",
+//   "entries": [{ "kind": "Claim" | "Challenge" | "Outcome", "who": "...", "text": "..." }] }
+const exampleModules = import.meta.glob('../data/example-record.json', { eager: true, import: 'default' });
+const example = Object.values(exampleModules)[0] as
+  | { caption: string; source_url: string; entries: { kind: string; who: string; text: string }[] }
+  | undefined;
 ---
 <BaseLayout
   title="UNITARES: Accountability infrastructure for long-running AI agents — CIRWEL Research"
@@ -23,202 +31,117 @@ const install = 'v=$(curl -fsSL https://raw.githubusercontent.com/cirwel/unitare
 
   <main class="px-6 lg:px-12 max-w-screen-xl mx-auto">
 
-    <!-- HERO -->
-    <section class="pt-16 pb-16 lg:pt-28 lg:pb-20 grid grid-cols-12 gap-6">
-      <div class="col-span-12 lg:col-span-9">
-        <p class="label text-oxblood mb-8 reveal reveal-1">UNITARES</p>
-        <h1 class="display text-5xl md:text-7xl lg:text-8xl !leading-[1.14] mb-10 reveal reveal-2">
-          Many agents,<br/>
-          one record.
-        </h1>
-        <!-- The three definition sentences are the README's, verbatim (EDITORIAL.md §1).
-             The first is the subhead and the third follows it. The second, which names
-             the single-operator federation kernel, sits under the figure on its own, with its opening
-             pronoun resolved to the product name. -->
-        <p class="text-lg md:text-xl leading-relaxed text-ink max-w-prose reveal reveal-3">
-          <span class="font-medium">UNITARES is self-hosted accountability infrastructure for operators running multiple AI agents.</span>
-        </p>
-        <p class="text-base md:text-lg leading-relaxed text-stone max-w-prose reveal reveal-3 mt-6">
-          Agent work remains attributable, reviewable, and recoverable even when the process that started it is gone.
-        </p>
-        <nav aria-label="Ways into UNITARES"
-             class="mt-10 pt-6 border-t border-sepia flex flex-wrap items-baseline gap-x-8 gap-y-4 reveal reveal-4">
-          <a href="/build" class="cta">Run UNITARES</a>
-          <a href="/ecosystem" class="label text-oxblood no-underline hover:underline">How it fits together</a>
-          <a href="/research" class="label text-oxblood no-underline hover:underline">Research</a>
-        </nav>
-
-        <figure class="mt-14 max-w-3xl figure-svg reveal reveal-5" role="img"
-                aria-label="Five kinds of agent around one shared record: many agents, one record.">
-          <Fragment set:html={frontispieceSvg} />
-        </figure>
-        <p class="text-base leading-relaxed text-stone max-w-prose mt-6 reveal reveal-5">
-          The UNITARES single-operator federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP, where they share a durable record while keeping their own models, tools, and runtimes.
-        </p>
-        <p class="text-base leading-relaxed text-stone max-w-prose mt-4 reveal reveal-5">
-          Vendor platforms keep agent identity, memory, and review inside their own cloud or tool. UNITARES keeps one attributed record across them on infrastructure you control: Claude Code, Codex, Hermes Agent, and any MCP-capable agent record findings, advice, and review decisions that stay bound to the work across handoffs.
-        </p>
-      </div>
+    <!-- HERO: what it is, why it matters, two ways in. Plain words for a first-time
+         reader (EDITORIAL.md §1); the canonical definition sits under "In precise terms". -->
+    <section class="pt-16 pb-12 lg:pt-28 lg:pb-16">
+      <p class="label text-oxblood mb-8 reveal reveal-1">UNITARES</p>
+      <h1 class="display text-5xl md:text-7xl lg:text-8xl !leading-[1.14] mb-10 reveal reveal-2">
+        Many agents,<br/>
+        one record.
+      </h1>
+      <p class="text-xl md:text-2xl leading-relaxed text-ink max-w-prose reveal reveal-3">
+        Your AI agents share one record of what they did, what they claimed, who challenged it, and how it turned out.
+      </p>
+      <p class="text-lg md:text-xl leading-relaxed text-stone max-w-prose reveal reveal-3 mt-4">
+        Logs show each run. The record keeps the thread between them, so whoever picks up next can find where the last one left off.
+      </p>
+      <nav aria-label="Ways into UNITARES" class="mt-10 flex flex-wrap items-baseline gap-x-8 gap-y-4 reveal reveal-4">
+        <a href="#install" class="cta">Install</a>
+        <a href="https://github.com/cirwel/unitares" class="label text-oxblood no-underline hover:underline">Source on GitHub</a>
+      </nav>
     </section>
 
-    <hr class="hairline mb-2"/>
-
-    <!-- RECEIPTS -->
-    <section class="py-10 grid grid-cols-12 gap-6 reveal reveal-5">
-      <div class="col-span-12 lg:col-span-3 mb-4 lg:mb-0">
-        <p class="label text-oxblood">The receipts</p>
-      </div>
-      <dl class="col-span-12 lg:col-span-9 grid grid-cols-12 gap-y-5 gap-x-6">
-        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Software</dt>
-        <dd class="col-span-8 md:col-span-9">
-          <a href="https://github.com/cirwel/unitares" class="font-medium">UNITARES</a>
-          <span class="text-stone"> · Apache 2.0 · server + SDK + agent interfaces</span>
-        </dd>
-
-        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Paper</dt>
-        <dd class="col-span-8 md:col-span-9">
-          <a href="https://doi.org/10.5281/zenodo.19647159" class="font-medium">UNITARES: Information-Theoretic Governance of Heterogeneous Agent Fleets</a>
-          <span class="text-stone"> · Wang, 2026 · CC-BY 4.0</span>
-        </dd>
-
-        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">In use</dt>
-        <dd class="col-span-8 md:col-span-9">
-          Running <span class="font-medium">since November 2025</span>
-          <span class="text-stone"> · CIRWEL's long-running development environment</span>
-        </dd>
-
-        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">For</dt>
-        <dd class="col-span-8 md:col-span-9 text-stone">
-          operators running several long-lived AI agents on infrastructure they control
-        </dd>
-
-        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Author</dt>
-        <dd class="col-span-8 md:col-span-9">
-          <span class="smcp">Kenny Wang</span> <span class="text-stone">· Independent Researcher · ORCID</span>
-          <a href="https://orcid.org/0009-0006-7544-2374" class="font-mono text-sm">0009-0006-7544-2374</a>
-        </dd>
+    <!-- RECEIPTS: facts a stranger can check without reading further. -->
+    <section class="py-8 border-t border-b border-sepia reveal reveal-5" aria-label="The receipts">
+      <dl class="grid grid-cols-2 md:grid-cols-4 gap-6 text-base">
+        <div><dt class="label text-stone mb-1">Open source</dt><dd><a href="https://github.com/cirwel/unitares">Apache 2.0</a></dd></div>
+        <div><dt class="label text-stone mb-1">Self-hosted</dt><dd>on your own infrastructure</dd></div>
+        <div><dt class="label text-stone mb-1">Works with</dt><dd>Claude Code, Codex, Hermes Agent, any MCP client</dd></div>
+        <div><dt class="label text-stone mb-1">In use</dt><dd>since November 2025</dd></div>
       </dl>
+      <p class="text-sm text-stone mt-6">
+        CIRWEL's own deployment, last 7 days: {fmtStat(liveStats.active_agents_7d)} agent sessions, {fmtStat(liveStats.events_7d)} events. Measured {liveStats.refreshed_at}.
+      </p>
     </section>
 
-    <SectionRule class="mt-2 mb-12" />
-
-    <!-- §01 WHAT IT KEEPS -->
-    <section id="what" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
-      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
-        <p class="section-mark"><span class="sm-num">§&#8201;I</span><span class="sm-name">What the record answers</span></p>
-      </div>
-      <div class="col-span-12 lg:col-span-9">
-        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">
-          Five questions, one mechanism each.
-        </h2>
-        <p class="text-lg leading-relaxed text-stone max-w-prose mb-10">
-          Agent work keeps changing hands. A coding session restarts. A research agent loses its context. A task moves to another process, and the evidence arrives after the process that made the claim is gone. Logs show each run, but not the thread that connects them.
-        </p>
-
-
-      </div>
-      <!-- The five questions as a ruled register: one column per question the
-           record answers, read across like the head of a ledger page. -->
-      <div class="col-span-12 register mt-4" role="list" aria-label="What the record answers">
-          <div class="reg-col" role="listitem">
-            <h3 class="reg-q">Who said it?</h3>
-            <p class="reg-body">Every write is bound to a fresh process identity. Lineage records which earlier process this one inherited work from; it does not make two processes one identity.</p>
-            <a href="/ecosystem#identity" class="reg-link">Identity &amp; lineage</a>
-          </div>
-          <div class="reg-col" role="listitem">
-            <h3 class="reg-q">What supports it?</h3>
-            <p class="reg-body">Check-ins carry the state the server derived from them, and findings, corrections, and their provenance are kept as durable records that outlive the process that wrote them.</p>
-            <a href="/ecosystem#knowledge" class="reg-link">Shared memory</a>
-          </div>
-          <div class="reg-col" role="listitem">
-            <h3 class="reg-q">Who challenged it?</h3>
-            <p class="reg-body">Structured review keeps the disagreement, the conditions, and the resolution as part of the record, and a reviewer's objection binds on the agent it was raised against.</p>
-            <a href="/ecosystem#verdicts" class="reg-link">Policy &amp; review</a>
-          </div>
-          <div class="reg-col" role="listitem">
-            <h3 class="reg-q">What happened?</h3>
-            <p class="reg-body">Outcomes such as test results and exit codes are recorded against the check-in that predicted them. The gap between the claim and the outcome is the calibration signal.</p>
-            <a href="/build#loop" class="reg-link">The loop</a>
-          </div>
-          <div class="reg-col" role="listitem">
-            <h3 class="reg-q">What can a successor recover?</h3>
-            <p class="reg-body">Shared-memory search, review records, and history export give a later process what it needs to understand the work and continue it.</p>
-            <a href="/ecosystem#layers" class="reg-link">Architecture</a>
-          </div>
-      </div>
-      <div class="col-span-12 lg:col-start-4 lg:col-span-9">
-        <p class="text-lg leading-relaxed text-stone max-w-prose mt-4">
-          Claude Code, Codex, and custom runtimes keep their own models and tools. UNITARES keeps the record. It runs beside evals, guardrails, and sandboxes and replaces none of them.
-        </p>
-        <div class="max-w-prose mt-10">
+    {example && (
+      <!-- EXAMPLE: one real record, claim to outcome. -->
+      <section id="example" class="py-16 lg:py-20">
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight">One record, start to finish</h2>
+        <div class="max-w-prose">
           <Plate>
-            <dl class="grid grid-cols-2 gap-x-8 gap-y-8">
-              <div>
-                <dt class="label text-stone mb-2">Events recorded</dt>
-                <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.events_total)}</dd>
-              </div>
-              <div>
-                <dt class="label text-stone mb-2">Events · last 7 days</dt>
-                <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.events_7d)}</dd>
-              </div>
-              <div>
-                <dt class="label text-stone mb-2">Agent sessions · last 7 days</dt>
-                <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.active_agents_7d)}</dd>
-              </div>
-              <div>
-                <dt class="label text-stone mb-2">Shared findings</dt>
-                <dd class="display text-3xl md:text-4xl !leading-[1.14]">{fmtStat(liveStats.kg_discoveries)}</dd>
-              </div>
-            </dl>
+            <ol class="space-y-6">
+              {example.entries.map((e) => (
+                <li>
+                  <p class="label text-oxblood mb-1">{e.kind} · <span class="text-stone">{e.who}</span></p>
+                  <p class="text-base leading-relaxed">{e.text}</p>
+                </li>
+              ))}
+            </ol>
           </Plate>
+          <p class="text-sm text-stone mt-4">{example.caption} <a href={example.source_url}>See the original.</a></p>
         </div>
-        <p class="text-sm text-stone mt-6 max-w-prose">
-          Measured {liveStats.refreshed_at} on CIRWEL's own deployment.
-        </p>
+      </section>
+    )}
+
+    <!-- WHAT IT ANSWERS: the five questions (EDITORIAL.md §2), one plain line each;
+         the links carry the mechanism. -->
+    <section id="what" class="py-16 lg:py-20">
+      <h2 class="display text-3xl md:text-5xl mb-6 leading-tight">What the record answers</h2>
+      <p class="text-lg leading-relaxed text-stone max-w-prose mb-10">
+        A coding session restarts. An agent loses its context. A task moves to another process. Logs show each run, but not the thread that connects them.
+      </p>
+      <div class="register" role="list" aria-label="What the record answers">
+        <div class="reg-col" role="listitem">
+          <h3 class="reg-q">Who said it?</h3>
+          <p class="reg-body">Each write is tied to the process that made it.</p>
+          <a href="/ecosystem#identity" class="reg-link">Identity &amp; lineage</a>
+        </div>
+        <div class="reg-col" role="listitem">
+          <h3 class="reg-q">What supports it?</h3>
+          <p class="reg-body">Findings and corrections are kept, with their sources.</p>
+          <a href="/ecosystem#knowledge" class="reg-link">Shared memory</a>
+        </div>
+        <div class="reg-col" role="listitem">
+          <h3 class="reg-q">Who challenged it?</h3>
+          <p class="reg-body">Reviews and disagreements stay on the record.</p>
+          <a href="/ecosystem#verdicts" class="reg-link">Policy &amp; review</a>
+        </div>
+        <div class="reg-col" role="listitem">
+          <h3 class="reg-q">What happened?</h3>
+          <p class="reg-body">Test results are recorded against the check-in that predicted them.</p>
+          <a href="/build#loop" class="reg-link">The loop</a>
+        </div>
+        <div class="reg-col" role="listitem">
+          <h3 class="reg-q">What can a successor recover?</h3>
+          <p class="reg-body">Findings, reviews, and outcomes, by search.</p>
+          <a href="/ecosystem#layers" class="reg-link">Architecture</a>
+        </div>
       </div>
+      <p class="text-lg leading-relaxed text-stone max-w-prose mt-10">
+        It runs beside evals, guardrails, and sandboxes and replaces none of them.
+      </p>
     </section>
 
-    <SectionRule />
+    <!-- INSTALL -->
+    <section id="install" class="py-12">
+      <h2 class="display text-3xl md:text-4xl mb-6 leading-tight">Install</h2>
+      <div class="runcmd max-w-prose"><span class="prompt">$</span><span class="cmd">{install}</span></div>
+      <p class="text-base text-stone mt-4 max-w-prose">
+        Needs Docker. Starts the server and its databases locally. <a href="/build">Full setup</a> · <a href="/ecosystem">How it fits together</a> · <a href="/research">Research</a> · <a href="mailto:founder@cirwel.org">founder@cirwel.org</a>
+      </p>
+    </section>
 
-    <!-- §02 START HERE -->
-    <section id="contact" class="py-16 lg:py-24 grid grid-cols-12 gap-6">
-      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0">
-        <p class="section-mark"><span class="sm-num">§&#8201;II</span><span class="sm-name">Start here</span></p>
-      </div>
-      <div class="col-span-12 lg:col-span-9">
-        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight max-w-prose">A shared record for the agent work you run.</h2>
-        <p class="text-lg leading-relaxed text-stone max-w-prose mb-10">
-          UNITARES gives the people responsible for multiple AI agents a shared account of their work: who did what, what supports it, who challenged it, and what happened next. It keeps that work attributable, reviewable, and recoverable across handoffs and restarts.
-        </p>
-        <ul class="space-y-7 text-lg max-w-prose">
-          <li class="grid grid-cols-12 gap-4 items-start">
-            <span class="col-span-12 md:col-span-2 label text-stone pt-1">Run</span>
-            <div class="col-span-12 md:col-span-10 space-y-3">
-              <p><a href="https://github.com/cirwel/unitares" class="font-medium">UNITARES</a> boots locally with Docker Compose and exposes MCP, REST, an SDK, and a dashboard. The <a href="/build" class="font-medium">build page</a> walks the whole path.</p>
-              <div class="runcmd">
-                <span class="prompt">$</span>
-                <span class="cmd">{install}</span>
-              </div>
-            </div>
-          </li>
-          <li class="grid grid-cols-12 gap-4 items-baseline">
-            <span class="col-span-12 md:col-span-2 label text-stone">Research</span>
-            <span class="col-span-12 md:col-span-10">
-              <a href="/research" class="font-medium">Research</a> ·
-              <a href="https://doi.org/10.5281/zenodo.19647159" class="font-medium">paper</a> ·
-              <a href="https://huggingface.co/hikewa" class="font-medium">datasets</a>
-            </span>
-          </li>
-          <li class="grid grid-cols-12 gap-4 items-baseline">
-            <span class="col-span-12 md:col-span-2 label text-stone">Architecture</span>
-            <span class="col-span-12 md:col-span-10"><a href="/ecosystem" class="font-medium">See the system map and companion projects.</a></span>
-          </li>
-          <li class="grid grid-cols-12 gap-4 items-baseline">
-            <span class="col-span-12 md:col-span-2 label text-stone">Contact</span>
-            <span class="col-span-12 md:col-span-10"><a href="mailto:founder@cirwel.org" class="font-mono text-base">founder@cirwel.org</a></span>
-          </li>
-        </ul>
-      </div>
+    <!-- IN PRECISE TERMS: the README's three definition sentences, verbatim
+         (EDITORIAL.md §1); "federation" and "kernel" are defined in the sentence that uses them. -->
+    <section class="pt-10 pb-6 border-t border-sepia">
+      <p class="label text-stone mb-3">In precise terms</p>
+      <p class="text-sm leading-relaxed text-stone max-w-prose">
+        UNITARES is self-hosted accountability infrastructure for operators running multiple AI agents. The UNITARES single-operator federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP, where they share a durable record while keeping their own models, tools, and runtimes. Agent work remains attributable, reviewable, and recoverable even when the process that started it is gone.
+      </p>
+      <p class="text-sm text-stone mt-3">
+        By <span class="smcp">Kenny Wang</span>, Independent Researcher · ORCID <a href="https://orcid.org/0009-0006-7544-2374" class="font-mono">0009-0006-7544-2374</a> · <a href="https://doi.org/10.5281/zenodo.19647159">Paper</a>
+      </p>
     </section>
 
     <div class="flex justify-center pt-10 pb-2">
@@ -229,7 +152,3 @@ const install = 'v=$(curl -fsSL https://raw.githubusercontent.com/cirwel/unitare
 
   <PageFooter publishersMark />
 </BaseLayout>
-
-<style is:global>
-  .figure-svg > svg { display: block; width: 100%; height: auto; }
-</style>
