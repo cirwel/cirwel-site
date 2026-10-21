@@ -167,43 +167,43 @@
     {
       "text": "has and has not been shown to do",
       "retired": "2026-10-21",
-      "commit": "(this branch)",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/73",
       "why": "Build-page hero prefaced the install path with what had not been shown. Status lives in the evidence ledger, which the page links to."
     },
     {
       "text": "No governed-versus-ungoverned comparison has yet shown",
       "retired": "2026-10-21",
-      "commit": "(this branch)",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/73",
       "why": "Benefit disclaimer restated on the build page. It belongs to the server's evidence ledger, which carries it with its denominator."
     },
     {
       "text": "not yet a usable general-purpose agent",
       "retired": "2026-10-21",
-      "commit": "(this branch)",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/73",
       "why": "Resident underclaim on the build page. The page now names unitares-resident as the first-party userland skeleton."
     },
     {
       "text": "Usually not worth the overhead",
       "retired": "2026-10-21",
-      "commit": "(this branch)",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/73",
       "why": "Talked the reader out of the product before the install command."
     },
     {
       "text": "The deployment is evidence, not the architecture",
       "retired": "2026-10-21",
-      "commit": "(this branch)",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/73",
       "why": "Ecosystem heading that apologized for CIRWEL's own deployment; the single-operator disclosure lives once, in the home receipts."
     },
     {
       "text": "The gap between the claim and the outcome is the calibration signal",
       "retired": "2026-10-21",
-      "commit": "(this branch)",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/73",
       "why": "Led the outcome question with calibration rather than the record. Outcomes are typed events that keep their evidence grade."
     },
     {
       "text": "refuses that agent's later check-ins",
       "retired": "2026-10-21",
-      "commit": "(this branch)",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/73",
       "why": "Misstated the pause: it holds governed writes until recovery, review, the operator, or expiry lifts it (docs/PRODUCT_DEFINITION.md)."
     },
     {
