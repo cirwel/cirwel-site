@@ -1,6 +1,6 @@
 # UNITARES
 
-> UNITARES is self-hosted accountability infrastructure for operators running multiple AI agents. Its single-operator federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP, where they share a durable record while keeping their own models, tools, and runtimes. Agent work remains attributable, reviewable, and recoverable even when the process that started it is gone.
+> UNITARES is self-hosted accountability infrastructure for operators running multiple AI agents. Its single-operator federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP, where they share a durable record while keeping their own models, tools, and runtimes. Across Claude Code, Codex, Hermes Agent, and custom MCP or REST clients, agent work remains attributable, reviewable, and recoverable even when the process that started it is gone.
 
 Accountability infrastructure for long-running AI agents. Open source under Apache-2.0, published by CIRWEL Research (CIRWEL Systems). Source: https://github.com/cirwel/unitares
 
