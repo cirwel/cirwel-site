@@ -107,8 +107,9 @@ Three kinds of qualifier stay, because they are facts rather than apologies:
 - a caveat that defines a number: its n, its slice, that it is
   observational, or the deployment it was measured on;
 - a denominator;
-- the one single-operator disclosure, which the operator chose to promote to
-  the masthead: the home page receipts' "In use" row.
+- the single-operator disclosure, which the operator chose to promote: the
+  "In use" receipts row on the home and architecture pages. It is stated in
+  those rows and nowhere else.
 
 Research results and their status are not restated anywhere on the site. They
 move with the data, and a hand-kept copy drifts faster than any check can

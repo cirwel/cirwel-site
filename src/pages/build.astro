@@ -194,7 +194,7 @@ state = check_working_state(client_session_id=sid)`;
           </li>
           <li class="grid grid-cols-12 gap-x-6 gap-y-1 py-5 border-t border-sepia/40">
             <div class="col-span-12 md:col-span-3 mb-2 md:mb-0"><p class="label text-oxblood">Claim</p><p class="font-mono text-xs text-stone mt-1">sync_state</p></div>
-            <p class="col-span-12 md:col-span-9 text-stone leading-relaxed">Records what the process says it did, and how confident it is. Returns a policy action, proceed or pause, with a named reason and a next step.</p>
+            <p class="col-span-12 md:col-span-9 text-stone leading-relaxed">Records what the process says it did, and how confident it is. Returns a policy action, proceed, guide, or pause, with a named reason and a next step.</p>
           </li>
           <li class="grid grid-cols-12 gap-x-6 gap-y-1 py-5 border-t border-sepia/40">
             <div class="col-span-12 md:col-span-3 mb-2 md:mb-0"><p class="label text-oxblood">Ground</p><p class="font-mono text-xs text-stone mt-1">record_result</p></div>
@@ -237,7 +237,7 @@ state = check_working_state(client_session_id=sid)`;
               For an agent that runs for weeks rather than minutes, the SDK handles connection, identity, check-ins, heartbeats, and knowledge participation. Preserve its identity anchor across restarts with <span class="font-mono text-base text-ink">identity(agent_uuid=...)</span> rather than minting a new one each run, or its history restarts with it.
             </p>
             <p>
-              A workload registers its own progress source through the <span class="font-mono text-base text-ink">unitares.resident_progress_sources</span> entry-point group, with no change to the server's repository at all. A workload never touches the server's code.
+              A workload registers its own progress source through the <span class="font-mono text-base text-ink">unitares.resident_progress_sources</span> entry-point group, with no change to the server's repository at all. A workload never has to touch the server's code.
             </p>
             <p>
               The lowercase agents in the server repository are reference clients and operational examples. They are built on it and are explicitly not part of it, so read them as worked examples rather than a framework to subclass. <a href="https://github.com/cirwel/unitares-resident" class="font-mono text-base">cirwel/unitares-resident</a> is the first-party userland skeleton on the same public contract.

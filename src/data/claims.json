@@ -192,7 +192,7 @@
       "text": "The deployment is evidence, not the architecture",
       "retired": "2026-10-21",
       "commit": "https://github.com/cirwel/cirwel-site/pull/73",
-      "why": "Ecosystem heading that apologized for CIRWEL's own deployment; the single-operator disclosure lives once, in the home receipts."
+      "why": "Ecosystem heading that apologized for CIRWEL's own deployment; the single-operator disclosure lives in the home and architecture receipts rows."
     },
     {
       "text": "The gap between the claim and the outcome is the calibration signal",
