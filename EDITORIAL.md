@@ -8,6 +8,13 @@ definition changes; do not work around it in a page.
 
 ## 1. The sentence
 
+The home page is written for a first-time reader who reads about thirty
+words and has no reason yet to trust it. Above the fold it says what the
+product is and why it matters in plain words, and shows checkable facts rather
+than adjectives. Every plain line must still be true of the deployed system:
+no "automatically", no "all of it", nothing the server docs do not support.
+The precise definition is one scroll away, not the first thing read.
+
 The one-sentence definition of UNITARES is owned by the server README
 (`cirwel/unitares`, `README.md`). Every surface copies it verbatim, and
 `src/data/claims.json` pins it against the README so a rewrite that changes it
@@ -25,21 +32,30 @@ README-only):
 > multiple AI agents. Its single-operator federation kernel connects
 > independent runtimes to one operator-controlled server over MCP or HTTP,
 > where they share a durable record while keeping their own models, tools, and
-> runtimes. Agent work
-> remains attributable, reviewable, and recoverable even when the
-> process that started it is gone.
+> runtimes. Across Claude Code, Codex, Hermes Agent, and custom MCP or REST
+> clients, agent work remains attributable, reviewable, and recoverable even
+> when the process that started it is gone.
 
 Headline (display only; the site's, not the README's):
 
 > Many agents, one record.
 
-Where each goes: the headline is the home hero and the share card; the
-tagline is the page title, the JSON-LD description, the share card subline,
-and the `og:image:alt`; the definition's first sentence is the hero subhead,
-its third follows it, and its second (the one that names the single-operator
-federation kernel) sits under the hero figure, where "federation" and "kernel"
-are both defined. Placed apart from the sentence before it, its opening "Its"
-becomes "The UNITARES"; no other word changes. To change any of
+Plain lead (the site's, not the README's; the home hero's two lines under the
+headline):
+
+> Your AI agents share one record of what they did, what they claimed, who
+> challenged it, and how it turned out.
+>
+> Logs show each run. The record keeps the thread between them, so whoever
+> picks up next can find where the last one left off.
+
+Where each goes: the headline is the home hero and the share card; the plain
+lead follows the headline on the home page; the tagline is the page title,
+the JSON-LD description, the share card subline, and the `og:image:alt`; the
+definition's three sentences sit together, in order, in the home page's "In
+precise terms" block, where "federation" and "kernel" are both defined. In
+that block the second sentence's opening "Its" becomes "The UNITARES"; no
+other word changes. To change any of
 them, change the README first, then this file, then the pages, then
 `claims.json`, then re-render the card with `node scripts/render-og.mjs`.
 
@@ -140,7 +156,8 @@ hairlines and no cards. Tokens live in `tailwind.config.mjs` and
 `src/styles/global.css`; `cirwel.github.io` mirrors them and checks the mirror.
 
 Ornament must be load-bearing. Per page: one figure plate at most on the home
-page, one section rule per seam, no fact rendered twice (the deployment start
+page (a real record from the deployment, claim to outcome, when one is
+published in `src/data/example-record.json`; never an invented one), one section rule per seam, no fact rendered twice (the deployment start
 date lives in the receipts; nowhere else). Labels are literal:
 the theme control says AUTO / LIGHT / DARK, the 404 says "Not found", the
 navigation names pages. The print metaphor lives in the drawing, not in the

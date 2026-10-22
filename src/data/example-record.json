@@ -1,0 +1,9 @@
+{
+  "caption": "One case from the record UNITARES keeps of its own development.",
+  "source_url": "https://github.com/cirwel/unitares/pull/1819",
+  "entries": [
+    { "kind": "Claim", "who": "a coding agent's fix", "text": "A new agent's automatic pause can be lifted whenever the pause is labelled a risk stop." },
+    { "kind": "Challenge", "who": "structured review", "text": "Rejected. The label names only the first stop the code found, so it cannot show that no other stop fired at the same moment." },
+    { "kind": "Outcome", "who": "22 August 2026", "text": "The fix was rebuilt to lift a pause only when the full record proves risk was the only stop. A second review agreed, and it merged the same day." }
+  ]
+}

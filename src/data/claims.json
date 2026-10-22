@@ -30,6 +30,11 @@
       "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/integration/MCP_CLIENTS.md",
       "human": "https://github.com/cirwel/unitares/blob/master/docs/integration/MCP_CLIENTS.md",
       "role": "Authority for the client-facing endpoint and the client-neutrality claim."
+    },
+    "pr-1819": {
+      "url": "https://api.github.com/repos/cirwel/unitares/pulls/1819",
+      "human": "https://github.com/cirwel/unitares/pull/1819",
+      "role": "The public record of the example on the home page: the rejected first patch, the second review, and the merge date."
     }
   },
   "pages": {
@@ -85,6 +90,18 @@
         "# Production snapshot ## October 18, 2026 inventory"
       ],
       "why": "The home page dates the deployment. The evidence ledger dropped its start-date row in unitares #2896, so the claim is pinned to the operational snapshot: its statement that the service has run since November 2025, and the month of the earliest retained agent-registry record in its current table. The statement sits in a block that is not edited retroactively, so the table row is what catches a re-dating, and pinning the document title directly above the October heading breaks once a newer inventory is added above it, so the next refresh forces a re-pin."
+    },
+    {
+      "id": "home-example-record",
+      "page": "home",
+      "site_says": "The label names only the first stop the code found",
+      "source": "pr-1819",
+      "must_contain": [
+        "rejected the nearest-edge-only predicate",
+        "resolved with `action=resume`",
+        "\"merged_at\": \"2026-08-22"
+      ],
+      "why": "The home page's one real record, claim to outcome. It names a real rejection, a second review that agreed, and a same-day merge; if the PR record stops carrying any of them, the example is no longer backed. Restores the episode #55 first published, in plainer words and without the unsourced \"five conditions\"."
     },
     {
       "id": "build-catalog",
