@@ -91,6 +91,17 @@ def flatten(text: str) -> str:
     return re.sub(r"\s+", " ", text)
 
 
+def match_form(text: str) -> str:
+    """Flattened text with JSON key spacing removed, for pin matching.
+
+    The GitHub API serves the same pull request pretty-printed on some requests
+    (`"merged_at": "2026-08-22..."`) and compact on others
+    (`"merged_at":"2026-08-22..."`), so a pin written in either form failed
+    intermittently. Applied to the pin and the source alike.
+    """
+    return re.sub(r'"\s*:\s*', '":', flatten(text))
+
+
 def run(manifest: dict, get) -> int:
     sources, pages = manifest["sources"], manifest["pages"]
     fails: list[str] = []
@@ -121,7 +132,10 @@ def run(manifest: dict, get) -> int:
         body = load(src["url"], render=False)
         site = load(pages[c["page"]], render=True)
 
-        missing = [s for s in c["must_contain"] if body is not None and s not in body]
+        missing = [
+            s for s in c["must_contain"]
+            if body is not None and match_form(s) not in match_form(body)
+        ]
         if body is not None and missing:
             fails.append(
                 f"{c['id']}: source `{c['source']}` no longer contains "
@@ -225,11 +239,25 @@ def self_test() -> int:
     }
     rc = run(manifest, lambda u: corpus[u])
     ok = rc == 1
+
+    # Positive control: a JSON pin matches whichever spacing the API serves.
+    json_manifest = {
+        "sources": {"pr": {"url": "mem://pr", "human": "-", "role": "-"}},
+        "pages": {"home": "mem://page"},
+        "claims": [{"id": "json-spacing", "page": "home", "site_says": "merged",
+                    "source": "pr", "must_contain": ['"merged_at": "2026-08-22'],
+                    "why": "positive control"}],
+        "retired_phrasings": [],
+    }
+    for served in ('{"merged_at":"2026-08-22T23:09:54Z"}',
+                   '{\n  "merged_at": "2026-08-22T23:09:54Z"\n}'):
+        if run(json_manifest, lambda u: served if u == "mem://pr" else "<p>merged</p>") != 0:
+            ok = False
     print(
         f"\n{GRN}self-test PASSED{OFF}: the checker fails (rc=1) on the 2026-08-13 page."
         if ok
-        else f"\n{RED}self-test FAILED{OFF}: expected rc=1, got rc={rc}. "
-        "The checker would NOT have caught the bug it exists for."
+        else f"\n{RED}self-test FAILED{OFF}: the negative control returned rc={rc} "
+        "(want 1), or a JSON pin did not match both API spacings."
     )
     return 0 if ok else 1
 
