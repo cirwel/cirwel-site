@@ -184,7 +184,7 @@
     {
       "text": "own deployment, last 7 days",
       "retired": "2026-10-23",
-      "commit": "PENDING",
+      "commit": "https://github.com/cirwel/cirwel-site/pull/75",
       "why": "Live counts of the deployment's own traffic, shown under the In use row. Every count was self-generated on a single-operator deployment, so it read as adoption, and it restated the single-operator disclosure the row already carries (EDITORIAL.md §4). Counts live in the server's production snapshot and evidence ledger."
     },
     {
