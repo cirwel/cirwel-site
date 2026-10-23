@@ -182,6 +182,12 @@
   ],
   "retired_phrasings": [
     {
+      "text": "own deployment, last 7 days",
+      "retired": "2026-10-23",
+      "commit": "PENDING",
+      "why": "Live counts of the deployment's own traffic, shown under the In use row. Every count was self-generated on a single-operator deployment, so it read as adoption, and it restated the single-operator disclosure the row already carries (EDITORIAL.md §4). Counts live in the server's production snapshot and evidence ledger."
+    },
+    {
       "text": "has and has not been shown to do",
       "retired": "2026-10-21",
       "commit": "https://github.com/cirwel/cirwel-site/pull/73",
@@ -296,13 +302,5 @@
       "why": "Written on the research-identity branch on 2026-08-11 and removed before that page first shipped, so it was never live. Guarded anyway: it is the branch's own overclaim about outcome prediction, and reviving that branch's copy is the most likely way it would reach the site."
     }
   ],
-  "not_mechanically_checked": [
-    {
-      "claims": [
-        "production counters on the data plate"
-      ],
-      "anchor": "src/data/live-stats.json",
-      "why": "Already covered by the daily refresh from governance state, which is the same meter the public unitares README uses."
-    }
-  ]
+  "not_mechanically_checked": []
 }
