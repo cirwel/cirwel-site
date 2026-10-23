@@ -127,6 +127,14 @@ Three kinds of qualifier stay, because they are facts rather than apologies:
   "In use" receipts row on the home and architecture pages. It is stated in
   those rows and nowhere else.
 
+No page shows live counts of the deployment's own traffic (events, sessions,
+findings). On a single-operator deployment every one of them is
+self-generated, so a count reads as adoption to anyone who does not stop to
+ask what generated it, and the "In use" row already states the fact a count
+was standing in for: the system has run since November 2025 as CIRWEL's own
+record. Counts, with their denominators and dates, belong to the server's
+production snapshot and evidence ledger.
+
 Research results and their status are not restated anywhere on the site. They
 move with the data, and a hand-kept copy drifts faster than any check can
 follow. The research page lists the papers and the data, and links to the server's evidence ledger

@@ -4,9 +4,6 @@ import PageHeader from '../components/PageHeader.astro';
 import PageFooter from '../components/PageFooter.astro';
 import Plate from '../components/Plate.astro';
 import Tailpiece from '../components/Tailpiece.astro';
-import liveStats from '../data/live-stats.json';
-
-const fmtStat = (v: string) => (/^\d+$/.test(v) ? Number(v).toLocaleString('en-US') : v);
 
 // The install command is the server README's, verbatim: it pins the latest
 // verified release tag. Held as a string so it is diffable and so
@@ -59,9 +56,6 @@ const example = Object.values(exampleModules)[0] as
         <div><dt class="label text-stone mb-1">Works with</dt><dd>Claude Code, Codex, Hermes Agent, any MCP client</dd></div>
         <div><dt class="label text-stone mb-1">In use</dt><dd>since November 2025 <span class="text-stone">· CIRWEL's long-running development environment</span></dd></div>
       </dl>
-      <p class="text-sm text-stone mt-6">
-        CIRWEL's own deployment, last 7 days: {fmtStat(liveStats.active_agents_7d)} agent sessions, {fmtStat(liveStats.events_7d)} events. Measured {liveStats.refreshed_at}.
-      </p>
     </section>
 
     {example && (
