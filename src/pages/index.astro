@@ -9,6 +9,11 @@ import Tailpiece from '../components/Tailpiece.astro';
 // verified release tag. Held as a string so it is diffable and so
 // src/data/claims.json can pin it against the README.
 const install = 'v=$(curl -fsSL https://raw.githubusercontent.com/cirwel/unitares/master/PUBLISHED_VERSION) && git clone --branch "v$v" --depth 1 https://github.com/cirwel/unitares.git && cd unitares && docker compose up -d --wait';
+const homebrew = `brew update
+brew tap cirwel/unitares
+brew trust cirwel/unitares
+brew install cirwel/unitares/unitares
+brew pin unitares unitares-lease-plane`;
 
 // One real record from the deployment, shown as the home page's figure plate
 // (EDITORIAL.md §6). The section renders only when src/data/example-record.json
@@ -120,9 +125,15 @@ const example = Object.values(exampleModules)[0] as
     <!-- INSTALL -->
     <section id="install" class="py-12">
       <h2 class="display text-3xl md:text-4xl mb-6 leading-tight">Install</h2>
+      <h3 class="display text-2xl mb-4">Apple Silicon Mac · Homebrew preview</h3>
+      <div class="max-w-prose"><pre class="codeplate">{homebrew}</pre></div>
+      <p class="text-base text-stone mt-4 mb-8 max-w-prose">
+        Installs the native server and its dependencies. Then follow the <a href="https://github.com/cirwel/homebrew-unitares#first-time-setup">database setup and startup steps</a>. Models, including Ollama, are optional.
+      </p>
+      <h3 class="display text-2xl mb-4">Docker Compose</h3>
       <div class="runcmd max-w-prose"><span class="prompt">$</span><span class="cmd">{install}</span></div>
       <p class="text-base text-stone mt-4 max-w-prose">
-        Needs Docker. Starts the server and its databases locally. <a href="/build">Full setup</a> · <a href="/ecosystem">How it fits together</a> · <a href="/research">Research</a> · <a href="mailto:founder@cirwel.org">founder@cirwel.org</a>
+        Starts the server and its databases locally with Docker. Choose one installation per machine. <a href="/build#run">Setup and installation options</a> · <a href="/ecosystem">How it fits together</a> · <a href="/research">Research</a> · <a href="mailto:founder@cirwel.org">founder@cirwel.org</a>
       </p>
     </section>
 

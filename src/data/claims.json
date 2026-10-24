@@ -35,6 +35,11 @@
       "url": "https://api.github.com/repos/cirwel/unitares/pulls/1819",
       "human": "https://github.com/cirwel/unitares/pull/1819",
       "role": "The public record of the example on the home page: the rejected first patch, the second review, and the merge date."
+    },
+    "homebrew-tap": {
+      "url": "https://raw.githubusercontent.com/cirwel/homebrew-unitares/main/README.md",
+      "human": "https://github.com/cirwel/homebrew-unitares#readme",
+      "role": "Published native package installation, explicit database setup, upgrades, and optional models."
     }
   },
   "pages": {
@@ -178,6 +183,42 @@
         "# Production snapshot ## October 18, 2026 inventory"
       ],
       "why": "Same date as the home page, checked separately because it is stated on a second page."
+    },
+    {
+      "id": "home-homebrew-install",
+      "page": "home",
+      "site_says": "brew tap cirwel/unitares brew trust cirwel/unitares brew install cirwel/unitares/unitares brew pin unitares unitares-lease-plane",
+      "source": "homebrew-tap",
+      "must_contain": [
+        "preview for Apple Silicon Macs",
+        "brew update brew tap cirwel/unitares brew trust cirwel/unitares brew install cirwel/unitares/unitares brew pin unitares unitares-lease-plane",
+        "Database creation, bootstrap and upgrades remain explicit operator steps."
+      ],
+      "why": "Pins the native installation commands and preview scope to the published tap; installing packages is followed by database setup and startup."
+    },
+    {
+      "id": "build-homebrew-install",
+      "page": "build",
+      "site_says": "brew tap cirwel/unitares brew trust cirwel/unitares brew install cirwel/unitares/unitares brew pin unitares unitares-lease-plane",
+      "source": "homebrew-tap",
+      "must_contain": [
+        "preview for Apple Silicon Macs",
+        "brew update brew tap cirwel/unitares brew trust cirwel/unitares brew install cirwel/unitares/unitares brew pin unitares unitares-lease-plane",
+        "Database creation, bootstrap and upgrades remain explicit operator steps."
+      ],
+      "why": "Pins the native installation commands and preview scope to the published tap; installing packages is followed by database setup and startup."
+    },
+    {
+      "id": "build-homebrew-models",
+      "page": "build",
+      "site_says": "Ollama is optional, and fallback is an explicit choice.",
+      "source": "homebrew-tap",
+      "must_contain": [
+        "No model endpoint, model ID or resident roster is configured by default.",
+        "Ollama is optional; neither automatic model discovery nor an implicit fallback is enabled.",
+        "The package includes the core runtime and database-backed text search."
+      ],
+      "why": "Model connections and semantic embeddings are optional additions to the native core."
     }
   ],
   "retired_phrasings": [
@@ -300,6 +341,18 @@
       "retired": "2026-08-26",
       "commit": "(never published)",
       "why": "Written on the research-identity branch on 2026-08-11 and removed before that page first shipped, so it was never live. Guarded anyway: it is the branch's own overclaim about outcome prediction, and reviving that branch's copy is the most likely way it would reach the site."
+    },
+    {
+      "text": "Needs Docker.",
+      "retired": "2026-10-23",
+      "why": "Homebrew is a published native alternative; Docker is required only for the Compose path.",
+      "commit": "https://github.com/cirwel/homebrew-unitares/pull/1"
+    },
+    {
+      "text": "The install is a Compose file on hardware you control.",
+      "retired": "2026-10-23",
+      "why": "Installation now has a native Homebrew preview as well as Docker Compose.",
+      "commit": "https://github.com/cirwel/homebrew-unitares/pull/1"
     }
   ],
   "not_mechanically_checked": []
