@@ -2,6 +2,12 @@
   "_note": "Corrections to what this site has said: figures, statuses, and claims only. Not a changelog, and not a place for copy edits. Newest first. `ref` is the commit or pull request that made the correction, or the upstream change that made it necessary.",
   "entries": [
     {
+      "date": "2026-10-23",
+      "where": "Home, Install; Build, Run the server",
+      "note": "The install sections presented Docker as the only path after the native Homebrew preview was published. Added the Apple Silicon preview, linked its required database setup and backed-up upgrades, and distinguished optional models and search.",
+      "ref": "https://github.com/cirwel/homebrew-unitares/pull/1"
+    },
+    {
       "date": "2026-10-21",
       "where": "Build, What you need and Run the loop",
       "note": "The runtime row said Python 3.12+; the server requires Python 3.14 and only the SDK accepts 3.12. The loop said a pause refuses later check-ins; it holds the agent's governed writes until recovery, review, the operator, or expiry lifts it. The benefit disclaimer and resident status moved off the page to the server's evidence ledger and threat model, which the page links to.",

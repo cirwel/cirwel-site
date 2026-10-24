@@ -10,6 +10,11 @@ import Tailpiece from '../components/Tailpiece.astro';
 // with Astro's expression syntax, and so the exact strings are diffable.
 // The server README's install command, verbatim; pinned against the README by src/data/claims.json.
 const install = 'v=$(curl -fsSL https://raw.githubusercontent.com/cirwel/unitares/master/PUBLISHED_VERSION) && git clone --branch "v$v" --depth 1 https://github.com/cirwel/unitares.git && cd unitares && docker compose up -d --wait';
+const homebrew = `brew update
+brew tap cirwel/unitares
+brew trust cirwel/unitares
+brew install cirwel/unitares/unitares
+brew pin unitares unitares-lease-plane`;
 
 const mcpHttp = `{
   "mcpServers": {
@@ -50,7 +55,7 @@ state = check_working_state(client_session_id=sid)`;
 ---
 <BaseLayout
   title="Build on UNITARES — CIRWEL Research"
-  description="The working path into UNITARES: run the server with Docker Compose, connect any MCP client, run the check-in loop, and build a long-running agent on the public SDK contract."
+  description="Install UNITARES with the Homebrew preview for Apple Silicon Macs or Docker Compose, connect an MCP client, and build on the public SDK contract."
 >
   <PageHeader currentPath="/build" />
 
@@ -64,7 +69,7 @@ state = check_working_state(client_session_id=sid)`;
         </h1>
         <p class="text-lg md:text-xl leading-relaxed text-stone max-w-prose reveal reveal-3">
           Four steps: run the server, point a client at it, run the check-in loop, and decide what to do with what comes back.
-          <span class="font-medium text-ink">There is no account, no hosted tier, and no outbound call. The install is a Compose file on hardware you control.</span>
+          <span class="font-medium text-ink">Run it on hardware you control, with the Homebrew preview for Apple Silicon Macs or Docker Compose.</span>
         </p>
         <p class="text-base md:text-lg leading-relaxed text-ink max-w-prose reveal reveal-3 mt-6">
           The <a href="/">home page</a> says what UNITARES is and <a href="/ecosystem">How UNITARES fits together</a> shows how it is put together.
@@ -82,7 +87,7 @@ state = check_working_state(client_session_id=sid)`;
       </div>
       <dl class="col-span-12 lg:col-span-9 grid grid-cols-12 gap-y-5 gap-x-6">
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Server</dt>
-        <dd class="col-span-8 md:col-span-9"><a href="https://github.com/cirwel/unitares" class="font-medium">cirwel/unitares</a><span class="text-stone"> · Apache 2.0 · Docker Compose</span></dd>
+        <dd class="col-span-8 md:col-span-9"><a href="https://github.com/cirwel/unitares" class="font-medium">cirwel/unitares</a><span class="text-stone"> · Apache 2.0 · Homebrew preview or Docker Compose</span></dd>
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Endpoint</dt>
         <dd class="col-span-8 md:col-span-9"><span class="font-mono text-sm">http://localhost:8767/mcp/</span><span class="text-stone"> · Streamable HTTP · REST at <span class="font-mono text-sm">/v1/tools/call</span></span></dd>
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Contract</dt>
@@ -102,10 +107,28 @@ state = check_working_state(client_session_id=sid)`;
         <p class="section-mark"><span class="sm-num">§&#8201;I</span><span class="sm-name">Run the server</span></p>
       </div>
       <div class="col-span-12 lg:col-span-9">
-        <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">One compose file, on your own machine.</h2>
+        <h2 class="display text-3xl md:text-5xl mb-6 leading-tight max-w-prose">Choose your installation.</h2>
         <p class="text-xl leading-snug text-ink max-w-prose mb-8 font-medium">Self-hosted by design. Identity, telemetry, evidence, and policy history never leave it.</p>
 
         <div class="max-w-prose">
+          <h3 id="homebrew" class="display text-2xl md:text-3xl mb-4">Apple Silicon Mac · Homebrew preview</h3>
+          <p class="text-lg leading-relaxed text-stone mb-6">
+            Install <a href="https://brew.sh/">Homebrew</a> and Apple's Command Line Tools, then run these commands as your regular macOS user, without <code>sudo</code>. The preview builds from source and packages the server, PostgreSQL 17 with AGE and pgvector, Redis, and the coordination service.
+          </p>
+          <pre class="codeplate">{homebrew}</pre>
+          <div class="space-y-5 text-lg leading-relaxed text-stone mt-8">
+            <p>
+              Next, follow the tap's <a href="https://github.com/cirwel/homebrew-unitares#first-time-setup">first-time setup</a>: create a dedicated database, configure UNITARES, bootstrap the new database, then verify and start the services. Package installation alone does not create the database or start the server.
+            </p>
+            <p>
+              Keep the packages pinned until you are ready for a <a href="https://github.com/cirwel/homebrew-unitares#upgrades-and-recovery">backed-up upgrade</a>. Database migrations are explicit; <code>unitares update</code> handles Docker Compose installations only. Native user services run in the Homebrew owner's logged-in session.
+            </p>
+            <p>
+              Choose one primary installation per Mac. If Docker already runs UNITARES, follow the <a href="https://github.com/cirwel/unitares/blob/master/docs/install/CHOOSING_INSTALLATION.md">migration guidance</a> before starting native services; installing the package does not move existing data or clients. Intel Macs and Linux can use the Docker path below.
+            </p>
+          </div>
+
+          <h3 id="docker" class="display text-2xl md:text-3xl mt-12 mb-4">Docker Compose</h3>
           <div class="runcmd">
             <span class="prompt">$</span>
             <span class="cmd">{install}</span>
@@ -119,7 +142,12 @@ state = check_working_state(client_session_id=sid)`;
             </p>
           </div>
 
-          <p class="label text-stone mt-12 mb-4">Then watch it move</p>
+          <h3 class="display text-2xl md:text-3xl mt-12 mb-4">Optional models and search</h3>
+          <p class="text-lg leading-relaxed text-stone">
+            The core record works without a model connection. Configure an endpoint and model explicitly when you want model-backed consultation. Ollama is optional, and fallback is an explicit choice. The <a href="https://github.com/cirwel/homebrew-unitares#optional-models-and-search">Homebrew preview includes database-backed text search</a>; semantic embeddings need a separately managed installation. Docker's <a href="https://github.com/cirwel/unitares/blob/master/docker-compose.full.yml">full search overlay</a> adds optional semantic search and hybrid ranking.
+          </p>
+
+          <p class="label text-stone mt-12 mb-4">Try the demos from a source checkout</p>
           <div class="runcmd">
             <span class="prompt">$</span>
             <span class="cmd">make demo</span>
