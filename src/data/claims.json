@@ -58,7 +58,7 @@
       "must_contain": [
         "UNITARES is self-hosted accountability infrastructure for operators running",
         "Its single-operator federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP",
-        "Across Claude Code, Codex, Hermes Agent, and custom MCP or REST clients, agent work remains attributable, reviewable, and recoverable even when the process that started it is gone"
+        "They interoperate with each other over their own transports or A2A; UNITARES is the record behind them, not the transport between them"
       ],
       "why": "The one-sentence definition is owned by the server README and copied here verbatim. Ten different phrasings were live across the site, the repository, and the share cards on 2026-09-16; this pin is what keeps it at one."
     },
@@ -70,7 +70,7 @@
       "must_contain": [
         "UNITARES is self-hosted accountability infrastructure for operators running",
         "Its single-operator federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP",
-        "Across Claude Code, Codex, Hermes Agent, and custom MCP or REST clients, agent work remains attributable, reviewable, and recoverable even when the process that started it is gone"
+        "They interoperate with each other over their own transports or A2A; UNITARES is the record behind them, not the transport between them"
       ],
       "why": "llms.txt is the summary a language model reads first, so it carries the README's definition verbatim like every other surface. Pinning it here also runs the retired-phrasings check against it."
     },
