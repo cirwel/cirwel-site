@@ -11,10 +11,10 @@ import markSvg from '../../public/mark-c-illuminated.svg?raw';
 
 const { currentPath } = Astro.props;
 const onHome = currentPath === '/';
-const contactHref = onHome ? '#contact' : '/#contact';
 const isEcosystem = currentPath === '/ecosystem';
 const isResearch  = currentPath === '/research';
 const isBuild     = currentPath === '/build';
+const contactHref = (onHome || isResearch || isBuild) ? '#contact' : '/#contact';
 ---
 <!--
   Header: row layout at sm+ (wordmark left, nav right).

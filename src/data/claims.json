@@ -223,6 +223,12 @@
   ],
   "retired_phrasings": [
     {
+      "text": "unitares update handles Docker Compose installations only",
+      "retired": "2026-11-01",
+      "commit": "https://github.com/cirwel/homebrew-unitares/blob/main/README.md#upgrades-and-recovery",
+      "why": "The Homebrew preview added a coordinated native updater (unitares update --check and unitares update) that stops writers, takes a verified PostgreSQL backup, upgrades the managed formula set, runs migrations, and restores service state."
+    },
+    {
       "text": "own deployment, last 7 days",
       "retired": "2026-10-23",
       "commit": "https://github.com/cirwel/cirwel-site/pull/75",
