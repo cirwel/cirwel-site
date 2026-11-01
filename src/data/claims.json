@@ -223,6 +223,12 @@
   ],
   "retired_phrasings": [
     {
+      "text": "replaces none of them",
+      "retired": "2026-11-01",
+      "commit": "https://github.com/cirwel/cirwel-site/blob/master/EDITORIAL.md#4-no-hedge-budget",
+      "why": "Rebutted a replacement claim the product never makes (operator direction 2026-11-01). The sentence keeps its positioning: it runs beside evals, guardrails, and sandboxes."
+    },
+    {
       "text": "unitares update handles Docker Compose installations only",
       "retired": "2026-11-01",
       "commit": "https://github.com/cirwel/homebrew-unitares/blob/main/README.md#upgrades-and-recovery",
