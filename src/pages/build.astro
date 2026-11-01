@@ -43,7 +43,7 @@ result = sync_state(
     confidence=0.8,
     client_session_id=sid,
 )
-if result.get("state_summary", {}).get("action") == "pause":
+if result.get("enforcement", {}).get("applied"):
     return_to_operator(result.get("next_action"))
 
 record_result(
@@ -121,7 +121,7 @@ state = check_working_state(client_session_id=sid)`;
               Next, follow the tap's <a href="https://github.com/cirwel/homebrew-unitares#first-time-setup">first-time setup</a>: create a dedicated database, configure UNITARES, bootstrap the new database, then verify and start the services. Package installation alone does not create the database or start the server.
             </p>
             <p>
-              Keep the packages pinned until you are ready for a <a href="https://github.com/cirwel/homebrew-unitares#upgrades-and-recovery">backed-up upgrade</a>. Database migrations are explicit; <code>unitares update</code> handles Docker Compose installations only. Native user services run in the Homebrew owner's logged-in session.
+              Keep the packages pinned between updates. A bare <code>brew upgrade</code> is not a database upgrade procedure; run <code>unitares update --check</code> and <code>unitares update</code> for a <a href="https://github.com/cirwel/homebrew-unitares#upgrades-and-recovery">coordinated backed-up upgrade</a>. Native user services run in the Homebrew owner's logged-in session.
             </p>
             <p>
               Choose one primary installation per Mac. If Docker already runs UNITARES, follow the <a href="https://github.com/cirwel/unitares/blob/master/docs/install/CHOOSING_INSTALLATION.md">migration guidance</a> before starting native services; installing the package does not move existing data or clients. Intel Macs and Linux can use the Docker path below.
@@ -317,6 +317,10 @@ state = check_working_state(client_session_id=sid)`;
 
         <ul class="space-y-7 text-lg max-w-prose mt-12">
           <li class="grid grid-cols-12 gap-4 items-baseline">
+            <span class="col-span-12 md:col-span-2 label text-stone">Walkthrough</span>
+            <span class="col-span-12 md:col-span-10"><a href="https://cirwel.github.io/unitares/demo.html" class="font-medium">Four-step browser walkthrough</a> · <a href="https://github.com/cirwel/unitares/blob/master/docs/guides/AGENT_SESSION_WALKTHROUGH.md" class="font-medium">Two-process session capture</a></span>
+          </li>
+          <li class="grid grid-cols-12 gap-4 items-baseline">
             <span class="col-span-12 md:col-span-2 label text-stone">Manual</span>
             <span class="col-span-12 md:col-span-10"><a href="https://github.com/cirwel/unitares/blob/master/docs/manual/README.md" class="font-medium">Install, operate, and configure</a></span>
           </li>
@@ -328,7 +332,7 @@ state = check_working_state(client_session_id=sid)`;
             <span class="col-span-12 md:col-span-2 label text-stone">Vocabulary</span>
             <span class="col-span-12 md:col-span-10"><a href="https://cirwel.github.io/unitares/glossary.html" class="font-medium">Public glossary</a></span>
           </li>
-          <li class="grid grid-cols-12 gap-4 items-baseline">
+          <li id="contact" class="grid grid-cols-12 gap-4 items-baseline">
             <span class="col-span-12 md:col-span-2 label text-stone">Contact</span>
             <span class="col-span-12 md:col-span-10"><a href="mailto:founder@cirwel.org" class="font-mono text-base">founder@cirwel.org</a></span>
           </li>

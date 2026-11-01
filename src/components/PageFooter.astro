@@ -10,8 +10,8 @@ interface Props {
 const { publishersMark = false } = Astro.props;
 
 // PageFooter — single source of truth for the colophon + records block.
-// Build-time provenance is computed here so the three pages that mount
-// this component (/, /ecosystem, /404) cannot drift apart on rebuild.
+// Build-time provenance is computed here so all five pages that mount
+// this component (/, /ecosystem, /build, /research, /404) cannot drift apart on rebuild.
 const buildSha  = (process.env.CF_PAGES_COMMIT_SHA ?? '').slice(0, 8) || 'local';
 const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC';
 ---

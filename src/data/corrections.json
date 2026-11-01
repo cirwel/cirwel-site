@@ -2,6 +2,12 @@
   "_note": "Corrections to what this site has said: figures, statuses, and claims only. Not a changelog, and not a place for copy edits. Newest first. `ref` is the commit or pull request that made the correction, or the upstream change that made it necessary.",
   "entries": [
     {
+      "date": "2026-11-01",
+      "where": "Build, Run the server and Run the loop",
+      "note": "Said unitares update handled Docker Compose installations only after the Homebrew preview added a coordinated native updater (unitares update --check and unitares update). Also updated the loop example's pause check from state_summary.action to enforcement.applied.",
+      "ref": "https://github.com/cirwel/homebrew-unitares/blob/main/README.md#upgrades-and-recovery"
+    },
+    {
       "date": "2026-10-23",
       "where": "Home, Install; Build, Run the server",
       "note": "The install sections presented Docker as the only path after the native Homebrew preview was published. Added the Apple Silicon preview, linked its required database setup and backed-up upgrades, and distinguished optional models and search.",
