@@ -31,10 +31,10 @@
       "human": "https://github.com/cirwel/unitares/blob/master/docs/integration/MCP_CLIENTS.md",
       "role": "Authority for the client-facing endpoint and the client-neutrality claim."
     },
-    "pr-1819": {
-      "url": "https://api.github.com/repos/cirwel/unitares/pulls/1819",
-      "human": "https://github.com/cirwel/unitares/pull/1819",
-      "role": "The public record of the example on the home page: the rejected first patch, the second review, and the merge date."
+    "pr-3138": {
+      "url": "https://api.github.com/repos/cirwel/unitares/pulls/3138",
+      "human": "https://github.com/cirwel/unitares/pull/3138",
+      "role": "The public record of the example on the home page: the last of the three pull requests the interrupted audit left open, with its merge date."
     },
     "homebrew-tap": {
       "url": "https://raw.githubusercontent.com/cirwel/homebrew-unitares/main/README.md",
@@ -99,14 +99,12 @@
     {
       "id": "home-example-record",
       "page": "home",
-      "site_says": "The label names only the first stop the code found",
-      "source": "pr-1819",
+      "site_says": "All three merged that day.",
+      "source": "pr-3138",
       "must_contain": [
-        "rejected the nearest-edge-only predicate",
-        "resolved with `action=resume`",
-        "\"merged_at\": \"2026-08-22"
+        "\"merged_at\": \"2026-10-30"
       ],
-      "why": "The home page's one real record, claim to outcome. It names a real rejection, a second review that agreed, and a same-day merge; if the PR record stops carrying any of them, the example is no longer backed. Restores the episode #55 first published, in plainer words and without the unsourced \"five conditions\"."
+      "why": "The home page's one real record. The public part is the merge date of the last of the three pull requests (#3136, #3137, #3138, all merged 2026-10-30). The handoff itself (lineage declared, timeline and session pointer, 12 check-ins) is knowledge-graph finding 2026-10-30T06:49:09, which is not public; if that finding is revised, re-read the example."
     },
     {
       "id": "build-catalog",
