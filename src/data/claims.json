@@ -31,10 +31,10 @@
       "human": "https://github.com/cirwel/unitares/blob/master/docs/integration/MCP_CLIENTS.md",
       "role": "Authority for the client-facing endpoint and the client-neutrality claim."
     },
-    "pr-3138": {
-      "url": "https://api.github.com/repos/cirwel/unitares/pulls/3138",
-      "human": "https://github.com/cirwel/unitares/pull/3138",
-      "role": "The public record of the example on the home page: the last of the three pull requests the interrupted audit left open, with its merge date."
+    "handoff-case": {
+      "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/evaluations/interrupted-agent-reconstruction-2026-10-30.md",
+      "human": "https://github.com/cirwel/unitares/blob/master/docs/evaluations/interrupted-agent-reconstruction-2026-10-30.md",
+      "role": "The public record of the example on the home page: the interrupted audit, the successor's recovery path, and the three PRs that merged."
     },
     "homebrew-tap": {
       "url": "https://raw.githubusercontent.com/cirwel/homebrew-unitares/main/README.md",
@@ -100,11 +100,12 @@
       "id": "home-example-record",
       "page": "home",
       "site_says": "All three merged that day.",
-      "source": "pr-3138",
+      "source": "handoff-case",
       "must_contain": [
-        "\"merged_at\": \"2026-10-30"
+        "All three merged on 2026-10-30",
+        "did not contain an authored task"
       ],
-      "why": "The home page's one real record. The public part is the merge date of the last of the three pull requests (#3136, #3137, #3138, all merged 2026-10-30). The handoff itself (lineage declared, timeline and session pointer, 12 check-ins) is knowledge-graph finding 2026-10-30T06:49:09, which is not public; if that finding is revised, re-read the example."
+      "why": "The home page's one real record, now backed by a public case page in the unitares repo: the three PRs (#3136, #3137, #3138) merged on 2026-10-30, and the caption's statement that the recorded excerpts did not carry an authored task handoff. If the case page stops saying either, the example overstates its source."
     },
     {
       "id": "build-catalog",
