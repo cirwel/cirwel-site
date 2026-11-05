@@ -31,10 +31,10 @@
       "human": "https://github.com/cirwel/unitares/blob/master/docs/integration/MCP_CLIENTS.md",
       "role": "Authority for the client-facing endpoint and the client-neutrality claim."
     },
-    "handoff-case": {
-      "url": "https://raw.githubusercontent.com/cirwel/unitares/master/docs/evaluations/interrupted-agent-reconstruction-2026-10-30.md",
-      "human": "https://github.com/cirwel/unitares/blob/master/docs/evaluations/interrupted-agent-reconstruction-2026-10-30.md",
-      "role": "The public record of the example on the home page: the interrupted audit, the successor's recovery path, and the three PRs that merged."
+    "pr-1819": {
+      "url": "https://api.github.com/repos/cirwel/unitares/pulls/1819",
+      "human": "https://github.com/cirwel/unitares/pull/1819",
+      "role": "The public record of the example on the home page: the rejected first patch, the second review, and the merge date."
     },
     "homebrew-tap": {
       "url": "https://raw.githubusercontent.com/cirwel/homebrew-unitares/main/README.md",
@@ -99,13 +99,14 @@
     {
       "id": "home-example-record",
       "page": "home",
-      "site_says": "All three merged that day.",
-      "source": "handoff-case",
+      "site_says": "The label names only the first stop the code found",
+      "source": "pr-1819",
       "must_contain": [
-        "All three merged on 2026-10-30",
-        "did not contain an authored task"
+        "rejected the nearest-edge-only predicate",
+        "resolved with `action=resume`",
+        "\"merged_at\": \"2026-08-22"
       ],
-      "why": "The home page's one real record, now backed by a public case page in the unitares repo: the three PRs (#3136, #3137, #3138) merged on 2026-10-30, and the caption's statement that the recorded excerpts did not carry an authored task handoff. If the case page stops saying either, the example overstates its source."
+      "why": "The home page's one real record, claim to outcome. It names a real rejection, a second review that agreed, and a same-day merge; if the PR record stops carrying any of them, the example is no longer backed."
     },
     {
       "id": "build-catalog",

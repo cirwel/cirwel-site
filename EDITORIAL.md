@@ -45,8 +45,8 @@ headline):
 > Your AI agents share one record of what they did, what they claimed, who
 > challenged it, and how it turned out.
 >
-> Logs show each run. The record keeps the thread between them, so whoever
-> picks up next can find where the last one left off.
+> Git, handoff notes, and scratchpads carry the code and task in flight. The
+> record keeps the claims, supersessions, reviews, and outcomes across runs.
 
 Where each goes: the headline is the home hero and the share card; the plain
 lead follows the headline on the home page; the tagline is the page title,
@@ -163,7 +163,7 @@ hairlines and no cards. Tokens live in `tailwind.config.mjs` and
 `src/styles/global.css`; `cirwel.github.io` mirrors them and checks the mirror.
 
 Ornament must be load-bearing. Per page: one figure plate at most on the home
-page (a real record from the deployment, start to outcome, when one is
+page (a real record from the deployment, claim to outcome, when one is
 published in `src/data/example-record.json`; never an invented one), one section rule per seam, no fact rendered twice (the deployment start
 date lives in the receipts; nowhere else). Labels are literal:
 the theme control says AUTO / LIGHT / DARK, the 404 says "Not found", the
