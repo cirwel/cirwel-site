@@ -19,7 +19,7 @@ brew pin unitares unitares-lease-plane`;
 // (EDITORIAL.md §6). The section renders only when src/data/example-record.json
 // exists, so the page never shows an invented example. Shape:
 // { "caption": "...", "source_url": "https://...",
-//   "entries": [{ "kind": "<short literal label>", "who": "...", "text": "..." }] }
+//   "entries": [{ "kind": "Claim" | "Challenge" | "Outcome", "who": "...", "text": "..." }] }
 const exampleModules = import.meta.glob('../data/example-record.json', { eager: true, import: 'default' });
 const example = Object.values(exampleModules)[0] as
   | { caption: string; source_url: string; entries: { kind: string; who: string; text: string }[] }
@@ -45,7 +45,7 @@ const example = Object.values(exampleModules)[0] as
         Your AI agents share one record of what they did, what they claimed, who challenged it, and how it turned out.
       </p>
       <p class="text-lg md:text-xl leading-relaxed text-stone max-w-prose reveal reveal-3 mt-4">
-        Logs show each run. The record keeps the thread between them, so whoever picks up next can find where the last one left off.
+        Git, handoff notes, and scratchpads carry the code and task in flight. The record keeps the claims, supersessions, reviews, and outcomes across runs.
       </p>
       <nav aria-label="Ways into UNITARES" class="mt-10 flex flex-wrap items-baseline gap-x-8 gap-y-4 reveal reveal-4">
         <a href="#install" class="cta">Install</a>
@@ -65,9 +65,9 @@ const example = Object.values(exampleModules)[0] as
     </section>
 
     {example && (
-      <!-- EXAMPLE: one real record, start to outcome. -->
+      <!-- EXAMPLE: one real record, claim to outcome. -->
       <section id="example" class="py-16 lg:py-20">
-        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight">One record, start to finish</h2>
+        <h2 class="display text-3xl md:text-5xl mb-8 leading-tight">One record, claim to outcome</h2>
         <div class="max-w-prose">
           <Plate>
             <ol class="space-y-6">
@@ -89,7 +89,7 @@ const example = Object.values(exampleModules)[0] as
     <section id="what" class="py-16 lg:py-20">
       <h2 class="display text-3xl md:text-5xl mb-6 leading-tight">What the record answers</h2>
       <p class="text-lg leading-relaxed text-stone max-w-prose mb-10">
-        A coding session restarts. An agent loses its context. A task moves to another process. Logs show each run, but not the thread that connects them.
+        Across coding sessions, research runs, and background agents, findings get revised and changes get challenged. The record links each claim to its author, its review, and its outcome.
       </p>
       <div class="register" role="list" aria-label="What the record answers">
         <div class="reg-col" role="listitem">
