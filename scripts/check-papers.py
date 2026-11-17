@@ -193,6 +193,7 @@ def main() -> int:
     root = pathlib.Path(__file__).resolve().parent.parent
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--offline", action="store_true")
+    ap.add_argument("--live", action="store_true")
     ap.add_argument("--sync", action="store_true")
     ap.add_argument("--self-test", action="store_true")
     args = ap.parse_args()
@@ -238,9 +239,16 @@ def main() -> int:
                     f"[{p['slug']}] local PDF checksum {actual} != papers.json {p['pdfChecksum']}"
                 )
 
-        dist_html = root / "dist/papers" / p["slug"] / "index.html"
-        if dist_html.exists():
-            failures.extend(check_scholar_html(p["slug"], p, dist_html.read_text()))
+        if args.live:
+            live_html = curl(f"{SITE}/papers/{p['slug']}/")
+            if live_html is None:
+                print(f"UNVERIFIABLE: could not fetch {SITE}/papers/{p['slug']}/")
+                return UNVERIFIABLE
+            failures.extend(check_scholar_html(p["slug"], p, live_html))
+        else:
+            dist_html = root / "dist/papers" / p["slug"] / "index.html"
+            if dist_html.exists():
+                failures.extend(check_scholar_html(p["slug"], p, dist_html.read_text()))
 
     if failures:
         for f in failures:

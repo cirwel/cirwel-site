@@ -89,6 +89,12 @@ const studyPapers = papers.filter((p) => p.section === 'studies');
                 <p>{p.summary}</p>
                 <p class="font-mono text-xs mt-2">
                   <a href={`/papers/${p.slug}/${p.pdfFile}`}>PDF</a>
+                  {p.doi && (
+                    <>
+                      &nbsp;&middot;&nbsp;
+                      <a href={`https://doi.org/${p.doi}`}>DOI {p.doi}</a>
+                    </>
+                  )}
                   &nbsp;&middot;&nbsp;
                   <a href={p.repo}>Source</a>
                 </p>
