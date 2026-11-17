@@ -15,7 +15,34 @@ interface Props {
   pageTitle: string;
   pageDesc: string;
 }
+import papers from '../data/papers.json';
 const { pageUrl, pageTitle, pageDesc } = Astro.props;
+
+const scholarlyArticles = papers.map((p) => ({
+  '@type': 'ScholarlyArticle',
+  '@id': p.doi ? `https://doi.org/${p.doi}` : `https://cirwel.org/papers/${p.slug}/`,
+  'name': p.title,
+  'headline': p.title,
+  'author': { '@id': `https://orcid.org/${p.orcid}` },
+  'datePublished': p.publicationDate,
+  ...(p.doi
+    ? {
+        'identifier': [
+          { '@type': 'PropertyValue', 'propertyID': 'doi', 'value': p.doi },
+        ],
+        'sameAs': `https://doi.org/${p.doi}`,
+      }
+    : {}),
+  'publisher': { '@id': 'https://cirwel.org/#org' },
+  'license': p.license,
+  'url': `https://cirwel.org/papers/${p.slug}/`,
+  'encoding': {
+    '@type': 'MediaObject',
+    'contentUrl': `https://cirwel.org/papers/${p.slug}/${p.pdfFile}`,
+    'encodingFormat': 'application/pdf',
+  },
+  'keywords': p.keywords,
+}));
 
 const graph = {
   '@context': 'https://schema.org',
@@ -53,26 +80,7 @@ const graph = {
       'affiliation': { '@id': 'https://cirwel.org/#org' },
       'jobTitle': 'Independent Researcher',
     },
-    {
-      '@type': 'ScholarlyArticle',
-      '@id': 'https://doi.org/10.5281/zenodo.19647159',
-      'name': 'UNITARES: Information-Theoretic Governance of Heterogeneous Agent Fleets',
-      'headline': 'UNITARES: Information-Theoretic Governance of Heterogeneous Agent Fleets',
-      'author': { '@id': 'https://orcid.org/0009-0006-7544-2374' },
-      'datePublished': '2026',
-      'identifier': [
-        { '@type': 'PropertyValue', 'propertyID': 'doi', 'value': '10.5281/zenodo.19647159' },
-      ],
-      'publisher': { '@id': 'https://cirwel.org/#org' },
-      'license': 'https://creativecommons.org/licenses/by/4.0/',
-      'url': 'https://doi.org/10.5281/zenodo.19647159',
-      'keywords': [
-        'autonomous governance',
-        'runtime accountability',
-        'heterogeneous multi-agent systems',
-        'AI safety',
-      ],
-    },
+    ...scholarlyArticles,
     {
       '@type': 'SoftwareSourceCode',
       '@id': 'https://github.com/cirwel/unitares',
