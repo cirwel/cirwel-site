@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import PageFooter from '../../components/PageFooter.astro';
+import SectionRule from '../../components/SectionRule.astro';
+import Tailpiece from '../../components/Tailpiece.astro';
+import papers from '../../data/papers.json';
+
+export function getStaticPaths() {
+  return papers.map((paper) => ({
+    params: { slug: paper.slug },
+    props: { paper },
+  }));
+}
+
+const { paper } = Astro.props;
+const site = 'https://cirwel.org';
+const canonicalPath = `/papers/${paper.slug}/`;
+const pageUrl = `${site}${canonicalPath}`;
+const pdfPath = `/papers/${paper.slug}/${paper.pdfFile}`;
+const pdfUrl = `${site}${pdfPath}`;
+const ledger = 'https://github.com/cirwel/unitares/blob/master/docs/EVIDENCE_AND_LIMITS.md';
+const licenseLabel = paper.license.includes('apache') ? 'Apache-2.0' : 'CC-BY 4.0';
+---
+<BaseLayout
+  title={`${paper.title} — CIRWEL Research`}
+  description={paper.summary}
+  ogType="article"
+  canonicalPath={canonicalPath}
+>
+  <Fragment slot="head">
+    <meta name="citation_title" content={paper.title} />
+    <meta name="citation_author" content={paper.citationAuthor} />
+    <meta name="citation_author_institution" content={paper.institution} />
+    <meta name="citation_author_orcid" content={paper.orcid} />
+    <meta name="citation_publication_date" content={paper.citationDate} />
+    <meta name="citation_online_date" content={paper.citationDate} />
+    <meta name="citation_pdf_url" content={pdfUrl} />
+    <meta name="citation_abstract_html_url" content={pageUrl} />
+    {paper.doi && <meta name="citation_doi" content={paper.doi} />}
+    <meta name="citation_technical_report_institution" content={paper.institution} />
+    <meta name="citation_language" content="en" />
+    <meta name="citation_keywords" content={paper.keywords.join('; ')} />
+    <meta name="DC.title" content={paper.title} />
+    <meta name="DC.creator" content={paper.citationAuthor} />
+    <meta name="DC.date" content={paper.publicationDate} />
+    <meta name="DC.identifier" content={paper.doi ? `doi:${paper.doi}` : pageUrl} />
+    <meta name="DC.type" content="Text" />
+    <meta name="DC.format" content="application/pdf" />
+    <meta name="DC.language" content="en" />
+    <meta name="DC.rights" content={paper.license} />
+  </Fragment>
+
+  <PageHeader currentPath="/research" />
+
+  <main class="px-6 lg:px-12 max-w-screen-xl mx-auto">
+
+    <section class="pt-16 pb-16 lg:pt-24 lg:pb-20 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-10">
+        <p class="label text-oxblood mb-6 reveal reveal-1">
+          <a href="/research" class="no-underline hover:underline">Research</a> &middot; {paper.section === 'studies' ? 'Study report' : 'Preprint'} ({paper.displayVersion})
+        </p>
+        <h1 class="display text-3xl md:text-5xl lg:text-6xl mb-8 leading-tight reveal reveal-2">
+          {paper.title}
+        </h1>
+        <p class="text-lg md:text-xl leading-relaxed text-stone max-w-prose mb-8 reveal reveal-3">
+          {paper.summary}
+        </p>
+        <p class="font-mono text-sm text-stone reveal reveal-3">
+          <a href={pdfPath}>Full text (PDF)</a>
+          {paper.doi && (
+            <>
+              &nbsp;&middot;&nbsp;
+              <a href={`https://doi.org/${paper.doi}`}>DOI {paper.doi}</a>
+            </>
+          )}
+          &nbsp;&middot;&nbsp;
+          <a href={paper.repo}>Source repository</a>
+        </p>
+      </div>
+    </section>
+
+    <hr class="hairline mb-2" />
+
+    <section class="py-10 grid grid-cols-12 gap-6 reveal reveal-4">
+      <div class="col-span-12 lg:col-span-3 mb-4 lg:mb-0"><p class="label text-oxblood">Bibliographic record</p></div>
+      <dl class="col-span-12 lg:col-span-9 grid grid-cols-12 gap-y-5 gap-x-6">
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Author</dt>
+        <dd class="col-span-8 md:col-span-9"><span class="smcp">{paper.author}</span><span class="text-stone"> &middot; ORCID </span><a href={`https://orcid.org/${paper.orcid}`} class="font-mono text-sm">{paper.orcid}</a></dd>
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Published</dt>
+        <dd class="col-span-8 md:col-span-9">{paper.displayDate} <span class="text-stone">&middot; {paper.displayVersion}</span></dd>
+        {paper.doi && (
+          <>
+            <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Concept DOI</dt>
+            <dd class="col-span-8 md:col-span-9"><a href={`https://doi.org/${paper.doi}`} class="font-mono text-sm">{paper.doi}</a></dd>
+          </>
+        )}
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Full text</dt>
+        <dd class="col-span-8 md:col-span-9"><a href={pdfPath} class="font-mono text-sm">{paper.pdfFile}</a></dd>
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Source</dt>
+        <dd class="col-span-8 md:col-span-9"><a href={paper.repo} class="font-mono text-sm">{paper.repo.replace('https://github.com/', '')}</a></dd>
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">License</dt>
+        <dd class="col-span-8 md:col-span-9"><a href={paper.license} class="font-mono text-sm">{licenseLabel}</a></dd>
+      </dl>
+    </section>
+
+    <SectionRule class="mt-2 mb-16" />
+
+    <section id="abstract" class="py-12 lg:py-16 grid grid-cols-12 gap-6">
+      <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="section-mark"><span class="sm-num">§&#8201;I</span><span class="sm-name">Abstract</span></p></div>
+      <div class="col-span-12 lg:col-span-9 max-w-prose space-y-6">
+        {paper.abstract.map((paragraph) => (
+          <p class="text-lg leading-relaxed text-ink">{paragraph}</p>
+        ))}
+        <p class="text-base leading-relaxed text-stone pt-4 border-t border-sepia/40">
+          Dated measurements, tables, and proofs are in the <a href={pdfPath}>full PDF</a>. Current evidence status across the live deployment lives in <a href={ledger} class="font-mono text-sm">EVIDENCE_AND_LIMITS.md</a>.
+        </p>
+      </div>
+    </section>
+
+    <div class="flex justify-center pt-10 pb-4"><Tailpiece class="opacity-80" /></div>
+  </main>
+
+  <PageFooter />
+</BaseLayout>
