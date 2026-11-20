@@ -14,6 +14,7 @@ export function getStaticPaths() {
 }
 
 const { paper } = Astro.props;
+const conceptDoi = paper.conceptDoi ?? paper.doi;
 const site = 'https://cirwel.org';
 const canonicalPath = `/papers/${paper.slug}/`;
 const pageUrl = `${site}${canonicalPath}`;
@@ -71,7 +72,7 @@ const licenseLabel = paper.license.includes('apache') ? 'Apache-2.0' : 'CC-BY 4.
           {paper.doi && (
             <>
               &nbsp;&middot;&nbsp;
-              <a href={`https://doi.org/${paper.doi}`}>DOI {paper.doi}</a>
+              <a href={`https://doi.org/${paper.doi}`}>{paper.conceptDoi ? 'Version DOI' : 'DOI'} {paper.doi}</a>
             </>
           )}
           &nbsp;&middot;&nbsp;
@@ -89,10 +90,10 @@ const licenseLabel = paper.license.includes('apache') ? 'Apache-2.0' : 'CC-BY 4.
         <dd class="col-span-8 md:col-span-9"><span class="smcp">{paper.author}</span><span class="text-stone"> &middot; ORCID </span><a href={`https://orcid.org/${paper.orcid}`} class="font-mono text-sm">{paper.orcid}</a></dd>
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Published</dt>
         <dd class="col-span-8 md:col-span-9">{paper.displayDate} <span class="text-stone">&middot; {paper.displayVersion}</span></dd>
-        {paper.doi && (
+        {conceptDoi && (
           <>
             <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Concept DOI</dt>
-            <dd class="col-span-8 md:col-span-9"><a href={`https://doi.org/${paper.doi}`} class="font-mono text-sm">{paper.doi}</a></dd>
+            <dd class="col-span-8 md:col-span-9"><a href={`https://doi.org/${conceptDoi}`} class="font-mono text-sm">{conceptDoi}</a></dd>
           </>
         )}
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Full text</dt>

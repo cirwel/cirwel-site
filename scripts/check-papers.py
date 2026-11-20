@@ -79,11 +79,11 @@ def check_scholar_html(slug: str, paper: dict, html_text: str) -> list[str]:
         "citation_pdf_url",
         "citation_abstract_html_url",
     ]
-    if paper.get("doi"):
-        required.append("citation_doi")
     for key in required:
         if not meta.get(key):
             failures.append(f"[{slug}] missing required meta tag: {key}")
+    if paper.get("doi") and meta.get("citation_doi") != [paper["doi"]]:
+        failures.append(f"[{slug}] citation_doi should be {paper['doi']!r}, got {meta.get('citation_doi')!r}")
 
     pdf_urls = meta.get("citation_pdf_url", [])
     abs_urls = meta.get("citation_abstract_html_url", [])
@@ -108,9 +108,13 @@ def check_scholar_html(slug: str, paper: dict, html_text: str) -> list[str]:
     return failures
 
 
+def papers_by_concept_doi(papers: list[dict]) -> dict[str, dict]:
+    return {p.get("conceptDoi", p["doi"]): p for p in papers}
+
+
 def verify_against_zenodo(papers: list[dict], zenodo_hits: list[dict]) -> list[str]:
     failures: list[str] = []
-    by_doi = {p["doi"]: p for p in papers}
+    by_doi = papers_by_concept_doi(papers)
 
     for hit in zenodo_hits:
         meta = hit.get("metadata", {})
@@ -121,6 +125,8 @@ def verify_against_zenodo(papers: list[dict], zenodo_hits: list[dict]) -> list[s
             failures.append(f"[zenodo] publication deposit {cdoi} ({meta.get('title')}) missing from papers.json")
             continue
         p = by_doi[cdoi]
+        if p.get("conceptDoi") and hit.get("doi") != p["doi"]:
+            failures.append(f"[{p['slug']}] version DOI {p['doi']!r} != Zenodo {hit.get('doi')!r}")
         if meta.get("publication_date") != p["publicationDate"]:
             failures.append(
                 f"[{p['slug']}] publicationDate {p['publicationDate']!r} != Zenodo {meta.get('publication_date')!r}"
@@ -212,7 +218,7 @@ def main() -> int:
             return UNVERIFIABLE
         hits = json.loads(raw).get("hits", {}).get("hits", [])
         if args.sync:
-            by_doi = {p["doi"]: p for p in papers}
+            by_doi = papers_by_concept_doi(papers)
             for hit in hits:
                 meta = hit.get("metadata", {})
                 if (meta.get("resource_type") or {}).get("type") != "publication":
