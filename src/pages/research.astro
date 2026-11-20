@@ -5,7 +5,7 @@ import PageFooter from '../components/PageFooter.astro';
 import SectionRule from '../components/SectionRule.astro';
 import Ornament from '../components/Ornament.astro';
 import Tailpiece from '../components/Tailpiece.astro';
-import papers from '../data/papers.json';
+import papers from '../data/papers';
 
 // Deliberately holds no figures and no statuses. Results move with the data;
 // they live in the papers and in the server's evidence ledger, which is
@@ -61,13 +61,12 @@ const studyPapers = papers.filter((p) => p.section === 'studies');
             <div>
               <dt class="display text-xl mb-2 leading-snug"><a href={`/papers/${p.slug}/`}>{p.researchTitle}</a></dt>
               <dd class="text-stone leading-relaxed">
-                <p>{p.summary}</p>
+                {p.summary && <p>{p.summary}</p>}
                 <p class="font-mono text-xs mt-2">
                   <a href={`/papers/${p.slug}/${p.pdfFile}`}>PDF</a>
                   &nbsp;&middot;&nbsp;
                   <a href={`https://doi.org/${p.doi}`}>DOI {p.doi}</a>
-                  &nbsp;&middot;&nbsp;
-                  <a href={p.repo}>Source</a>
+                  {p.repo && <Fragment>&nbsp;&middot;&nbsp;<a href={p.repo}>Source</a></Fragment>}
                 </p>
               </dd>
             </div>
@@ -86,7 +85,7 @@ const studyPapers = papers.filter((p) => p.section === 'studies');
             <div>
               <dt class="display text-xl mb-2 leading-snug"><a href={`/papers/${p.slug}/`}>{p.researchTitle}</a></dt>
               <dd class="text-stone leading-relaxed">
-                <p>{p.summary}</p>
+                {p.summary && <p>{p.summary}</p>}
                 <p class="font-mono text-xs mt-2">
                   <a href={`/papers/${p.slug}/${p.pdfFile}`}>PDF</a>
                   {p.doi && (
@@ -95,8 +94,7 @@ const studyPapers = papers.filter((p) => p.section === 'studies');
                       <a href={`https://doi.org/${p.doi}`}>DOI {p.doi}</a>
                     </>
                   )}
-                  &nbsp;&middot;&nbsp;
-                  <a href={p.repo}>Source</a>
+                  {p.repo && <Fragment>&nbsp;&middot;&nbsp;<a href={p.repo}>Source</a></Fragment>}
                 </p>
               </dd>
             </div>

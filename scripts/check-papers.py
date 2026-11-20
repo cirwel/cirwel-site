@@ -19,7 +19,7 @@ Exit codes match scripts/check-claims.py:
 Usage:
     scripts/check-papers.py              # check local tree + dist against live Zenodo
     scripts/check-papers.py --offline    # check local files + dist without network
-    scripts/check-papers.py --sync       # update PDFs, citations and sitemap from published versions
+    scripts/check-papers.py --sync       # discover ORCID publications and update PDFs, citations and sitemap
     scripts/check-papers.py --live       # check the actual production pages and PDF downloads
     scripts/check-papers.py --self-test  # offline negative control
 """
@@ -27,6 +27,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+from html import unescape
 import json
 import pathlib
 import re
@@ -34,14 +35,7 @@ import sys
 import tempfile
 import xml.etree.ElementTree as ET
 
-from paper_mirror import SITE, curl, md5_tag, sync_papers
-
-ORCID = "0009-0006-7544-2374"
-ZENODO_URL = (
-    "https://zenodo.org/api/records"
-    f"?q=metadata.creators.person_or_org.identifiers.identifier:%22{ORCID}%22"
-    "&size=25&all_versions=false"
-)
+from paper_mirror import SITE, author_publications, curl, md5_tag, sync_papers
 DRIFT, UNVERIFIABLE = 1, 2
 
 
@@ -52,7 +46,7 @@ def extract_meta(html_text: str) -> dict[str, list[str]]:
         nm = re.search(r'\bname="([^"]+)"', tag, flags=re.I)
         ct = re.search(r'\bcontent="([^"]*)"', tag, flags=re.I)
         if nm and ct:
-            tags.setdefault(nm.group(1), []).append(ct.group(1))
+            tags.setdefault(nm.group(1), []).append(unescape(ct.group(1)))
     return tags
 
 
@@ -69,6 +63,9 @@ def check_scholar_html(slug: str, paper: dict, html_text: str) -> list[str]:
     for key in required:
         if not meta.get(key):
             failures.append(f"[{slug}] missing required meta tag: {key}")
+    authors = [c["citationName"] for c in paper["creators"]] if "creators" in paper else [paper.get("citationAuthor")]
+    if any(authors) and meta.get("citation_author") != authors:
+        failures.append(f"[{slug}] citation_author tags do not match the ordered creator list")
     if paper.get("doi") and meta.get("citation_doi") != [paper["doi"]]:
         failures.append(f"[{slug}] citation_doi should be {paper['doi']!r}, got {meta.get('citation_doi')!r}")
     if paper.get("citationDate") and meta.get("citation_publication_date") != [paper["citationDate"]]:
@@ -213,12 +210,12 @@ def main() -> int:
     failures: list[str] = []
 
     if not args.offline:
-        raw = curl(ZENODO_URL)
-        if raw is None:
-            print("UNVERIFIABLE: could not reach Zenodo API")
+        try:
+            hits = author_publications()
+        except (ConnectionError, ValueError, KeyError, TypeError) as exc:
+            print(f"UNVERIFIABLE: could not read Zenodo search: {exc}")
             return UNVERIFIABLE
-        hits = json.loads(raw).get("hits", {}).get("hits", [])
-        failures.extend(verify_against_zenodo(papers, hits))
+        failures.extend(verify_against_zenodo(papers, list(hits.values())))
 
     for p in papers:
         pdf_path = root / "public/papers" / p["slug"] / p["pdfFile"]
