@@ -19,19 +19,22 @@ Exit codes match scripts/check-claims.py:
 Usage:
     scripts/check-papers.py              # check local tree + dist against live Zenodo
     scripts/check-papers.py --offline    # check local files + dist without network
-    scripts/check-papers.py --sync       # download latest PDFs from Zenodo
+    scripts/check-papers.py --sync       # update PDFs, citations and sitemap from published versions
+    scripts/check-papers.py --live       # check the actual production pages and PDF downloads
     scripts/check-papers.py --self-test  # offline negative control
 """
 
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import pathlib
 import re
-import subprocess
 import sys
+import tempfile
+import xml.etree.ElementTree as ET
+
+from paper_mirror import SITE, curl, md5_tag, sync_papers
 
 ORCID = "0009-0006-7544-2374"
 ZENODO_URL = (
@@ -39,23 +42,7 @@ ZENODO_URL = (
     f"?q=metadata.creators.person_or_org.identifiers.identifier:%22{ORCID}%22"
     "&size=25&all_versions=false"
 )
-SITE = "https://cirwel.org"
 DRIFT, UNVERIFIABLE = 1, 2
-
-
-def curl(url: str, dest: pathlib.Path | None = None) -> str | None:
-    cmd = ["curl", "-sSL", "--fail", "--max-time", "30"]
-    if dest is not None:
-        cmd += ["-o", str(dest)]
-    cmd.append(url)
-    out = subprocess.run(cmd, capture_output=True, text=True)
-    if out.returncode != 0:
-        return None
-    return "" if dest is not None else out.stdout
-
-
-def md5_tag(path: pathlib.Path) -> str:
-    return "md5:" + hashlib.md5(path.read_bytes()).hexdigest()
 
 
 def extract_meta(html_text: str) -> dict[str, list[str]]:
@@ -84,6 +71,8 @@ def check_scholar_html(slug: str, paper: dict, html_text: str) -> list[str]:
             failures.append(f"[{slug}] missing required meta tag: {key}")
     if paper.get("doi") and meta.get("citation_doi") != [paper["doi"]]:
         failures.append(f"[{slug}] citation_doi should be {paper['doi']!r}, got {meta.get('citation_doi')!r}")
+    if paper.get("citationDate") and meta.get("citation_publication_date") != [paper["citationDate"]]:
+        failures.append(f"[{slug}] citation_publication_date should be {paper['citationDate']!r}")
 
     pdf_urls = meta.get("citation_pdf_url", [])
     abs_urls = meta.get("citation_abstract_html_url", [])
@@ -207,6 +196,18 @@ def main() -> int:
     if args.self_test:
         return self_test()
 
+    if args.sync and not args.offline:
+        try:
+            sync_papers(root)
+        except ConnectionError as exc:
+            print(f"UNVERIFIABLE: {exc}", file=sys.stderr)
+            return UNVERIFIABLE
+        except (ValueError, KeyError, TypeError, ET.ParseError) as exc:
+            print(f"FAIL  {exc}", file=sys.stderr)
+            return DRIFT
+        if not args.live:
+            return 0  # dist may still contain pages from before this update
+
     papers_path = root / "src/data/papers.json"
     papers = json.loads(papers_path.read_text())
     failures: list[str] = []
@@ -217,21 +218,6 @@ def main() -> int:
             print("UNVERIFIABLE: could not reach Zenodo API")
             return UNVERIFIABLE
         hits = json.loads(raw).get("hits", {}).get("hits", [])
-        if args.sync:
-            by_doi = papers_by_concept_doi(papers)
-            for hit in hits:
-                meta = hit.get("metadata", {})
-                if (meta.get("resource_type") or {}).get("type") != "publication":
-                    continue
-                p = by_doi.get(hit.get("conceptdoi"))
-                if not p:
-                    continue
-                files = {f["key"]: f for f in hit.get("files", [])}
-                zfile = files.get(p["zenodoKey"])
-                if zfile:
-                    dest = root / "public/papers" / p["slug"] / p["pdfFile"]
-                    dest.parent.mkdir(parents=True, exist_ok=True)
-                    curl(zfile["links"]["self"], dest)
         failures.extend(verify_against_zenodo(papers, hits))
 
     for p in papers:
@@ -251,6 +237,14 @@ def main() -> int:
                 print(f"UNVERIFIABLE: could not fetch {SITE}/papers/{p['slug']}/")
                 return UNVERIFIABLE
             failures.extend(check_scholar_html(p["slug"], p, live_html))
+            with tempfile.TemporaryDirectory() as tmp:
+                downloaded = pathlib.Path(tmp) / "paper.pdf"
+                url = f"{SITE}/papers/{p['slug']}/{p['pdfFile']}"
+                if curl(url, downloaded) is None:
+                    print(f"UNVERIFIABLE: could not fetch {url}")
+                    return UNVERIFIABLE
+                if md5_tag(downloaded) != p["pdfChecksum"]:
+                    failures.append(f"[{p['slug']}] deployed PDF checksum differs from papers.json at {url}")
         else:
             dist_html = root / "dist/papers" / p["slug"] / "index.html"
             if dist_html.exists():
@@ -261,7 +255,14 @@ def main() -> int:
             print(f"FAIL  {f}")
         return DRIFT
 
-    print(f"All {len(papers)} papers verified (PDF checksums, Zenodo parity, Scholar meta tags).")
+    checks = ["local PDF checksums"]
+    if not args.offline:
+        checks.append("Zenodo catalog check")
+    if args.live:
+        checks.append("live Scholar tags and PDF downloads")
+    else:
+        checks.append("Scholar tags in available builds")
+    print(f"All {len(papers)} papers verified ({', '.join(checks)}).")
     return 0
 
 

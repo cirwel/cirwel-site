@@ -187,3 +187,9 @@ renders it.
   deploy.
 - Build locally and look at the home page at 390 px as well as 1440 px.
 - One PR per topic; the PR body names which of the sections above it touches.
+
+For paper releases, run `python3 scripts/check-papers.py --sync` in a fresh checkout.
+It follows each cataloged concept DOI to its published version and updates the citation,
+verified PDF and sitemap together. The daily mirror collects changes in one review PR
+on `sync/zenodo-papers`. Review the diff and the preview there. After deployment,
+`python3 scripts/check-papers.py --live` checks the citations and downloads from cirwel.org.
