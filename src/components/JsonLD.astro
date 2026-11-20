@@ -15,7 +15,7 @@ interface Props {
   pageTitle: string;
   pageDesc: string;
 }
-import papers from '../data/papers.json';
+import papers from '../data/papers';
 const { pageUrl, pageTitle, pageDesc } = Astro.props;
 
 const scholarlyArticles = papers.map((p) => ({
@@ -23,7 +23,13 @@ const scholarlyArticles = papers.map((p) => ({
   '@id': p.doi ? `https://doi.org/${p.doi}` : `https://cirwel.org/papers/${p.slug}/`,
   'name': p.title,
   'headline': p.title,
-  'author': { '@id': `https://orcid.org/${p.orcid}` },
+  'author': p.creators.length === 1 && p.orcid && p.orcid === p.creators[0].orcid
+    ? { '@id': `https://orcid.org/${p.orcid}` }
+    : p.creators.map((creator) => ({
+        '@type': creator.type,
+        'name': creator.name,
+        ...(creator.orcid && { '@id': `https://orcid.org/${creator.orcid}` }),
+      })),
   'datePublished': p.publicationDate,
   ...(p.doi
     ? {
@@ -33,8 +39,10 @@ const scholarlyArticles = papers.map((p) => ({
         'sameAs': `https://doi.org/${p.doi}`,
       }
     : {}),
-  'publisher': { '@id': 'https://cirwel.org/#org' },
-  'license': p.license,
+  'publisher': p.publisher === undefined
+    ? { '@id': 'https://cirwel.org/#org' }
+    : (p.publisher ? { 'name': p.publisher } : undefined),
+  'license': p.license ?? p.rights.map((right) => right.url || right.label),
   'url': `https://cirwel.org/papers/${p.slug}/`,
   'encoding': {
     '@type': 'MediaObject',
@@ -114,4 +122,4 @@ const graph = {
   ],
 };
 ---
-<script type="application/ld+json" is:inline set:html={JSON.stringify(graph)}></script>
+<script type="application/ld+json" is:inline set:html={JSON.stringify(graph).replace(/</g, '\\u003c')}></script>

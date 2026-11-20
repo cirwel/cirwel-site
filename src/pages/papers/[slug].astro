@@ -4,7 +4,7 @@ import PageHeader from '../../components/PageHeader.astro';
 import PageFooter from '../../components/PageFooter.astro';
 import SectionRule from '../../components/SectionRule.astro';
 import Tailpiece from '../../components/Tailpiece.astro';
-import papers from '../../data/papers.json';
+import papers from '../../data/papers';
 
 export function getStaticPaths() {
   return papers.map((paper) => ({
@@ -21,35 +21,37 @@ const pageUrl = `${site}${canonicalPath}`;
 const pdfPath = `/papers/${paper.slug}/${paper.pdfFile}`;
 const pdfUrl = `${site}${pdfPath}`;
 const ledger = 'https://github.com/cirwel/unitares/blob/master/docs/EVIDENCE_AND_LIMITS.md';
-const licenseLabel = paper.license.includes('apache') ? 'Apache-2.0' : 'CC-BY 4.0';
+const recordUrl = `https://doi.org/${paper.doi}`;
 ---
 <BaseLayout
   title={`${paper.title} — CIRWEL Research`}
-  description={paper.summary}
+  description={paper.summary || paper.title}
   ogType="article"
   canonicalPath={canonicalPath}
 >
   <Fragment slot="head">
     <meta name="citation_title" content={paper.title} />
-    <meta name="citation_author" content={paper.citationAuthor} />
-    <meta name="citation_author_institution" content={paper.institution} />
-    <meta name="citation_author_orcid" content={paper.orcid} />
+    {paper.creators.map((creator) => <Fragment>
+      <meta name="citation_author" content={creator.citationName} />
+      {creator.institutions.map((name) => <meta name="citation_author_institution" content={name} />)}
+      {creator.orcid && <meta name="citation_author_orcid" content={creator.orcid} />}
+    </Fragment>)}
     <meta name="citation_publication_date" content={paper.citationDate} />
     <meta name="citation_online_date" content={paper.citationDate} />
     <meta name="citation_pdf_url" content={pdfUrl} />
     <meta name="citation_abstract_html_url" content={pageUrl} />
     {paper.doi && <meta name="citation_doi" content={paper.doi} />}
-    <meta name="citation_technical_report_institution" content={paper.institution} />
-    <meta name="citation_language" content="en" />
+    {paper.institution && <meta name="citation_technical_report_institution" content={paper.institution} />}
+    {paper.languages.map((lang) => <meta name="citation_language" content={lang} />)}
     <meta name="citation_keywords" content={paper.keywords.join('; ')} />
     <meta name="DC.title" content={paper.title} />
-    <meta name="DC.creator" content={paper.citationAuthor} />
+    {paper.creators.map((creator) => <meta name="DC.creator" content={creator.citationName} />)}
     <meta name="DC.date" content={paper.publicationDate} />
     <meta name="DC.identifier" content={paper.doi ? `doi:${paper.doi}` : pageUrl} />
     <meta name="DC.type" content="Text" />
     <meta name="DC.format" content="application/pdf" />
-    <meta name="DC.language" content="en" />
-    <meta name="DC.rights" content={paper.license} />
+    {paper.languages.map((lang) => <meta name="DC.language" content={lang} />)}
+    {paper.rights.map((right) => <meta name="DC.rights" content={right.url || right.label} />)}
   </Fragment>
 
   <PageHeader currentPath="/research" />
@@ -59,14 +61,14 @@ const licenseLabel = paper.license.includes('apache') ? 'Apache-2.0' : 'CC-BY 4.
     <section class="pt-16 pb-16 lg:pt-24 lg:pb-20 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-10">
         <p class="label text-oxblood mb-6 reveal reveal-1">
-          <a href="/research" class="no-underline hover:underline">Research</a> &middot; {paper.section === 'studies' ? 'Study report' : 'Preprint'} ({paper.displayVersion})
+          <a href="/research" class="no-underline hover:underline">Research</a> &middot; {paper.publicationType} ({paper.displayVersion})
         </p>
         <h1 class="display text-3xl md:text-5xl lg:text-6xl mb-8 leading-tight reveal reveal-2">
           {paper.title}
         </h1>
-        <p class="text-lg md:text-xl leading-relaxed text-stone max-w-prose mb-8 reveal reveal-3">
+        {paper.summary && <p class="text-lg md:text-xl leading-relaxed text-stone max-w-prose mb-8 reveal reveal-3">
           {paper.summary}
-        </p>
+        </p>}
         <p class="font-mono text-sm text-stone reveal reveal-3">
           <a href={pdfPath}>Full text (PDF)</a>
           {paper.doi && (
@@ -75,8 +77,7 @@ const licenseLabel = paper.license.includes('apache') ? 'Apache-2.0' : 'CC-BY 4.
               <a href={`https://doi.org/${paper.doi}`}>{paper.conceptDoi ? 'Version DOI' : 'DOI'} {paper.doi}</a>
             </>
           )}
-          &nbsp;&middot;&nbsp;
-          <a href={paper.repo}>Source repository</a>
+          {paper.repo && <Fragment>&nbsp;&middot;&nbsp;<a href={paper.repo}>Source repository</a></Fragment>}
         </p>
       </div>
     </section>
@@ -86,8 +87,12 @@ const licenseLabel = paper.license.includes('apache') ? 'Apache-2.0' : 'CC-BY 4.
     <section class="py-10 grid grid-cols-12 gap-6 reveal reveal-4">
       <div class="col-span-12 lg:col-span-3 mb-4 lg:mb-0"><p class="label text-oxblood">Bibliographic record</p></div>
       <dl class="col-span-12 lg:col-span-9 grid grid-cols-12 gap-y-5 gap-x-6">
-        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Author</dt>
-        <dd class="col-span-8 md:col-span-9"><span class="smcp">{paper.author}</span><span class="text-stone"> &middot; ORCID </span><a href={`https://orcid.org/${paper.orcid}`} class="font-mono text-sm">{paper.orcid}</a></dd>
+        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">{paper.creators.length === 1 ? 'Author' : 'Authors'}</dt>
+        <dd class="col-span-8 md:col-span-9">{paper.creators.map((creator) =>
+          <div><span class="smcp">{creator.name}</span>{creator.orcid && <Fragment>
+            <span class="text-stone"> &middot; ORCID </span><a href={`https://orcid.org/${creator.orcid}`} class="font-mono text-sm">{creator.orcid}</a>
+          </Fragment>}</div>
+        )}</dd>
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Published</dt>
         <dd class="col-span-8 md:col-span-9">{paper.displayDate} <span class="text-stone">&middot; {paper.displayVersion}</span></dd>
         {conceptDoi && (
@@ -98,16 +103,22 @@ const licenseLabel = paper.license.includes('apache') ? 'Apache-2.0' : 'CC-BY 4.
         )}
         <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Full text</dt>
         <dd class="col-span-8 md:col-span-9"><a href={pdfPath} class="font-mono text-sm">{paper.pdfFile}</a></dd>
-        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Source</dt>
-        <dd class="col-span-8 md:col-span-9"><a href={paper.repo} class="font-mono text-sm">{paper.repo.replace('https://github.com/', '')}</a></dd>
-        <dt class="col-span-4 md:col-span-3 label text-stone pt-1">License</dt>
-        <dd class="col-span-8 md:col-span-9"><a href={paper.license} class="font-mono text-sm">{licenseLabel}</a></dd>
+        {paper.repo && <Fragment>
+          <dt class="col-span-4 md:col-span-3 label text-stone pt-1">Source</dt>
+          <dd class="col-span-8 md:col-span-9"><a href={paper.repo} class="font-mono text-sm">{paper.repo.replace('https://github.com/', '')}</a></dd>
+        </Fragment>}
+        {paper.rights.length > 0 && <Fragment>
+          <dt class="col-span-4 md:col-span-3 label text-stone pt-1">License</dt>
+          <dd class="col-span-8 md:col-span-9">{paper.rights.map((right) =>
+            <div>{right.url ? <a href={right.url} class="font-mono text-sm">{right.label}</a> : right.label}</div>
+          )}</dd>
+        </Fragment>}
       </dl>
     </section>
 
     <SectionRule class="mt-2 mb-16" />
 
-    <section id="abstract" class="py-12 lg:py-16 grid grid-cols-12 gap-6">
+    {paper.abstract.length > 0 ? <section id="abstract" class="py-12 lg:py-16 grid grid-cols-12 gap-6">
       <div class="col-span-12 lg:col-span-3 mb-6 lg:mb-0"><p class="section-mark"><span class="sm-num">§&#8201;I</span><span class="sm-name">Abstract</span></p></div>
       <div class="col-span-12 lg:col-span-9 max-w-prose space-y-6">
         {paper.abstract.map((paragraph) => (
@@ -117,7 +128,7 @@ const licenseLabel = paper.license.includes('apache') ? 'Apache-2.0' : 'CC-BY 4.
           Dated measurements, tables, and proofs are in the <a href={pdfPath}>full PDF</a>. Current evidence status across the live deployment lives in <a href={ledger} class="font-mono text-sm">EVIDENCE_AND_LIMITS.md</a>.
         </p>
       </div>
-    </section>
+    </section> : <p class="py-12"><a href={recordUrl}>Publication details on Zenodo</a></p>}
 
     <div class="flex justify-center pt-10 pb-4"><Tailpiece class="opacity-80" /></div>
   </main>
