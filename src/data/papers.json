@@ -2,7 +2,7 @@
   {
     "slug": "unitares",
     "section": "papers",
-    "doi": "10.5281/zenodo.19647159",
+    "doi": "10.5281/zenodo.23337711",
     "title": "UNITARES: Information-Theoretic Governance of Heterogeneous Agent Fleets",
     "researchTitle": "UNITARES: Information-Theoretic Governance of Heterogeneous Agent Fleets",
     "author": "Kenny Wang",
@@ -30,12 +30,13 @@
     "abstract": [
       "UNITARES is a runtime governance framework for heterogeneous fleets of AI agents. Each agent carries a four-dimensional state estimate updated at each check-in to support longitudinal state tracking and policy actions across processes that do not share an output modality, a tempo, or a healthy operating point.",
       "The paper specifies the four-dimensional coordinate definitions, a class-conditional calibration protocol that normalizes each agent against its own class rather than a single fleet-wide distribution, a continuous-time contraction analysis, and a pipeline-ordering migration mechanism for introducing re-grounded state estimates without disrupting live policy decisions. Dated deployment measurements, calibration analyses, and scope boundaries are reported in the full text."
-    ]
+    ],
+    "conceptDoi": "10.5281/zenodo.19647159"
   },
   {
     "slug": "trajectory-identity",
     "section": "papers",
-    "doi": "10.5281/zenodo.20098168",
+    "doi": "10.5281/zenodo.23337710",
     "title": "Trajectory Identity: A Mathematical Framework for Enactive AI Self-Hood",
     "researchTitle": "Trajectory Identity: A Mathematical Framework for Enactive AI Self-Hood",
     "author": "Kenny Wang",
@@ -63,12 +64,13 @@
     "abstract": [
       "Conventional approaches to AI agent identity rely on static identifiers such as UUIDs and session tokens or on accumulated memory stores. This paper proposes a mathematical framework grounded in dynamical systems theory that treats identity as a behavioral trajectory over time rather than a stored label.",
       "The framework defines a trajectory signature computed from longitudinal time-series observations — homeostatic state distributions, preference formation, self-model calibration, and perturbation recovery dynamics — to study within-agent continuity across sessions, semantics for agent forking and merging, and the conditions under which behavioral signatures can or cannot discriminate individual agents across harnesses and operating regimes."
-    ]
+    ],
+    "conceptDoi": "10.5281/zenodo.20098168"
   },
   {
     "slug": "flat-coherence-score",
     "section": "papers",
-    "doi": "10.5281/zenodo.21930092",
+    "doi": "10.5281/zenodo.23337714",
     "title": "A Flat Coherence Score: What a Production-Data Replay Does and Does Not Show About Agent Self-State Gating",
     "researchTitle": "A Flat Coherence Score: What a Production-Data Replay Does and Does Not Show About Agent Self-State Gating",
     "author": "Kenny Wang",
@@ -96,12 +98,13 @@
     "abstract": [
       "A running multi-agent governance system computes a scalar coherence score at each agent check-in and uses it, among other inputs, to assign each state to a high, boundary, or low operating basin. This paper audits how that deployed score behaved against its own decision thresholds on frozen operational windows.",
       "Through a reproducible offline counterfactual replay, the study compares the legacy scalar against a class-conditional replacement measured relative to each agent class's operating point, separating what a label-change replay establishes about threshold sensitivity from open questions of label validity, drift across observation windows, and downstream outcome prediction."
-    ]
+    ],
+    "conceptDoi": "10.5281/zenodo.21930092"
   },
   {
     "slug": "accountability-without-a-trusted-center",
     "section": "papers",
-    "doi": "10.5281/zenodo.21930161",
+    "doi": "10.5281/zenodo.23337729",
     "title": "Accountability Without a Trusted Center: A Federated Governance Testbed for Multi-Principal AI Agents",
     "researchTitle": "Accountability Without a Trusted Center",
     "author": "Kenny Wang",
@@ -129,12 +132,13 @@
     "abstract": [
       "AI agents increasingly delegate, persist, clone, and act across shared infrastructure for principals who do not trust one another and share no central controller. The accountability questions in that setting are relational — which process acted, who authorized it, and through what delegation chain — and controls that assume a single privileged operator cannot answer them by construction.",
       "This paper presents the design and pre-registered evaluation plan for an open testbed in which each principal runs its own governance instance and cross-principal interactions are mediated by cryptographic attestations rather than a trusted center, alongside a two-host verification run exercising the attestation object's refusal conditions across an offline boundary."
-    ]
+    ],
+    "conceptDoi": "10.5281/zenodo.21930161"
   },
   {
     "slug": "signed-is-not-true",
     "section": "studies",
-    "doi": "10.5281/zenodo.24297963",
+    "doi": "10.5281/zenodo.24297964",
     "title": "Signed Is Not True: Measuring What Provenance Checks Catch in an LLM Agent Handoff",
     "researchTitle": "Signed Is Not True: Measuring What Provenance Checks Catch in an LLM Agent Handoff",
     "author": "Kenny Wang",
@@ -162,12 +166,13 @@
     "abstract": [
       "Handoffs between AI agents across organizational boundaries are increasingly secured by proving origin through cryptographic signatures, verifiable agent identifiers, and signed mandates. A signature answers who sent a message, whereas the receiving principal's operational question is whether the reported work actually occurred.",
       "This study evaluates rule-based verification gates and LLM receivers in a two-principal refund and payout pipeline backed by database ground truth, comparing origin-only checks, state-digest evidence checks, verification badges, and receiver instructions across planted false reports and organic tool-failure handoffs."
-    ]
+    ],
+    "conceptDoi": "10.5281/zenodo.24297963"
   },
   {
     "slug": "crux-brief",
     "section": "studies",
-    "doi": "10.5281/zenodo.24297972",
+    "doi": "10.5281/zenodo.24297973",
     "title": "When Structured Disagreement Backfires: Pre-Registered Evaluation of Crux Briefs vs. Common-Ground Summaries Under Saturated Advisory Panels",
     "researchTitle": "When Structured Disagreement Backfires: Crux Briefs vs. Common-Ground Summaries",
     "author": "Kenny Wang",
@@ -195,7 +200,8 @@
     "abstract": [
       "Decision makers reviewing consequential packets with an AI assistant face paired hazards of uncritical deferral on flawed inputs and false alarms on sound ones. Multi-model advisory tools can either synthesize common ground or preserve structured two-sided cruxes where advisors disagree.",
       "This study evaluates a local multi-family briefing pipeline in a pre-registered, blinded benchmark of paired flawed and sound decision scenarios across four domains, comparing unbriefed decisions, single-advisor briefs, common-ground synthesis, and structured disagreement cards across cross-family synthesizer and decider pairings."
-    ]
+    ],
+    "conceptDoi": "10.5281/zenodo.24297972"
   },
   {
     "slug": "nlip-receipts",
