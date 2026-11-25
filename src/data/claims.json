@@ -56,9 +56,8 @@
       "site_says": "single-operator federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP",
       "source": "readme",
       "must_contain": [
-        "UNITARES is self-hosted accountability infrastructure for operators running",
-        "Its single-operator federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP",
-        "They interoperate with each other over their own transports or A2A; UNITARES is the record behind them, not the transport between them"
+        "UNITARES is self-hosted. Its single-operator federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP, where they share a durable record while keeping their own models, tools, and loops.",
+        "They interoperate with each other over their own transports or A2A; UNITARES is the record behind them, not the transport between them."
       ],
       "why": "The one-sentence definition is owned by the server README and copied here verbatim. Ten different phrasings were live across the site, the repository, and the share cards on 2026-09-16; this pin is what keeps it at one."
     },
@@ -68,9 +67,8 @@
       "site_says": "Its single-operator federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP",
       "source": "readme",
       "must_contain": [
-        "UNITARES is self-hosted accountability infrastructure for operators running",
-        "Its single-operator federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP",
-        "They interoperate with each other over their own transports or A2A; UNITARES is the record behind them, not the transport between them"
+        "UNITARES is self-hosted. Its single-operator federation kernel connects independent runtimes to one operator-controlled server over MCP or HTTP, where they share a durable record while keeping their own models, tools, and loops.",
+        "They interoperate with each other over their own transports or A2A; UNITARES is the record behind them, not the transport between them."
       ],
       "why": "llms.txt is the summary a language model reads first, so it carries the README's definition verbatim like every other surface. Pinning it here also runs the retired-phrasings check against it."
     },
@@ -136,7 +134,7 @@
       "source": "agents-readme",
       "must_contain": [
         "not** part of the public contract",
-        "examples of how to build a resident agent, not as load-bearing governance internals"
+        "an example of how to build a resident agent, not as load-bearing governance internals"
       ],
       "why": "The whole four-tier claim rests on the reference workloads being examples rather than contract. If that line ever softens, the page is describing a boundary the repo no longer draws."
     },
