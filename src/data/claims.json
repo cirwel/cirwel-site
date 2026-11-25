@@ -185,24 +185,26 @@
     {
       "id": "home-homebrew-install",
       "page": "home",
-      "site_says": "brew tap cirwel/unitares brew trust cirwel/unitares brew install cirwel/unitares/unitares brew pin unitares unitares-lease-plane",
+      "site_says": "brew tap cirwel/unitares brew trust cirwel/unitares brew install cirwel/unitares/unitares brew pin unitares unitares-lease-plane apache-age unitares-pgvector",
       "source": "homebrew-tap",
       "must_contain": [
         "preview for Apple Silicon Macs",
-        "brew update brew tap cirwel/unitares brew trust cirwel/unitares brew install cirwel/unitares/unitares brew pin unitares unitares-lease-plane",
-        "Database creation, bootstrap and upgrades remain explicit operator steps."
+        "brew update brew tap cirwel/unitares brew trust cirwel/unitares brew install cirwel/unitares/unitares brew pin unitares unitares-lease-plane apache-age unitares-pgvector",
+        "Database creation, bootstrap and upgrades run only when you invoke their CLI commands."
       ],
       "why": "Pins the native installation commands and preview scope to the published tap; installing packages is followed by database setup and startup."
     },
     {
       "id": "build-homebrew-install",
       "page": "build",
-      "site_says": "brew tap cirwel/unitares brew trust cirwel/unitares brew install cirwel/unitares/unitares brew pin unitares unitares-lease-plane",
+      "site_says": "brew tap cirwel/unitares brew trust cirwel/unitares brew install cirwel/unitares/unitares brew pin unitares unitares-lease-plane apache-age unitares-pgvector",
       "source": "homebrew-tap",
       "must_contain": [
         "preview for Apple Silicon Macs",
-        "brew update brew tap cirwel/unitares brew trust cirwel/unitares brew install cirwel/unitares/unitares brew pin unitares unitares-lease-plane",
-        "Database creation, bootstrap and upgrades remain explicit operator steps."
+        "brew update brew tap cirwel/unitares brew trust cirwel/unitares brew install cirwel/unitares/unitares brew pin unitares unitares-lease-plane apache-age unitares-pgvector",
+        "Database creation, bootstrap and upgrades run only when you invoke their CLI commands.",
+        "unitares setup --provision-db unitares setup --provision-db --apply",
+        "Startup checks the schema, starts missing native dependencies, then starts both writers and waits for deep health."
       ],
       "why": "Pins the native installation commands and preview scope to the published tap; installing packages is followed by database setup and startup."
     },
