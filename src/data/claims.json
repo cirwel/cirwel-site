@@ -185,26 +185,42 @@
     {
       "id": "home-homebrew-install",
       "page": "home",
-      "site_says": "brew tap cirwel/unitares brew trust cirwel/unitares brew install cirwel/unitares/unitares brew pin unitares unitares-lease-plane",
+      "site_says": "brew update brew tap cirwel/unitares brew trust cirwel/unitares brew install cirwel/unitares/unitares brew pin unitares unitares-lease-plane apache-age unitares-pgvector Installs the native server",
       "source": "homebrew-tap",
       "must_contain": [
         "preview for Apple Silicon Macs",
-        "brew update brew tap cirwel/unitares brew trust cirwel/unitares brew install cirwel/unitares/unitares brew pin unitares unitares-lease-plane",
-        "Database creation, bootstrap and upgrades remain explicit operator steps."
+        "brew update brew tap cirwel/unitares brew trust cirwel/unitares brew install cirwel/unitares/unitares brew pin unitares unitares-lease-plane apache-age unitares-pgvector ```",
+        "Database creation, bootstrap and upgrades run only when you invoke their CLI commands."
       ],
-      "why": "Pins the native installation commands and preview scope to the published tap; installing packages is followed by database setup and startup."
+      "why": "Pins the native installation commands and preview scope to the published tap. Both sides are anchored at the end (the closing code fence in the tap, the next sentence on the page), so a package added to the end of the pin command fails the check rather than matching as a prefix."
     },
     {
       "id": "build-homebrew-install",
       "page": "build",
-      "site_says": "brew tap cirwel/unitares brew trust cirwel/unitares brew install cirwel/unitares/unitares brew pin unitares unitares-lease-plane",
+      "site_says": "brew update brew tap cirwel/unitares brew trust cirwel/unitares brew install cirwel/unitares/unitares brew pin unitares unitares-lease-plane apache-age unitares-pgvector Next, follow the tap's first-time setup",
       "source": "homebrew-tap",
       "must_contain": [
         "preview for Apple Silicon Macs",
-        "brew update brew tap cirwel/unitares brew trust cirwel/unitares brew install cirwel/unitares/unitares brew pin unitares unitares-lease-plane",
-        "Database creation, bootstrap and upgrades remain explicit operator steps."
+        "brew update brew tap cirwel/unitares brew trust cirwel/unitares brew install cirwel/unitares/unitares brew pin unitares unitares-lease-plane apache-age unitares-pgvector ```",
+        "Database creation, bootstrap and upgrades run only when you invoke their CLI commands."
       ],
-      "why": "Pins the native installation commands and preview scope to the published tap; installing packages is followed by database setup and startup."
+      "why": "Pins the native installation commands and preview scope to the published tap. Both sides are anchored at the end (the closing code fence in the tap, the next sentence on the page), so a package added to the end of the pin command fails the check rather than matching as a prefix."
+    },
+    {
+      "id": "build-homebrew-setup",
+      "page": "build",
+      "site_says": "unitares setup --provision-db shows the plan and changes nothing; unitares setup --provision-db --apply creates a dedicated database, bootstraps it and writes the configuration. Then unitares start checks the schema, starts both writers and waits for deep health.",
+      "source": "homebrew-tap",
+      "must_contain": [
+        "This route needs UNITARES 4.1.0 or later",
+        "a **new machine with no UNITARES database**",
+        "```sh unitares setup --provision-db unitares setup --provision-db --apply ```",
+        "The first command changes nothing.",
+        "creates a dedicated `unitares` login and `unitares` database (the login is not a superuser), bootstraps that database",
+        "```sh unitares start --check unitares start unitares health ```",
+        "Startup checks the schema, starts missing native dependencies, then starts both writers and waits for deep health."
+      ],
+      "why": "The build page summarizes the tap's first-time setup: the version and new-machine condition, the dry run, the --apply step that provisions, and what start does. A reader who runs the dry run alone gets no database."
     },
     {
       "id": "build-homebrew-models",

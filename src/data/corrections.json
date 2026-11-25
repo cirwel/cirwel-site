@@ -2,6 +2,12 @@
   "_note": "Corrections to what this site has said: figures, statuses, and claims only. Not a changelog, and not a place for copy edits. Newest first. `ref` is the commit or pull request that made the correction, or the upstream change that made it necessary.",
   "entries": [
     {
+      "date": "2026-11-25",
+      "where": "Home, Install; Build, Run the server",
+      "note": "The Homebrew commands pinned unitares and unitares-lease-plane only; the tap now pins apache-age and unitares-pgvector as well, and the commands include them. The build page described first-time setup as separate manual steps; from UNITARES 4.1.0, on a machine with no UNITARES database, unitares setup --provision-db --apply creates and bootstraps the database and writes the configuration.",
+      "ref": "https://github.com/cirwel/homebrew-unitares/pull/6"
+    },
+    {
       "date": "2026-11-01",
       "where": "Build, Run the server and Run the loop",
       "note": "Said unitares update handled Docker Compose installations only after the Homebrew preview added a coordinated native updater (unitares update --check and unitares update). Also updated the loop example's pause check from state_summary.action to enforcement.applied.",
