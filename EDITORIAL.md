@@ -24,15 +24,13 @@ Tagline (the README's own heading):
 
 > Accountability infrastructure for long-running AI agents.
 
-Definition (the README's three definition sentences, in two short paragraphs
-beginning "UNITARES is self-hosted"; the problem paragraph above them is
-README-only):
+Definition (the three sentences that open the README's "How it fits
+together" section, beginning "UNITARES is self-hosted"):
 
-> UNITARES is self-hosted accountability infrastructure for operators running
-> multiple AI agents. Its single-operator federation kernel connects
+> UNITARES is self-hosted. Its single-operator federation kernel connects
 > independent runtimes to one operator-controlled server over MCP or HTTP,
 > where they share a durable record while keeping their own models, tools, and
-> runtimes. They interoperate with each other over their own transports or A2A;
+> loops. They interoperate with each other over their own transports or A2A;
 > UNITARES is the record behind them, not the transport between them.
 
 Headline (display only; the site's, not the README's):
