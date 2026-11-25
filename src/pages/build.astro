@@ -118,7 +118,7 @@ state = check_working_state(client_session_id=sid)`;
           <pre class="codeplate">{homebrew}</pre>
           <div class="space-y-5 text-lg leading-relaxed text-stone mt-8">
             <p>
-              Next, follow the tap's <a href="https://github.com/cirwel/homebrew-unitares#first-time-setup">first-time setup</a>: <code>unitares setup --provision-db</code> creates a dedicated database, bootstraps it and writes the configuration, then <code>unitares start</code> checks the schema and starts the services. Package installation alone does not create the database or start the server.
+              Next, follow the tap's <a href="https://github.com/cirwel/homebrew-unitares#first-time-setup">first-time setup</a>, which needs UNITARES 4.1.0 or later and a machine with no UNITARES database. <code>unitares setup --provision-db</code> shows the plan and changes nothing; <code>unitares setup --provision-db --apply</code> creates a dedicated database, bootstraps it and writes the configuration. Then <code>unitares start</code> checks the schema, starts both writers and waits for deep health. Package installation alone does not create the database or start the server.
             </p>
             <p>
               Keep the packages pinned between updates. A bare <code>brew upgrade</code> is not a database upgrade procedure; run <code>unitares update --check</code> and <code>unitares update</code> for a <a href="https://github.com/cirwel/homebrew-unitares#upgrades-and-recovery">coordinated backed-up upgrade</a>. Native user services run in the Homebrew owner's logged-in session.

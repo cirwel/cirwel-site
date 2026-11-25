@@ -4,7 +4,7 @@
     {
       "date": "2026-11-25",
       "where": "Home, Install; Build, Run the server",
-      "note": "The Homebrew commands pinned unitares and unitares-lease-plane only; the tap now pins apache-age and unitares-pgvector as well, and the commands include them. The build page described first-time setup as separate manual steps; from UNITARES 4.1.0 one command, unitares setup --provision-db, creates and bootstraps the database and writes the configuration.",
+      "note": "The Homebrew commands pinned unitares and unitares-lease-plane only; the tap now pins apache-age and unitares-pgvector as well, and the commands include them. The build page described first-time setup as separate manual steps; from UNITARES 4.1.0, on a machine with no UNITARES database, unitares setup --provision-db --apply creates and bootstraps the database and writes the configuration.",
       "ref": "https://github.com/cirwel/homebrew-unitares/pull/6"
     },
     {
