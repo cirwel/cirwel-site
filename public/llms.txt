@@ -8,6 +8,8 @@ Accountability infrastructure for long-running AI agents. Open source under Apac
 
 In UNITARES, a federation is a set of independent agent runtimes (coding agents, research agents, background agents, custom runtimes) connected to one operator's server. The server is one authority domain. It does not replicate state across independent servers, and it is unrelated to federated learning. Agents keep talking to each other over their own transports or A2A; UNITARES is the record behind them, not the transport between them.
 
+The operator is whoever administers a deployment, one person or a team holding its operator credentials, so "single-operator" means one administrative root, not one user.
+
 Accountability between operators who share no root of trust is a separate research question. The repositories call it "cross-operator" or "multi-principal" and the papers below address it.
 
 ## The five questions

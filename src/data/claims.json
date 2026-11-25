@@ -73,6 +73,26 @@
       "why": "llms.txt is the summary a language model reads first, so it carries the README's definition verbatim like every other surface. Pinning it here also runs the retired-phrasings check against it."
     },
     {
+      "id": "home-single-operator",
+      "page": "home",
+      "site_says": "The operator is whoever administers a deployment, one person or a team holding its operator credentials, so \"single-operator\" means one administrative root, not one user.",
+      "source": "readme",
+      "must_contain": [
+        "The operator is whoever administers a deployment, one person or a team holding its operator credentials, so \"single-operator\" means one administrative root, not one user."
+      ],
+      "why": "Defines \"single-operator\", which a first-time reader takes to mean one user. The README owns the sentence; the site copies it verbatim, so a rewrite of the README sentence fails the daily check."
+    },
+    {
+      "id": "llms-single-operator",
+      "page": "llms",
+      "site_says": "The operator is whoever administers a deployment, one person or a team holding its operator credentials, so \"single-operator\" means one administrative root, not one user.",
+      "source": "readme",
+      "must_contain": [
+        "The operator is whoever administers a deployment, one person or a team holding its operator credentials, so \"single-operator\" means one administrative root, not one user."
+      ],
+      "why": "Defines \"single-operator\", which a first-time reader takes to mean one user. The README owns the sentence; the site copies it verbatim, so a rewrite of the README sentence fails the daily check. Checked on llms.txt separately because it is stated there too."
+    },
+    {
       "id": "home-install",
       "page": "home",
       "site_says": "git clone --branch \"v$v\" --depth 1 https://github.com/cirwel/unitares.git",
