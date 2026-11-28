@@ -73,6 +73,14 @@ says "cross-operator" or "multi-principal", as the server repository does. It
 is a research question, answered in the papers the research page lists. Do
 not let the two senses blur.
 
+"Single-operator" reads as "one user" unless it is defined. The README defines
+it in one sentence under "Who it is for", and the home page's "In precise
+terms" block and `llms.txt` carry that sentence verbatim after the definition:
+
+> The operator is whoever administers a deployment, one person or a team
+> holding its operator credentials, so "single-operator" means one
+> administrative root, not one user.
+
 ## 2. The spine
 
 The only permitted "what it does" structure on the home and ecosystem pages
